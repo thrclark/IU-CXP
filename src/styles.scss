@@ -1,0 +1,15 @@
+@import 'variables';
+@import '../node_modules/espd-common/styles/main.scss';
+@import 'theming';
+
+html,
+body,
+vs-app {
+	display: block;
+	height : 100%;
+}
+
+pre {
+	font-family: $font-family-body;
+	white-space: pre-wrap;
+}

@@ -1,0 +1,44 @@
+
+
+<espd-header subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}" />
+
+<espd-admin-header [headerText]="{key: 'message.example.basic'}"></espd-admin-header>
+<espd-shell [collapsible]="true">
+  <espd-shell-sidebar>
+
+
+
+    <espd-sidenav label="Navigation">
+      <espd-sidenav-item route="/header" [queryParams]="{param:'value'}">Item with route</espd-sidenav-item>
+      <espd-sidenav-item href="http://localhost:4200/sidenav">Item with href</espd-sidenav-item>
+
+      <espd-sidenav-list label="A list open because it contains the active route" srLabel="list 1">
+        <espd-sidenav-item route="/sidenav">A link to the current route</espd-sidenav-item>
+
+        <espd-sidenav-list label="A nested list with a route on its label" srLabel="list 2" route="/header">
+          <espd-sidenav-item>Item 1</espd-sidenav-item>
+          <espd-sidenav-item>Item 2</espd-sidenav-item>
+        </espd-sidenav-list>
+
+        <espd-sidenav-list label="A list open by default" [isCollapsed]="false">
+          <span labelContent class="ts-xxs font-italic"> (with extra label content)</span>
+          <espd-sidenav-item>Item 3</espd-sidenav-item>
+          <espd-sidenav-item>Item 4</espd-sidenav-item>
+        </espd-sidenav-list>
+      </espd-sidenav-list>
+    </espd-sidenav>
+
+
+
+  </espd-shell-sidebar>
+  <espd-shell-stage>
+
+    <div>
+      <h2>{{ message }}</h2>
+
+      <espd-button (click)="updateMessage()">Click Me</espd-button>
+    </div>
+
+  </espd-shell-stage>
+  Any other content won't be displayed
+</espd-shell>
