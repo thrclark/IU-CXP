@@ -13,3 +13,18 @@ pre {
 	font-family: $font-family-body;
 	white-space: pre-wrap;
 }
+
+// Visually hide the sidenav's "Navigation" label while keeping it
+// available to screen readers (the <nav> still references it via
+// aria-labelledby).
+espd-sidenav nav > espd-message {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}

@@ -7,7 +7,6 @@ import { ApplicationConfig as EspdAppConfig } from 'espd-common/config';
 import { EspdCommonModule } from 'espd-common/core';
 import { SettingService as EspdSettingService } from 'espd-common/setting';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'espd-common/i18n';
 
 import { routes } from './app.routes';
@@ -20,10 +19,6 @@ applicationConfig.enableRoutePageTitles = false;
 
 @Injectable()
 export class SettingService extends EspdSettingService {
-
-  constructor(http: HttpClient, appConfig: EspdAppConfig) {
-    super(http, appConfig);
-  }
 
   initializeSettings(_module: string): void {
     /* no-op */

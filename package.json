@@ -32,7 +32,7 @@
     "@angular/router": "^20.3.0",
     "bootstrap": "~4.6.2",
     "easymde": "~2.20.0",
-    "espd-common": "^10.13.2",
+    "espd-common": "^10.22.1",
     "ng2-file-upload": "~9.0.0",
     "ngx-ace-wrapper": "^17.0.0",
     "ngx-bootstrap": "~20.0.2",
