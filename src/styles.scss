@@ -1,6 +1,8 @@
+@import 'fonts';
 @import 'variables';
 @import '../node_modules/espd-common/styles/main.scss';
 @import 'theming';
+@import 'footer';
 
 html,
 body,
@@ -27,4 +29,46 @@ espd-sidenav nav > espd-message {
 	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 	border: 0;
+}
+
+// Add breathing room between the sidenav icons and their labels.
+.sidenav-item-label {
+	margin-left: 0.5rem;
+}
+
+// Sidebar background with white text and icons.
+espd-shell .sidebar {
+	background-color: #006298 !important;
+}
+
+espd-shell .sidebar i,
+espd-shell .sidebar .sidenav-item-label,
+espd-shell .sidebar a,
+espd-shell .sidebar .link {
+	color: #fff !important;
+}
+
+espd-shell .sidebar a:hover,
+espd-shell .sidebar .link:hover {
+	color: #fff !important;
+}
+
+// At the bootstrap 'md' breakpoint (768px) and below, shrink the shell's
+// sidebar to an icon-only rail instead of espd-shell's default of
+// stacking it full-width above the stage.
+@media (max-width: 991.98px) {
+	espd-shell {
+		flex-direction: row !important;
+	}
+
+	espd-shell .sidebar {
+		width: 60px !important;
+		flex-basis: 60px !important;
+		padding-left: 0.5rem !important;
+		padding-right: 0.5rem !important;
+	}
+
+	.sidenav-item-label {
+		display: none !important;
+	}
 }

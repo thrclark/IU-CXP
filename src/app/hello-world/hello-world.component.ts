@@ -20,6 +20,17 @@ export class HelloWorldComponent {
   // --- This is the "state" (the data) ---
   message: string = 'Hello, Angular World!';
 
+  footerHtml = `
+    <footer class="rbt-footer mt-auto">
+      <img src="https://sd-prd-images.s3.amazonaws.com/prd/test-uisapp2/20150702T0521168403962_trident-small.png" alt="Indiana University" width="20" height="25" class="mr-3">
+      <ul class="rbt-footer-aux-links">
+        <li class="rbt-footer-aux-item"><a href="https://accessibility.iu.edu/assistance/" rel="nofollow">Accessibility </a></li>
+        <li class="rbt-footer-aux-item"><a href="https://espd.apps.iu.edu/privacyStatement.html" rel="nofollow">Privacy Notice</a></li>
+        <li class="rbt-footer-aux-item"><a href="https://www.iu.edu/copyright/index.html" rel="nofollow">Copyright</a> © 2026 The Trustees of <a href="https://www.iu.edu" rel="nofollow"> Indiana University </a></li>
+      </ul>
+    </footer>
+  `;
+
   // --- This is the logic ---
   constructor() { }
 
