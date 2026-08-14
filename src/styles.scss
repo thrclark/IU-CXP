@@ -32,7 +32,7 @@ espd-sidenav nav > espd-message {
 }
 
 // Add breathing room between the sidenav icons and their labels.
-.sidenav-item-label {
+.nav-item-label {
 	margin-left: 0.5rem;
 }
 
@@ -42,7 +42,7 @@ espd-shell .sidebar {
 }
 
 espd-shell .sidebar i,
-espd-shell .sidebar .sidenav-item-label,
+espd-shell .sidebar .nav-item-label,
 espd-shell .sidebar a,
 espd-shell .sidebar .link {
 	color: #fff !important;
@@ -68,7 +68,53 @@ espd-shell .sidebar .link:hover {
 		padding-right: 0.5rem !important;
 	}
 
-	.sidenav-item-label {
+	.nav-item-label {
 		display: none !important;
 	}
+}
+
+// At the bootstrap 'xs' breakpoint (below 576px), hide the sidebar
+// entirely and surface navigation through the header's hamburger menu
+// instead of the icon-only rail used at sm/md.
+@media (max-width: 575.98px) {
+	espd-shell .sidebar {
+		display: none !important;
+	}
+}
+
+// The header only exposes its hamburger toggle below the 'lg' breakpoint,
+// but the icon-only rail already covers navigation at sm/md, so restrict
+// the toggle (and its dropdown) to the 'xs' breakpoint only.
+@media (min-width: 576px) {
+	espd-header .toggler {
+		display: none !important;
+	}
+}
+
+// espd-header only shows the avatar/username at 'lg' and up (d-lg-flex);
+// keep it visible down through sm/md too, so it's hidden only at 'xs'.
+@media (min-width: 576px) {
+	espd-header .d-none.d-lg-flex {
+		display: flex !important;
+	}
+}
+
+// Stack the projected nav vertically inside the mobile dropdown, and
+// give the icons/labels the same treatment as the sidebar nav.
+#navbarNavDropdown espd-header-nav nav > ul {
+	flex-direction: column;
+	align-items: stretch;
+}
+
+#navbarNavDropdown espd-header-nav-item {
+	margin-left: 0 !important;
+	margin-top: 0.5rem;
+}
+
+#navbarNavDropdown espd-header-nav-item:first-child {
+	margin-top: 0;
+}
+
+#navbarNavDropdown .nav-item-label {
+	display: inline !important;
 }

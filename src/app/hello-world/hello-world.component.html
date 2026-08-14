@@ -1,20 +1,44 @@
 
 
-<espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}" />
+<espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}">
+  <div mobile-menu>
+    <espd-header-nav label="Navigation">
+      <espd-header-nav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-header-nav-item>
+      <espd-header-nav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-header-nav-item>
+      <espd-header-nav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-header-nav-item>
+      <espd-header-nav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-header-nav-item>
+      <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
+    </espd-header-nav>
+  </div>
+</espd-header>
 
 
 <espd-shell [collapsible]="false">
   <espd-shell-sidebar>
     <espd-sidenav label="Navigation">
-      <espd-sidenav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="sidenav-item-label">Dashboard</span></espd-sidenav-item>
-      <espd-sidenav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="sidenav-item-label">Announcements</span></espd-sidenav-item>
-      <espd-sidenav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="sidenav-item-label">Events & Calendars</span></espd-sidenav-item>
-      <espd-sidenav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="sidenav-item-label">Directory</span></espd-sidenav-item>
-      <espd-sidenav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="sidenav-item-label">Maps</span></espd-sidenav-item>
+      <espd-sidenav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-sidenav-item>
+      <espd-sidenav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-sidenav-item>
+      <espd-sidenav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-sidenav-item>
+      <espd-sidenav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-sidenav-item>
+      <espd-sidenav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
     </espd-sidenav>
   </espd-shell-sidebar>
 
   <espd-shell-stage>
+    <div class="card-grid">
+      <app-card title="Announcements" icon="rvt-megaphone">
+        <p>Registration for spring semester opens next Monday. Be sure to meet with your advisor before enrolling.</p>
+      </app-card>
+
+      <app-card title="Upcoming Events" icon="rvt-calendar">
+        <p>Career Fair — Thursday, 10am&ndash;2pm, Union Building.</p>
+        <p>Homecoming Weekend — Oct 3&ndash;5.</p>
+      </app-card>
+
+      <app-card title="Directory" icon="address-book">
+        <p>Looking for a department, office, or contact? Search the campus directory to find who you need.</p>
+      </app-card>
+    </div>
   </espd-shell-stage>
   Any other content won't be displayed
 </espd-shell>

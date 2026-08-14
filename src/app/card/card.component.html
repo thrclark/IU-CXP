@@ -1,0 +1,15 @@
+<div class="app-card">
+  @if (icon || title) {
+    <div class="app-card-header">
+      @if (icon) {
+        <i [espdIcon]="icon"></i>
+      }
+      @if (title) {
+        <h3 class="app-card-title">{{ title }}</h3>
+      }
+    </div>
+  }
+  <div class="app-card-body">
+    <ng-content></ng-content>
+  </div>
+</div>

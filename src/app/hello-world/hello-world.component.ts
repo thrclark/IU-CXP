@@ -8,10 +8,12 @@ import { AdminHeaderModule } from 'espd-common/admin-header';
 import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
+import { CardComponent } from '../card/card.component';
+
 @Component({
   selector: 'app-hello-world',
   standalone: true,
-  imports: [ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, CardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.component.css']
 })
