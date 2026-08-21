@@ -8,6 +8,60 @@ espd-shell {
   flex: 1;
 }
 
+.main-search {
+  display: flex;
+  align-items: stretch;
+  height: 4.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: light-dark(#fff, #1a1a1a);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 18px 0px;
+}
+
+.main-search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0 1.5rem;
+  font-size: 1.25rem;
+  color: light-dark(#243142, #fff);
+}
+
+.main-search-input::placeholder {
+  color: light-dark(#767676, #b7bcc2);
+}
+
+.main-search-btn {
+  flex-shrink: 0;
+  width: 5.5rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.main-search-btn i {
+  font-size: 1.5rem;
+}
+
+.main-search-btn:hover {
+  background-color: var(--primary-color-dark-15);
+}
+
+.section-border {
+  border-top: 2px solid #e2e7e9;
+  padding-top: .8rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

@@ -53,6 +53,27 @@ espd-shell .sidebar .link:hover {
 	color: #fff !important;
 }
 
+// Header bar shadow. Raise the header above the shell that follows it in
+// the DOM so the shadow overflowing its bottom edge isn't painted over.
+espd-header {
+	position: relative;
+	z-index: 1;
+}
+
+espd-header .wrapper {
+	box-shadow: rgba(36, 49, 66, 0.07) 0px 3px 6px 0px !important;
+}
+
+// Stage background.
+espd-shell .stage {
+	background-color: #f7f7f7 !important;
+}
+
+// Header bar shadow.
+espd-header .wrapper {
+	box-shadow: 0 .1875rem .375rem light-dark(rgba(36, 49, 66, .07), rgba(0, 0, 0, .44)) !important;
+}
+
 // At the bootstrap 'md' breakpoint (768px) and below, shrink the shell's
 // sidebar to an icon-only rail instead of espd-shell's default of
 // stacking it full-width above the stage.

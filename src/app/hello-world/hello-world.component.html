@@ -25,6 +25,15 @@
   </espd-shell-sidebar>
 
   <espd-shell-stage>
+    <div class="main-search">
+      <input type="search" class="main-search-input" placeholder="What would you like to do?">
+      <button type="button" class="main-search-btn" aria-label="Search">
+        <i [espdIcon]="'rvt-magnifying-glass'"></i>
+      </button>
+    </div>
+
+    <div class="section-border"></div>
+
     <div class="card-grid">
       <app-card title="Announcements" icon="rvt-megaphone">
         <p>Registration for spring semester opens next Monday. Be sure to meet with your advisor before enrolling.</p>
