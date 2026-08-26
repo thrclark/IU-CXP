@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { ButtonComponent } from 'espd-common/button';
 import { HeaderModule } from 'espd-common/header';
@@ -13,7 +14,7 @@ import { CardComponent } from '../card/card.component';
 @Component({
   selector: 'app-hello-world',
   standalone: true,
-  imports: [ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, CardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [RouterLink, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, CardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.component.css']
 })
@@ -38,5 +39,25 @@ export class HelloWorldComponent {
 
   updateMessage() {
     this.message = 'You clicked the button!';
+  }
+
+  // --- Notification bell prototype ---
+  notificationsOpen = false;
+
+  toggleNotifications(event: Event): void {
+    event.stopPropagation();
+    this.notificationsOpen = !this.notificationsOpen;
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.notificationsOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    if (this.notificationsOpen && !(event.target as HTMLElement).closest('.notification-menu')) {
+      this.notificationsOpen = false;
+    }
   }
 }

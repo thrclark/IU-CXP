@@ -67,3 +67,107 @@ espd-shell {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
 }
+
+.notification-menu {
+  position: relative;
+}
+
+.notification-bell-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 999rem;
+  background: none;
+  color: var(--header-bar-text-color);
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow .15s ease-in-out, background-color .15s ease-in-out;
+}
+
+.notification-bell-btn:hover {
+  background-color: light-dark(#e9ecef, #4C5A69);
+  text-decoration: none;
+}
+
+.notification-bell-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color);
+}
+
+.notification-bell-btn[aria-expanded="true"] {
+  background-color: var(--primary-color-dark-15);
+  color: #fff;
+}
+
+.notification-bell-icon {
+  position: relative;
+  display: inline-flex;
+  font-size: 1.125rem;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+}
+
+.notification-panel {
+  top: calc(100% + 0.5rem);
+  min-width: 320px;
+  max-width: 360px;
+  box-shadow: rgba(5, 5, 36, 0.26) 0px 24px 72px -12px;
+}
+
+.notification-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  white-space: normal;
+  border-bottom: 1px solid #e2e7e9;
+}
+
+.notification-row:last-of-type {
+  border-bottom: none;
+}
+
+.notification-row:hover {
+  background-color: #f7f7f7;
+}
+
+.notification-row-icon {
+  margin-top: 0.125rem;
+  color: var(--primary-color);
+}
+
+.notification-row-title {
+  font-weight: 600;
+  font-size: .75rem;
+}
+
+.notification-row-time {
+  font-size: 0.75rem;
+  color: light-dark(#6c757d, #adb5bd);
+  margin-top: 0.125rem;
+}
+
+.notification-view-all {
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.notification-view-all:hover {
+  background-color: #f7f7f7;
+  text-decoration: underline;
+}
