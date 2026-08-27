@@ -88,35 +88,48 @@
         </div>
       </div>
     } @else {
-      <div class="notification-list">
-        @for (notification of notifications; track notification.title) {
-          <div class="notification-card"
-              [class.notification-card--urgent]="notification.type === 'urgent'"
-              [class.notification-card--standard]="notification.type === 'standard'"
-              tabindex="0"
-              role="button"
-              [attr.aria-label]="'View notification: ' + notification.title"
-              (click)="openNotification(notification)"
-              (keydown.enter)="openNotification(notification)"
-              (keydown.space)="openNotification(notification); $event.preventDefault()">
-            <div class="notification-card-header">
-              <span class="notification-dot" [class.notification-dot--urgent]="notification.type === 'urgent'" aria-hidden="true"></span>
-              <span class="notification-meta" [class.notification-meta--urgent]="notification.type === 'urgent'">{{ notification.timestamp }} <span class="notification-meta-department">| {{ notification.department }}</span></span>
-              <div class="notification-card-actions">
-                <button type="button" class="notification-icon-btn" aria-label="Pin notification" (click)="$event.stopPropagation()">
-                  <i [espdIcon]="'rvt-pin'"></i>
-                </button>
-                <button type="button" class="notification-icon-btn" aria-label="Dismiss notification" (click)="$event.stopPropagation()">
-                  <i [espdIcon]="'rvt-close-circle'"></i>
-                </button>
+      <label class="notification-pinned-filter">
+        <input type="checkbox" [checked]="pinnedOnly" (change)="pinnedOnly = !pinnedOnly">
+        {{ pinnedOnly ? 'View all' : 'Pinned only' }}
+      </label>
+
+      @if (visibleNotifications.length) {
+        <div class="notification-list">
+          @for (notification of visibleNotifications; track notification.title) {
+            <div class="notification-card"
+                [class.notification-card--urgent]="notification.type === 'urgent'"
+                [class.notification-card--standard]="notification.type === 'standard'"
+                tabindex="0"
+                role="button"
+                [attr.aria-label]="'View notification: ' + notification.title"
+                (click)="openNotification(notification)"
+                (keydown.enter)="openNotification(notification)"
+                (keydown.space)="openNotification(notification); $event.preventDefault()">
+              <div class="notification-card-header">
+                <span class="notification-dot" [class.notification-dot--urgent]="notification.type === 'urgent'" aria-hidden="true"></span>
+                <span class="notification-meta" [class.notification-meta--urgent]="notification.type === 'urgent'">{{ notification.timestamp }} <span class="notification-meta-department">| {{ notification.department }}</span></span>
+                <div class="notification-card-actions">
+                  <button type="button" class="notification-icon-btn mr-2"
+                      [class.notification-icon-btn--active]="notification.pinned"
+                      [attr.aria-pressed]="notification.pinned"
+                      [attr.aria-label]="notification.pinned ? 'Unpin notification' : 'Pin notification'"
+                      (click)="togglePin(notification, $event)">
+                    <i [espdIcon]="'rvt-pin'"></i>
+                  </button>
+                  <button type="button" class="notification-icon-btn" aria-label="Dismiss notification" (click)="removeNotification(notification, $event)">
+                    <i [espdIcon]="'rvt-close'"></i>
+                  </button>
+                </div>
               </div>
+              <div class="notification-card-title">{{ notification.title }}</div>
+              <div class="notification-card-description">{{ notification.description }}</div>
+              <a [href]="notification.linkUrl" class="notification-card-link" (click)="$event.stopPropagation()">{{ notification.linkText }}</a>
             </div>
-            <div class="notification-card-title">{{ notification.title }}</div>
-            <div class="notification-card-description">{{ notification.description }}</div>
-            <a [href]="notification.linkUrl" class="notification-card-link" (click)="$event.stopPropagation()">{{ notification.linkText }}</a>
-          </div>
-        }
-      </div>
+          }
+        </div>
+      } @else {
+        <p class="notification-empty-state">{{ pinnedOnly ? 'No pinned notifications.' : 'No notifications to show.' }}</p>
+      }
     }
   </espd-shell-stage>
 </espd-shell>

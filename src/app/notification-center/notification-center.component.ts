@@ -16,6 +16,7 @@ interface NotificationItem {
   linkText: string;
   linkUrl: string;
   type: 'urgent' | 'standard';
+  pinned: boolean;
 }
 
 @Component({
@@ -36,6 +37,7 @@ export class NotificationCenterComponent {
       linkText: 'Go to registration',
       linkUrl: '#',
       type: 'urgent',
+      pinned: true,
     },
     {
       timestamp: 'Aug 26, 2026, 1:40 PM',
@@ -46,6 +48,7 @@ export class NotificationCenterComponent {
       linkText: 'View event details',
       linkUrl: '#',
       type: 'standard',
+      pinned: false,
     },
     {
       timestamp: 'Aug 25, 2026, 4:05 PM',
@@ -56,6 +59,7 @@ export class NotificationCenterComponent {
       linkText: 'Read the note',
       linkUrl: '#',
       type: 'urgent',
+      pinned: false,
     },
     {
       timestamp: 'Aug 24, 2026, 11:00 AM',
@@ -66,6 +70,7 @@ export class NotificationCenterComponent {
       linkText: 'View schedule',
       linkUrl: '#',
       type: 'standard',
+      pinned: true,
     },
     {
       timestamp: 'Aug 22, 2026, 8:30 AM',
@@ -76,10 +81,16 @@ export class NotificationCenterComponent {
       linkText: 'Submit documents',
       linkUrl: '#',
       type: 'standard',
+      pinned: false,
     },
   ];
 
   selectedNotification: NotificationItem | null = null;
+  pinnedOnly = false;
+
+  get visibleNotifications(): NotificationItem[] {
+    return this.pinnedOnly ? this.notifications.filter(notification => notification.pinned) : this.notifications;
+  }
 
   openNotification(notification: NotificationItem): void {
     this.selectedNotification = notification;
@@ -87,6 +98,16 @@ export class NotificationCenterComponent {
 
   closeNotification(): void {
     this.selectedNotification = null;
+  }
+
+  togglePin(notification: NotificationItem, event: Event): void {
+    event.stopPropagation();
+    notification.pinned = !notification.pinned;
+  }
+
+  removeNotification(notification: NotificationItem, event: Event): void {
+    event.stopPropagation();
+    this.notifications = this.notifications.filter(n => n !== notification);
   }
 
   footerHtml = `

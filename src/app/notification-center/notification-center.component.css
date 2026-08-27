@@ -26,6 +26,24 @@ espd-shell {
   margin-bottom: 0;
 }
 
+.notification-pinned-filter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: light-dark(#4c5a69, #b7bcc2);
+  cursor: pointer;
+}
+
+.notification-empty-state {
+  color: light-dark(#6c757d, #adb5bd);
+  font-size: 0.875rem;
+}
+
 .section-border {
   border-top: 2px solid #e2e7e9;
   padding-top: .8rem;
@@ -179,9 +197,28 @@ espd-shell {
   cursor: pointer;
 }
 
+.notification-icon-btn i {
+  transition: transform .15s ease-in-out;
+}
+
+.notification-icon-btn--active i {
+  transform: rotate(-45deg);
+}
+
 .notification-icon-btn:hover {
   background-color: #f7f7f7;
   color: light-dark(#243142, #fff);
+  text-decoration: none;
+}
+
+.notification-icon-btn--active {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.notification-icon-btn--active:hover {
+  background-color: var(--primary-color-dark-15);
+  color: #fff;
 }
 
 .notification-card-title {
