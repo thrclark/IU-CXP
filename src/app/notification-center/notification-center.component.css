@@ -26,14 +26,40 @@ espd-shell {
   margin-bottom: 0;
 }
 
+.notification-list-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.settings-menu {
+  position: relative;
+}
+
+.settings-menu-panel {
+  top: calc(100% + 0.5rem);
+  min-width: 200px;
+  box-shadow: rgba(5, 5, 36, 0.26) 0px 24px 72px -12px;
+}
+
+.settings-menu-panel .dropdown-item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.settings-menu-panel .dropdown-item:hover {
+  background-color: #f7f7f7;
+}
+
 .notification-pinned-filter {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 0.5rem;
-  width: fit-content;
-  margin-left: auto;
-  margin-bottom: 1rem;
   font-size: 0.875rem;
   color: light-dark(#4c5a69, #b7bcc2);
   cursor: pointer;

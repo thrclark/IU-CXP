@@ -88,10 +88,29 @@
         </div>
       </div>
     } @else {
-      <label class="notification-pinned-filter">
-        <input type="checkbox" [checked]="pinnedOnly" (change)="pinnedOnly = !pinnedOnly">
-        {{ pinnedOnly ? 'View all' : 'Pinned only' }}
-      </label>
+      <div class="notification-list-toolbar">
+        <label class="notification-pinned-filter">
+          <input type="checkbox" [checked]="pinnedOnly" (change)="pinnedOnly = !pinnedOnly">
+          {{ pinnedOnly ? 'View all' : 'Pinned only' }}
+        </label>
+
+        <div class="settings-menu">
+          <button type="button"
+              class="notification-icon-btn"
+              aria-haspopup="true"
+              [attr.aria-expanded]="settingsMenuOpen"
+              aria-label="Settings menu"
+              (click)="toggleSettingsMenu($event)">
+            <i [espdIcon]="'rvt-ellipsis'" aria-hidden="true"></i>
+          </button>
+          @if (settingsMenuOpen) {
+            <div class="dropdown-menu dropdown-menu-right settings-menu-panel show" role="menu">
+              <button type="button" class="dropdown-item" role="menuitem" (click)="settingsMenuOpen = false">General settings</button>
+              <button type="button" class="dropdown-item" role="menuitem" (click)="settingsMenuOpen = false">Contact settings</button>
+            </div>
+          }
+        </div>
+      </div>
 
       @if (visibleNotifications.length) {
         <div class="notification-list">

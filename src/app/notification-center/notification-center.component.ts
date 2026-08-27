@@ -129,15 +129,28 @@ export class NotificationCenterComponent {
     this.notificationsOpen = !this.notificationsOpen;
   }
 
+  // --- Settings menu prototype ---
+  settingsMenuOpen = false;
+
+  toggleSettingsMenu(event: Event): void {
+    event.stopPropagation();
+    this.settingsMenuOpen = !this.settingsMenuOpen;
+  }
+
   @HostListener('document:keydown.escape')
   onEscape(): void {
     this.notificationsOpen = false;
+    this.settingsMenuOpen = false;
   }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
-    if (this.notificationsOpen && !(event.target as HTMLElement).closest('.notification-menu')) {
+    const target = event.target as HTMLElement;
+    if (this.notificationsOpen && !target.closest('.notification-menu')) {
       this.notificationsOpen = false;
+    }
+    if (this.settingsMenuOpen && !target.closest('.settings-menu')) {
+      this.settingsMenuOpen = false;
     }
   }
 }
