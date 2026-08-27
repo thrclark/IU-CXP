@@ -159,6 +159,14 @@ espd-shell {
   background-color: #f7f7f7;
 }
 
+.notification-row--urgent {
+  border-left: 4px solid var(--accent-color);
+}
+
+.notification-row--standard {
+  border-left: 4px solid var(--primary-color);
+}
+
 .notification-row-icon {
   margin-top: 0.125rem;
   color: var(--primary-color);
