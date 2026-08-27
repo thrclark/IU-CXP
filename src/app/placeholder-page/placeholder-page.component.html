@@ -14,25 +14,25 @@
     @if (notificationsOpen) {
       <div class="dropdown-menu dropdown-menu-right notification-panel show" role="menu">
         <div class="dropdown-header">Notifications</div>
-        <div class="dropdown-item notification-panel-row">
-          <i [espdIcon]="'rvt-megaphone'" class="notification-panel-row-icon"></i>
-          <div class="notification-panel-row-body">
-            <div class="notification-panel-row-title">Registration opens Monday</div>
-            <div class="notification-panel-row-time">2 hours ago</div>
+        <div class="dropdown-item notification-row">
+          <i [espdIcon]="'rvt-megaphone'" class="notification-row-icon"></i>
+          <div class="notification-row-body">
+            <div class="notification-row-title">Registration opens Monday</div>
+            <div class="notification-row-time">2 hours ago</div>
           </div>
         </div>
-        <div class="dropdown-item notification-panel-row">
-          <i [espdIcon]="'rvt-calendar'" class="notification-panel-row-icon"></i>
-          <div class="notification-panel-row-body">
-            <div class="notification-panel-row-title">Career Fair starts Thursday at 10am</div>
-            <div class="notification-panel-row-time">Yesterday</div>
+        <div class="dropdown-item notification-row">
+          <i [espdIcon]="'rvt-calendar'" class="notification-row-icon"></i>
+          <div class="notification-row-body">
+            <div class="notification-row-title">Career Fair starts Thursday at 10am</div>
+            <div class="notification-row-time">Yesterday</div>
           </div>
         </div>
-        <div class="dropdown-item notification-panel-row">
-          <i [espdIcon]="'address-book'" class="notification-panel-row-icon"></i>
-          <div class="notification-panel-row-body">
-            <div class="notification-panel-row-title">Your advisor added a new contact note</div>
-            <div class="notification-panel-row-time">2 days ago</div>
+        <div class="dropdown-item notification-row">
+          <i [espdIcon]="'address-book'" class="notification-row-icon"></i>
+          <div class="notification-row-body">
+            <div class="notification-row-title">Your advisor added a new contact note</div>
+            <div class="notification-row-time">2 days ago</div>
           </div>
         </div>
         <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
@@ -62,25 +62,22 @@
   </espd-shell-sidebar>
 
   <espd-shell-stage>
-    <a routerLink="/" class="back-link"><i [espdIcon]="'rvt-arrow-left'"></i> Back to dashboard</a>
-
-    <h1 class="notification-center-title">Notifications</h1>
+    <div class="main-search">
+      <input type="search" class="main-search-input" placeholder="What would you like to do?">
+      <button type="button" class="main-search-btn" aria-label="Search">
+        <i [espdIcon]="'rvt-magnifying-glass'"></i>
+      </button>
+    </div>
 
     <div class="section-border"></div>
 
-    <div class="notification-list">
-      @for (notification of notifications; track notification.title) {
-        <app-card>
-          <div class="notification-list-row">
-            <i [espdIcon]="notification.icon" class="notification-row-icon"></i>
-            <div class="notification-row-body">
-              <div class="notification-row-title">{{ notification.title }}</div>
-              <div class="notification-row-time">{{ notification.time }}</div>
-            </div>
-          </div>
-        </app-card>
-      }
-    </div>
+    <app-card>
+      <div class="placeholder-body">
+        <i [espdIcon]="icon" class="placeholder-icon"></i>
+        <h1 class="placeholder-title">{{ title }}</h1>
+        <p class="placeholder-copy">This page is coming soon.</p>
+      </div>
+    </app-card>
   </espd-shell-stage>
 </espd-shell>
 

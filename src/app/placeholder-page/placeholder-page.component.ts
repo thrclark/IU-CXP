@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { HeaderModule } from 'espd-common/header';
 import { ShellModule } from 'espd-common/layout/shell';
@@ -9,27 +9,21 @@ import { IconDirective } from 'espd-common/icon';
 
 import { CardComponent } from '../card/card.component';
 
-interface NotificationItem {
-  icon: string;
-  title: string;
-  time: string;
-}
-
 @Component({
-  selector: 'app-notification-center',
+  selector: 'app-placeholder-page',
   standalone: true,
   imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, CardComponent],
-  templateUrl: './notification-center.component.html',
-  styleUrls: ['./notification-center.component.css']
+  templateUrl: './placeholder-page.component.html',
+  styleUrls: ['./placeholder-page.component.css']
 })
-export class NotificationCenterComponent {
-  notifications: NotificationItem[] = [
-    { icon: 'rvt-megaphone', title: 'Registration opens Monday', time: '2 hours ago' },
-    { icon: 'rvt-calendar', title: 'Career Fair starts Thursday at 10am', time: 'Yesterday' },
-    { icon: 'address-book', title: 'Your advisor added a new contact note', time: '2 days ago' },
-    { icon: 'rvt-calendar', title: 'Homecoming Weekend schedule posted', time: '3 days ago' },
-    { icon: 'rvt-megaphone', title: 'Financial aid deadline extended', time: '5 days ago' },
-  ];
+export class PlaceholderPageComponent {
+  title: string;
+  icon: string;
+
+  constructor(route: ActivatedRoute) {
+    this.title = route.snapshot.data['title'] ?? 'Page';
+    this.icon = route.snapshot.data['icon'] ?? 'rvt-file';
+  }
 
   footerHtml = `
     <footer class="rbt-footer mt-auto">
