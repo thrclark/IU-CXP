@@ -1,6 +1,5 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ApplicationConfig as EspdAppConfig } from 'espd-common/config';
@@ -8,6 +7,7 @@ import { EspdCommonModule } from 'espd-common/core';
 import { SettingService as EspdSettingService } from 'espd-common/setting';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'espd-common/i18n';
+import { ModalModule as BsModalModule } from 'ngx-bootstrap/modal';
 
 import { routes } from './app.routes';
 
@@ -28,7 +28,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    CommonModule,
+    importProvidersFrom(EspdCommonModule),
+    importProvidersFrom(BsModalModule.forRoot()),
     provideHttpClient(),
     provideAnimations(),
     { provide: EspdAppConfig, useValue: applicationConfig },

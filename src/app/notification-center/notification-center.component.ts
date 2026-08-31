@@ -6,6 +6,7 @@ import { ShellModule } from 'espd-common/layout/shell';
 import { SidenavModule } from 'espd-common/sidenav';
 import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
+import { DropdownModule } from 'espd-common/dropdown';
 
 interface NotificationItem {
   timestamp: string;
@@ -22,7 +23,7 @@ interface NotificationItem {
 @Component({
   selector: 'app-notification-center',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective],
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, DropdownModule],
   templateUrl: './notification-center.component.html',
   styleUrls: ['./notification-center.component.css']
 })
@@ -129,18 +130,9 @@ export class NotificationCenterComponent {
     this.notificationsOpen = !this.notificationsOpen;
   }
 
-  // --- Settings menu prototype ---
-  settingsMenuOpen = false;
-
-  toggleSettingsMenu(event: Event): void {
-    event.stopPropagation();
-    this.settingsMenuOpen = !this.settingsMenuOpen;
-  }
-
   @HostListener('document:keydown.escape')
   onEscape(): void {
     this.notificationsOpen = false;
-    this.settingsMenuOpen = false;
   }
 
   @HostListener('document:click', ['$event'])
@@ -148,9 +140,6 @@ export class NotificationCenterComponent {
     const target = event.target as HTMLElement;
     if (this.notificationsOpen && !target.closest('.notification-menu')) {
       this.notificationsOpen = false;
-    }
-    if (this.settingsMenuOpen && !target.closest('.settings-menu')) {
-      this.settingsMenuOpen = false;
     }
   }
 }

@@ -93,23 +93,14 @@
           <input type="checkbox" [checked]="pinnedOnly" (change)="pinnedOnly = !pinnedOnly">
           {{ pinnedOnly ? 'View all' : 'Pinned only' }}
         </label>
-
-        <div class="settings-menu">
-          <button type="button"
-              class="notification-icon-btn"
-              aria-haspopup="true"
-              [attr.aria-expanded]="settingsMenuOpen"
-              aria-label="Settings menu"
-              (click)="toggleSettingsMenu($event)">
+   
+        <espd-dropdown [showChevron]="false"  [rounded]="true" [secondary]="true" placement="right">
+          <espd-dropdown-label>
             <i [espdIcon]="'rvt-ellipsis'" aria-hidden="true"></i>
-          </button>
-          @if (settingsMenuOpen) {
-            <div class="dropdown-menu dropdown-menu-right settings-menu-panel show" role="menu">
-              <button type="button" class="dropdown-item" role="menuitem" (click)="settingsMenuOpen = false">General settings</button>
-              <button type="button" class="dropdown-item" role="menuitem" (click)="settingsMenuOpen = false">Contact settings</button>
-            </div>
-          }
-        </div>
+          </espd-dropdown-label>
+          <espd-dropdown-item routerPath="/notifications/settings/general">General Settings</espd-dropdown-item>
+          <espd-dropdown-item routerPath="/notifications/settings/notifications">Notification Settings</espd-dropdown-item>
+        </espd-dropdown>
       </div>
 
       @if (visibleNotifications.length) {

@@ -28,32 +28,10 @@ espd-shell {
 
 .notification-list-toolbar {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
   margin-bottom: 1rem;
-}
-
-.settings-menu {
-  position: relative;
-}
-
-.settings-menu-panel {
-  top: calc(100% + 0.5rem);
-  min-width: 200px;
-  box-shadow: rgba(5, 5, 36, 0.26) 0px 24px 72px -12px;
-}
-
-.settings-menu-panel .dropdown-item {
-  width: 100%;
-  text-align: left;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.settings-menu-panel .dropdown-item:hover {
-  background-color: #f7f7f7;
 }
 
 .notification-pinned-filter {
@@ -327,6 +305,10 @@ espd-shell {
   min-width: 320px;
   max-width: 360px;
   box-shadow: rgba(5, 5, 36, 0.26) 0px 24px 72px -12px;
+}
+
+.dropdown-header {
+  font-size: 1rem;
 }
 
 .notification-panel-row {

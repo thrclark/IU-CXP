@@ -126,6 +126,12 @@ espd-shell {
   box-shadow: rgba(5, 5, 36, 0.26) 0px 24px 72px -12px;
 }
 
+.dropdown-header {
+  font-size: 1rem;
+  font-weight: bold;
+  border-bottom: 1px solid #e2e7e9;
+}
+
 .notification-row {
   display: flex;
   align-items: flex-start;
@@ -143,11 +149,11 @@ espd-shell {
 }
 
 .notification-row--urgent {
-  border-left: 4px solid var(--accent-color);
+  border-left: 6px solid var(--accent-color);
 }
 
 .notification-row--standard {
-  border-left: 4px solid var(--primary-color);
+  border-left: 6px solid var(--primary-color);
 }
 
 .notification-row-icon {

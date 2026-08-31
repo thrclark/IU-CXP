@@ -8,6 +8,8 @@ export const routes: Routes = [
   { path: '', component: HelloWorldComponent },
   { path: 'dashboard', component: HelloWorldComponent },
   { path: 'notifications', component: NotificationCenterComponent },
+  { path: 'notifications/settings/general', component: PlaceholderPageComponent, data: { title: 'General Settings', icon: 'rvt-gear' } },
+  { path: 'notifications/settings/notifications', component: PlaceholderPageComponent, data: { title: 'Notification Settings', icon: 'rvt-gear' } },
   { path: 'announcements', component: PlaceholderPageComponent, data: { title: 'Announcements', icon: 'rvt-megaphone' } },
   { path: 'events-calendars', component: PlaceholderPageComponent, data: { title: 'Events & Calendars', icon: 'rvt-calendar' } },
   { path: 'directory', component: PlaceholderPageComponent, data: { title: 'Directory', icon: 'address-book' } },
