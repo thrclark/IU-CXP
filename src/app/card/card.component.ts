@@ -12,4 +12,7 @@ import { IconDirective } from 'espd-common/icon';
 export class CardComponent {
   @Input() title?: string;
   @Input() icon?: string;
+  @Input() category?: string;
+  @Input() imageIcon?: string;
+  @Input() menu = false;
 }

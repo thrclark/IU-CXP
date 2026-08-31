@@ -1,15 +1,29 @@
 <div class="app-card">
-  @if (icon || title) {
-    <div class="app-card-header">
-      @if (icon) {
+  @if (menu) {
+    <button type="button" class="app-card-menu-btn" aria-label="More options" aria-haspopup="true">
+      <span class="app-card-menu-dots" aria-hidden="true">&#8226;&#8226;&#8226;</span>
+    </button>
+  }
+  @if (icon || title || imageIcon || category) {
+    <div class="app-card-header" [class.app-card-header--task]="imageIcon || category">
+      @if (imageIcon) {
+        <img class="app-card-avatar" [src]="imageIcon" alt="">
+      } @else if (icon) {
         <i [espdIcon]="icon"></i>
       }
-      @if (title) {
-        <h3 class="app-card-title">{{ title }}</h3>
-      }
+      <div class="app-card-heading">
+        @if (category) {
+          <span class="app-card-category">{{ category }}</span>
+        }
+        @if (title) {
+          <h3 class="app-card-title">{{ title }}</h3>
+        }
+      </div>
     </div>
   }
-  <div class="app-card-body" [class.app-card-body--divided]="icon || title">
+  <div class="app-card-body"
+       [class.app-card-body--divided]="(icon || title) && !(imageIcon || category)"
+       [class.app-card-body--task]="imageIcon || category">
     <ng-content></ng-content>
   </div>
 </div>

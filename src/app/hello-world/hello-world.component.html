@@ -74,18 +74,51 @@
 
     <div class="section-border"></div>
 
+    <h2 class="dashboard-section-title">My Tasks</h2>
+
     <div class="card-grid">
-      <app-card title="Announcements" icon="rvt-megaphone">
-        <p>Registration for spring semester opens next Monday. Be sure to meet with your advisor before enrolling.</p>
+      <app-card category="Enrollment" title="Complete Course Registration" imageIcon="task-icons/kuali-time.png" [menu]="true">
+        <p>Finish selecting your courses for the upcoming term before the registration window closes.</p>
       </app-card>
 
-      <app-card title="Upcoming Events" icon="rvt-calendar">
-        <p>Career Fair — Thursday, 10am&ndash;2pm, Union Building.</p>
-        <p>Homecoming Weekend — Oct 3&ndash;5.</p>
+      <app-card category="Financial Aid" title="Review Award Letter" imageIcon="task-icons/travel.png" [menu]="true">
+        <p>Your financial aid award letter is ready. Review the details and accept or decline each award.</p>
       </app-card>
 
-      <app-card title="Directory" icon="address-book">
-        <p>Looking for a department, office, or contact? Search the campus directory to find who you need.</p>
+      <app-card category="Housing" title="Submit Housing Application" imageIcon="task-icons/citi-training.png" [menu]="true">
+        <p>Reserve your spot in on-campus housing by completing the application and selecting your preferences.</p>
+      </app-card>
+
+      <app-card category="Advising" title="Schedule an Advising Appointment" imageIcon="task-icons/resume.png" [menu]="true">
+        <p>Meet with your academic advisor to plan next semester's course load.</p>
+      </app-card>
+
+      <app-card category="IT Services" title="Update Two-Step Login" imageIcon="task-icons/academic-calendar.png" [menu]="true">
+        <p>Your two-step login device is set to expire soon. Add a backup method to avoid getting locked out.</p>
+      </app-card>
+
+      <app-card category="Health & Wellness" title="Upload Immunization Records" imageIcon="task-icons/checklist.png" [menu]="true">
+        <p>Submit your updated immunization records to stay compliant with campus health requirements.</p>
+      </app-card>
+
+      <app-card category="Employment" title="Complete I-9 Verification" imageIcon="task-icons/signpost.png" [menu]="true">
+        <p>Visit the HR office with valid identification to finish your employment eligibility verification.</p>
+      </app-card>
+
+      <app-card category="Training" title="Finish Required Compliance Training" imageIcon="task-icons/mail-refresh.png" [menu]="true">
+        <p>Complete this year's mandatory training modules before the end-of-month deadline.</p>
+      </app-card>
+
+      <app-card category="Payroll" title="Confirm Direct Deposit Details" imageIcon="task-icons/remote-work.png" [menu]="true">
+        <p>Double-check your bank account information to make sure your next paycheck arrives without delay.</p>
+      </app-card>
+
+      <app-card category="Travel" title="Submit Travel Expense Report" imageIcon="task-icons/canvas.png" [menu]="true">
+        <p>File your expense report from last month's conference travel for reimbursement.</p>
+      </app-card>
+
+      <app-card category="Profile" title="Update Your Directory Profile" imageIcon="task-icons/eye-chart.png" [menu]="true">
+        <p>Keep your contact information and photo current in the campus directory.</p>
       </app-card>
     </div>
   </espd-shell-stage>
