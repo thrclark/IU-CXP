@@ -1,27 +1,29 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
-import { ButtonComponent } from 'espd-common/button';
 import { HeaderModule } from 'espd-common/header';
 import { ShellModule } from 'espd-common/layout/shell';
 import { SidenavModule } from 'espd-common/sidenav';
-import { AdminHeaderModule } from 'espd-common/admin-header';
 import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
 import { CardComponent } from '../card/card.component';
 
 @Component({
-  selector: 'app-hello-world',
+  selector: 'app-placeholder-page',
   standalone: true,
-  imports: [RouterLink, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, CardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
-  templateUrl: './hello-world.component.html',
-  styleUrls: ['./hello-world.component.css']
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, CardComponent],
+  templateUrl: './placeholder-page.component.html',
+  styleUrls: ['./placeholder-page.component.css']
 })
-export class HelloWorldComponent {
+export class PlaceholderPageComponent {
+  title: string;
+  icon: string;
 
-  // --- This is the "state" (the data) ---
-  message: string = 'Hello, Angular World!';
+  constructor(route: ActivatedRoute) {
+    this.title = route.snapshot.data['title'] ?? 'Page';
+    this.icon = route.snapshot.data['icon'] ?? 'rvt-file';
+  }
 
   footerHtml = `
     <footer class="rbt-footer mt-auto">
@@ -33,13 +35,6 @@ export class HelloWorldComponent {
       </ul>
     </footer>
   `;
-
-  // --- This is the logic ---
-  constructor() { }
-
-  updateMessage() {
-    this.message = 'You clicked the button!';
-  }
 
   // --- Notification bell prototype ---
   notificationsOpen = false;

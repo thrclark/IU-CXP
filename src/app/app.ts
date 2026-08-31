@@ -1,10 +1,7 @@
-// 1. Add this import statement at the top
-import { HelloWorldComponent } from './hello-world/hello-world.component';
-
 import { Component, inject, Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { RouterOutlet } from '@angular/router'; // Yours might have this
+import { RouterOutlet } from '@angular/router';
 import { MessageService } from "espd-common/i18n";
 import { SettingService } from "espd-common/setting";
 import { MODULE_NAME } from 'espd-common/config';
@@ -12,9 +9,7 @@ import { MODULE_NAME } from 'espd-common/config';
 @Component({
   selector: 'app-root',
   standalone: true,
-
-  // 2. Add HelloWorldComponent to the 'imports' array
-  imports: [HelloWorldComponent], // Add it to this list
+  imports: [RouterOutlet],
   providers: [
 
   ],

@@ -1,5 +1,3 @@
-
-
 <espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}">
   <div desktop-menu class="notification-menu mr-1">
     <button type="button"
@@ -14,24 +12,24 @@
       </span>
     </button>
     @if (notificationsOpen) {
-      <div class="dropdown-menu dropdown-menu-right notification-panel py-0 show" role="menu">
-        <div class="dropdown-header py-2">Notifications</div>
+      <div class="dropdown-menu dropdown-menu-right notification-panel show" role="menu">
+        <div class="dropdown-header">Notifications</div>
         <div class="dropdown-item notification-row notification-row--urgent">
-
+          <i [espdIcon]="'rvt-megaphone'" class="notification-row-icon"></i>
           <div class="notification-row-body">
             <div class="notification-row-title">Registration opens Monday</div>
             <div class="notification-row-time">2 hours ago</div>
           </div>
         </div>
         <div class="dropdown-item notification-row notification-row--standard">
-
+          <i [espdIcon]="'rvt-calendar'" class="notification-row-icon"></i>
           <div class="notification-row-body">
             <div class="notification-row-title">Career Fair starts Thursday at 10am</div>
             <div class="notification-row-time">Yesterday</div>
           </div>
         </div>
         <div class="dropdown-item notification-row notification-row--urgent">
-
+          <i [espdIcon]="'address-book'" class="notification-row-icon"></i>
           <div class="notification-row-body">
             <div class="notification-row-title">Your advisor added a new contact note</div>
             <div class="notification-row-time">2 days ago</div>
@@ -51,7 +49,6 @@
     </espd-header-nav>
   </div>
 </espd-header>
-
 
 <espd-shell [collapsible]="false">
   <espd-shell-sidebar>
@@ -74,22 +71,14 @@
 
     <div class="section-border"></div>
 
-    <div class="card-grid">
-      <app-card title="Announcements" icon="rvt-megaphone">
-        <p>Registration for spring semester opens next Monday. Be sure to meet with your advisor before enrolling.</p>
-      </app-card>
-
-      <app-card title="Upcoming Events" icon="rvt-calendar">
-        <p>Career Fair — Thursday, 10am&ndash;2pm, Union Building.</p>
-        <p>Homecoming Weekend — Oct 3&ndash;5.</p>
-      </app-card>
-
-      <app-card title="Directory" icon="address-book">
-        <p>Looking for a department, office, or contact? Search the campus directory to find who you need.</p>
-      </app-card>
-    </div>
+    <app-card>
+      <div class="placeholder-body">
+        <i [espdIcon]="icon" class="placeholder-icon"></i>
+        <h1 class="placeholder-title">{{ title }}</h1>
+        <p class="placeholder-copy">This page is coming soon.</p>
+      </div>
+    </app-card>
   </espd-shell-stage>
-  Any other content won't be displayed
 </espd-shell>
 
 <espd-footer [customFooterOverride]="footerHtml" />

@@ -1,0 +1,147 @@
+<espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}">
+  <div desktop-menu class="notification-menu mr-1">
+    <button type="button"
+        class="notification-bell-btn"
+        aria-haspopup="true"
+        [attr.aria-expanded]="notificationsOpen"
+        aria-label="Notifications, 3 unread"
+        (click)="toggleNotifications($event)">
+      <span class="notification-bell-icon">
+        <i [espdIcon]="'rvt-bell'" aria-hidden="true"></i>
+        <span class="notification-badge" aria-hidden="true"></span>
+      </span>
+    </button>
+    @if (notificationsOpen) {
+      <div class="dropdown-menu dropdown-menu-right notification-panel show" role="menu">
+        <div class="dropdown-header">Notifications</div>
+        <div class="dropdown-item notification-panel-row notification-panel-row--urgent">
+          <i [espdIcon]="'rvt-megaphone'" class="notification-panel-row-icon"></i>
+          <div class="notification-panel-row-body">
+            <div class="notification-panel-row-title">Registration opens Monday</div>
+            <div class="notification-panel-row-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-panel-row notification-panel-row--standard">
+          <i [espdIcon]="'rvt-calendar'" class="notification-panel-row-icon"></i>
+          <div class="notification-panel-row-body">
+            <div class="notification-panel-row-title">Career Fair starts Thursday at 10am</div>
+            <div class="notification-panel-row-time">Yesterday</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-panel-row notification-panel-row--urgent">
+          <i [espdIcon]="'address-book'" class="notification-panel-row-icon"></i>
+          <div class="notification-panel-row-body">
+            <div class="notification-panel-row-title">Your advisor added a new contact note</div>
+            <div class="notification-panel-row-time">2 days ago</div>
+          </div>
+        </div>
+        <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
+      </div>
+    }
+  </div>
+  <div mobile-menu>
+    <espd-header-nav label="Navigation">
+      <espd-header-nav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-header-nav-item>
+      <espd-header-nav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-header-nav-item>
+      <espd-header-nav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-header-nav-item>
+      <espd-header-nav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-header-nav-item>
+      <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
+    </espd-header-nav>
+  </div>
+</espd-header>
+
+<espd-shell [collapsible]="false">
+  <espd-shell-sidebar>
+    <espd-sidenav label="Navigation">
+      <espd-sidenav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-sidenav-item>
+      <espd-sidenav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-sidenav-item>
+      <espd-sidenav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-sidenav-item>
+      <espd-sidenav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-sidenav-item>
+      <espd-sidenav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
+    </espd-sidenav>
+  </espd-shell-sidebar>
+
+  <espd-shell-stage>
+    <a routerLink="/" class="back-link"><i [espdIcon]="'rvt-arrow-left'"></i> Dashboard</a>
+
+    <h1 class="notification-center-title">Notifications</h1>
+
+    <div class="section-border"></div>
+
+    @if (selectedNotification) {
+      <div class="notification-detail"
+          [class.notification-detail--urgent]="selectedNotification.type === 'urgent'"
+          [class.notification-detail--standard]="selectedNotification.type === 'standard'">
+        <div class="notification-card-header">
+          <span class="notification-dot" [class.notification-dot--urgent]="selectedNotification.type === 'urgent'" aria-hidden="true"></span>
+          <span class="notification-meta" [class.notification-meta--urgent]="selectedNotification.type === 'urgent'">{{ selectedNotification.timestamp }} <span class="notification-meta-department">| {{ selectedNotification.department }}</span></span>
+        </div>
+
+        <h2 class="notification-detail-title">{{ selectedNotification.title }}</h2>
+        <p class="notification-detail-description">{{ selectedNotification.fullDescription }}</p>
+
+        <div class="notification-detail-footer">
+          <button type="button" class="back-link notification-detail-back" (click)="closeNotification()">
+            <i [espdIcon]="'rvt-arrow-left'"></i> All notifications
+          </button>
+          <a [href]="selectedNotification.linkUrl" class="btn btn-outline-primary">{{ selectedNotification.linkText }}</a>
+        </div>
+      </div>
+    } @else {
+      <div class="notification-list-toolbar">
+        <label class="notification-pinned-filter">
+          <input type="checkbox" [checked]="pinnedOnly" (change)="pinnedOnly = !pinnedOnly">
+          {{ pinnedOnly ? 'View all' : 'Pinned only' }}
+        </label>
+   
+        <espd-dropdown [showChevron]="false"  [rounded]="true" [secondary]="true" placement="right">
+          <espd-dropdown-label>
+            <i [espdIcon]="'rvt-ellipsis'" aria-hidden="true"></i>
+          </espd-dropdown-label>
+          <espd-dropdown-item routerPath="/notifications/settings/general">General Settings</espd-dropdown-item>
+          <espd-dropdown-item routerPath="/notifications/settings/notifications">Notification Settings</espd-dropdown-item>
+        </espd-dropdown>
+      </div>
+
+      @if (visibleNotifications.length) {
+        <div class="notification-list">
+          @for (notification of visibleNotifications; track notification.title) {
+            <div class="notification-card"
+                [class.notification-card--urgent]="notification.type === 'urgent'"
+                [class.notification-card--standard]="notification.type === 'standard'"
+                tabindex="0"
+                role="button"
+                [attr.aria-label]="'View notification: ' + notification.title"
+                (click)="openNotification(notification)"
+                (keydown.enter)="openNotification(notification)"
+                (keydown.space)="openNotification(notification); $event.preventDefault()">
+              <div class="notification-card-header">
+                <span class="notification-dot" [class.notification-dot--urgent]="notification.type === 'urgent'" aria-hidden="true"></span>
+                <span class="notification-meta" [class.notification-meta--urgent]="notification.type === 'urgent'">{{ notification.timestamp }} <span class="notification-meta-department">| {{ notification.department }}</span></span>
+                <div class="notification-card-actions">
+                  <button type="button" class="notification-icon-btn mr-2"
+                      [class.notification-icon-btn--active]="notification.pinned"
+                      [attr.aria-pressed]="notification.pinned"
+                      [attr.aria-label]="notification.pinned ? 'Unpin notification' : 'Pin notification'"
+                      (click)="togglePin(notification, $event)">
+                    <i [espdIcon]="'rvt-pin'"></i>
+                  </button>
+                  <button type="button" class="notification-icon-btn" aria-label="Dismiss notification" (click)="removeNotification(notification, $event)">
+                    <i [espdIcon]="'rvt-close'"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="notification-card-title">{{ notification.title }}</div>
+              <div class="notification-card-description">{{ notification.description }}</div>
+              <a [href]="notification.linkUrl" class="notification-card-link" (click)="$event.stopPropagation()">{{ notification.linkText }}</a>
+            </div>
+          }
+        </div>
+      } @else {
+        <p class="notification-empty-state">{{ pinnedOnly ? 'No pinned notifications.' : 'No notifications to show.' }}</p>
+      }
+    }
+  </espd-shell-stage>
+</espd-shell>
+
+<espd-footer [customFooterOverride]="footerHtml" />

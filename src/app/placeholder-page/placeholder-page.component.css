@@ -62,10 +62,27 @@ espd-shell {
   margin-bottom: 1.5rem;
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+.placeholder-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.placeholder-icon {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.placeholder-title {
+  margin: 0 0 0.5rem;
+}
+
+.placeholder-copy {
+  color: light-dark(#6c757d, #adb5bd);
+  margin: 0;
 }
 
 .notification-menu {
@@ -128,8 +145,6 @@ espd-shell {
 
 .dropdown-header {
   font-size: 1rem;
-  font-weight: bold;
-  border-bottom: 1px solid #e2e7e9;
 }
 
 .notification-row {

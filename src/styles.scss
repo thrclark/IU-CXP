@@ -53,6 +53,24 @@ espd-shell .sidebar .link:hover {
 	color: #fff !important;
 }
 
+// Active sidebar item: rounded highlight instead of the library's default
+// accent bar, with a bold label.
+espd-shell .sidebar espd-sidenav-item a[aria-current],
+espd-shell .sidebar espd-sidenav-item .link[aria-current] {
+	background-color: #328BB8 !important;
+	border-radius: 5px;
+}
+
+espd-shell .sidebar espd-sidenav-item a[aria-current]::before,
+espd-shell .sidebar espd-sidenav-item .link[aria-current]::before {
+	display: none !important;
+}
+
+espd-shell .sidebar espd-sidenav-item a[aria-current] .nav-item-label,
+espd-shell .sidebar espd-sidenav-item .link[aria-current] .nav-item-label {
+	font-weight: 700;
+}
+
 // Header bar shadow. Raise the header above the shell that follows it in
 // the DOM so the shadow overflowing its bottom edge isn't painted over.
 espd-header {
@@ -67,6 +85,13 @@ espd-header .wrapper {
 // Stage background.
 espd-shell .stage {
 	background-color: #f7f7f7 !important;
+}
+
+// Constrain and center the stage's main content column.
+espd-shell-stage {
+	max-width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 // Header bar shadow.
