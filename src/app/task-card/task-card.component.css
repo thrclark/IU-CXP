@@ -160,6 +160,7 @@
   border-radius: 999rem;
   background: none;
   color: light-dark(#767676, #b7bcc2);
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -177,31 +178,3 @@
   box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color, #4141a3);
 }
 
-.task-card-expand-btn--active {
-  background-color: var(--primary-color, #4141a3);
-  color: #fff;
-}
-
-.task-card-expand-btn--active:hover {
-  background-color: var(--primary-color-dark-15, #33337f);
-  color: #fff;
-}
-
-.task-card-details {
-  position: relative;
-  z-index: 2;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid light-dark(#e2e7e9, #333);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: light-dark(#4c5a69, #b7bcc2);
-}
-
-.task-card-details p {
-  margin: 0;
-}
-
-.task-card-details p + p {
-  margin-top: 0.5rem;
-}
