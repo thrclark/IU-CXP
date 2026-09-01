@@ -10,6 +10,7 @@ import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
 import { TaskCardComponent } from '../task-card/task-card.component';
+import { CAMPUS_SERVICES, CampusService } from '../campus-services/campus-service';
 
 @Component({
   selector: 'app-hello-world',
@@ -22,6 +23,8 @@ export class HelloWorldComponent {
 
   // --- This is the "state" (the data) ---
   message: string = 'Hello, Angular World!';
+
+  campusServices: CampusService[] = CAMPUS_SERVICES;
 
   footerHtml = `
     <footer class="rbt-footer mt-auto">

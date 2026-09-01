@@ -77,64 +77,17 @@
     <h2 class="dashboard-section-title">Campus Services</h2>
 
     <div class="card-grid">
-      <app-task-card
-          category="Enrollment"
-          title="One.IU Registration"
-          imageIcon="task-icons/citi-training.png"
-          description="Search, browse, and enroll in courses for the upcoming term from a single dashboard."
-          launchUrl="https://one.iu.edu"
-          [campuses]="['IUB', 'IUI', 'IUK']"
-          details="Registration windows open based on earned credit hours. Contact the Office of the Registrar at your campus if you run into a hold or a time-ticket issue.">
-      </app-task-card>
-
-      <app-task-card
-          category="Learning"
-          title="Canvas by Instructure"
-          imageIcon="task-icons/signpost.png"
-          description="Access course materials, assignments, grades, and discussions for all of your enrolled classes."
-          launchUrl="https://canvas.iu.edu"
-          [campuses]="['IUB', 'IUI', 'IUE', 'IUK', 'IUN', 'IUS', 'IUSB', 'IUFW', 'IUC']"
-          details="Canvas is available at every IU campus. Mobile apps are available for iOS and Android for on-the-go access to coursework.">
-      </app-task-card>
-
-      <app-task-card
-          category="IT Services"
-          title="Two-Step Login (Duo)"
-          imageIcon="task-icons/academic-calendar.png"
-          description="Manage your Duo devices and backup methods to keep secure access to IU systems."
-          launchUrl="https://uits.iu.edu/2fa"
-          [campuses]="['IUB', 'IUI']"
-          details="If your primary device is lost or replaced, add a backup method right away to avoid being locked out of IU services.">
-      </app-task-card>
-
-      <app-task-card
-          category="Health & Wellness"
-          title="IU Health Center Portal"
-          imageIcon="task-icons/remote-work.png"
-          description="Schedule appointments, view immunization records, and message campus health providers."
-          launchUrl="#"
-          [campuses]="['IUB']"
-          details="Available to students on the Bloomington campus. Other campuses should contact their local student health partner.">
-      </app-task-card>
-
-      <app-task-card
-          category="Career Services"
-          title="Handshake"
-          imageIcon="task-icons/canvas.png"
-          description="Browse internships and full-time openings, and register for on-campus recruiting events."
-          launchUrl="https://iu.joinhandshake.com"
-          [campuses]="['IUB', 'IUI', 'IUE', 'IUK', 'IUN', 'IUS', 'IUSB']"
-          details="Employers post positions year-round. Career coaches are available to review your resume and profile before you apply.">
-      </app-task-card>
-
-      <app-task-card
-          category="Finance"
-          title="Bursar Account & Billing"
-          imageIcon="task-icons/kuali-time.png"
-          description="View your student account balance, make a payment, or set up a payment plan."
-          launchUrl="#"
-          [campuses]="['IUI', 'IUC']">
-      </app-task-card>
+      @for (service of campusServices; track service.slug) {
+        <app-task-card
+            [slug]="service.slug"
+            [category]="service.category"
+            [title]="service.title"
+            [imageIcon]="service.imageIcon"
+            [description]="service.description"
+            [launchUrl]="service.launchUrl"
+            [campuses]="service.campuses">
+        </app-task-card>
+      }
     </div>
   </espd-shell-stage>
   Any other content won't be displayed
