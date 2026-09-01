@@ -9,9 +9,6 @@
     </div>
 
     <div class="task-card-heading">
-      @if (category) {
-        <span class="task-card-category">{{ category }}</span>
-      }
       <h3 class="task-card-title">
         @if (launchUrl) {
           <a class="task-card-link"
@@ -26,6 +23,9 @@
           {{ title }}
         }
       </h3>
+      @if (category) {
+        <span class="task-card-category">{{ category }}</span>
+      }
     </div>
   </div>
 

@@ -68,7 +68,7 @@
   /* Falls back to the app's regular BentonSans (and system sans-serif) until
      a Benton Sans Condensed webfont/@font-face is added to the project. */
   font-family: 'Benton Sans Condensed', 'BentonSans Condensed', var(--font-header), 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.3;
   color: light-dark(#243142, #fff);
