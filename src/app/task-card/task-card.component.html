@@ -1,0 +1,67 @@
+<article class="task-card" [class.task-card--expanded]="expanded">
+  <div class="task-card-header">
+    <div class="task-card-icon" aria-hidden="true">
+      @if (imageIcon) {
+        <img class="task-card-icon-image" [src]="imageIcon" alt="">
+      } @else {
+        <i [espdIcon]="icon"></i>
+      }
+    </div>
+
+    <div class="task-card-heading">
+      @if (category) {
+        <span class="task-card-category">{{ category }}</span>
+      }
+      <h3 class="task-card-title">
+        @if (launchUrl) {
+          <a class="task-card-link"
+             [href]="launchUrl"
+             target="_blank"
+             rel="noopener noreferrer"
+             [attr.aria-label]="title + ' — launches in a new window'">
+            {{ title }}
+            <i espdIcon="rvt-link-external" class="task-card-link-icon" aria-hidden="true"></i>
+          </a>
+        } @else {
+          {{ title }}
+        }
+      </h3>
+    </div>
+  </div>
+
+  @if (description) {
+    <p class="task-card-description">{{ description }}</p>
+  }
+
+  <div class="task-card-footer">
+    @if (campusBadges.length) {
+      <ul class="task-card-campuses" aria-label="Available at these IU campuses">
+        @for (campus of campusBadges; track campus.key) {
+          <li [title]="campus.title">
+            <espd-badge [label]="campus.label" color="light"></espd-badge>
+            <span class="sr-only">{{ campus.title }}</span>
+          </li>
+        }
+      </ul>
+    }
+
+    <button type="button"
+        class="task-card-expand-btn"
+        [class.task-card-expand-btn--active]="expanded"
+        [attr.aria-expanded]="expanded"
+        [attr.aria-controls]="detailsId"
+        [attr.aria-label]="(expanded ? 'Hide' : 'Show') + ' additional details for ' + title"
+        (click)="toggleExpanded($event)">
+      <i espdIcon="rvt-info-circle"></i>
+    </button>
+  </div>
+
+  @if (expanded) {
+    <div class="task-card-details" [id]="detailsId">
+      @if (details) {
+        <p>{{ details }}</p>
+      }
+      <ng-content></ng-content>
+    </div>
+  }
+</article>

@@ -74,52 +74,67 @@
 
     <div class="section-border"></div>
 
-    <h2 class="dashboard-section-title">My Tasks</h2>
+    <h2 class="dashboard-section-title">Campus Services</h2>
 
     <div class="card-grid">
-      <app-card category="Enrollment" title="Complete Course Registration" imageIcon="task-icons/kuali-time.png" [menu]="true">
-        <p>Finish selecting your courses for the upcoming term before the registration window closes.</p>
-      </app-card>
+      <app-task-card
+          category="Enrollment"
+          title="One.IU Registration"
+          imageIcon="task-icons/citi-training.png"
+          description="Search, browse, and enroll in courses for the upcoming term from a single dashboard."
+          launchUrl="https://one.iu.edu"
+          [campuses]="['IUB', 'IUI', 'IUK']"
+          details="Registration windows open based on earned credit hours. Contact the Office of the Registrar at your campus if you run into a hold or a time-ticket issue.">
+      </app-task-card>
 
-      <app-card category="Financial Aid" title="Review Award Letter" imageIcon="task-icons/travel.png" [menu]="true">
-        <p>Your financial aid award letter is ready. Review the details and accept or decline each award.</p>
-      </app-card>
+      <app-task-card
+          category="Learning"
+          title="Canvas by Instructure"
+          imageIcon="task-icons/signpost.png"
+          description="Access course materials, assignments, grades, and discussions for all of your enrolled classes."
+          launchUrl="https://canvas.iu.edu"
+          [campuses]="['IUB', 'IUI', 'IUE', 'IUK', 'IUN', 'IUS', 'IUSB', 'IUFW', 'IUC']"
+          details="Canvas is available at every IU campus. Mobile apps are available for iOS and Android for on-the-go access to coursework.">
+      </app-task-card>
 
-      <app-card category="Housing" title="Submit Housing Application" imageIcon="task-icons/citi-training.png" [menu]="true">
-        <p>Reserve your spot in on-campus housing by completing the application and selecting your preferences.</p>
-      </app-card>
+      <app-task-card
+          category="IT Services"
+          title="Two-Step Login (Duo)"
+          imageIcon="task-icons/academic-calendar.png"
+          description="Manage your Duo devices and backup methods to keep secure access to IU systems."
+          launchUrl="https://uits.iu.edu/2fa"
+          [campuses]="['IUB', 'IUI']"
+          details="If your primary device is lost or replaced, add a backup method right away to avoid being locked out of IU services.">
+      </app-task-card>
 
-      <app-card category="Advising" title="Schedule an Advising Appointment" imageIcon="task-icons/resume.png" [menu]="true">
-        <p>Meet with your academic advisor to plan next semester's course load.</p>
-      </app-card>
+      <app-task-card
+          category="Health & Wellness"
+          title="IU Health Center Portal"
+          imageIcon="task-icons/remote-work.png"
+          description="Schedule appointments, view immunization records, and message campus health providers."
+          launchUrl="#"
+          [campuses]="['IUB']"
+          details="Available to students on the Bloomington campus. Other campuses should contact their local student health partner.">
+      </app-task-card>
 
-      <app-card category="IT Services" title="Update Two-Step Login" imageIcon="task-icons/academic-calendar.png" [menu]="true">
-        <p>Your two-step login device is set to expire soon. Add a backup method to avoid getting locked out.</p>
-      </app-card>
+      <app-task-card
+          category="Career Services"
+          title="Handshake"
+          imageIcon="task-icons/canvas.png"
+          description="Browse internships and full-time openings, and register for on-campus recruiting events."
+          launchUrl="https://iu.joinhandshake.com"
+          [campuses]="['IUB', 'IUI', 'IUE', 'IUK', 'IUN', 'IUS', 'IUSB']"
+          details="Employers post positions year-round. Career coaches are available to review your resume and profile before you apply.">
+      </app-task-card>
 
-      <app-card category="Health & Wellness" title="Upload Immunization Records" imageIcon="task-icons/checklist.png" [menu]="true">
-        <p>Submit your updated immunization records to stay compliant with campus health requirements.</p>
-      </app-card>
-
-      <app-card category="Employment" title="Complete I-9 Verification" imageIcon="task-icons/signpost.png" [menu]="true">
-        <p>Visit the HR office with valid identification to finish your employment eligibility verification.</p>
-      </app-card>
-
-      <app-card category="Training" title="Finish Required Compliance Training" imageIcon="task-icons/mail-refresh.png" [menu]="true">
-        <p>Complete this year's mandatory training modules before the end-of-month deadline.</p>
-      </app-card>
-
-      <app-card category="Payroll" title="Confirm Direct Deposit Details" imageIcon="task-icons/remote-work.png" [menu]="true">
-        <p>Double-check your bank account information to make sure your next paycheck arrives without delay.</p>
-      </app-card>
-
-      <app-card category="Travel" title="Submit Travel Expense Report" imageIcon="task-icons/canvas.png" [menu]="true">
-        <p>File your expense report from last month's conference travel for reimbursement.</p>
-      </app-card>
-
-      <app-card category="Profile" title="Update Your Directory Profile" imageIcon="task-icons/eye-chart.png" [menu]="true">
-        <p>Keep your contact information and photo current in the campus directory.</p>
-      </app-card>
+      <app-task-card
+          category="Finance"
+          title="Bursar Account & Billing"
+          imageIcon="task-icons/kuali-time.png"
+          description="View your student account balance, make a payment, or set up a payment plan."
+          launchUrl="#"
+          [campuses]="['IUI', 'IUC']">
+      </app-task-card>
     </div>
   </espd-shell-stage>
   Any other content won't be displayed
