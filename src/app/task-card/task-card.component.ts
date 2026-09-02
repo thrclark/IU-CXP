@@ -30,7 +30,7 @@ export class TaskCardComponent {
   @Input() campuses: string[] = [];
   /**
    * Slug identifying this service's dedicated detail page (/services/:slug).
-   * When set, the info button navigates there.
+   * When set, the info button navigates there instead of rendering.
    */
   @Input() slug?: string;
 
