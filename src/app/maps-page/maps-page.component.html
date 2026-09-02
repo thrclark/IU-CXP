@@ -1,5 +1,3 @@
-
-
 <espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}">
   <div desktop-menu class="notification-menu mr-1">
     <button type="button"
@@ -14,29 +12,8 @@
       </span>
     </button>
     @if (notificationsOpen) {
-      <div class="dropdown-menu dropdown-menu-right notification-panel py-0 show" role="menu">
-        <div class="dropdown-header py-2">Notifications</div>
-        <div class="dropdown-item notification-row notification-row--urgent">
-
-          <div class="notification-row-body">
-            <div class="notification-row-title">Registration opens Monday</div>
-            <div class="notification-row-time">2 hours ago</div>
-          </div>
-        </div>
-        <div class="dropdown-item notification-row notification-row--standard">
-
-          <div class="notification-row-body">
-            <div class="notification-row-title">Career Fair starts Thursday at 10am</div>
-            <div class="notification-row-time">Yesterday</div>
-          </div>
-        </div>
-        <div class="dropdown-item notification-row notification-row--urgent">
-
-          <div class="notification-row-body">
-            <div class="notification-row-title">Your advisor added a new contact note</div>
-            <div class="notification-row-time">2 days ago</div>
-          </div>
-        </div>
+      <div class="dropdown-menu dropdown-menu-right notification-panel show" role="menu">
+        <div class="dropdown-header">Notifications</div>
         <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
       </div>
     }
@@ -52,7 +29,6 @@
   </div>
 </espd-header>
 
-
 <espd-shell [collapsible]="false">
   <espd-shell-sidebar>
     <espd-sidenav label="Navigation">
@@ -65,32 +41,50 @@
   </espd-shell-sidebar>
 
   <espd-shell-stage>
-    <div class="main-search">
-      <input type="search" class="main-search-input" placeholder="What would you like to do?">
-      <button type="button" class="main-search-btn" aria-label="Search">
-        <i [espdIcon]="'rvt-magnifying-glass'"></i>
-      </button>
-    </div>
+    <h1 class="maps-page-title">Campus Maps</h1>
 
-    <div class="section-border"></div>
+    <div class="maps-stage">
+      <div class="maps-panel maps-panel-map">
+        <iframe
+            class="maps-embed"
+            [src]="mapUrl"
+            title="Map centered on the IU Bloomington campus"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+        </iframe>
+      </div>
 
-    <h2 class="dashboard-section-title">Campus Services</h2>
+      <div class="maps-panel maps-panel-filters">
+        <h2 class="maps-filters-title">Show on map</h2>
+        <p class="maps-filters-intro">Choose what to display when you're looking for a place on campus.</p>
 
-    <div class="card-grid">
-      @for (service of campusServices; track service.slug) {
-        <app-task-card
-            [slug]="service.slug"
-            [category]="service.category"
-            [title]="service.title"
-            [imageIcon]="service.imageIcon"
-            [description]="service.description"
-            [launchUrl]="service.launchUrl"
-            [campuses]="service.campuses">
-        </app-task-card>
-      }
+        <ul class="maps-filter-list">
+          @for (filter of filters; track filter.key) {
+            <li class="maps-filter-row">
+              <div class="maps-filter-info">
+                <i [espdIcon]="filter.icon" class="maps-filter-icon" aria-hidden="true"></i>
+                <div>
+                  <div class="maps-filter-label">{{ filter.label }}</div>
+                  <div class="maps-filter-description">{{ filter.description }}</div>
+                </div>
+              </div>
+
+              <label class="maps-filter-switch">
+                <input type="checkbox" [(ngModel)]="filter.enabled" [attr.aria-label]="'Show ' + filter.label + ' on the map'">
+                <span class="maps-filter-switch-track" aria-hidden="true"></span>
+              </label>
+            </li>
+          }
+        </ul>
+
+        <p class="maps-filters-note sr-only">
+          <i espdIcon="rvt-info-circle" aria-hidden="true"></i>
+          These toggles are ready to drive live map pins once this page is connected to the Google Maps JavaScript API and a campus locations data source.
+        </p>
+      </div>
     </div>
   </espd-shell-stage>
-  Any other content won't be displayed
 </espd-shell>
 
 <espd-footer [customFooterOverride]="footerHtml" />

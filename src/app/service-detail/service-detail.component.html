@@ -1,0 +1,132 @@
+<espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}">
+  <div desktop-menu class="notification-menu mr-1">
+    <button type="button"
+        class="notification-bell-btn"
+        aria-haspopup="true"
+        [attr.aria-expanded]="notificationsOpen"
+        aria-label="Notifications, 3 unread"
+        (click)="toggleNotifications($event)">
+      <span class="notification-bell-icon">
+        <i [espdIcon]="'rvt-bell'" aria-hidden="true"></i>
+        <span class="notification-badge" aria-hidden="true"></span>
+      </span>
+    </button>
+    @if (notificationsOpen) {
+      <div class="dropdown-menu dropdown-menu-right notification-panel show" role="menu">
+        <div class="dropdown-header">Notifications</div>
+        <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
+      </div>
+    }
+  </div>
+  <div mobile-menu>
+    <espd-header-nav label="Navigation">
+      <espd-header-nav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-header-nav-item>
+      <espd-header-nav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-header-nav-item>
+      <espd-header-nav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-header-nav-item>
+      <espd-header-nav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-header-nav-item>
+      <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
+    </espd-header-nav>
+  </div>
+</espd-header>
+
+<espd-shell [collapsible]="false">
+  <espd-shell-sidebar>
+    <espd-sidenav label="Navigation">
+      <espd-sidenav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-sidenav-item>
+      <espd-sidenav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-sidenav-item>
+      <espd-sidenav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-sidenav-item>
+      <espd-sidenav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-sidenav-item>
+      <espd-sidenav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
+    </espd-sidenav>
+  </espd-shell-sidebar>
+
+  <espd-shell-stage>
+    <a routerLink="/dashboard" class="back-link"><i [espdIcon]="'rvt-arrow-left'"></i> Dashboard</a>
+
+    @if (service) {
+      <div class="service-detail">
+        <div class="service-detail-header">
+          <div class="service-detail-icon">
+            <img [src]="service.imageIcon" alt="">
+          </div>
+
+          <div class="service-detail-heading">
+            <h1 class="service-detail-title">{{ service.title }}</h1>
+            <span class="service-detail-category">{{ service.category }}</span>
+
+            @if (campusBadges.length) {
+              <ul class="service-detail-campuses" aria-label="Available at these IU campuses">
+                @for (campus of campusBadges; track campus.key) {
+                  <li [title]="campus.title">
+                    <espd-badge [label]="campus.label" color="light"></espd-badge>
+                    <span class="sr-only">{{ campus.title }}</span>
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+
+          <espd-button
+              class="service-detail-launch"
+              color="primary"
+              [path]="service.launchUrl"
+              target="_blank">
+            Launch service <i espdIcon="rvt-link-external" aria-hidden="true"></i>
+          </espd-button>
+        </div>
+
+        <div class="section-border"></div>
+
+        <section class="service-detail-section">
+          <h2 class="service-detail-section-title">About this service</h2>
+          <p class="service-detail-description">{{ service.extendedDescription }}</p>
+        </section>
+
+        @if (service.supportLinks.length) {
+          <section class="service-detail-section">
+            <h2 class="service-detail-section-title">Support</h2>
+            <ul class="service-detail-support-list">
+              @for (link of service.supportLinks; track link.url) {
+                <li>
+                  <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="service-detail-support-link">
+                    <i espdIcon="rvt-link-external" aria-hidden="true"></i>
+                    {{ link.label }}
+                  </a>
+                </li>
+              }
+            </ul>
+          </section>
+        }
+
+        <section class="service-detail-section">
+          <h2 class="service-detail-section-title">Send feedback</h2>
+          <p class="service-detail-feedback-intro">Let us know what's working, what's not, or what you'd like to see from this service.</p>
+
+          @if (feedbackSubmitted) {
+            <espd-inline-alert type="success" message="Thanks — your feedback has been submitted."></espd-inline-alert>
+          }
+
+          <form class="service-detail-feedback-form" (submit)="$event.preventDefault(); submitFeedback()">
+            <label for="feedback-text" class="sr-only">Your feedback about {{ service.title }}</label>
+            <textarea
+                id="feedback-text"
+                class="service-detail-feedback-textarea"
+                rows="4"
+                placeholder="Share your feedback about this service..."
+                [(ngModel)]="feedbackText"
+                name="feedbackText"></textarea>
+
+            <espd-button type="submit" color="primary" [disabled]="!feedbackText.trim()">Submit feedback</espd-button>
+          </form>
+        </section>
+      </div>
+    } @else {
+      <div class="service-detail service-detail--not-found">
+        <p>We couldn't find that service.</p>
+        <a routerLink="/dashboard" class="btn btn-outline-primary">Back to Dashboard</a>
+      </div>
+    }
+  </espd-shell-stage>
+</espd-shell>
+
+<espd-footer [customFooterOverride]="footerHtml" />

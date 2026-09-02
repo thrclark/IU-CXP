@@ -1,4 +1,4 @@
-<article class="task-card" [class.task-card--expanded]="expanded">
+<article class="task-card">
   <div class="task-card-header">
     <div class="task-card-icon" aria-hidden="true">
       @if (imageIcon) {
@@ -45,23 +45,12 @@
       </ul>
     }
 
-    <button type="button"
-        class="task-card-expand-btn"
-        [class.task-card-expand-btn--active]="expanded"
-        [attr.aria-expanded]="expanded"
-        [attr.aria-controls]="detailsId"
-        [attr.aria-label]="(expanded ? 'Hide' : 'Show') + ' additional details for ' + title"
-        (click)="toggleExpanded($event)">
-      <i espdIcon="rvt-info-circle"></i>
-    </button>
+    @if (slug) {
+      <a class="task-card-expand-btn"
+          [routerLink]="['/services', slug]"
+          [attr.aria-label]="'View more about ' + title">
+        <i espdIcon="rvt-info-circle"></i>
+      </a>
+    }
   </div>
-
-  @if (expanded) {
-    <div class="task-card-details" [id]="detailsId">
-      @if (details) {
-        <p>{{ details }}</p>
-      }
-      <ng-content></ng-content>
-    </div>
-  }
 </article>
