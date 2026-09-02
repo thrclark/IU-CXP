@@ -21,10 +21,15 @@ interface MapFilter {
  * No-API-key Google Maps embed (the "output=embed" query form), centered on
  * the IU Bloomington campus. Swap this for the Google Maps JavaScript API +
  * a Places/marker data source if per-category pins ever need to render for
- * real — the embed below can't take live layer toggles from the page.
+ * real — the embed below can't take live layer toggles from the page, with
+ * one exception: Google's own public transit layer (which includes local
+ * Bloomington Transit / campus bus routes) can be toggled on the embed URL
+ * itself via "&layer=transit", so the bus routes toggle below is genuinely
+ * functional rather than a placeholder.
  */
 const IU_BLOOMINGTON_MAP_EMBED_URL =
   'https://www.google.com/maps?q=Indiana+University+Bloomington,+Bloomington,+IN&z=15&output=embed';
+const IU_BLOOMINGTON_MAP_EMBED_URL_WITH_TRANSIT = `${IU_BLOOMINGTON_MAP_EMBED_URL}&layer=transit`;
 
 @Component({
   selector: 'app-maps-page',
@@ -60,8 +65,19 @@ export class MapsPageComponent {
     },
   ];
 
+  /** Whether the transit layer (bus routes) is currently shown on the map. */
+  showBusRoutes = false;
+
   constructor(private sanitizer: DomSanitizer) {
     this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(IU_BLOOMINGTON_MAP_EMBED_URL);
+  }
+
+  toggleBusRoutes(): void {
+    this.showBusRoutes = !this.showBusRoutes;
+    const url = this.showBusRoutes
+      ? IU_BLOOMINGTON_MAP_EMBED_URL_WITH_TRANSIT
+      : IU_BLOOMINGTON_MAP_EMBED_URL;
+    this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   footerHtml = `

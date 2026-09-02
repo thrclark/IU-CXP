@@ -20,6 +20,7 @@ espd-shell {
 .maps-panel-map {
   /* Grows with the viewport (60% of its height) but never shrinks below a
      usable size, regardless of how little vertical space the page has. */
+  position: relative;
   min-height: 400px;
   height: 60vh;
   border-radius: 0.25rem;

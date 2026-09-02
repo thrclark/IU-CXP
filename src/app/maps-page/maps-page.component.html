@@ -76,11 +76,26 @@
               </label>
             </li>
           }
+
+          <li class="maps-filter-row">
+            <div class="maps-filter-info">
+              <i espdIcon="bus" class="maps-filter-icon" aria-hidden="true"></i>
+              <div>
+                <div class="maps-filter-label">Bus Routes</div>
+                <div class="maps-filter-description">Bloomington Transit and campus bus routes.</div>
+              </div>
+            </div>
+
+            <label class="maps-filter-switch">
+              <input type="checkbox" [checked]="showBusRoutes" (change)="toggleBusRoutes()" aria-label="Show Bus Routes on the map">
+              <span class="maps-filter-switch-track" aria-hidden="true"></span>
+            </label>
+          </li>
         </ul>
 
         <p class="maps-filters-note sr-only">
           <i espdIcon="rvt-info-circle" aria-hidden="true"></i>
-          These toggles are ready to drive live map pins once this page is connected to the Google Maps JavaScript API and a campus locations data source.
+          Campus Buildings, Dining Locations, and Other Amenities are ready to drive live map pins once this page is connected to the Google Maps JavaScript API and a campus locations data source. Bus Routes is already live, using Google's public transit layer.
         </p>
       </div>
     </div>
