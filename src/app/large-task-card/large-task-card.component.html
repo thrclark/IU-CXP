@@ -1,0 +1,68 @@
+<article class="large-task-card">
+  <div class="large-task-card-header">
+    <div class="large-task-card-icon" aria-hidden="true">
+      @if (imageIcon) {
+        <img class="large-task-card-icon-image" [src]="imageIcon" alt="">
+      } @else {
+        <i [espdIcon]="icon"></i>
+      }
+    </div>
+
+    <div class="large-task-card-heading">
+      <h3 class="large-task-card-title">
+        @if (launchUrl) {
+          <a class="large-task-card-link"
+             [href]="launchUrl"
+             target="_blank"
+             rel="noopener noreferrer"
+             [attr.aria-label]="title + ' — launches in a new window'">
+            {{ title }}
+            <i espdIcon="rvt-link-external" class="large-task-card-link-icon" aria-hidden="true"></i>
+          </a>
+        } @else {
+          {{ title }}
+        }
+      </h3>
+
+      @if (category || personalized) {
+        <div class="large-task-card-meta">
+          @if (category) {
+            <span class="large-task-card-category">{{ category }}</span>
+          }
+          @if (personalized) {
+            <span class="large-task-card-personalized">
+              <i espdIcon="rvt-user" aria-hidden="true"></i>
+              Personalized
+            </span>
+          }
+        </div>
+      }
+
+    </div>
+  </div>
+
+  <div class="large-task-card-body">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="large-task-card-footer">
+    @if (campusBadges.length) {
+      <ul class="large-task-card-campuses" aria-label="Available at these IU campuses">
+        @for (campus of campusBadges; track campus.key) {
+          <li [title]="campus.title">
+            <espd-badge [label]="campus.label" color="light"></espd-badge>
+            <span class="sr-only">{{ campus.title }}</span>
+          </li>
+        }
+      </ul>
+    }
+
+    @if (slug) {
+      <a class="large-task-card-expand-btn"
+          [routerLink]="['/services', slug]"
+          [attr.aria-label]="'View more about ' + title">
+        <i espdIcon="rvt-info-circle"></i>
+      </a>
+    }
+  </div>
+</article>
