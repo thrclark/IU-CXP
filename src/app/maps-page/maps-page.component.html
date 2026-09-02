@@ -1,0 +1,90 @@
+<espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}">
+  <div desktop-menu class="notification-menu mr-1">
+    <button type="button"
+        class="notification-bell-btn"
+        aria-haspopup="true"
+        [attr.aria-expanded]="notificationsOpen"
+        aria-label="Notifications, 3 unread"
+        (click)="toggleNotifications($event)">
+      <span class="notification-bell-icon">
+        <i [espdIcon]="'rvt-bell'" aria-hidden="true"></i>
+        <span class="notification-badge" aria-hidden="true"></span>
+      </span>
+    </button>
+    @if (notificationsOpen) {
+      <div class="dropdown-menu dropdown-menu-right notification-panel show" role="menu">
+        <div class="dropdown-header">Notifications</div>
+        <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
+      </div>
+    }
+  </div>
+  <div mobile-menu>
+    <espd-header-nav label="Navigation">
+      <espd-header-nav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-header-nav-item>
+      <espd-header-nav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-header-nav-item>
+      <espd-header-nav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-header-nav-item>
+      <espd-header-nav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-header-nav-item>
+      <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
+    </espd-header-nav>
+  </div>
+</espd-header>
+
+<espd-shell [collapsible]="false">
+  <espd-shell-sidebar>
+    <espd-sidenav label="Navigation">
+      <espd-sidenav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-sidenav-item>
+      <espd-sidenav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-sidenav-item>
+      <espd-sidenav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-sidenav-item>
+      <espd-sidenav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-sidenav-item>
+      <espd-sidenav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
+    </espd-sidenav>
+  </espd-shell-sidebar>
+
+  <espd-shell-stage>
+    <h1 class="maps-page-title">Campus Maps</h1>
+
+    <div class="maps-stage">
+      <div class="maps-panel maps-panel-map">
+        <iframe
+            class="maps-embed"
+            [src]="mapUrl"
+            title="Map centered on the IU Bloomington campus"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="maps-panel maps-panel-filters">
+        <h2 class="maps-filters-title">Show on map</h2>
+        <p class="maps-filters-intro">Choose what to display when you're looking for a place on campus.</p>
+
+        <ul class="maps-filter-list">
+          @for (filter of filters; track filter.key) {
+            <li class="maps-filter-row">
+              <div class="maps-filter-info">
+                <i [espdIcon]="filter.icon" class="maps-filter-icon" aria-hidden="true"></i>
+                <div>
+                  <div class="maps-filter-label">{{ filter.label }}</div>
+                  <div class="maps-filter-description">{{ filter.description }}</div>
+                </div>
+              </div>
+
+              <label class="maps-filter-switch">
+                <input type="checkbox" [(ngModel)]="filter.enabled" [attr.aria-label]="'Show ' + filter.label + ' on the map'">
+                <span class="maps-filter-switch-track" aria-hidden="true"></span>
+              </label>
+            </li>
+          }
+        </ul>
+
+        <p class="maps-filters-note sr-only">
+          <i espdIcon="rvt-info-circle" aria-hidden="true"></i>
+          These toggles are ready to drive live map pins once this page is connected to the Google Maps JavaScript API and a campus locations data source.
+        </p>
+      </div>
+    </div>
+  </espd-shell-stage>
+</espd-shell>
+
+<espd-footer [customFooterOverride]="footerHtml" />

@@ -1,0 +1,250 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+espd-shell {
+  flex: 1;
+}
+
+.maps-page-title {
+  margin: 0 0 1rem;
+}
+
+.maps-stage {
+  display: flex;
+  flex-direction: column;
+}
+
+.maps-panel-map {
+  /* Grows with the viewport (60% of its height) but never shrinks below a
+     usable size, regardless of how little vertical space the page has. */
+  min-height: 400px;
+  height: 60vh;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 .1875rem .375rem #24314212;
+}
+
+.maps-embed {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.maps-panel-filters {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+  background-color: light-dark(#fff, #1a1a1a);
+  border-radius: 0.25rem;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 .1875rem .375rem #24314212;
+}
+
+.maps-filters-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.maps-filters-intro {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.maps-filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.maps-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid light-dark(#e2e7e9, #333);
+}
+
+.maps-filter-row:last-child {
+  border-bottom: none;
+}
+
+.maps-filter-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.maps-filter-icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  font-size: 1.125rem;
+  color: var(--accent-color, #990000);
+}
+
+.maps-filter-label {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: light-dark(#243142, #fff);
+}
+
+.maps-filter-description {
+  font-size: 0.8125rem;
+  color: light-dark(#6c757d, #adb5bd);
+  margin-top: 0.125rem;
+}
+
+.maps-filter-switch {
+  flex-shrink: 0;
+  position: relative;
+  display: inline-block;
+  width: 2.75rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.maps-filter-switch input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.maps-filter-switch-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 999rem;
+  background-color: light-dark(#dee2e6, #4c5a69);
+  transition: background-color .15s ease-in-out;
+}
+
+.maps-filter-switch-track::before {
+  content: "";
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: transform .15s ease-in-out;
+}
+
+.maps-filter-switch input:checked + .maps-filter-switch-track {
+  background-color: var(--primary-color, #4141a3);
+}
+
+.maps-filter-switch input:checked + .maps-filter-switch-track::before {
+  transform: translateX(1.25rem);
+}
+
+.maps-filter-switch input:focus-visible + .maps-filter-switch-track {
+  outline: none;
+  box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color, #4141a3);
+}
+
+.maps-filters-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 1.25rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid light-dark(#e2e7e9, #333);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: light-dark(#6c757d, #adb5bd);
+}
+
+.maps-filters-note i {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.notification-menu {
+  position: relative;
+}
+
+.notification-bell-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 999rem;
+  background: none;
+  color: var(--header-bar-text-color);
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow .15s ease-in-out, background-color .15s ease-in-out;
+}
+
+.notification-bell-btn:hover {
+  background-color: light-dark(#e9ecef, #4C5A69);
+  text-decoration: none;
+}
+
+.notification-bell-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color);
+}
+
+.notification-bell-btn[aria-expanded="true"] {
+  background-color: var(--primary-color-dark-15);
+  color: #fff;
+}
+
+.notification-bell-icon {
+  position: relative;
+  display: inline-flex;
+  font-size: 1.125rem;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+}
+
+.notification-panel {
+  top: calc(100% + 0.5rem);
+  min-width: 320px;
+  max-width: 360px;
+  box-shadow: rgba(5, 5, 36, 0.26) 0px 24px 72px -12px;
+}
+
+.dropdown-header {
+  font-size: 1rem;
+}
+
+.notification-view-all {
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.notification-view-all:hover {
+  background-color: #f7f7f7;
+  text-decoration: underline;
+}
