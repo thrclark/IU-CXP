@@ -65,11 +65,62 @@
   </espd-shell-sidebar>
 
   <espd-shell-stage>
-    <div class="main-search">
-      <input type="search" class="main-search-input" placeholder="What would you like to do?">
-      <button type="button" class="main-search-btn" aria-label="Search">
-        <i [espdIcon]="'rvt-magnifying-glass'"></i>
-      </button>
+    <div class="main-search-wrap">
+      <div class="main-search">
+        <input type="search"
+            class="main-search-input"
+            placeholder="What would you like to do?"
+            [(ngModel)]="searchQuery"
+            (input)="onSearchInput()"
+            (focus)="onSearchFocus()"
+            aria-label="Search IU services">
+        <button type="button" class="main-search-btn" aria-label="Search">
+          <i [espdIcon]="'rvt-magnifying-glass'"></i>
+        </button>
+      </div>
+
+      @if (searchOverlayOpen && searchQuery.trim()) {
+        <div class="search-overlay">
+          @if (searchResults.length) {
+            <ul class="search-overlay-list">
+              @for (service of searchResults; track service.slug) {
+                <li class="search-overlay-row">
+                  <span class="search-overlay-icon" aria-hidden="true">
+                    @if (service.imageIcon) {
+                      <img [src]="service.imageIcon" alt="">
+                    } @else {
+                      <i [espdIcon]="'rvt-grid'"></i>
+                    }
+                  </span>
+
+                  <span class="search-overlay-title">{{ service.title }}</span>
+
+                  <span class="search-overlay-actions">
+                    <a class="search-overlay-action-btn"
+                        [href]="service.launchUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        [attr.aria-label]="'Launch ' + service.title">
+                      <i espdIcon="rvt-link-external" aria-hidden="true"></i>
+                    </a>
+
+                    <button type="button"
+                        class="search-overlay-action-btn"
+                        [class.search-overlay-action-btn-active]="isOnDashboard(service.slug)"
+                        [attr.aria-pressed]="isOnDashboard(service.slug)"
+                        [attr.aria-label]="(isOnDashboard(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnDashboard(service.slug) ? ' from your dashboard' : ' to your dashboard')"
+                        (click)="toggleDashboard(service.slug)">
+                      <i [espdIcon]="isOnDashboard(service.slug) ? 'rvt-minus-circle' : 'rvt-plus-circle'" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </li>
+              }
+            </ul>
+          } @else {
+            <p class="search-overlay-empty">No services matched "{{ searchQuery }}".</p>
+          }
+        </div>
+      }
     </div>
 
     <div class="section-border"></div>

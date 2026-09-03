@@ -45,12 +45,25 @@
       </ul>
     }
 
-    @if (slug) {
-      <a class="task-card-expand-btn"
-          [routerLink]="['/services', slug]"
-          [attr.aria-label]="'View more about ' + title">
-        <i espdIcon="rvt-info-circle"></i>
-      </a>
-    }
+    <div class="task-card-actions">
+      @if (showDashboardAction) {
+        <button type="button"
+            class="task-card-dashboard-btn"
+            [class.task-card-dashboard-btn-active]="onDashboard"
+            [attr.aria-pressed]="onDashboard"
+            [attr.aria-label]="(onDashboard ? 'Remove ' : 'Add ') + title + (onDashboard ? ' from your dashboard' : ' to your dashboard')"
+            (click)="dashboardToggle.emit()">
+          <i [espdIcon]="onDashboard ? 'rvt-minus-circle' : 'rvt-plus-circle'" aria-hidden="true"></i>
+        </button>
+      }
+
+      @if (slug) {
+        <a class="task-card-expand-btn"
+            [routerLink]="['/services', slug]"
+            [attr.aria-label]="'View more about ' + title">
+          <i espdIcon="rvt-info-circle"></i>
+        </a>
+      }
+    </div>
   </div>
 </article>

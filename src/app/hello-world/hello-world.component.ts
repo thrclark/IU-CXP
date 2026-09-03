@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent } from 'espd-common/button';
 import { HeaderModule } from 'espd-common/header';
@@ -11,12 +12,17 @@ import { IconDirective } from 'espd-common/icon';
 
 import { TaskCardComponent } from '../task-card/task-card.component';
 import { LargeTaskCardComponent } from '../large-task-card/large-task-card.component';
-import { CAMPUS_SERVICES, CampusService } from '../campus-services/campus-service';
+import { CampusService } from '../campus-services/campus-service';
+import { ALL_SERVICES } from '../campus-services/service-directory';
+import { DashboardService } from '../dashboard/dashboard.service';
+
+/** Cap on how many search results render at once, just to keep the results grid tidy. */
+const MAX_SEARCH_RESULTS = 30;
 
 @Component({
   selector: 'app-hello-world',
   standalone: true,
-  imports: [RouterLink, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent, LargeTaskCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [RouterLink, FormsModule, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent, LargeTaskCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.component.css']
 })
@@ -25,7 +31,48 @@ export class HelloWorldComponent {
   // --- This is the "state" (the data) ---
   message: string = 'Hello, Angular World!';
 
-  campusServices: CampusService[] = CAMPUS_SERVICES;
+  constructor(private dashboardService: DashboardService) { }
+
+  /** Services currently pinned to "My Dashboard". */
+  get campusServices(): CampusService[] {
+    return this.dashboardService.dashboardServices;
+  }
+
+  // --- Dashboard search ---
+  searchQuery = '';
+  /** Whether the search results overlay is currently shown below the search bar. */
+  searchOverlayOpen = false;
+
+  /** Services matching the current search query, across the full catalog. */
+  get searchResults(): CampusService[] {
+    const query = this.searchQuery.trim().toLowerCase();
+    if (!query) {
+      return [];
+    }
+    return ALL_SERVICES
+      .filter(service =>
+        service.title.toLowerCase().includes(query) ||
+        service.category.toLowerCase().includes(query))
+      .slice(0, MAX_SEARCH_RESULTS);
+  }
+
+  isOnDashboard(slug: string): boolean {
+    return this.dashboardService.isOnDashboard(slug);
+  }
+
+  toggleDashboard(slug: string): void {
+    this.dashboardService.toggle(slug);
+  }
+
+  onSearchInput(): void {
+    this.searchOverlayOpen = this.searchQuery.trim().length > 0;
+  }
+
+  onSearchFocus(): void {
+    if (this.searchQuery.trim()) {
+      this.searchOverlayOpen = true;
+    }
+  }
 
   footerHtml = `
     <footer class="rbt-footer mt-auto">
@@ -39,8 +86,6 @@ export class HelloWorldComponent {
   `;
 
   // --- This is the logic ---
-  constructor() { }
-
   updateMessage() {
     this.message = 'You clicked the button!';
   }
@@ -56,12 +101,17 @@ export class HelloWorldComponent {
   @HostListener('document:keydown.escape')
   onEscape(): void {
     this.notificationsOpen = false;
+    this.searchOverlayOpen = false;
   }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
-    if (this.notificationsOpen && !(event.target as HTMLElement).closest('.notification-menu')) {
+    const target = event.target as HTMLElement;
+    if (this.notificationsOpen && !target.closest('.notification-menu')) {
       this.notificationsOpen = false;
+    }
+    if (this.searchOverlayOpen && !target.closest('.main-search-wrap')) {
+      this.searchOverlayOpen = false;
     }
   }
 }
