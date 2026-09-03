@@ -13,7 +13,8 @@ import { ButtonComponent } from 'espd-common/button';
 import { InlineAlertComponent } from 'espd-common/alert';
 
 import { CampusBadge, resolveCampusBadges } from '../campus/campus-badges';
-import { CampusService, findCampusServiceBySlug } from '../campus-services/campus-service';
+import { CampusService } from '../campus-services/campus-service';
+import { findServiceBySlug } from '../campus-services/service-directory';
 
 @Component({
   selector: 'app-service-detail',
@@ -46,7 +47,7 @@ export class ServiceDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paramSubscription = this.route.paramMap.subscribe(params => {
-      this.service = findCampusServiceBySlug(params.get('slug'));
+      this.service = findServiceBySlug(params.get('slug'));
       this.campusBadges = this.service ? resolveCampusBadges(this.service.campuses) : [];
       this.feedbackText = '';
       this.feedbackSubmitted = false;
