@@ -11,7 +11,6 @@ import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
 import { TaskCardComponent } from '../task-card/task-card.component';
-import { LargeTaskCardComponent } from '../large-task-card/large-task-card.component';
 import { CampusService } from '../campus-services/campus-service';
 import { ALL_SERVICES } from '../campus-services/service-directory';
 import { DashboardService } from '../dashboard/dashboard.service';
@@ -22,7 +21,7 @@ const MAX_SEARCH_RESULTS = 30;
 @Component({
   selector: 'app-hello-world',
   standalone: true,
-  imports: [RouterLink, FormsModule, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent, LargeTaskCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [RouterLink, FormsModule, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.component.css']
 })

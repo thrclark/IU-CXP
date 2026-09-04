@@ -44,6 +44,7 @@
   <div mobile-menu>
     <espd-header-nav label="Navigation">
       <espd-header-nav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-header-nav-item>
+      <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
       <espd-header-nav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-header-nav-item>
       <espd-header-nav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-header-nav-item>
       <espd-header-nav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-header-nav-item>
@@ -57,6 +58,7 @@
   <espd-shell-sidebar>
     <espd-sidenav label="Navigation">
       <espd-sidenav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-sidenav-item>
+      <espd-sidenav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
       <espd-sidenav-item route="/announcements"><i [espdIcon]="'rvt-megaphone'"></i> <span class="nav-item-label">Announcements</span></espd-sidenav-item>
       <espd-sidenav-item route="/events-calendars"><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></espd-sidenav-item>
       <espd-sidenav-item route="/directory"><i [espdIcon]="'address-book'"></i> <span class="nav-item-label">Directory</span></espd-sidenav-item>
@@ -128,73 +130,6 @@
     <h2 class="dashboard-section-title">My Dashboard</h2>
 
     <div class="card-grid">
-      <app-large-task-card
-          category="Academics"
-          title="My Class Schedule"
-          icon="rvt-calendar"
-          imageIcon="task-icons/checklist.png">
-        <ul class="schedule-list">
-          <li class="schedule-row">
-            <span class="schedule-time">9:30 AM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">CSCI-B 351 Programming Languages</div>
-              <div class="schedule-location">Ballantine Hall 013</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">11:15 AM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">MATH-M 301 Linear Algebra</div>
-              <div class="schedule-location">Rawles Hall 100</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">1:00 PM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">ENG-W 131 Elementary Composition</div>
-              <div class="schedule-location">Ballantine Hall 205</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">3:30 PM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">PHIL-P 105 Introduction to Philosophy</div>
-              <div class="schedule-location">Sycamore Hall 003</div>
-            </div>
-          </li>
-        </ul>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="University Calendar"
-          title="Important Dates"
-          icon="rvt-flag"
-          imageIcon="task-icons/travel.png"
-          [campuses]="['IUB', 'IUI', 'IUE', 'IUK', 'IUN', 'IUS', 'IUSB', 'IUFW', 'IUC']">
-        <ul class="dates-list">
-          <li class="dates-row">
-            <div class="dates-when">Sept 7</div>
-            <div class="dates-what">Labor Day — no classes</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Sept 14</div>
-            <div class="dates-what">Last day to drop a full-semester class without a W</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Oct 3–5</div>
-            <div class="dates-what">Homecoming Weekend</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Oct 17–18</div>
-            <div class="dates-what">Fall Break — no classes</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Nov 26–28</div>
-            <div class="dates-what">Thanksgiving Break — no classes</div>
-          </li>
-        </ul>
-      </app-large-task-card>
-
       @for (service of campusServices; track service.slug) {
         <app-task-card
             [slug]="service.slug"

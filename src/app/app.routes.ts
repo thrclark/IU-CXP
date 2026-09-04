@@ -5,6 +5,7 @@ import { NotificationCenterComponent } from './notification-center/notification-
 import { PlaceholderPageComponent } from './placeholder-page/placeholder-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
 import { ServiceDetailComponent } from './service-detail/service-detail.component';
+import { EventsCalendarsComponent } from './events-calendars/events-calendars.component';
 
 export const routes: Routes = [
   { path: '', component: HelloWorldComponent },
@@ -14,7 +15,7 @@ export const routes: Routes = [
   { path: 'notifications/settings/general', component: PlaceholderPageComponent, data: { title: 'General Settings', icon: 'rvt-gear' } },
   { path: 'notifications/settings/notifications', component: PlaceholderPageComponent, data: { title: 'Notification Settings', icon: 'rvt-gear' } },
   { path: 'announcements', component: PlaceholderPageComponent, data: { title: 'Announcements', icon: 'rvt-megaphone' } },
-  { path: 'events-calendars', component: PlaceholderPageComponent, data: { title: 'Events & Calendars', icon: 'rvt-calendar' } },
+  { path: 'events-calendars', component: EventsCalendarsComponent },
   { path: 'directory', component: PlaceholderPageComponent, data: { title: 'Directory', icon: 'address-book' } },
   { path: 'maps', component: MapsPageComponent },
 ];
