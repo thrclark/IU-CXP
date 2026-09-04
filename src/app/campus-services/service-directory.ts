@@ -19,7 +19,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Exchange Online is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -110,7 +110,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Kuali Financial System (Authorized Users) is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -123,7 +123,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Emburse Enterprise (formerly Chrome River) is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -149,7 +149,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Passphrase Reset is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUC'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -162,7 +162,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU Print (Mobile) is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/signpost.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUN'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -175,7 +175,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Microsoft 365 is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/mail-refresh.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUK'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -188,7 +188,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'HRMS is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUSB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -201,7 +201,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Buy/Sell/Trade is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUN'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -279,7 +279,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Administrative Center is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUSB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -292,7 +292,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Paid Time Off is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/resume.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -305,7 +305,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IUIE is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/citi-training.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUN'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -331,7 +331,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'MMS (Maintenance Management System) is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/resume.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUC'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -357,7 +357,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Qualtrics is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/citi-training.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUE'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -409,7 +409,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IUanyWare is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -435,7 +435,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'I-9/E-Verify Login is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/mail-refresh.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUE'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -461,7 +461,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Document Search is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/eye-chart.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUK'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -513,7 +513,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU Scholarships is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -526,7 +526,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Bus Tracking is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUC'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -578,7 +578,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU Bookstore is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/kuali-time.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -591,7 +591,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Egencia is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/signpost.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUN'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -604,7 +604,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Atlas is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/eye-chart.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUK'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -617,7 +617,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'View Accounts is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUK'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -630,7 +630,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'View Class Rosters is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/remote-work.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -669,7 +669,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU REDCap is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/mail-refresh.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -682,7 +682,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Jobs at IU is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUN'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -695,7 +695,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Staff Positions for Current IU Employees is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/resume.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUSB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -708,7 +708,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Google Gemini is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/eye-chart.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -734,7 +734,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'New Employee Activity Guide is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/signpost.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUK'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -747,7 +747,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'OnBase (Authorized Users) is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/kuali-time.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -786,7 +786,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Staff Positions for All External Candidates is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -799,7 +799,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Health Savings Account (HSA) & Flexible Spending Account (FSA) Login is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUE'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -812,7 +812,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'PeopleAdmin Faculty Applicant Tracking System is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUN'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -825,7 +825,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Prevention Education - IU Bloomington Students is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/citi-training.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUS'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -851,7 +851,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Prevention Education - IU Columbus Students is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUC'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -864,7 +864,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Paycheck Direct Deposit is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/citi-training.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUE'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -877,7 +877,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Fidelity NetBenefits is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -890,7 +890,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Kiosk Admin Dashboard is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/mail-refresh.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUS'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -903,7 +903,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Title IV Financial Aid Authorizations is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/eye-chart.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUE'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -929,7 +929,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Reset IU Guest Password is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -968,7 +968,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'ServiceNow is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/kuali-time.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUS'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -981,7 +981,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Financial Aid Assistance is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/kuali-time.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUC'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1046,7 +1046,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU eTexts Portal is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUE'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1059,7 +1059,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Campus Map and Directions is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1072,7 +1072,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Status.IU is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/signpost.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1150,7 +1150,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Grants and Contracts is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/remote-work.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1189,7 +1189,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Campus Administrative Registrar Transactions is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUS'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1202,7 +1202,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Adobe Creative Cloud is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/resume.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUN'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1228,7 +1228,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Web Content Management System is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1241,7 +1241,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Distributed Schedule of Classes (DSOC) is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/kuali-time.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1254,7 +1254,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU Expand is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1332,7 +1332,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'OCQ Student Dashboard is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1358,7 +1358,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Make a deposit to your CrimsonCard is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/signpost.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1397,7 +1397,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Degree Map Search (Login Required) is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUN'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1436,7 +1436,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU Kokomo Library is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUS'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1475,7 +1475,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'UITS Support Center is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/eye-chart.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUE'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1488,7 +1488,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'AIM is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/checklist.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1527,7 +1527,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Shuttle Tracking is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/resume.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1540,7 +1540,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Academic Calendar is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/eye-chart.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1566,7 +1566,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Family Medical Leave Act (FMLA) and Paid Parental Leave (PPL) Online Request is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/mail-refresh.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUC'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1579,7 +1579,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Events Calendar is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/signpost.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUS'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1592,7 +1592,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Fax service is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/mail-refresh.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1605,7 +1605,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Loan Cancellation/Reduction Request Form is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/kuali-time.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUE'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1657,7 +1657,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Slate Graduate Admission-Administrative is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/remote-work.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUS'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1670,7 +1670,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU Directory is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUS'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1709,7 +1709,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Apple is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/checklist.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1748,7 +1748,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Access Coordinator Lookup is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1774,7 +1774,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Tuition & Fee List is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/signpost.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1800,7 +1800,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Staff Expanded Review is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/mail-refresh.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUSB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1839,7 +1839,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Walter Center for Career Achievement is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/remote-work.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1891,7 +1891,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'CITI Training at IU is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1930,7 +1930,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'ACM: Group Management is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1943,7 +1943,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU Address Book is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/resume.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUSB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -1969,7 +1969,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Apply to Graduate (IU indianapolis Undergraduates) is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUSB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2021,7 +2021,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Classroom Database is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/mail-refresh.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2047,7 +2047,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Treasury SAE Credit Card Training is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/remote-work.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2060,7 +2060,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU Faculty & Staff Complimentary Athletics Tickets is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2073,7 +2073,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Crimson Catalog is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/eye-chart.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2086,7 +2086,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Records Retention Schedule is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/resume.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUI'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2125,7 +2125,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Confluence is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/canvas.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUN'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2138,7 +2138,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'E Training is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUSB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2151,7 +2151,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'IU Events Calendar Publisher Login is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/eye-chart.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUS'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2164,7 +2164,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'LinkedIn Learning is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/travel.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUSB'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2177,7 +2177,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'Bus Routes is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/resume.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
@@ -2190,7 +2190,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     extendedDescription: 'ORA Workload Dashboards is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/signpost.png',
     launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
+    campuses: ['IUFW'],
     supportLinks: [
       { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
     ],
