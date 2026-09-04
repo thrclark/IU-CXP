@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { HeaderModule } from 'espd-common/header';
@@ -8,15 +8,18 @@ import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
 import { LargeTaskCardComponent } from '../large-task-card/large-task-card.component';
+import { NavStateService } from '../nav-state/nav-state.service';
 
 @Component({
-  selector: 'app-events-calendars',
+  selector: 'app-my-classes',
   standalone: true,
   imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent],
-  templateUrl: './events-calendars.component.html',
-  styleUrls: ['./events-calendars.component.css']
+  templateUrl: './my-classes.component.html',
+  styleUrls: ['./my-classes.component.css']
 })
-export class EventsCalendarsComponent {
+export class MyClassesComponent {
+  protected navState = inject(NavStateService);
+
   footerHtml = `
     <footer class="rbt-footer mt-auto">
       <img src="https://sd-prd-images.s3.amazonaws.com/prd/test-uisapp2/20150702T0521168403962_trident-small.png" alt="Indiana University" width="20" height="25" class="mr-3">

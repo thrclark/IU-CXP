@@ -36,6 +36,13 @@ espd-sidenav nav > espd-message {
 	margin-left: 0.5rem;
 }
 
+// Only shown inside the icon-rail flyout popup (see the max-width: 991.98px
+// block below) — the desktop inline-expand view already shows this label
+// on the trigger row itself.
+.sidenav-popup-header {
+	display: none;
+}
+
 // Sidebar background with white text and icons.
 espd-shell .sidebar {
 	background-color: #006298 !important;
@@ -51,6 +58,85 @@ espd-shell .sidebar .link {
 espd-shell .sidebar a:hover,
 espd-shell .sidebar .link:hover {
 	color: #fff !important;
+}
+
+// Remove the app-wide focus outline (espd-common's focus.scss) from the
+// sidebar's navigation items -- links, the "Events & Calendars" toggle,
+// and its expand/collapse chevron button.
+espd-shell .sidebar a:focus,
+espd-shell .sidebar button:focus {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+// The chevron button that expands/collapses a sub-navigation group (e.g.
+// "Events & Calendars") should look the same at rest, on hover, and on
+// focus -- no background tint, color change, or outline in any state.
+espd-shell .sidebar espd-sidenav-list > div.wrapper > button:hover,
+espd-shell .sidebar espd-sidenav-list > div.wrapper > button:focus {
+	background-color: transparent !important;
+	color: #a0abb4 !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+// "Events & Calendars" is a button (it toggles the sub-navigation panel
+// rather than navigating), so espd-common's global link/button hover
+// style would otherwise underline its label -- and since clicking it
+// doesn't leave the page, that underline lingers as long as the pointer
+// stays put. Drop it for both the label and the chevron.
+espd-shell .sidebar espd-sidenav-list > div.wrapper button:hover,
+espd-shell .sidebar espd-sidenav-list > div.wrapper .link:hover {
+	text-decoration: none !important;
+}
+
+// Highlight "Events & Calendars" (label and chevron together, via the
+// .nav-group-selected class -- see NavStateService) whenever it's the
+// selected top-level item, whether or not its sub-items are currently
+// expanded. Clicking it selects it; clicking any other top-level item
+// (a real navigation) hands the selection to that item instead -- see the
+// .nav-suppressed rule below, which is how Dashboard/Maps/Notification
+// Center give up their own route-driven highlight when that happens.
+espd-shell .sidebar espd-sidenav-list.nav-group-selected > div.wrapper {
+	background-color: #328BB8 !important;
+	border-radius: 5px;
+}
+
+espd-shell .sidebar espd-sidenav-list.nav-group-selected > div.wrapper > button {
+	color: #fff !important;
+}
+
+espd-shell .sidebar espd-sidenav-list.nav-group-selected > div.wrapper > button:hover,
+espd-shell .sidebar espd-sidenav-list.nav-group-selected > div.wrapper > button:focus {
+	background-color: #328BB8 !important;
+	color: #fff !important;
+}
+
+// Selecting "Events & Calendars" doesn't navigate anywhere, so without
+// this, whatever route you were already on (e.g. Dashboard) would stay
+// highlighted alongside it.
+espd-shell .sidebar espd-sidenav-item.nav-suppressed a[aria-current],
+espd-shell .sidebar espd-sidenav-item.nav-suppressed .link[aria-current] {
+	background-color: transparent !important;
+	border-radius: 0 !important;
+}
+
+espd-shell .sidebar espd-sidenav-item.nav-suppressed a[aria-current] .nav-item-label,
+espd-shell .sidebar espd-sidenav-item.nav-suppressed .link[aria-current] .nav-item-label {
+	font-weight: 400 !important;
+}
+
+// Conversely, once you've actually navigated into one of the group's own
+// sub-pages (e.g. My Classes), that sub-item is the true selection -- defer
+// to its own highlight instead of also highlighting the parent trigger row.
+// (Placed after the rule above so it wins when both conditions are true.)
+espd-shell .sidebar espd-sidenav-list:has(espd-sidenav-item a[aria-current]) > div.wrapper {
+	background-color: transparent !important;
+	border-radius: 0 !important;
+}
+
+espd-shell .sidebar espd-sidenav-list:has(espd-sidenav-item a[aria-current]) > div.wrapper > button {
+	color: #a0abb4 !important;
 }
 
 // Active sidebar item: rounded highlight instead of the library's default
@@ -69,6 +155,31 @@ espd-shell .sidebar espd-sidenav-item .link[aria-current]::before {
 espd-shell .sidebar espd-sidenav-item a[aria-current] .nav-item-label,
 espd-shell .sidebar espd-sidenav-item .link[aria-current] .nav-item-label {
 	font-weight: 700;
+}
+
+// On the full-width sidebar (large desktop and up), thin the sub-navigation
+// items' left accent bar down and recolor it to match the sidebar's active
+// highlight instead of the library's default light-gray, full-width bar.
+@media (min-width: 992px) {
+	espd-shell .sidebar espd-sidenav-item.nested {
+		border-left: 2px solid #328BB8 !important;
+	}
+}
+
+// Sub-navigation items (My Classes, Campus Events, Academic Calendar) sit
+// tighter than the library default -- half the padding on all sides. A
+// small left margin keeps the active-item highlight from touching the
+// accent bar right next to it.
+espd-shell .sidebar espd-sidenav-item.nested a,
+espd-shell .sidebar espd-sidenav-item.nested .link {
+	padding: 0.25rem 0.25rem 0.25rem 0.5rem !important;
+	margin-left: 0.25rem !important;
+}
+
+// The sub-navigation list (My Classes, Campus Events, Academic Calendar)
+// sits closer to its trigger row than the library's default 1rem gap.
+espd-shell .sidebar espd-sidenav-list ul {
+	margin-top: 0rem !important;
 }
 
 // Header bar shadow. Raise the header above the shell that follows it in
@@ -116,6 +227,66 @@ espd-header .wrapper {
 
 	.nav-item-label {
 		display: none !important;
+	}
+
+	// A sub-navigation group (e.g. "Events & Calendars") has no room to
+	// expand inline in a 60px rail, so show it as a flyout popup next to
+	// the icon that triggered it instead of pushing content down.
+	espd-shell .sidebar espd-sidenav-list {
+		position: relative;
+	}
+
+	// The inline expand/collapse chevron isn't needed once expansion is a
+	// flyout popup — the icon itself is the click target.
+	espd-shell .sidebar espd-sidenav-list > div.wrapper > button {
+		display: none !important;
+	}
+
+	espd-shell .sidebar espd-sidenav-list > div[id^="sidenav-dropdown-"] {
+		position: absolute;
+		top: 0;
+		left: calc(100% + 0.5rem);
+		z-index: 20;
+		min-width: 200px;
+		margin: 0 !important;
+		padding: 0.5rem !important;
+		background-color: #fff;
+		border-radius: 0.25rem;
+		box-shadow: rgba(5, 5, 36, 0.16) 0px 12px 36px -8px;
+	}
+
+	espd-shell .sidebar espd-sidenav-list > div[id^="sidenav-dropdown-"] ul {
+		margin: 0 !important;
+	}
+
+	espd-shell .sidebar espd-sidenav-list > div[id^="sidenav-dropdown-"] .sidenav-popup-header {
+		display: block !important;
+		padding: 0.25rem 0.5rem 0.5rem;
+		margin-bottom: 0.25rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.04rem;
+		text-transform: uppercase;
+		color: #495057 !important;
+		border-bottom: 1px solid #e2e7e9;
+	}
+
+	// The popup sits outside the rail on a white background, so give its
+	// labels back their normal (dark, visible) treatment.
+	espd-shell .sidebar espd-sidenav-list > div[id^="sidenav-dropdown-"] .nav-item-label {
+		display: inline !important;
+		color: #222529 !important;
+		font-weight: 400 !important;
+	}
+
+	espd-shell .sidebar espd-sidenav-list > div[id^="sidenav-dropdown-"] a,
+	espd-shell .sidebar espd-sidenav-list > div[id^="sidenav-dropdown-"] .link {
+		color: #222529 !important;
+	}
+
+	espd-shell .sidebar espd-sidenav-list > div[id^="sidenav-dropdown-"] a:hover,
+	espd-shell .sidebar espd-sidenav-list > div[id^="sidenav-dropdown-"] .link:hover {
+		color: #006298 !important;
 	}
 }
 

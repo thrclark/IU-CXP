@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -15,6 +15,7 @@ import { InlineAlertComponent } from 'espd-common/alert';
 import { CampusBadge, resolveCampusBadges } from '../campus/campus-badges';
 import { CampusService } from '../campus-services/campus-service';
 import { findServiceBySlug } from '../campus-services/service-directory';
+import { NavStateService } from '../nav-state/nav-state.service';
 
 @Component({
   selector: 'app-service-detail',
@@ -35,6 +36,8 @@ import { findServiceBySlug } from '../campus-services/service-directory';
   styleUrls: ['./service-detail.component.css']
 })
 export class ServiceDetailComponent implements OnInit, OnDestroy {
+  protected navState = inject(NavStateService);
+
   service?: CampusService;
   campusBadges: CampusBadge[] = [];
 

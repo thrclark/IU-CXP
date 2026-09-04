@@ -1,5 +1,5 @@
 import { Component, HostListener, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 import { HeaderModule } from 'espd-common/header';
 import { ShellModule } from 'espd-common/layout/shell';
@@ -7,25 +7,25 @@ import { SidenavModule } from 'espd-common/sidenav';
 import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
-import { CardComponent } from '../card/card.component';
+import { LargeTaskCardComponent } from '../large-task-card/large-task-card.component';
+import { CampusEventsService } from './campus-events.service';
+import { CampusEvent } from './campus-event';
 import { NavStateService } from '../nav-state/nav-state.service';
 
 @Component({
-  selector: 'app-placeholder-page',
+  selector: 'app-campus-events',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, CardComponent],
-  templateUrl: './placeholder-page.component.html',
-  styleUrls: ['./placeholder-page.component.css']
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent],
+  templateUrl: './campus-events.component.html',
+  styleUrls: ['./campus-events.component.css']
 })
-export class PlaceholderPageComponent {
+export class CampusEventsComponent {
   protected navState = inject(NavStateService);
 
-  title: string;
-  icon: string;
+  constructor(private campusEventsService: CampusEventsService) { }
 
-  constructor(route: ActivatedRoute) {
-    this.title = route.snapshot.data['title'] ?? 'Page';
-    this.icon = route.snapshot.data['icon'] ?? 'rvt-file';
+  get campusEvents(): CampusEvent[] {
+    return this.campusEventsService.upcomingEvents;
   }
 
   footerHtml = `

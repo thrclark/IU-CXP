@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -14,6 +14,7 @@ import { TaskCardComponent } from '../task-card/task-card.component';
 import { CampusService } from '../campus-services/campus-service';
 import { ALL_SERVICES } from '../campus-services/service-directory';
 import { DashboardService } from '../dashboard/dashboard.service';
+import { NavStateService } from '../nav-state/nav-state.service';
 
 /** Cap on how many search results render at once, just to keep the results grid tidy. */
 const MAX_SEARCH_RESULTS = 30;
@@ -26,6 +27,8 @@ const MAX_SEARCH_RESULTS = 30;
   styleUrls: ['./hello-world.component.css']
 })
 export class HelloWorldComponent {
+  protected navState = inject(NavStateService);
+
 
   // --- This is the "state" (the data) ---
   message: string = 'Hello, Angular World!';
