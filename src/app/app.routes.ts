@@ -27,7 +27,7 @@ export const routes: Routes = [
   { path: 'employee-center/kuali-time', component: PlaceholderPageComponent, data: { title: 'Kuali Time', icon: 'rvt-gear' } },
   { path: 'employee-center/epto', component: PlaceholderPageComponent, data: { title: 'ePTO', icon: 'rvt-calendar' } },
   { path: 'employee-center/your-paycheck', component: PlaceholderPageComponent, data: { title: 'Your Paycheck', icon: 'rvt-file' } },
-  { path: 'marketplace', component: PlaceholderPageComponent, data: { title: 'IU Marketplace', icon: 'tag' } },
+  { path: 'student-life/marketplace', component: PlaceholderPageComponent, data: { title: 'IU Marketplace', icon: 'tag' } },
   { path: 'directory', component: PlaceholderPageComponent, data: { title: 'Directory', icon: 'address-book' } },
   { path: 'maps', component: MapsPageComponent },
 ];

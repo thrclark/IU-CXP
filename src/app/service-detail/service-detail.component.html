@@ -30,6 +30,7 @@
         <espd-header-nav-item route="/student-life/campus-dining">Campus Dining</espd-header-nav-item>
         <espd-header-nav-item route="/student-life/athletics">Athletics</espd-header-nav-item>
         <espd-header-nav-item route="/student-life/residential-services">Residential Services</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/marketplace">IU Marketplace</espd-header-nav-item>
       </espd-header-nav-list>
       <espd-header-nav-list label="Employee Center">
         <espd-header-nav-item route="/employee-center/human-resources">Human Resources</espd-header-nav-item>
@@ -39,7 +40,6 @@
       </espd-header-nav-list>
       <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
       <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
-      <espd-header-nav-item route="/marketplace"><i [espdIcon]="'tag'"></i> <span class="nav-item-label">IU Marketplace</span></espd-header-nav-item>
     </espd-header-nav>
   </div>
 </espd-header>
@@ -61,6 +61,7 @@
         <espd-sidenav-item route="/student-life/campus-dining"><span class="nav-item-label">Campus Dining</span></espd-sidenav-item>
         <espd-sidenav-item route="/student-life/athletics"><span class="nav-item-label">Athletics</span></espd-sidenav-item>
         <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Residential Services</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/marketplace"><span class="nav-item-label">IU Marketplace</span></espd-sidenav-item>
       </espd-sidenav-list>
       <espd-sidenav-list srLabel="Employee Center" [isCollapsed]="navState.expandedGroup !== 'employee-center'" [class.nav-group-selected]="navState.selectedKey === 'employee-center'" (click)="navState.select('employee-center'); navState.toggleExpanded('employee-center')">
         <span labelContent><i [espdIcon]="'rvt-user'"></i> <span class="nav-item-label">Employee Center</span></span>
@@ -72,7 +73,6 @@
       </espd-sidenav-list>
       <espd-sidenav-item route="/maps" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
       <espd-sidenav-item route="/notifications" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
-      <espd-sidenav-item route="/marketplace" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'tag'"></i> <span class="nav-item-label">IU Marketplace</span></espd-sidenav-item>
     </espd-sidenav>
   </espd-shell-sidebar>
 

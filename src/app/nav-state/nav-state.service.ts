@@ -3,7 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 /** The sidebar's top-level nav entries that can show the "selected" highlight. */
-export type SidebarNavKey = 'dashboard' | 'events-calendars' | 'student-life' | 'employee-center' | 'maps' | 'notifications' | 'marketplace';
+export type SidebarNavKey = 'dashboard' | 'events-calendars' | 'student-life' | 'employee-center' | 'maps' | 'notifications';
 
 /** Top-level entries that are disclosure toggles (no route of their own), as opposed to routed pages. */
 const MANUAL_OVERRIDE_KEYS: ReadonlySet<SidebarNavKey> = new Set(['events-calendars', 'student-life', 'employee-center']);
@@ -107,9 +107,6 @@ export class NavStateService {
     }
     if (path.startsWith('/notifications')) {
       return 'notifications';
-    }
-    if (path.startsWith('/marketplace')) {
-      return 'marketplace';
     }
     return null;
   }
