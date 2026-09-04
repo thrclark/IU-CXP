@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -8,6 +8,7 @@ import { ShellModule } from 'espd-common/layout/shell';
 import { SidenavModule } from 'espd-common/sidenav';
 import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
+import { NavStateService } from '../nav-state/nav-state.service';
 
 interface MapFilter {
   key: string;
@@ -39,6 +40,8 @@ const IU_BLOOMINGTON_MAP_EMBED_URL_WITH_TRANSIT = `${IU_BLOOMINGTON_MAP_EMBED_UR
   styleUrls: ['./maps-page.component.css']
 })
 export class MapsPageComponent {
+  protected navState = inject(NavStateService);
+
   mapUrl: SafeResourceUrl;
 
   filters: MapFilter[] = [

@@ -69,60 +69,57 @@ espd-shell {
   gap: 1.5rem;
 }
 
-.schedule-list,
-.dates-list {
+.events-list {
   display: flex;
   flex-direction: column;
-  gap: 0.875rem;
+  gap: 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.schedule-row {
+.events-row {
   display: flex;
   align-items: baseline;
   gap: 1rem;
 }
 
-.schedule-time {
+.events-when {
   flex-shrink: 0;
-  width: 4.5rem;
+  width: 6.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.events-date {
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--primary-color, #4141a3);
 }
 
-.schedule-course {
+.events-time {
+  font-size: 0.75rem;
+  color: light-dark(#6c757d, #adb5bd);
+}
+
+.events-title {
   font-size: 0.9375rem;
   font-weight: 600;
   color: light-dark(#243142, #fff);
 }
 
-.schedule-location {
+.events-location {
   font-size: 0.8125rem;
   color: light-dark(#6c757d, #adb5bd);
   margin-top: 0.125rem;
 }
 
-.dates-row {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-}
-
-.dates-when {
-  flex-shrink: 0;
-  width: 4.5rem;
+.events-description {
   font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--accent-color, #990000);
+  color: light-dark(#243142, #fff);
+  margin-top: 0.25rem;
 }
 
-.dates-what {
-  font-size: 0.9375rem;
-  color: light-dark(#243142, #fff);
-}
 
 .notification-menu {
   position: relative;

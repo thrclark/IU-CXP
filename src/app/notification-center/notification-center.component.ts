@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { HeaderModule } from 'espd-common/header';
@@ -7,6 +7,7 @@ import { SidenavModule } from 'espd-common/sidenav';
 import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 import { DropdownModule } from 'espd-common/dropdown';
+import { NavStateService } from '../nav-state/nav-state.service';
 
 interface NotificationItem {
   timestamp: string;
@@ -28,6 +29,8 @@ interface NotificationItem {
   styleUrls: ['./notification-center.component.css']
 })
 export class NotificationCenterComponent {
+  protected navState = inject(NavStateService);
+
   notifications: NotificationItem[] = [
     {
       timestamp: 'Aug 27, 2026, 9:15 AM',
