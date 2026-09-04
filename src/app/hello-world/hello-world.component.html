@@ -49,8 +49,20 @@
         <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
         <espd-header-nav-item route="/events-calendars/academic-calendar">Academic Calendar</espd-header-nav-item>
       </espd-header-nav-list>
+      <espd-header-nav-list label="Student Life">
+        <espd-header-nav-item route="/student-life/campus-dining">Campus Dining</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/athletics">Athletics</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/residential-services">Residential Services</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Employee Center">
+        <espd-header-nav-item route="/employee-center/human-resources">Human Resources</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/kuali-time">Kuali Time</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/epto">ePTO</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/your-paycheck">Your Paycheck</espd-header-nav-item>
+      </espd-header-nav-list>
       <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
       <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
+      <espd-header-nav-item route="/marketplace"><i [espdIcon]="'tag'"></i> <span class="nav-item-label">IU Marketplace</span></espd-header-nav-item>
     </espd-header-nav>
   </div>
 </espd-header>
@@ -59,16 +71,32 @@
 <espd-shell [collapsible]="false">
   <espd-shell-sidebar>
     <espd-sidenav label="Navigation">
-      <espd-sidenav-item route="/dashboard" [class.nav-suppressed]="navState.selectedKey === 'events-calendars'"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-sidenav-item>
-      <espd-sidenav-list srLabel="Events & Calendars" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars')">
+      <espd-sidenav-item route="/dashboard" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-sidenav-item>
+      <espd-sidenav-list srLabel="Events & Calendars" [isCollapsed]="navState.expandedGroup !== 'events-calendars'" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars'); navState.toggleExpanded('events-calendars')">
         <span labelContent><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></span>
         <div class="sidenav-popup-header">Events & Calendars</div>
         <espd-sidenav-item route="/events-calendars/my-classes"><span class="nav-item-label">My Classes</span></espd-sidenav-item>
         <espd-sidenav-item route="/events-calendars/campus-events"><span class="nav-item-label">Campus Events</span></espd-sidenav-item>
         <espd-sidenav-item route="/events-calendars/academic-calendar"><span class="nav-item-label">Academic Calendar</span></espd-sidenav-item>
       </espd-sidenav-list>
-      <espd-sidenav-item route="/maps" [class.nav-suppressed]="navState.selectedKey === 'events-calendars'"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
-      <espd-sidenav-item route="/notifications" [class.nav-suppressed]="navState.selectedKey === 'events-calendars'"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
+      <espd-sidenav-list srLabel="Student Life" [isCollapsed]="navState.expandedGroup !== 'student-life'" [class.nav-group-selected]="navState.selectedKey === 'student-life'" (click)="navState.select('student-life'); navState.toggleExpanded('student-life')">
+        <span labelContent><i [espdIcon]="'rvt-heart'"></i> <span class="nav-item-label">Student Life</span></span>
+        <div class="sidenav-popup-header">Student Life</div>
+        <espd-sidenav-item route="/student-life/campus-dining"><span class="nav-item-label">Campus Dining</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/athletics"><span class="nav-item-label">Athletics</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Residential Services</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Employee Center" [isCollapsed]="navState.expandedGroup !== 'employee-center'" [class.nav-group-selected]="navState.selectedKey === 'employee-center'" (click)="navState.select('employee-center'); navState.toggleExpanded('employee-center')">
+        <span labelContent><i [espdIcon]="'rvt-user'"></i> <span class="nav-item-label">Employee Center</span></span>
+        <div class="sidenav-popup-header">Employee Center</div>
+        <espd-sidenav-item route="/employee-center/human-resources"><span class="nav-item-label">Human Resources</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/kuali-time"><span class="nav-item-label">Kuali Time</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/epto"><span class="nav-item-label">ePTO</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/your-paycheck"><span class="nav-item-label">Your Paycheck</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-item route="/maps" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
+      <espd-sidenav-item route="/notifications" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
+      <espd-sidenav-item route="/marketplace" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'tag'"></i> <span class="nav-item-label">IU Marketplace</span></espd-sidenav-item>
     </espd-sidenav>
   </espd-shell-sidebar>
 
