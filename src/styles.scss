@@ -93,10 +93,13 @@ espd-shell .sidebar espd-sidenav-list > div.wrapper .link:hover {
 // Highlight "Events & Calendars" (label and chevron together, via the
 // .nav-group-selected class -- see NavStateService) whenever it's the
 // selected top-level item, whether or not its sub-items are currently
-// expanded. Clicking it selects it; clicking any other top-level item
-// (a real navigation) hands the selection to that item instead -- see the
-// .nav-suppressed rule below, which is how Dashboard/Maps/Notification
-// Center give up their own route-driven highlight when that happens.
+// expanded -- including when the true selection is one of its own
+// sub-pages (e.g. My Classes), so the top-level row and the active
+// sub-item are both highlighted together. Clicking it selects it;
+// clicking any other top-level item (a real navigation) hands the
+// selection to that item instead -- see the .nav-suppressed rule below,
+// which is how Dashboard/Maps/Notification Center give up their own
+// route-driven highlight when that happens.
 espd-shell .sidebar espd-sidenav-list.nav-group-selected > div.wrapper {
 	background-color: #328BB8 !important;
 	border-radius: 5px;
@@ -124,19 +127,6 @@ espd-shell .sidebar espd-sidenav-item.nav-suppressed .link[aria-current] {
 espd-shell .sidebar espd-sidenav-item.nav-suppressed a[aria-current] .nav-item-label,
 espd-shell .sidebar espd-sidenav-item.nav-suppressed .link[aria-current] .nav-item-label {
 	font-weight: 400 !important;
-}
-
-// Conversely, once you've actually navigated into one of the group's own
-// sub-pages (e.g. My Classes), that sub-item is the true selection -- defer
-// to its own highlight instead of also highlighting the parent trigger row.
-// (Placed after the rule above so it wins when both conditions are true.)
-espd-shell .sidebar espd-sidenav-list:has(espd-sidenav-item a[aria-current]) > div.wrapper {
-	background-color: transparent !important;
-	border-radius: 0 !important;
-}
-
-espd-shell .sidebar espd-sidenav-list:has(espd-sidenav-item a[aria-current]) > div.wrapper > button {
-	color: #a0abb4 !important;
 }
 
 // Active sidebar item: rounded highlight instead of the library's default
