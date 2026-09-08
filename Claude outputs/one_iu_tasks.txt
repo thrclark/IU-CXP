@@ -1,0 +1,1012 @@
+Canvas
+Exchange Online
+Kuali Time
+View/Pay Bursar Bill
+Student Center
+My Class Schedule
+BUY.IU
+SER - (Student) Student Engagement Roster
+Parent or 3rd Party User Access (Non-students)
+Student Information System (Administrative)
+View/Manage My Financial Aid Information
+IU Print (Mobile)
+Student Appointment Scheduler
+Stellic
+Kuali Financial System (Authorized Users)
+Employee Center
+Paid Time Off
+Emburse Enterprise (formerly Chrome River)
+Passphrase Reset
+Advising Records
+iGPS Plan (Student) (IU Indy, IUB)
+Microsoft 365
+25LivePro
+Buy/Sell/Trade
+HRMS
+Action List
+IU Scholarships
+Zoom
+View Unofficial Transcript
+eDrop /eAdd Classes
+Faculty Center
+Direct Deposit of Bursar Refunds
+Search Schedule of Classes/Courses (Public)
+IUIE
+View Grades
+MMS (Maintenance Management System)
+Indiana University Faculty and Staff Salary Listing
+SOAR
+Qualtrics
+Bus Tracking (IUB)
+eDrop/eAdd Worklist
+Administrative Center
+CRM
+IUanyWare
+Create My First IU Account
+Microsoft Teams
+Prevention Education - IU Bloomington Students (IUB)
+Document Search
+View Accounts
+Grants Management Toolkit
+Parking Permit
+All IRB Services
+Egencia
+Paycheck Details
+Marketing Cloud
+University ID
+Class Registration
+Payroll
+IU Bookstore
+To Do List
+I-9/E-Verify Login
+SER - (Faculty) Student Engagement Roster
+Health Savings Account (HSA) & Flexible Spending Account (FSA) Login
+IU Dining Meal Plans (IUB)
+Set Up Parents or 3rd Party Users (Students)
+Atlas
+Software Downloads
+Microsoft Copilot
+Staff Positions for Current IU Employees
+IU Housing - Bloomington Laundry Alert (IUB)
+eTranscript Request (Recent Students)
+Title IV Financial Aid Authorizations
+Kaltura MediaSpace
+eDossier System
+Jobs at IU
+IU Mobile for IOS
+View SIS eDocs
+Financial Aid Assistance (IUB)
+University Library Study Room Reservation (IU Indy)
+Personal Information
+IU REDCap
+The Spot (IU Indy)
+Fidelity NetBenefits
+Staff Positions for All External Candidates
+Adobe Creative Cloud
+Reset IU Guest Password
+Prevention Education - IU Indianapolis Students (IU Indy)
+Medhub
+New Employee Activity Guide
+Make a deposit to your CrimsonCard
+Background Check Login
+Google Gemini
+PeopleAdmin Faculty Applicant Tracking System
+My IU Compliance
+View Class Rosters
+Two-Step Login (Duo)
+Paycheck Direct Deposit
+Self-Service Portal (Duo)
+Enrollment Shopping Cart
+IU Career Navigator
+beINvolved (IUB)
+IU Organizational Chart
+Create Additional Accounts
+Account View Report
+eTranscript Request (Former Students)
+Brightspace (IUFW)
+Enrollment Verification Certificate (IUB)
+Kiosk Admin Dashboard
+Conflicts of Interest and Commitment (COI-C) Disclosure Form
+Campus Administrative Registrar Transactions (IUB)
+Crimson Advancement System
+Academic Advisement Report (IU Indy, IUB)
+Secure Share
+Alumni Gmail
+Google at IU
+Grants and Contracts
+WebAdMIT
+OnCore
+Late Drop Add Classes (Administrative)
+Cougar Life (IUK)
+Acceptable Use Agreements
+CITI Training at IU
+IU eTexts Portal
+Person Lookup
+Student Central
+Degree Map Search (Login Required) (IU Indy, IUB)
+View/Order Textbooks/Course Materials (Students)
+Web Content Management System
+ORA Departmental Management Dashboards
+Distributed Schedule of Classes (DSOC)
+Register Wireless IoT Device
+Accessible Educational Services (AES) Student Portal (IUB)
+Student University ID Lookup
+Library Catalog
+Transfer Credits
+Manage Student Aid – Federal
+Payroll WorkCenter
+Tickets (IUB)
+Slate Graduate Admission-Administrative
+Application Status
+Academic Calendar (IUB)
+OneSearch@IU (IUB)
+Tuition & Fee List
+Immunization Compliance
+Drop Classes
+Titan Atlas (IUSB)
+Grade Distribution (IUB)
+IU Bloomington Housing Applications (IUB)
+Floorplans
+Slate RCOE Administrative Launch (IUE, IUK, IUSB, IUS, IUFW, IUN, IUC)
+Top Hat
+FireForm
+IU Address Book
+IU Directory
+IU Mobile for Android
+IU Knowledge Base
+LinkedIn Learning
+Handshake
+UITS Support Center
+Record Holds
+Meal Plan (IUS)
+Parking Availability in Indiana University Indianapolis Garages (IU Indy)
+Library Resources A to Z (IU Indy)
+GitHub Enterprise
+Campus Map and Directions (IU Indy)
+Wired Device Registration (IU Indy, IUB)
+Accessible Educational Services (AES) Student Portal (IUE, IUK, IUSB, IUS, IUN)
+Classroom Database
+Confluence
+OCQ Student Dashboard (IUB)
+AI at IU
+Shorten URL
+Fax service
+Track My SIS eDocs
+Group Accounts
+Benefit Details
+REALLMS Service
+Create IU Guest account
+ACM: Group Management
+Research-Related Conflict of Interest Disclosure Form
+Faculty Funds Tracker (IUB)
+Reserve a Classroom (IUB)
+CFS Resource Center
+IU Athletics (IUB)
+Kuali Hub - Dashboard
+Financial Aid Assistance (IU Indy)
+Parking Citation
+eGrade Change Worklist
+Human Resources
+IUB Libraries (IUB)
+Course Bulletin Descriptions and Academic Bulletin (IUB)
+View Syllabi
+Tuition & Fees Dispute Appeal Form
+Maintenance Request (IUB)
+IU Events Calendar Publisher Login
+IUI Campus Dining Plans (IU Indy)
+Controller's Office Reporting Tools
+Bus Schedule & Routes (IUB)
+TimelyCare (Student)
+Crimson Catalog
+Staff Expanded Review
+IU Indianapolis Libraries (IU Indy)
+Bus Routes (IUSB)
+Financial Aid Assistance (IUN)
+Citizenship Verification
+Change Name
+Emergency Notification Settings
+Paycheck Modeler
+Google NotebookLM
+Library Resources A to Z (IUB)
+Employee Information
+University Event Registration (UERC)
+Prevention Education - IU South Bend Students (IUSB)
+Affiliate Accounts
+Final Exams (IUB)
+Cloud Storage
+Order Textbooks/Course Materials (Faculty)
+iLab Research Cores
+eTranscript Request (Administrative)
+W-2 Tax Form
+Academic Careers at IU
+Security Center
+Elements @ IU
+ServiceNow
+DENTNET (IU Indy, IUFW)
+IT Support Request (IUS)
+1098-T Tax Form
+IU School of Social Work (Internal Portal)
+Student Academic Calendar (IU Indy)
+User/Group Lookup (Admin)
+JIRA Cloud
+AIM (IU Indy, IUB)
+Employee Active Jobs Lookup
+Prevention Education - IU Southeast Students (IUS)
+Document Services
+Financial Monthly Management Resources
+IDS News (IUB)
+ScholarTrack
+FAST - Financial Analyst Support Tool (IU Indy, IUB)
+Ask Student Central (IUB)
+DSS Schedule Status
+Course List
+Events Calendar
+Federal Aid Application (FAFSA)
+Class Descriptions
+Housing (IU Indy)
+Travel Management Services
+Commitment Tracking System
+Passphrase Recovery Email
+Full Text Online Journals: Search or Browse (IUB)
+Stellic Knowledge Base
+Request Systems Access including SIS
+Stop Payment Request - Bursar Refunds
+Accounts Receivable Customer Invoice
+Tuition Benefit
+Review Remonstrance List
+Job Search (IUS)
+Electronic Diploma
+Advisor Assign
+Hiring Managers
+Office of the University Controller
+Advising (IU Indy)
+Nutrition Information for Food Products (IUB)
+IU Check Status - IUIE Report
+Student Center Videos
+IU Print (Allotment)
+Adobe Firefly
+Paycheck Modeler (Savings Tool for Academic 10-pay)
+e-Builder
+Research Administration Dashboards
+Benefits Statement
+Total Rewards
+Enrollment Verification Certificate (IU Indy)
+Submit eGrade Change (Instructor)
+Update My Major (IUS)
+Request GI Bill Certification
+IIDC Request for Leave
+New Employee Orientation
+Bursar Medical Documentation
+Status.IU
+Family Medical Leave Act (FMLA) and Paid Parental Leave (PPL) Online Request
+IU East Library (IUE)
+IU Kokomo Library (IUK)
+IU Print (Quota/Credits)
+Prevention Education - IU East Students (IUE)
+IU Credit Union
+Jobs for Jags / Office of Student Employment (IUI) (IU Indy)
+MoneySmarts
+IU Expand
+Events Calendar (IUB)
+Treasury SAE Credit Card Training
+Report Scholarship (IUB)
+IUSM Request Forms
+Initiate New Course/Course Change Request
+Ph.D. Nomination of Research Committee (IU Indy, IUB)
+ACE Tutoring @ IU South Bend (IUSB)
+FERPA Tutorial
+Software and Services Selection Process (SSSP)
+Emergency 911 Acknowledgement Statement
+Explore Programs (IUB)
+APPEAR
+Sponsor Voucher/Authorization for outside sponsor
+eEALR Worklist
+Kuali Hub - Action List
+O'Neill Intranet (IUB)
+Course Questionnaire Data Manager
+Credit Transfer Service (IUB)
+IU Faculty & Staff Complimentary Athletics Tickets (IUB)
+Prevention Education - IU Columbus Students (IUC)
+Enrollment Verification Certificate (IUFW)
+IU Southeast Library (IUS)
+Online Course Questionnaires (IUB)
+Office of Overseas Study
+SPH-B Forms (IUB)
+McKinney Law Website (IU Indy)
+The Student Guide to IU eTexts
+Lookup-Conflict of Interest and Commitment (COI-C)
+IU Housing - Bloomington Occupant Door Access Request (IUB)
+Nomination to Candidacy for the Ph.D. Degree Application (IU Indy, IUB)
+Financial Aid Assistance (IUC)
+Participant Payments
+Master's Application for Advanced Degree (IU Indy, IUB)
+Access Coordinator Lookup
+Request Lecture Capture
+Kiosk Startup
+IU Surplus Stores
+Online Course Questionnaires (IU Indy, IUE, IUK, IUSB, IUS, IUN, IUC)
+Employer Deferment Form
+View My Experiential & Applied Learning Record (Student)
+Use Agreement and FERPA Compliance Check
+SPH-B Marketing & Communications (IUB)
+IUB Tabling Request Form (IUB)
+RoboHead (IUK)
+Campus Events (IUE)
+Bursar External Upload
+MoneySmarts Calculator
+Accessible Educational Services (AES) Student Portal (IU Indy, IUC)
+TransferAnswers (IU Indy)
+Slate Indianapolis Administrative Launch (IU Indy)
+Prevention Education - IU Northwest Students (IUN)
+Tutoring (IUB)
+External Email Flagging
+IU Housing - Bloomington Parking (IUB)
+What-If Academic Advisement Report (IU Indy, IUB)
+Paw's Pantry (IU Indy)
+Franklin D. Schurz Library (IUSB)
+ITHelpLive
+Procurement Card Information
+WeVideo (formerly PlayPosit)
+Institutional Biosafety Committee (IBC) Protocol Submissions
+Purchasing Website
+VPR Internal Funding
+Ruth Lilly Medical Library (IU Indy)
+Financial Aid Assistance (IUE)
+Financial Aid Assistance (IUK)
+Walter Center for Career Achievement (IUB)
+Advance Deposit (AD)
+The Office of the Dean of Students (IU Indy)
+Intent to Enroll - Decline (IUN)
+Weeks of Welcome (WOW) (IU Indy)
+Purchasing and Accounts Payable Support Form
+SIS Document Search
+INFO I101 Lab Mailbox (IUB)
+SPH-B Tech Request (IUB)
+Research Administration SharePoint
+Certification for Use of Personally Owned Devices
+Events Calendar (IU Indy)
+Course Bulletin Descriptions and Academic Bulletin (IUC)
+IT Training: Watch Videos
+Free Dental Care - Indiana (IU Indy)
+Experiential & Applied Learning Record (Administrative)
+ORC Training Research Compliance Look-up Report (CITI Training Only)
+Career Exploration & Student Employment (IUB)
+Federal W-4
+Health and Wellness (IU Indy)
+Counseling and Psychological Services
+Travel Reimbursement Direct Deposit
+Foreign language placement exam (IUB)
+Parking Appeals Administration
+Benefit Changes & Life Events
+DIRDEP Bank Reject
+W-2 Electronic Consent
+Study Abroad 101
+Life Event
+Apply IU Admin Center
+Kelley Connect (IUB)
+Current SPH-B Students (IUB)
+Records Retention Schedule
+Campus Map and Directions (IUS)
+FA Automatic Awards
+BaTMan 2.0 - Balance and Transaction Manager
+Update Major, Minor, or Certificate (IU Indianapolis) (IU Indy)
+Financial Aid Assistance (IUS)
+IU Indianapolis Today (IU Indy)
+Campus Map and Directions (IUB)
+Apply Security
+Loan Cancellation/Reduction Request Form
+Test and Other Credit
+IIDC Business Office Database (IUB)
+Graduate School Awards and Fellowships (IUB)
+Office for Research Administration
+Duo
+Annual USO Membership Due Request (IUB)
+Academic Calendar (IUFW)
+Apply to Graduate (IUS Undergraduates and Graduates) (IUS)
+Request or Modify an Audit or Pathway
+Academic Calendar (IUSB)
+IT Training Center (IUK)
+Job Aids / Training Resources
+Online Writing and Math Support
+Online Room Reservation (IU Indy, IUE, IUK)
+Ask Questions
+Library Databases A to Z (IUK)
+SIS CRM Force Integration
+Course Bulletin Descriptions and Academic Bulletin (IU Indy)
+Report your CrimsonCard lost or stolen
+Academic Calendar (IUK)
+Prevention Education - IU Kokomo Students (IUK)
+Advising & Major Exploration Services (AMES) (IUB)
+529 College Savings Plans
+Personnel Action Request (IUSB)
+Cancel Housing Contract, Appeal Charges, Request Residency Exemption (IUB)
+1095-C Statement
+IUSM Financial Reports Dashboard
+Driver's License Check - Volunteers
+Maintenance Request (IU Indy)
+Report IU Secure Outages
+goPFW (IUFW)
+Submit eSpecial Credit (Administrative)
+Request IT Help at Regional Campus
+IT Training: Earn Credentials
+Intent to Enroll - Acceptance (IUN)
+Apply to Graduate (IU indianapolis Undergraduates) (IU Indy)
+OnBase (Authorized Users)
+Shuttle Tracking (IU Indy)
+RT Projects
+Workflow Rule Delegations
+Search for Online Classes
+SSN/educational tax credit verification
+Talent Acquisition Hot Job Request
+Food Pantry - St. Vincent Depaul (IU Indy)
+Treasury Revenue Processing Training
+IU Indianapolis Athletics (IU Indy)
+FREE Courses (IU Indy)
+Position Description for Staff Employees
+Fee Remission Request Form (Administrative)
+IU Notifications
+ScholarWorks (IU Indy)
+Food Pantry and Clothing Closet (IU Indy)
+IU Online Course Test Drive
+eSource + EDC
+Payment Plan Termination
+Approval Request
+Problem Report
+Withdrawal from all Subjects – IUB Only (IUB)
+Bylaws, Policies & Procedures (IU Indy, IUB, IUFW)
+Chronicle of Higher Education (IU Indy, IUE, IUK, IUSB, IUS, IUB, IUN, IUC)
+Motor Pool (IUB)
+Request a SharePoint Site
+State & Local Tax Withholding
+Research Desktop (RED)
+FERPA Information
+UITS Part-time Employee Requests
+Update Grade Rosters
+Academic Calendar (IUS)
+Majors, Minors, and More Fair (IUB)
+Duplicate Tax Form Request
+Student Travel Safety
+Verify Acceptable Use Agreement Completion
+Classrooms (IU Indy)
+New System User Role Lookup
+My HPC User Statistics
+O'Neill - Current Students (IUB)
+Learning.IU
+Course & Subject Research Guides (IUS)
+Request Facilities Services (IUK)
+Search Archived KC IRB Protocols
+My Account
+IU Newsroom
+Food Services Form (IUK)
+Counseling and Psychological Services (IU Indy)
+Pivot
+Accessibility Educational Services (IUK)
+FNIS - Foreign National Information System
+Telecom Services Request
+Maxient
+IU East Honors Program (IUE)
+Ask A Librarian (IUB)
+Assignment List (IU Indy, IUB)
+Bloomington Diplomas (IUB)
+Zotero
+Object Code Lookup
+Microsoft 365 Consultation
+O'Neill Career Hub (IUB)
+Close Bloomington SOA Account
+Office of Career Services (IUN)
+Employee Resources (IU Indy, IUB, IUFW)
+IU 457(b) Supplemental Retirement Plan for All Employees
+Meal Plans (IUK)
+The Mathematics Assistance Center (IU Indy)
+Admissions Confirmation (IUSB)
+IU Southeast Library Study Room Reservation (IUS)
+Pre-Approval of External Activities Request Form
+Driver's License Check
+Prevention Education - IU Fort Wayne Students (IUFW)
+Request Institutional Data Storage
+Apply for Graduate Exchange Program (International)
+IU Northwest Library (IUN)
+AI at IU Developer Toolkits
+Applied Health Science (IUB)
+Kelley Advising Student Portal (IUB)
+Fringe, Retirement, Facilities and Administrative Rates
+Manage IU Guest account
+Salary Expense Transfer (ST)
+UITS External Invoicing Application
+O'Neill Master's Programs Office (IUB)
+Request to Charge Course Fee
+Daily Titan (IUSB)
+Submit a Care Referral (IUB)
+JagNews (IU Indy)
+Account Delegate Lookup
+Ph.D. Commencement Participation Application (IUB)
+Event Planning (IUK)
+Kuali Hub - MyDocuments
+Ph.D. Defense Announcement (IU Indy, IUB)
+General Education Courses (IUB)
+IUSBCareers (IUSB)
+Research Database Support
+Report Classroom Problem (IU Indy)
+Indiana Hoosiers Gameday Live
+IU Health Virtual Visits
+Student Outreach Free Clinic (IU Indy)
+Human Resources Policies
+Indiana Clinical and Translational Science Institute (CTSI)
+Request Account
+Workers' Compensation
+IUSD - ODIDH - Clinical Technology Support Request (IU Indy, IUFW)
+Campus Dining Experience (CDE) - IUSB (IUSB)
+Academic Calendar (IUN)
+Form I-9 E-verify Training
+Classrooms (IUB)
+AM360 Dashboards
+Course Bulletin Descriptions and Academic Bulletin (IUSB)
+IU Podcast: Through the Gates
+Submit eGrade Change (Staff)
+Emergency Contacts
+Report Internships, Experiences, and Outcomes (IUB)
+Academic Analytics (IU Indy, IUB)
+Luddy Intranet (IU Indy)
+Financial Resources
+Convera International Payment
+Data Storage
+Daily RedHawk (IUN)
+Request for Individualized Minor (IU Indy, IUB)
+COLL+IT-Zone4/CITO Help Request Form (Now Part of CITRIS) (IUB)
+Dell Store for IU
+Software Consultation
+Certificate of Insurance
+University Event Registration (UERC) Administration
+Training and Organization Development
+BL-SPHB Finance Site (IUB)
+Who accepts CrimsonCard as payment
+Placement Testing (IUN)
+Writing Center (IUN)
+SPH Internships (IUB)
+Interlibrary Loan (ILL) & Document Delivery (IUB)
+View Existing Requests (IUN)
+International Student Services (IUK)
+IU Advisor Training
+Student Award Request System (IUB)
+Controller Contact Form
+First Aid - CPR Classes
+Course Descriptions and Academic Bulletin (IUK)
+Staff Governance (IU Indy, IUB, IUFW)
+Service Billing (SB)
+Design Request
+Enterprise Information Governance
+Campus Map and Directions (IUE)
+Student Academic Center (IUB)
+Enrollment Verification Certificate (IUSB)
+E Training
+Course Bulletin Descriptions and Academic Bulletin (IUS)
+Benefits Customer Service Contacts
+Accounts Receivable Credit Memo
+Tutor Matching Service (IU Indy)
+Event Scheduler (IUN)
+eRegulatory Management System (eReg)
+IU Peer Coaches (IUB)
+Project Highlights of UITS Research Technologies
+INFO I300 Instructor Mailbox (IUB)
+IQ-Wall Visualization Resource (IUB)
+AskHR
+Writing Help (IU Indy)
+IUSM Policies
+Submit Application for an International Agreement
+Advanced technical training
+Jira Requests
+Kelley Direct Programs (IUB)
+Faculty/Staff Hire/Termination Request (IUN)
+UITS Research Technologies Service Request
+Intercampus Transfer – Temporary
+Search in OneSearch (IU Southeast) (IUS)
+Request Tracking System (IU Indy)
+Accounting and Finance Training Offerings
+Workflow Group Lookup
+UITS Internal Resources
+Financial Aid Assistance (IUSB)
+Approved Caterers
+EConfirm
+Dental Clinics (IU Indy)
+ACP Payment
+IU-OCR
+MoneySmarts U
+Hospitality Request Form (IUB)
+Foundation Directory Online (Candid) (IU Indy, IUE, IUK, IUSB, IUS, IUB, IUN, IUC)
+Legal Probono Services (IU Indy)
+Asset Lookup
+Campus Map and Directions (IUSB)
+Furniture Request
+Bus Routes (IUS)
+Request HRMS Access
+SPH-B Grants Admin (IUB)
+Create Cash Receipt
+Campus Tour (IUB)
+PSIA 360 Dashboard
+Transfer Admission (IUB)
+Orientation (IUN)
+Office of the Vice President for International Affairs
+Certificate of Insurance - Film Students
+Grades Forgiveness Console (IUB)
+Open Access Policy (IU Indy)
+eProcure (IUB)
+Library Resources A to Z (IUN)
+Academic Help Videos
+Hoosier Rideboard
+Momentum
+Service Request (IUB)
+HTS Service Request
+IU Events Momentus
+RedHawk Link (IUN)
+ILLiad (Interlibrary Loan) (IUN)
+General Accounting Adjustment (GEC)
+Add/Remove User Access Request (IU Indy)
+Licensed HPC Software
+External Identification Numbers
+IU Data Management Plan
+Service Request Lookup (IUB)
+ORA Institutional Reporting Dashboards
+UITS Hospitality Requests
+IU Check Stop Payment FireForm
+IU Southeast Writing Center (IUS)
+Disabilities Help (IU Indy)
+Cole Wellness and Fitness Student Membership (IUK)
+Audit a Class (IUB)
+IUSM EAD Research Commitments
+Data Use Tutorial
+College IT Research, Infrastructure, and Support (CITRIS) Help Request (IUB)
+Incident Reporting Form
+Math Help (IU Indy)
+Center for Teaching and Learning (IU Indy)
+IUB Core Research Facilities & Equipment
+IT Training: Explore Topics
+Office of Career Services (IUE)
+Distribution of Income and Expense (DI)
+Analysis and Software Delivery and Support
+CyberRiskMS Roadmap/Plan of Study (IUB)
+Major and Minor Updates for IU Northwest (IUN)
+Wingspan (IUN)
+SPH-B Web Request (IUB)
+Report a Compliance Concern
+Classroom Technology Services (IUB)
+Design Request Lookup
+Services for Biomedical, Biological, and Health-related Research
+Website Privacy Notice Generator
+Marketing & Communications (IU Indy, IUB, IUFW)
+Mentoring 21st Century Scholars
+Proposal Development Services
+Career Development Center (IUS)
+Course-Specific Research Guides (IUB)
+O'Neill Undergraduate Program Office (IUB)
+Suicide Assessment (IU Indy)
+Math tutoring (IUN)
+SPH-B Facilities Request (IUB)
+AskORA
+UITS BaTMan
+ORA Unfunded Agreement Request
+IU Check Image Request
+All Maintenance Services
+Campus Networks Portal
+IT Training: Request a Session
+Transfer Courses (IUE)
+Consulting for Supercomputing
+Career Services Office (IUSB)
+Bloomington Only: Math Placement Exam (IUB)
+Office of The Treasurer
+Flywire International Payment
+Enrollment Verification Certificate (IUN)
+Collaboratory (IUK)
+Ph.D. Research Committee Change (IU Indy, IUB)
+Student Mental Health
+IU Global
+Payroll Year-To-Date
+Stop Sexual Violence
+Transfer Courses (IUSB)
+Think Before You Click
+Class Permissions
+Topaz Elements (IUB)
+Apple
+Jetstream2 - Cloud Computing Resource
+TrialX Connect (formerly iConnect)
+Course Bulletin Descriptions and Academic Bulletin (IUFW)
+IUS Athletics (IUS)
+Undergraduate Admission
+Zipcar (IUB)
+SPH-B HR Toolkit (IUB)
+Outreach to Students in the State of Indiana
+Building List
+Java Config Browser
+Media Collections Online (MCO)
+Luddy Internship for Credit (IUB)
+IU eTexts: A Faculty and Staff Introduction
+Teaching.IU
+Addictions and Recovery (IU Indy)
+Indianapolis Community Clinics (IU Indy)
+IU Facilities Statement
+Data Center Proxy
+SPOL (IUS)
+Account Lookup
+Asana
+UITS Getting Started
+Grenadier Central (IUS)
+OEM/EMTS IT Support (IUB)
+Incident Report (Injuries and Damages)
+Math Placement Testing (IUE)
+StandOut (IUB)
+Red Fox Social (IUFW)
+Letters of Support for IU Researchers
+Student Data System Inventory
+Student Data Requests & Data Steward Support Form
+Performance at IU Attestation
+Mathematical Software Support and Services
+Scholarly Data Archive (SDA)
+Watermark Student Learning and Licensure (IUB)
+Chart Review
+Resource Allocation Center
+Trinity Free Clinic - Faith-based (IU Indy)
+Slate Transcription Submission (IUB)
+All IN for Health
+IU Manifold
+Data Storage Finder
+SPH-B Master Events Calendar (IUB)
+Math Placement Testing (IUK)
+Math Placement Testing (IUFW)
+IT News
+Remote Work Arrangement System
+Academic Calendar (IUC)
+PayMyTuition International Payment
+Chemistry Placement Exam (IUB)
+Report Malware Domains
+Luddy Forms (Bloomington) (IUB)
+Collaboratory (IUSB)
+Child Safety Support (IU Indy)
+Derdack
+Academic Calendar (IUE)
+Code of Conduct
+IU Real Estate (IUB)
+Foreign Travel - Restricted Countries
+Car Trouble Parking and Escort Services (IU Indy)
+Classroom Technology Services (IU Indy)
+Enrollment Verification Certificate (IUC)
+Online RPA System
+IU Human Resources Training
+Permission Lookup
+SPH-B Academic Council (IUB)
+Defense Signature Collection (IUB)
+Donor Sign Up
+Maintenance Request Lookup
+Learn About One.IU
+Collaboratory (IU Indy)
+Media Production Request (IUN)
+Request for Revalidation of Coursework (IU Indy, IUB)
+Transfer Courses (IU Indy, IUC)
+Open Computer Labs (IUS)
+Computation
+Luddy Student Portal (Indianapolis) (IU Indy)
+Marathon Health
+Executive Degree Programs (IUB)
+Walter Center Success Network (IUB)
+Exception Reporting System
+Jacobs School of Music UGRD Planner (IUB)
+Graduate Student Funding for International Activities
+Career Center (IUK)
+Military-Connected Student Services (IU Indy)
+OnBase Support Request Form
+SPH-B Academic Council Guidelines (IUB)
+Bus Routes (IUK)
+Wells Learning Commons (IUB)
+ID Billing
+Career Planning Budget Benefits (IU Indy)
+ORA Workload Dashboards
+Lab Animal Billing System (IUB)
+PASS: Peer Assisted Study Sessions (IUB)
+Emergency Contact Phone Numbers
+Phishing Education and Training
+Enrollment Verification Certificate (IUK)
+Indiana's Private Cloud
+IUScholarWorks (IUE, IUK, IUSB, IUS, IUB, IUN)
+EDSD Support Form
+(Retired/Legacy) Search Interview Request Documents Only
+Guides and Job Aids (IUB)
+Open Interim RLML Website
+IU Housing - Bloomington Damage Appeal (Apartment Housing) (IUB)
+Stellic Data Feed Dashboards
+Foundation Endowment Management (FEM)
+Residence Life and Housing (IUS)
+Luddy - Current Undergraduate Students (IUB)
+About US (IU Indy, IUB, IUFW)
+IU Mexico Gateway
+Orientation Checklist (IUB)
+SPH-B Deans' Office Guidelines (IUB)
+Amazon Web Services @ IU
+Programs Involving Children
+Parent/Guardian Information
+SecureMyResearch
+Proposal Development Services (PDS) Request Form
+Campus Alerts
+IUS Orientation Registration (IUS)
+Indiana University Cinema (IUB)
+Report Water Pollution
+Routing Report
+Guardian
+Weave Online
+Final Exams (IUN)
+Employee Assistance Program (EAP)
+Indiana Sale Tax Purchases Matrix
+Extinguisher Information - Public
+Education, Outreach, and Training Highlights of UITS Research Technologies
+New Virtual Machine Resource Pool Request
+Division of Student Affairs (IU Indy)
+Responsibility Lookup
+Luddy Forms (Indianapolis) (IU Indy)
+Collaboratory (IUE)
+Education, Outreach and Training for Visualization, Interaction, and Advanced Media
+Collaboratory (IUFW)
+Center for Students in Transition - SIT (IUB)
+IU Today
+Grant Support
+HSCI Health & Wellness Waiver Request (IUK)
+IU MoneySmarts Team
+School of Public Health Graduate Student Onboarding Program (IUB)
+Building & Safety (IU Indy, IUFW)
+Student Organization Transportation Request (IUB)
+Office for Research Administration (ORA) Training Resources
+Routing and Identity Management Document Type Hierarchy
+Campus Administrative Team Series (IUB)
+Transfer Courses (IUK)
+Geographic Information Systems (GIS) software
+Approved Chartered Buses
+Disability - Deaf Resources (IU Indy)
+(Retired/Legacy) Search Offer Request Documents Only
+Create Templates (Administrative)
+Asset Retirement Global (ARG)
+Staff Council (IU Indy)
+Template for an International Agreement
+IU Indianapolis Faculty/Staff Center
+Role Lookup
+Asset Payment Lookup
+Science on a Sphere Visualization Resource (IUB)
+Sunapsis
+Create Account & Schedule Appointment (IUK)
+IU COVID-19 Info
+Drones
+Internal Billing (IB)
+Campus 411 Information (IU Indy, IUB)
+Faculty Funding for International Activities
+Research Security Training
+Decision Support: Reports
+Denodo
+OVPR Internal Order Form (IUB)
+Advancement Connect
+Services in Support of Cyber-risk Mitigation and IT-28 Mitigation
+Data Protection & Privacy Tutorial
+Workflow Rules
+Enrollment Verification Certificate (IUE)
+Orientation Reservation System (IU Indy)
+IIDC Proposal Request Form
+IIDC Proposal Admin
+FLSA (Fair Labor Standards Act) Questionnaire
+Graduate School Fellowships and Awards (IUB)
+Course Bulletin Descriptions and Academic Bulletin (IUE)
+CircleIn (Student) (IU Indy, IUE, IUK, IUSB, IUS, IUN)
+Slate Jacobs School of Music Admin Launch (IUB)
+Add/Remove User Access Request (GSB Bloomington Only) (IUB)
+IIDC KB: Knowledge Base
+Mentoring Coaching Tutoring (IU Indy)
+Vendor Information Packet
+UITS Financial Report Search
+IU Columbus Library (IUC)
+One Degree Imager - Portal, Pipeline, and Archive
+Informatics Forms (IUB)
+Campus Elections (IUSB)
+Cornell Notes for Students
+Training About Research Computing and High Performance Computing (HPC)
+ORA Collaborator Request Form
+Budget Construction Canvas Course
+ParkMobile
+Apply for Faculty Exchange Program (International)
+Final Exams (IUS)
+Cash Receipt (CR)
+Statistical Software Support and Services
+Informatics Forms (Admin) (IUB)
+Connect to Help - 211 (IU Indy)
+Change Order Request Form (IUB)
+Campus Events Calendar (IUS)
+Maintain Templates (Administrative)
+Training
+IT Training: Upcoming Events
+(Retired/Legacy) Search Waiver Request Documents Only
+Research Compliance Courses
+Transfer of Funds (TF)
+Ascend Network Connection
+Subject Research Guides (IU Indy)
+Healthy IU — Your Workplace Wellness Program
+(Retired/Legacy) Search All Academic Position Documents
+IU Housing - Bloomington Damage Appeal (Residence Halls) (IUB)
+Software Installation Request
+Sophia
+Background Check Training
+Tenable at IU
+Office for Research Compliance
+Math Placement Testing (IUC)
+eDocLite
+O'Neill School Website (IUB)
+New Student Orientation Advising Pass (IUB)
+Conference Accounts
+IU Indianapolis Black Faculty & Staff Council (BFSC) (IU Indy)
+Mobile Device Security
+Skillport 8i Library (IU Indy, IUK, IUS, IUB, IUN, IUC)
+IU Policy on Hospitality (allowable/unallowable expenses)
+Math Placement Testing (IUN)
+IUSM LARC Billing
+Slate Bloomington Process Administrative Launch (IUB)
+Course Bulletin Descriptions and Academic Bulletin (IUN)
+Furniture Request Lookup
+3D Stereoscopic Video Camera Rigs (IU Indy, IUB)
+SPH-B Emergency Information (IUB)
+Diversi-Fi for Diversity, Equity, and Inclusion
+Academic and Career Help (IU Indy)
+Faculty Research Resources (IU Indy, IUB, IUFW)
+Event Scheduler (Admin) (IUN)
+HR2020
+PackLife (IUE)
+Honors Courses (IUB)
+Faculty Governance (IU Indy, IUB, IUFW)
+Report Classroom Problem (IUB)
+State Tax Offset Inquiry Form
+Request a website
+Engage the Pride (IUC)
+Guides and Job Aids (IU Indy)
+Enrollment Verification Certificate (IUS)
+Budget Adjustment (BA)
+Campus Map and directions (IUN)
+IT -FACULTY & STAFF- Help Request (IU Indy, IUB, IUFW)
+Keep Teaching
+Accessibility Evaluations
+Visualization Facilities and Services
+Your Vote Counts (IU Indy)
+Salary Transfer Form (IUB)
+Practice Plan Recovery (Comptracker)
+Payment by High School for ACP
+IU Europe Gateway
+Office of the Vice President for Research
+University Legions Post 360 (IU Indy)
+Sponsor Account Payment Form
+UITS Full-time Employee Requests
+Pass Through Fee Request Form (IUS, IUB)
+IQ-Tilt Visualization Resource (IU Indy, IUB)
+IUSM Research Forms
+Executive Reservations (IUB)
+Reverse Transfer
+Cole Wellness and Fitness Employee Membership (IUK)
+Request For Substitution or Waiver of Program Requirements (IUB)
+KINES Departmental Information (IUB)
+Orientation Portal (IUB)
+University Policies
+IUIE Registration
+Research Evaluation System (EVAL)
+Workflow User Preferences
+Clothing Closet (IU Indy)
+Part-time HR Request (IUSB)
+Transfer Courses (IUS)
+Keep Learning
+School of Education Career Connections (IUB)
+CareerLink (IUK)
+LibKey Nomad (IUS)
+Luddy Forms Admin (Bloomington) (IUB)
+CircleIn (Faculty) (IUE, IUK, IUSB, IUS, IUN)
+How to Request Application Access
+The Graduate Mentoring Center (IUB)
+IUSM Topaz
+(Retired/Legacy) Search Vacancy Notice Documents Only
+Limited Submission Opportunities
+Ask Medical Student Education
+High Throughput Computing Software Optimization
+Campus Map and Directions (IUK)
+IU Career EDGE
+Clery Fire Reporting
+Make/View NSO Reservation (IUB)
+Hot Work Training
+Financial Training & Communications
+H&WD Departmental Information (IUB)
+Academic Success Classes (IUB)
