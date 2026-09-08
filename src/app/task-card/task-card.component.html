@@ -53,7 +53,7 @@
             [attr.aria-pressed]="onDashboard"
             [attr.aria-label]="(onDashboard ? 'Remove ' : 'Add ') + title + (onDashboard ? ' from your dashboard' : ' to your dashboard')"
             (click)="dashboardToggle.emit()">
-          <i [espdIcon]="onDashboard ? 'rvt-minus-circle' : 'rvt-plus-circle'" aria-hidden="true"></i>
+          <i [espdIcon]="onDashboard ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
         </button>
       }
 

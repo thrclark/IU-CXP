@@ -146,7 +146,7 @@
                         [attr.aria-pressed]="isOnDashboard(service.slug)"
                         [attr.aria-label]="(isOnDashboard(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnDashboard(service.slug) ? ' from your dashboard' : ' to your dashboard')"
                         (click)="toggleDashboard(service.slug)">
-                      <i [espdIcon]="isOnDashboard(service.slug) ? 'rvt-minus-circle' : 'rvt-plus-circle'" aria-hidden="true"></i>
+                      <i [espdIcon]="isOnDashboard(service.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
                     </button>
                   </span>
                 </li>
@@ -172,7 +172,10 @@
             [imageIcon]="service.imageIcon"
             [description]="service.description"
             [launchUrl]="service.launchUrl"
-            [campuses]="service.campuses">
+            [campuses]="service.campuses"
+            [showDashboardAction]="true"
+            [onDashboard]="isOnDashboard(service.slug)"
+            (dashboardToggle)="toggleDashboard(service.slug)">
         </app-task-card>
       }
     </div>

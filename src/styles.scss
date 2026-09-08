@@ -169,7 +169,7 @@ espd-shell .sidebar espd-sidenav-item.nested .link {
 // The sub-navigation list (My Classes, Campus Events, Academic Calendar)
 // sits closer to its trigger row than the library's default 1rem gap.
 espd-shell .sidebar espd-sidenav-list ul {
-	margin-top: 0rem !important;
+	margin-top: .25rem !important;
 }
 
 // Header bar shadow. Raise the header above the shell that follows it in
