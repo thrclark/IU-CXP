@@ -161,7 +161,8 @@ espd-shell {
 }
 
 .search-overlay-action-btn-active {
-  color: var(--accent-color, #990000);
+  /* Matches the info icon's neutral gray (see .task-card-expand-btn) rather than the red accent color. */
+  color: light-dark(#767676, #b7bcc2);
 }
 
 .search-overlay-empty {
@@ -187,7 +188,10 @@ espd-shell {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* auto-fill (not auto-fit) reserves empty tracks instead of collapsing
+     them, so a single card keeps its normal column width instead of
+     stretching to fill the whole row when few cards are present. */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   /* "dense" backfills gaps left by the 2x2 large cards (e.g. when a column
      count doesn't divide evenly) with whichever smaller service cards come
      next in source order, instead of leaving that space empty. */
