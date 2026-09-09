@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:embeddings": "tsx scripts/build-service-embeddings.ts",
+    "vendor:model": "node scripts/vendor-model.mjs"
   },
   "prettier": {
     "printWidth": 100,
@@ -30,6 +32,7 @@
     "@angular/forms": "^20.3.0",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "@xenova/transformers": "^2.17.2",
     "bootstrap": "~4.6.2",
     "easymde": "~2.20.0",
     "espd-common": "^10.22.1",
@@ -47,12 +50,15 @@
     "@angular/cli": "^20.3.7",
     "@angular/compiler-cli": "^20.3.0",
     "@types/jasmine": "~5.1.0",
+    "@xcidos/genesis-memory-model": "^0.1.0-alpha.1",
+    "esbuild": "^0.28.2",
     "jasmine-core": "~5.9.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "tsx": "^4.23.13",
     "typescript": "~5.9.2"
   }
 }

@@ -172,6 +172,19 @@ espd-shell {
   color: light-dark(#6c757d, #adb5bd);
 }
 
+.search-overlay-status {
+  margin: 0;
+  padding: 1rem;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: light-dark(#6c757d, #adb5bd);
+}
+
+.search-overlay-status-inline {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid light-dark(#e2e7e9, #343a40);
+}
+
 .section-border {
   border-top: 2px solid #e2e7e9;
   padding-top: .8rem;
