@@ -6,10 +6,12 @@ import { MessageService } from "espd-common/i18n";
 import { SettingService } from "espd-common/setting";
 import { MODULE_NAME } from 'espd-common/config';
 
+import { AssistantWidgetComponent } from './assistant/assistant-widget/assistant-widget.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AssistantWidgetComponent],
   providers: [
 
   ],
