@@ -2521,19 +2521,6 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     ],
   },
   {
-    slug: 'two-step-login-duo',
-    title: 'Two-Step Login (Duo)',
-    category: 'IT Services',
-    description: 'Access Two-Step Login (Duo) through One.IU.',
-    extendedDescription: 'Two-Step Login (Duo) is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
-    imageIcon: 'task-icons/checklist.png',
-    launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
-    supportLinks: [
-      { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
-    ],
-  },
-  {
     slug: 'enrollment-shopping-cart',
     title: 'Enrollment Shopping Cart',
     category: 'Academic',
@@ -2813,19 +2800,6 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     description: 'Access IU Knowledge Base through One.IU.',
     extendedDescription: 'IU Knowledge Base is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
     imageIcon: 'task-icons/academic-calendar.png',
-    launchUrl: '#',
-    campuses: ALL_CAMPUS_CODES,
-    supportLinks: [
-      { label: 'UITS Support Center', url: 'https://uits.iu.edu/contact' },
-    ],
-  },
-  {
-    slug: 'handshake',
-    title: 'Handshake',
-    category: 'Career Services',
-    description: 'Access Handshake through One.IU.',
-    extendedDescription: 'Handshake is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
-    imageIcon: 'task-icons/signpost.png',
     launchUrl: '#',
     campuses: ALL_CAMPUS_CODES,
     supportLinks: [
