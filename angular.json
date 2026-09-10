@@ -32,11 +32,7 @@
                 "src",
                 "."
               ]
-            },
-            "externalDependencies": [
-              "sharp",
-              "onnxruntime-node"
-            ]
+            }
           },
           "configurations": {
             "production": {
@@ -52,7 +48,11 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "externalDependencies": [
+                "sharp",
+                "onnxruntime-node"
+              ]
             },
             "development": {
               "optimization": false,
