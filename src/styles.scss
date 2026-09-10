@@ -130,7 +130,8 @@ espd-shell .sidebar espd-sidenav-item.nav-suppressed .link[aria-current] .nav-it
 }
 
 // Active sidebar item: rounded highlight instead of the library's default
-// accent bar, with a bold label.
+// accent bar. No item -- top-level or sub-navigation -- goes bold when
+// highlighted; the rounded highlight alone carries the "active" state.
 espd-shell .sidebar espd-sidenav-item a[aria-current],
 espd-shell .sidebar espd-sidenav-item .link[aria-current] {
 	background-color: #328BB8 !important;
@@ -144,7 +145,7 @@ espd-shell .sidebar espd-sidenav-item .link[aria-current]::before {
 
 espd-shell .sidebar espd-sidenav-item a[aria-current] .nav-item-label,
 espd-shell .sidebar espd-sidenav-item .link[aria-current] .nav-item-label {
-	font-weight: 700;
+	font-weight: 400 !important;
 }
 
 // On the full-width sidebar (large desktop and up), thin the sub-navigation
