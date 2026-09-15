@@ -13,11 +13,14 @@ import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
 import { TaskCardComponent } from '../task-card/task-card.component';
+import { CollectionCardComponent } from '../collection-card/collection-card.component';
 import { CampusService } from '../campus-services/campus-service';
 import { ALL_SERVICES } from '../campus-services/service-directory';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { SemanticSearchService } from '../campus-services/semantic-search.service';
+import { TaskCollectionsService } from '../task-collections/task-collections.service';
+import { TaskCollection } from '../task-collections/task-collection';
 
 /** Cap on how many search results render at once, just to keep the results grid tidy. */
 const MAX_SEARCH_RESULTS = 30;
@@ -27,7 +30,7 @@ const SEARCH_DEBOUNCE_MS = 200;
 @Component({
   selector: 'app-hello-world',
   standalone: true,
-  imports: [RouterLink, FormsModule, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [RouterLink, FormsModule, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent, CollectionCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.component.css']
 })
@@ -41,6 +44,7 @@ export class HelloWorldComponent {
   constructor(
     private dashboardService: DashboardService,
     private semanticSearch: SemanticSearchService,
+    protected collectionsService: TaskCollectionsService,
   ) {
     // Exact/substring matches render instantly; semantic matches (which
     // need a model + embedding round trip) stream in a moment later and get
@@ -71,6 +75,19 @@ export class HelloWorldComponent {
   /** Services currently pinned to "My Dashboard". */
   get campusServices(): CampusService[] {
     return this.dashboardService.dashboardServices;
+  }
+
+  /** Curated task collections currently surfaced on the dashboard (not yet dismissed). */
+  get taskCollections(): TaskCollection[] {
+    return this.collectionsService.activeCollections;
+  }
+
+  collectionServices(collection: TaskCollection): CampusService[] {
+    return this.collectionsService.servicesFor(collection);
+  }
+
+  dismissCollection(slug: string): void {
+    this.collectionsService.dismiss(slug);
   }
 
   // --- Dashboard search ---

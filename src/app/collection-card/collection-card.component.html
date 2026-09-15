@@ -1,0 +1,51 @@
+<article class="collection-card">
+  <div class="collection-card-header">
+    <div class="collection-card-icon-grid" aria-hidden="true">
+      @for (cell of iconGridCells; track $index) {
+        <div class="collection-card-icon-cell" [class.collection-card-icon-cell--empty]="!cell.service">
+          @if (cell.service) {
+            @if (cell.service.imageIcon) {
+              <img class="collection-card-icon-cell-image" [src]="cell.service.imageIcon" alt="">
+            } @else {
+              <i espdIcon="rvt-grid"></i>
+            }
+          }
+        </div>
+      }
+    </div>
+
+    <div class="collection-card-heading">
+      <h3 class="collection-card-title">
+        <a class="collection-card-link"
+            [routerLink]="['/collections', slug]"
+            [attr.aria-label]="title + ' — view full collection'">
+          {{ title }}
+        </a>
+      </h3>
+      @if (eyebrow) {
+        <span class="collection-card-eyebrow">
+          <i [espdIcon]="kind === 'role' ? 'rvt-user' : 'rvt-calendar'" aria-hidden="true"></i>
+          {{ eyebrow }}
+        </span>
+      }
+    </div>
+  </div>
+
+  @if (description) {
+    <p class="collection-card-description">{{ description }}</p>
+  }
+
+  <div class="collection-card-footer">
+    <span class="collection-card-count">{{ services.length }} task{{ services.length === 1 ? '' : 's' }}</span>
+
+    <div class="collection-card-actions">
+      <button type="button"
+          class="collection-card-heart-btn"
+          aria-pressed="true"
+          [attr.aria-label]="'Remove ' + title + ' from your dashboard'"
+          (click)="dismissed.emit()">
+        <i espdIcon="rvt-heart-solid" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</article>
