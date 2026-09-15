@@ -1,0 +1,217 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+espd-shell {
+  flex: 1;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.section-border {
+  border-top: 2px solid #e2e7e9;
+  padding-top: .8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.collection-detail {
+  margin-top: 1rem;
+}
+
+.collection-detail--not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.collection-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Same 2x2 mosaic pattern as the dashboard's collection card, scaled up
+   to this page's larger identity swatch, so a collection reads the same
+   way whether it's a compact dashboard tile or this detail header. */
+.collection-detail-icon-grid {
+  flex-shrink: 0;
+  width: 6rem;
+  height: 6rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.25rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.collection-detail-icon-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+
+.collection-detail-icon-cell-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-detail-icon-cell i {
+  font-size: 1.25rem;
+  color: var(--accent-color, #990000);
+}
+
+.collection-detail-heading {
+  flex: 1;
+  min-width: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.collection-detail-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: normal;
+  color: var(--primary-color, #4141a3);
+}
+
+.collection-detail-eyebrow i {
+  font-size: 0.75rem;
+}
+
+.collection-detail-title {
+  margin: 0;
+  font-family: 'Benton Sans Condensed', 'BentonSans Condensed', var(--font-header), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: light-dark(#243142, #fff);
+}
+
+.collection-detail-description {
+  margin: 0.5rem 0 0;
+  max-width: 42rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.collection-detail-bulk-action {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.collection-detail-section-title {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.notification-menu {
+  position: relative;
+}
+
+.notification-bell-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 999rem;
+  background: none;
+  color: var(--header-bar-text-color);
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow .15s ease-in-out, background-color .15s ease-in-out;
+}
+
+.notification-bell-btn:hover {
+  background-color: light-dark(#e9ecef, #4C5A69);
+  text-decoration: none;
+}
+
+.notification-bell-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color);
+}
+
+.notification-bell-btn[aria-expanded="true"] {
+  background-color: var(--primary-color-dark-15);
+  color: #fff;
+}
+
+.notification-bell-icon {
+  position: relative;
+  display: inline-flex;
+  font-size: 1.125rem;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+}
+
+.notification-panel {
+  top: calc(100% + 0.5rem);
+  min-width: 320px;
+  max-width: 360px;
+  box-shadow: rgba(5, 5, 36, 0.26) 0px 24px 72px -12px;
+}
+
+.dropdown-header {
+  font-size: 1rem;
+}
+
+.notification-view-all {
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.notification-view-all:hover {
+  background-color: #f7f7f7;
+  text-decoration: underline;
+}

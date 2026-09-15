@@ -1,5 +1,3 @@
-
-
 <espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}">
   <div desktop-menu class="notification-menu mr-1">
     <button type="button"
@@ -14,29 +12,8 @@
       </span>
     </button>
     @if (notificationsOpen) {
-      <div class="dropdown-menu dropdown-menu-right notification-panel py-0 show" role="menu">
-        <div class="dropdown-header py-2">Notifications</div>
-        <div class="dropdown-item notification-row notification-row--urgent">
-
-          <div class="notification-row-body">
-            <div class="notification-row-title">Registration opens Monday</div>
-            <div class="notification-row-time">2 hours ago</div>
-          </div>
-        </div>
-        <div class="dropdown-item notification-row notification-row--standard">
-
-          <div class="notification-row-body">
-            <div class="notification-row-title">Career Fair starts Thursday at 10am</div>
-            <div class="notification-row-time">Yesterday</div>
-          </div>
-        </div>
-        <div class="dropdown-item notification-row notification-row--urgent">
-
-          <div class="notification-row-body">
-            <div class="notification-row-title">Your advisor added a new contact note</div>
-            <div class="notification-row-time">2 days ago</div>
-          </div>
-        </div>
+      <div class="dropdown-menu dropdown-menu-right notification-panel show" role="menu">
+        <div class="dropdown-header">Notifications</div>
         <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
       </div>
     }
@@ -66,7 +43,6 @@
     </espd-header-nav>
   </div>
 </espd-header>
-
 
 <espd-shell [collapsible]="false">
   <espd-shell-sidebar>
@@ -101,102 +77,71 @@
   </espd-shell-sidebar>
 
   <espd-shell-stage>
-    <div class="main-search-wrap">
-      <div class="main-search">
-        <input type="search"
-            class="main-search-input"
-            placeholder="What would you like to do?"
-            [(ngModel)]="searchQuery"
-            (input)="onSearchInput()"
-            (focus)="onSearchFocus()"
-            aria-label="Search IU services">
-        <button type="button" class="main-search-btn" aria-label="Search">
-          <i [espdIcon]="'rvt-magnifying-glass'"></i>
-        </button>
-      </div>
+    <a routerLink="/dashboard" class="back-link"><i [espdIcon]="'rvt-arrow-left'"></i> Dashboard</a>
 
-      @if (searchOverlayOpen && searchQuery.trim()) {
-        <div class="search-overlay">
-          @if (searchResults.length) {
-            <ul class="search-overlay-list">
-              @for (service of searchResults; track service.slug) {
-                <li class="search-overlay-row">
-                  <span class="search-overlay-icon" aria-hidden="true">
-                    @if (service.imageIcon) {
-                      <img [src]="service.imageIcon" alt="">
-                    } @else {
-                      <i [espdIcon]="'rvt-grid'"></i>
-                    }
-                  </span>
+    @if (collection) {
+      <div class="collection-detail">
+        <div class="collection-detail-header">
+          <div class="collection-detail-icon-grid" aria-hidden="true">
+            @for (cell of iconGridCells; track $index) {
+              <div class="collection-detail-icon-cell">
+                @if (cell.service) {
+                  @if (cell.service.imageIcon) {
+                    <img class="collection-detail-icon-cell-image" [src]="cell.service.imageIcon" alt="">
+                  } @else {
+                    <i espdIcon="rvt-grid"></i>
+                  }
+                }
+              </div>
+            }
+          </div>
 
-                  <span class="search-overlay-title">{{ service.title }}</span>
+          <div class="collection-detail-heading">
+            <h1 class="collection-detail-title">{{ collection.title }}</h1>
+            <span class="collection-detail-eyebrow">
+              <i [espdIcon]="collection.kind === 'role' ? 'rvt-user' : 'rvt-calendar'" aria-hidden="true"></i>
+              {{ collection.eyebrow }}
+            </span>
+            <p class="collection-detail-description">{{ collection.description }}</p>
+          </div>
 
-                  <span class="search-overlay-actions">
-                    <a class="search-overlay-action-btn"
-                        [href]="service.launchUrl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        [attr.aria-label]="'Launch ' + service.title">
-                      <i espdIcon="rvt-link-external" aria-hidden="true"></i>
-                    </a>
+          <espd-button
+              class="collection-detail-bulk-action"
+              [color]="allOnDashboard ? 'remove' : 'primary'"
+              (click)="toggleAllOnDashboard()">
+            <i [espdIcon]="allOnDashboard ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+            {{ allOnDashboard ? 'Remove all from dashboard' : 'Add all to dashboard' }}
+          </espd-button>
+        </div>
 
-                    <button type="button"
-                        class="search-overlay-action-btn"
-                        [class.search-overlay-action-btn-active]="isOnDashboard(service.slug)"
-                        [attr.aria-pressed]="isOnDashboard(service.slug)"
-                        [attr.aria-label]="(isOnDashboard(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnDashboard(service.slug) ? ' from your dashboard' : ' to your dashboard')"
-                        (click)="toggleDashboard(service.slug)">
-                      <i [espdIcon]="isOnDashboard(service.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
-                    </button>
-                  </span>
-                </li>
-              }
-            </ul>
-          } @else if (searchLoading) {
-            <p class="search-overlay-status">Finding related services&hellip;</p>
-          } @else {
-            <p class="search-overlay-empty">No services matched "{{ searchQuery }}".</p>
-          }
-          @if (searchResults.length && searchLoading) {
-            <p class="search-overlay-status search-overlay-status-inline">Finding more related services&hellip;</p>
+        <div class="section-border"></div>
+
+        <h2 class="collection-detail-section-title">{{ services.length }} task{{ services.length === 1 ? '' : 's' }} in this collection</h2>
+
+        <div class="card-grid">
+          @for (service of services; track service.slug) {
+            <app-task-card
+                [slug]="service.slug"
+                [category]="service.category"
+                [title]="service.title"
+                [imageIcon]="service.imageIcon"
+                [description]="service.description"
+                [launchUrl]="service.launchUrl"
+                [campuses]="service.campuses"
+                [showDashboardAction]="true"
+                [onDashboard]="isOnDashboard(service.slug)"
+                (dashboardToggle)="toggleDashboard(service.slug)">
+            </app-task-card>
           }
         </div>
-      }
-    </div>
-
-    <div class="section-border"></div>
-
-    <h2 class="dashboard-section-title">My Dashboard</h2>
-
-    <div class="card-grid">
-      @for (collection of taskCollections; track collection.slug) {
-        <app-collection-card
-            [slug]="collection.slug"
-            [title]="collection.title"
-            [kind]="collection.kind"
-            [eyebrow]="collection.eyebrow"
-            [description]="collection.description"
-            [services]="collectionServices(collection)"
-            (dismissed)="dismissCollection(collection.slug)">
-        </app-collection-card>
-      }
-      @for (service of campusServices; track service.slug) {
-        <app-task-card
-            [slug]="service.slug"
-            [category]="service.category"
-            [title]="service.title"
-            [imageIcon]="service.imageIcon"
-            [description]="service.description"
-            [launchUrl]="service.launchUrl"
-            [campuses]="service.campuses"
-            [showDashboardAction]="true"
-            [onDashboard]="isOnDashboard(service.slug)"
-            (dashboardToggle)="toggleDashboard(service.slug)">
-        </app-task-card>
-      }
-    </div>
+      </div>
+    } @else {
+      <div class="collection-detail collection-detail--not-found">
+        <p>We couldn't find that collection.</p>
+        <a routerLink="/dashboard" class="btn btn-outline-primary">Back to Dashboard</a>
+      </div>
+    }
   </espd-shell-stage>
-  Any other content won't be displayed
 </espd-shell>
 
 <espd-footer [customFooterOverride]="footerHtml" />
