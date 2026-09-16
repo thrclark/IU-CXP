@@ -1,0 +1,188 @@
+.identity-menu {
+  position: relative;
+  margin-left: 1.5rem;
+}
+
+/* Inside the mobile nav collapse (.navbar-collapse) the identity block
+   stacks under the nav links instead of sitting inline in the toolbar, so
+   it shouldn't carry the toolbar's left margin -- mirrors how espd-header's
+   own built-in avatar resets its margin in that same context. */
+:host-context(.navbar-collapse) .identity-menu {
+  margin-left: 0;
+  margin-top: 1rem;
+}
+
+.identity-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  border-radius: 999rem;
+  background: none;
+  color: var(--header-bar-text-color);
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow .15s ease-in-out, background-color .15s ease-in-out;
+}
+
+.identity-btn:hover {
+  text-decoration: none;
+}
+
+.identity-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color);
+}
+
+.identity-btn[aria-expanded="true"] .identity-initials {
+  box-shadow: 0 0 0 .125rem var(--primary-color-dark-15, var(--primary-color));
+}
+
+.identity-avatar {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.identity-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999rem;
+  background-color: var(--accent-color);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  overflow: hidden;
+}
+
+.identity-name {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.identity-panel {
+  top: calc(100% + 0.5rem);
+  min-width: 300px;
+  max-width: 340px;
+  box-shadow: rgba(5, 5, 36, 0.26) 0px 24px 72px -12px;
+}
+
+.identity-panel-header {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid #e2e7e9;
+}
+
+.identity-panel-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.identity-panel-role {
+  font-size: 0.75rem;
+  color: light-dark(#6c757d, #adb5bd);
+  margin-top: 0.125rem;
+}
+
+.identity-panel-section {
+  padding: 0.75rem 0;
+}
+
+.identity-panel-section-title {
+  padding: 0 1rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: light-dark(#6c757d, #adb5bd);
+}
+
+.identity-persona-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.identity-persona-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-left: 3px solid transparent;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.identity-persona-option:hover,
+.identity-persona-option:focus {
+  background-color: light-dark(#f7f7f7, #343a40);
+  outline: none;
+}
+
+.identity-persona-option--active {
+  border-left-color: var(--primary-color, #4141a3);
+  background-color: light-dark(#f7f7f7, #343a40);
+}
+
+.identity-persona-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-top: 0.0625rem;
+  border-radius: 999rem;
+  background-color: light-dark(#e9ecef, #4C5A69);
+  color: light-dark(#222529, #fff);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.identity-persona-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.identity-persona-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: light-dark(#243142, #fff);
+}
+
+.identity-persona-desc {
+  font-size: 0.75rem;
+  color: light-dark(#6c757d, #adb5bd);
+  margin-top: 0.125rem;
+}
+
+.identity-persona-check {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  color: var(--primary-color, #4141a3);
+  font-size: 0.75rem;
+  visibility: hidden;
+}
+
+.identity-persona-option--active .identity-persona-check {
+  visibility: visible;
+}
+
+.identity-panel-footer {
+  padding: 0.625rem 1rem;
+  border-top: 1px solid #e2e7e9;
+  font-size: 0.6875rem;
+  color: light-dark(#6c757d, #adb5bd);
+}

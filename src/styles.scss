@@ -175,9 +175,20 @@ espd-shell .sidebar espd-sidenav-list ul {
 
 // Header bar shadow. Raise the header above the shell that follows it in
 // the DOM so the shadow overflowing its bottom edge isn't painted over.
+//
+// This also has to clear anything a page might stack above its own
+// z-index:auto flow -- e.g. task/collection cards use z-index: 2 on their
+// title link and footer buttons so they stay clickable over the card's
+// full-card hover overlay, and the sidebar's icon-rail flyout popup uses
+// z-index: 20. Without this being higher than those, a panel that opens
+// from inside the header (the notification bell, the identity/persona
+// switcher) would be capped at the header's own low stacking level and
+// page content with a higher z-index could paint over it. Stay well under
+// the floating assistant widget's z-index: 1000, though, so the header
+// never outranks that.
 espd-header {
 	position: relative;
-	z-index: 1;
+	z-index: 50;
 }
 
 espd-header .wrapper {

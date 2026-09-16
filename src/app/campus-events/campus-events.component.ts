@@ -11,11 +11,12 @@ import { LargeTaskCardComponent } from '../large-task-card/large-task-card.compo
 import { CampusEventsService } from './campus-events.service';
 import { CampusEvent } from './campus-event';
 import { NavStateService } from '../nav-state/nav-state.service';
+import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 
 @Component({
   selector: 'app-campus-events',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent],
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent, IdentityMenuComponent],
   templateUrl: './campus-events.component.html',
   styleUrls: ['./campus-events.component.css']
 })

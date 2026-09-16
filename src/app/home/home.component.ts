@@ -12,11 +12,12 @@ import { LargeTaskCardComponent } from '../large-task-card/large-task-card.compo
 import { CampusEventsService } from '../campus-events/campus-events.service';
 import { CampusEvent } from '../campus-events/campus-event';
 import { NavStateService } from '../nav-state/nav-state.service';
+import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, LargeTaskCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, LargeTaskCardComponent, IdentityMenuComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

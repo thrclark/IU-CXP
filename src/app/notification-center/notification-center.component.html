@@ -1,4 +1,4 @@
-<espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}">
+<espd-header [fullWidth]="true" subtitle="Indiana University">
   <div desktop-menu class="notification-menu mr-1">
     <button type="button"
         class="notification-bell-btn"
@@ -39,6 +39,9 @@
       </div>
     }
   </div>
+  <div desktop-menu>
+    <app-identity-menu />
+  </div>
   <div mobile-menu>
     <espd-header-nav label="Navigation">
       <espd-header-nav-item route="/home"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-header-nav-item>
@@ -47,7 +50,7 @@
         <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
         <espd-header-nav-item route="/events-calendars/academic-calendar">Academic Calendar</espd-header-nav-item>
       </espd-header-nav-list>
-      <espd-header-nav-list label="Student Life">
+      <espd-header-nav-list label="Campus Life">
         <espd-header-nav-item route="/student-life/campus-dining">Campus Dining</espd-header-nav-item>
         <espd-header-nav-item route="/student-life/athletics">Athletics</espd-header-nav-item>
         <espd-header-nav-item route="/student-life/residential-services">Residential Services</espd-header-nav-item>
@@ -63,6 +66,7 @@
       <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
       <espd-header-nav-item route="/tasks"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-header-nav-item>
     </espd-header-nav>
+    <app-identity-menu />
   </div>
 </espd-header>
 
@@ -77,9 +81,9 @@
         <espd-sidenav-item route="/events-calendars/campus-events"><span class="nav-item-label">Campus Events</span></espd-sidenav-item>
         <espd-sidenav-item route="/events-calendars/academic-calendar"><span class="nav-item-label">Academic Calendar</span></espd-sidenav-item>
       </espd-sidenav-list>
-      <espd-sidenav-list srLabel="Student Life" [isCollapsed]="navState.expandedGroup !== 'student-life'" [class.nav-group-selected]="navState.selectedKey === 'student-life'" (click)="navState.select('student-life'); navState.toggleExpanded('student-life')">
-        <span labelContent><i [espdIcon]="'rvt-heart'"></i> <span class="nav-item-label">Student Life</span></span>
-        <div class="sidenav-popup-header">Student Life</div>
+      <espd-sidenav-list srLabel="Campus Life" [isCollapsed]="navState.expandedGroup !== 'student-life'" [class.nav-group-selected]="navState.selectedKey === 'student-life'" (click)="navState.select('student-life'); navState.toggleExpanded('student-life')">
+        <span labelContent><i [espdIcon]="'rvt-heart'"></i> <span class="nav-item-label">Campus Life</span></span>
+        <div class="sidenav-popup-header">Campus Life</div>
         <espd-sidenav-item route="/student-life/campus-dining"><span class="nav-item-label">Campus Dining</span></espd-sidenav-item>
         <espd-sidenav-item route="/student-life/athletics"><span class="nav-item-label">Athletics</span></espd-sidenav-item>
         <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Residential Services</span></espd-sidenav-item>

@@ -18,6 +18,7 @@ import { CampusService } from '../campus-services/campus-service';
 import { ALL_SERVICES } from '../campus-services/service-directory';
 import { HomeService } from '../home/home.service';
 import { NavStateService } from '../nav-state/nav-state.service';
+import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 import { SemanticSearchService } from '../campus-services/semantic-search.service';
 import { TaskCollectionsService } from '../task-collections/task-collections.service';
 import { TaskCollection } from '../task-collections/task-collection';
@@ -30,7 +31,7 @@ const SEARCH_DEBOUNCE_MS = 200;
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [RouterLink, FormsModule, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent, CollectionCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [RouterLink, FormsModule, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent, CollectionCardComponent, IdentityMenuComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
