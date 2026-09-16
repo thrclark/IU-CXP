@@ -188,6 +188,7 @@
 }
 
 .task-card-dashboard-btn-active {
+  /* Matches .task-card-expand-btn (the info icon) rather than the red accent color. */
   color: light-dark(#767676, #b7bcc2);
 }
 

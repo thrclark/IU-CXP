@@ -17,8 +17,8 @@ export interface TaskCollection {
   kind: TaskCollectionKind;
   /**
    * Short line explaining why this collection is being surfaced, e.g.
-   * "Curated for new employees" or "Active Aug 18 – Sept 5". Shown under
-   * the title so the "why am I seeing this" question is answered immediately.
+   * "Curated for new employees" or "Active Aug 18 – Sept 5". Shown above the
+   * title so the "why am I seeing this" question is answered immediately.
    */
   eyebrow: string;
   /** One or two sentences shown on the collection's own detail page. */

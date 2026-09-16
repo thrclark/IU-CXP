@@ -94,8 +94,7 @@
 }
 
 /* Stretches the title link to cover the whole card, matching app-task-card,
-   while the footer's heart button (also z-index: 2) stays interactive
-   above it. */
+   while the footer's buttons (also z-index: 2) stay interactive above it. */
 .collection-card-link::after {
   content: "";
   position: absolute;
@@ -142,8 +141,6 @@
 
 .collection-card-footer {
   display: flex;
-  /* flex-end (not center) keeps the heart action pinned to the bottom
-     row, matching app-task-card's footer alignment. */
   align-items: flex-end;
   justify-content: space-between;
   gap: 0.75rem;

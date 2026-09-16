@@ -33,7 +33,7 @@ export class CollectionCardComponent {
   @Input() slug = '';
   @Input() title = '';
   @Input() kind: TaskCollectionKind = 'role';
-  /** Short "why am I seeing this" line shown under the title. */
+  /** Short "why am I seeing this" line shown where app-task-card shows its category. */
   @Input() eyebrow = '';
   /** Short summary shown in the card body, same slot as app-task-card's description. */
   @Input() description?: string;

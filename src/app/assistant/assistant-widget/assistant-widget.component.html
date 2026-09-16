@@ -1,0 +1,124 @@
+<div class="assistant-wrap" #widgetRoot>
+  @if (!panelOpen) {
+    <button type="button" class="assistant-launcher-btn" (click)="togglePanel()" aria-label="Open Ask IU assistant">
+      <i [espdIcon]="'rvt-chat'" aria-hidden="true"></i>
+      <span class="assistant-launcher-label">Ask IU</span>
+    </button>
+  }
+
+  @if (panelOpen) {
+    <div class="assistant-panel" role="dialog" aria-label="Ask IU assistant">
+      <div class="assistant-panel-header">
+        <span class="assistant-panel-title">Ask IU</span>
+        <div class="assistant-panel-header-actions">
+          <button type="button" class="assistant-icon-btn" (click)="toggleHistory()" [attr.aria-pressed]="historyOpen" aria-label="Conversation history">
+            <i [espdIcon]="'rvt-clock'" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="assistant-icon-btn" (click)="startNew()" aria-label="Start new conversation">
+            <i [espdIcon]="'rvt-plus'" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="assistant-icon-btn" (click)="togglePanel()" aria-label="Close assistant">
+            <i [espdIcon]="'rvt-close'" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      @if (historyOpen) {
+        <div class="assistant-history">
+          @if (history.length) {
+            <ul class="assistant-history-list">
+              @for (item of history; track item.id) {
+                <li class="assistant-history-row"
+                    [class.assistant-history-row-active]="item.id === conversation?.id"
+                    (click)="switchTo(item.id)">
+                  <span class="assistant-history-row-text">
+                    <span class="assistant-history-row-title">{{ item.title }}</span>
+                    <span class="assistant-history-row-time">{{ relativeTime(item.updatedAt) }}</span>
+                  </span>
+                  <button type="button"
+                      class="assistant-history-row-delete"
+                      (click)="deleteConversation($event, item.id)"
+                      [attr.aria-label]="'Delete conversation: ' + item.title">
+                    <i [espdIcon]="'rvt-trash'" aria-hidden="true"></i>
+                  </button>
+                </li>
+              }
+            </ul>
+          } @else {
+            <p class="assistant-history-empty">No past conversations yet.</p>
+          }
+        </div>
+      } @else {
+        <div class="assistant-messages" #messageList>
+          @if (!conversation?.messages?.length) {
+            <p class="assistant-empty-state">
+              Ask me things like "how do I drop a class" or "where do I see my grades" — I'll point you to the right service.
+            </p>
+          }
+
+          @for (message of conversation?.messages ?? []; track message.id) {
+            <div class="assistant-message" [class.assistant-message-user]="message.role === 'user'">
+              <div class="assistant-bubble">{{ message.text }}</div>
+
+              @if (message.referencedServices?.length) {
+                <div class="assistant-service-cards">
+                  @for (service of message.referencedServices; track service.slug) {
+                    <div class="assistant-service-card">
+                      <span class="assistant-service-card-text">
+                        <span class="assistant-service-card-title">{{ service.title }}</span>
+                        <span class="assistant-service-card-category">{{ service.category }}</span>
+                      </span>
+                      <span class="assistant-service-card-actions">
+                        <a class="assistant-service-card-btn"
+                            [href]="service.launchUrl"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            [attr.aria-label]="'Launch ' + service.title">
+                          <i espdIcon="rvt-link-external" aria-hidden="true"></i>
+                        </a>
+                        <button type="button"
+                            class="assistant-service-card-btn"
+                            [class.assistant-service-card-btn-active]="isOnDashboard(service.slug)"
+                            [attr.aria-pressed]="isOnDashboard(service.slug)"
+                            [attr.aria-label]="(isOnDashboard(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnDashboard(service.slug) ? ' from your dashboard' : ' to your dashboard')"
+                            (click)="toggleDashboard(service.slug)">
+                          <i [espdIcon]="isOnDashboard(service.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+                        </button>
+                      </span>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          }
+
+          @if (sending) {
+            <div class="assistant-message">
+              <div class="assistant-bubble assistant-bubble-typing">
+                <span class="assistant-spinner" aria-hidden="true"></span>
+                <span>Thinking&hellip;</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <form class="assistant-input-row" (ngSubmit)="send()">
+          <input type="text"
+              class="assistant-input"
+              name="assistantDraft"
+              placeholder="Ask about a service…"
+              [(ngModel)]="draft"
+              (keydown)="onInputKeydown($event)"
+              [disabled]="sending"
+              aria-label="Message Ask IU">
+          <button type="submit"
+              class="assistant-send-btn"
+              [disabled]="sending || !draft.trim()"
+              aria-label="Send message">
+            <i [espdIcon]="'rvt-arrow-right'" aria-hidden="true"></i>
+          </button>
+        </form>
+      }
+    </div>
+  }
+</div>

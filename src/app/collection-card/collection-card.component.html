@@ -2,7 +2,7 @@
   <div class="collection-card-header">
     <div class="collection-card-icon-grid" aria-hidden="true">
       @for (cell of iconGridCells; track $index) {
-        <div class="collection-card-icon-cell">
+        <div class="collection-card-icon-cell" [class.collection-card-icon-cell--empty]="!cell.service">
           @if (cell.service) {
             @if (cell.service.imageIcon) {
               <img class="collection-card-icon-cell-image" [src]="cell.service.imageIcon" alt="">

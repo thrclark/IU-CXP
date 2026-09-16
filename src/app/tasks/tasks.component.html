@@ -184,8 +184,13 @@
                 </li>
               }
             </ul>
+          } @else if (searchLoading) {
+            <p class="search-overlay-status">Finding related services&hellip;</p>
           } @else {
             <p class="search-overlay-empty">No services matched "{{ searchQuery }}".</p>
+          }
+          @if (searchResults.length && searchLoading) {
+            <p class="search-overlay-status search-overlay-status-inline">Finding more related services&hellip;</p>
           }
         </div>
       }
