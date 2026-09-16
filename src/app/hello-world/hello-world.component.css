@@ -113,41 +113,6 @@ espd-shell {
   color: var(--accent-color, #990000);
 }
 
-/* Same 2x2 mosaic pattern used on the collection card and its detail
-   page, scaled down to fit this row's icon swatch, so a collection reads
-   the same way in search results as it does everywhere else. */
-.search-overlay-icon-grid {
-  flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 1px;
-  box-sizing: border-box;
-  border-radius: 0.375rem;
-  overflow: hidden;
-}
-
-.search-overlay-icon-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 0.125rem;
-}
-
-.search-overlay-icon-cell-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.search-overlay-icon-cell i {
-  font-size: 0.5rem;
-  color: var(--accent-color, #990000);
-}
-
 .search-overlay-title {
   flex: 1;
   min-width: 0;
@@ -156,20 +121,6 @@ espd-shell {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-/* Marks a search result as a curated task collection rather than an
-   individual service, since both kinds of row now share the same list. */
-.search-overlay-tag {
-  display: inline-block;
-  margin-left: 0.5rem;
-  padding: 0.0625rem 0.4375rem;
-  border-radius: 999rem;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: var(--primary-color, #4141a3);
-  background-color: light-dark(#eef0fb, #2a2a3a);
-  vertical-align: middle;
 }
 
 .search-overlay-actions {

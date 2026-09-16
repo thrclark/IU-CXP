@@ -6,9 +6,9 @@ import { TaskCollection } from './task-collection';
 import { TASK_COLLECTIONS, findCollectionBySlug } from './task-collection-directory';
 
 /**
- * Tracks which curated task collections are currently shown on the "All
- * Services" page. Prototype-only: dismissal state lives in memory for the
- * session and isn't persisted anywhere. Unlike individual services,
+ * Tracks which curated task collections are currently shown on the
+ * dashboard. Prototype-only: dismissal state lives in memory for the
+ * session and isn't persisted anywhere. Unlike individual dashboard tasks,
  * collections aren't user-added — they're surfaced automatically (by role
  * or time of year) and can only be dismissed, not re-added, without a
  * page refresh.

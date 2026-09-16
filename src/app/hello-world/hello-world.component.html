@@ -43,7 +43,7 @@
   </div>
   <div mobile-menu>
     <espd-header-nav label="Navigation">
-      <espd-header-nav-item route="/home"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-header-nav-item>
+      <espd-header-nav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-header-nav-item>
       <espd-header-nav-list label="Events & Calendars">
         <espd-header-nav-item route="/events-calendars/my-classes">My Classes</espd-header-nav-item>
         <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
@@ -63,7 +63,6 @@
       </espd-header-nav-list>
       <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
       <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
-      <espd-header-nav-item route="/tasks"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-header-nav-item>
     </espd-header-nav>
   </div>
 </espd-header>
@@ -72,7 +71,7 @@
 <espd-shell [collapsible]="false">
   <espd-shell-sidebar>
     <espd-sidenav label="Navigation">
-      <espd-sidenav-item route="/home" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-sidenav-item>
+      <espd-sidenav-item route="/dashboard" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-sidenav-item>
       <espd-sidenav-list srLabel="Events & Calendars" [isCollapsed]="navState.expandedGroup !== 'events-calendars'" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars'); navState.toggleExpanded('events-calendars')">
         <span labelContent><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></span>
         <div class="sidenav-popup-header">Events & Calendars</div>
@@ -98,130 +97,103 @@
       </espd-sidenav-list>
       <espd-sidenav-item route="/maps" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
       <espd-sidenav-item route="/notifications" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
-      <espd-sidenav-item route="/tasks" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-sidenav-item>
     </espd-sidenav>
   </espd-shell-sidebar>
 
   <espd-shell-stage>
-    <h2 class="dashboard-section-title">My Day</h2>
+    <div class="main-search-wrap">
+      <div class="main-search">
+        <input type="search"
+            class="main-search-input"
+            placeholder="What would you like to do?"
+            [(ngModel)]="searchQuery"
+            (input)="onSearchInput()"
+            (focus)="onSearchFocus()"
+            aria-label="Search IU services">
+        <button type="button" class="main-search-btn" aria-label="Search">
+          <i [espdIcon]="'rvt-magnifying-glass'"></i>
+        </button>
+      </div>
+
+      @if (searchOverlayOpen && searchQuery.trim()) {
+        <div class="search-overlay">
+          @if (searchResults.length) {
+            <ul class="search-overlay-list">
+              @for (service of searchResults; track service.slug) {
+                <li class="search-overlay-row">
+                  <span class="search-overlay-icon" aria-hidden="true">
+                    @if (service.imageIcon) {
+                      <img [src]="service.imageIcon" alt="">
+                    } @else {
+                      <i [espdIcon]="'rvt-grid'"></i>
+                    }
+                  </span>
+
+                  <span class="search-overlay-title">{{ service.title }}</span>
+
+                  <span class="search-overlay-actions">
+                    <a class="search-overlay-action-btn"
+                        [href]="service.launchUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        [attr.aria-label]="'Launch ' + service.title">
+                      <i espdIcon="rvt-link-external" aria-hidden="true"></i>
+                    </a>
+
+                    <button type="button"
+                        class="search-overlay-action-btn"
+                        [class.search-overlay-action-btn-active]="isOnDashboard(service.slug)"
+                        [attr.aria-pressed]="isOnDashboard(service.slug)"
+                        [attr.aria-label]="(isOnDashboard(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnDashboard(service.slug) ? ' from your dashboard' : ' to your dashboard')"
+                        (click)="toggleDashboard(service.slug)">
+                      <i [espdIcon]="isOnDashboard(service.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </li>
+              }
+            </ul>
+          } @else if (searchLoading) {
+            <p class="search-overlay-status">Finding related services&hellip;</p>
+          } @else {
+            <p class="search-overlay-empty">No services matched "{{ searchQuery }}".</p>
+          }
+          @if (searchResults.length && searchLoading) {
+            <p class="search-overlay-status search-overlay-status-inline">Finding more related services&hellip;</p>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="section-border"></div>
+
+    <h2 class="dashboard-section-title">My Dashboard</h2>
 
     <div class="card-grid">
-      <app-large-task-card
-          category="Academics"
-          title="My Classes"
-          icon="rvt-calendar"
-          imageIcon="task-icons/checklist.png"
-          [personalized]="true">
-        <ul class="schedule-list">
-          <li class="schedule-row">
-            <span class="schedule-time">9:30 AM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">CSCI-B 351 Programming Languages</div>
-              <div class="schedule-location">Ballantine Hall 013</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">11:15 AM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">MATH-M 301 Linear Algebra</div>
-              <div class="schedule-location">Rawles Hall 100</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">1:00 PM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">ENG-W 131 Elementary Composition</div>
-              <div class="schedule-location">Ballantine Hall 205</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">3:30 PM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">PHIL-P 105 Introduction to Philosophy</div>
-              <div class="schedule-location">Sycamore Hall 003</div>
-            </div>
-          </li>
-        </ul>
-        <a routerLink="/events-calendars/my-classes" class="widget-view-all">
-          View full schedule
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="University Calendar"
-          title="Upcoming Dates"
-          icon="rvt-flag"
-          imageIcon="task-icons/travel.png">
-        <ul class="dates-list">
-          <li class="dates-row">
-            <div class="dates-when">Oct 3–5</div>
-            <div class="dates-what">Homecoming Weekend</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Oct 17–18</div>
-            <div class="dates-what">Fall Break — no classes</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Nov 26–28</div>
-            <div class="dates-what">Thanksgiving Break — no classes</div>
-          </li>
-        </ul>
-        <a routerLink="/events-calendars/academic-calendar" class="widget-view-all">
-          View full calendar
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="Campus Life"
-          title="Campus Events"
-          icon="rvt-calendar"
-          imageIcon="task-icons/academic-calendar.png">
-        <ul class="events-list">
-          @for (event of upcomingEvents; track event.id) {
-            <li class="events-row">
-              <div class="events-when">
-                <span class="events-date">{{ event.date }}</span>
-                <span class="events-time">{{ event.time }}</span>
-              </div>
-              <div class="events-details">
-                <div class="events-title">{{ event.title }}</div>
-                <div class="events-location">{{ event.location }}</div>
-              </div>
-            </li>
-          }
-        </ul>
-        <a routerLink="/events-calendars/campus-events" class="widget-view-all">
-          View all events
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="Notifications"
-          title="Recent Notifications"
-          icon="rvt-bell"
-          [personalized]="true">
-        <ul class="dashboard-notifications-list">
-          <li class="dashboard-notification-row dashboard-notification-row--urgent">
-            <div class="dashboard-notification-title">Registration opens Monday</div>
-            <div class="dashboard-notification-time">2 hours ago</div>
-          </li>
-          <li class="dashboard-notification-row dashboard-notification-row--standard">
-            <div class="dashboard-notification-title">Career Fair starts Thursday at 10am</div>
-            <div class="dashboard-notification-time">Yesterday</div>
-          </li>
-          <li class="dashboard-notification-row dashboard-notification-row--urgent">
-            <div class="dashboard-notification-title">Your advisor added a new contact note</div>
-            <div class="dashboard-notification-time">2 days ago</div>
-          </li>
-        </ul>
-        <a routerLink="/notifications" class="widget-view-all">
-          View all notifications
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
+      @for (collection of taskCollections; track collection.slug) {
+        <app-collection-card
+            [slug]="collection.slug"
+            [title]="collection.title"
+            [kind]="collection.kind"
+            [eyebrow]="collection.eyebrow"
+            [description]="collection.description"
+            [services]="collectionServices(collection)"
+            (dismissed)="dismissCollection(collection.slug)">
+        </app-collection-card>
+      }
+      @for (service of campusServices; track service.slug) {
+        <app-task-card
+            [slug]="service.slug"
+            [category]="service.category"
+            [title]="service.title"
+            [imageIcon]="service.imageIcon"
+            [description]="service.description"
+            [launchUrl]="service.launchUrl"
+            [campuses]="service.campuses"
+            [showDashboardAction]="true"
+            [onDashboard]="isOnDashboard(service.slug)"
+            (dashboardToggle)="toggleDashboard(service.slug)">
+        </app-task-card>
+      }
     </div>
   </espd-shell-stage>
   Any other content won't be displayed

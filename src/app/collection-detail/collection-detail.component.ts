@@ -12,8 +12,8 @@ import { ButtonComponent } from 'espd-common/button';
 import { CampusService } from '../campus-services/campus-service';
 import { TaskCollection } from '../task-collections/task-collection';
 import { TaskCollectionsService } from '../task-collections/task-collections.service';
-import { CollectionIconCell } from '../collection-card/collection-card.component';
 import { TaskCardComponent } from '../task-card/task-card.component';
+import { CollectionIconCell } from '../collection-card/collection-card.component';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { NavStateService } from '../nav-state/nav-state.service';
 
@@ -39,7 +39,7 @@ export class CollectionDetailComponent implements OnInit, OnDestroy {
   collection?: TaskCollection;
   services: CampusService[] = [];
 
-  /** Same fixed 2x2 mosaic used on the collection card, scaled up for the detail header. */
+  /** Same fixed 2x2 mosaic used on the dashboard's collection card, scaled up for the detail header. */
   get iconGridCells(): CollectionIconCell[] {
     return Array.from({ length: 4 }, (_, i) => ({ service: this.services[i] ?? null }));
   }

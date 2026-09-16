@@ -28,8 +28,8 @@
 }
 
 /* Same footprint as .task-card-icon — a 2x2 mosaic of member-task icons
-   instead of one icon, so a collection takes no more page space than a
-   single task-card while still showing what's inside it. */
+   instead of one icon, so a collection takes no more dashboard space than
+   a single task-card while still showing what's inside it. */
 .collection-card-icon-grid {
   flex-shrink: 0;
   width: 2.75rem;
@@ -73,6 +73,19 @@
   min-width: 0;
 }
 
+.collection-card-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: var(--primary-color, #4141a3);
+}
+
+.collection-card-eyebrow i {
+  font-size: 0.6875rem;
+}
+
 .collection-card-title {
   margin: 0;
   font-family: 'Benton Sans Condensed', 'BentonSans Condensed', var(--font-header), 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -112,19 +125,6 @@
   border-radius: 0.25rem;
 }
 
-.collection-card-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3125rem;
-  font-size: 0.75rem;
-  font-weight: normal;
-  color: var(--primary-color, #4141a3);
-}
-
-.collection-card-eyebrow i {
-  font-size: 0.6875rem;
-}
-
 .collection-card-description {
   margin: 0.75rem 0 0;
   font-size: 0.9375rem;
@@ -162,9 +162,9 @@
 
 /* Styled like app-task-card's dashboard-pin heart in its "already on
    dashboard" (solid, grey) state — a collection shown here is always
-   currently on the page, so there's no separate outline/active state to
-   toggle between; clicking it removes the collection, same as unpinning
-   a single task removes that task. */
+   currently on the dashboard, so there's no separate outline/active state
+   to toggle between; clicking it removes the collection, same as
+   unpinning a single task removes that task. */
 .collection-card-heart-btn {
   position: relative;
   z-index: 2;

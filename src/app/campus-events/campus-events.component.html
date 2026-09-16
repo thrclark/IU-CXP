@@ -41,7 +41,7 @@
   </div>
   <div mobile-menu>
     <espd-header-nav label="Navigation">
-      <espd-header-nav-item route="/home"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-header-nav-item>
+      <espd-header-nav-item route="/dashboard"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-header-nav-item>
       <espd-header-nav-list label="Events & Calendars">
         <espd-header-nav-item route="/events-calendars/my-classes">My Classes</espd-header-nav-item>
         <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
@@ -61,7 +61,6 @@
       </espd-header-nav-list>
       <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
       <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
-      <espd-header-nav-item route="/tasks"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-header-nav-item>
     </espd-header-nav>
   </div>
 </espd-header>
@@ -69,7 +68,7 @@
 <espd-shell [collapsible]="false">
   <espd-shell-sidebar>
     <espd-sidenav label="Navigation">
-      <espd-sidenav-item route="/home" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-sidenav-item>
+      <espd-sidenav-item route="/dashboard" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-grid'"></i> <span class="nav-item-label">Dashboard</span></espd-sidenav-item>
       <espd-sidenav-list srLabel="Events & Calendars" [isCollapsed]="navState.expandedGroup !== 'events-calendars'" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars'); navState.toggleExpanded('events-calendars')">
         <span labelContent><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></span>
         <div class="sidenav-popup-header">Events & Calendars</div>
@@ -95,7 +94,6 @@
       </espd-sidenav-list>
       <espd-sidenav-item route="/maps" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
       <espd-sidenav-item route="/notifications" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
-      <espd-sidenav-item route="/tasks" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-sidenav-item>
     </espd-sidenav>
   </espd-shell-sidebar>
 

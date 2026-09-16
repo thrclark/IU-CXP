@@ -19,7 +19,7 @@ export interface CollectionIconCell {
  * app-task-card shows one service's icon in its identity swatch, this
  * shows a 2x2 mosaic of the collection's member-task icons in that same
  * square, so a collection reads as "a bundle of tasks" at a glance without
- * taking up any more room on the page than a single task does.
+ * taking up any more room on the dashboard than a single task does.
  */
 @Component({
   selector: 'app-collection-card',
@@ -39,7 +39,7 @@ export class CollectionCardComponent {
   @Input() description?: string;
   /** Full set of services in this collection, in display order. */
   @Input() services: CampusService[] = [];
-  /** Emitted when the heart button is activated (removes this collection from view). */
+  /** Emitted when the dismiss ("x") button is activated. */
   @Output() dismissed = new EventEmitter<void>();
 
   /** Always exactly 4 cells, so the mosaic grid stays a fixed 2x2 whether the collection has 2 tasks or 20. */

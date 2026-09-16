@@ -47,9 +47,9 @@ espd-shell {
   flex-wrap: wrap;
 }
 
-/* Same 2x2 mosaic pattern as the collection card, scaled up to this page's
-   larger identity swatch, so a collection reads the same way whether it's
-   a compact card or this detail header. */
+/* Same 2x2 mosaic pattern as the dashboard's collection card, scaled up
+   to this page's larger identity swatch, so a collection reads the same
+   way whether it's a compact dashboard tile or this detail header. */
 .collection-detail-icon-grid {
   flex-shrink: 0;
   width: 6rem;
