@@ -55,12 +55,19 @@ espd-shell {
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
+  overflow: hidden;
   background-color: light-dark(#eef0fb, #2a2a3a);
 }
 
 .widget-detail-icon i {
   font-size: 2.25rem;
   color: var(--accent-color, #990000);
+}
+
+.widget-detail-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .widget-detail-heading {

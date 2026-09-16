@@ -8,7 +8,7 @@ export type FilterValue = string | 'all';
 /**
  * Mock academic calendar service. Prototype-only: data is a static,
  * in-memory list (see academic-calendar-date.ts) standing in for a future
- * registrar feed/API. Both the compact "Upcoming Dates" widget on Home and
+ * registrar feed/API. Both the compact "Academic Calendar" widget on Home and
  * the full, filterable Academic Calendar page read from this one service so
  * they never drift out of sync with each other.
  */

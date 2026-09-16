@@ -49,7 +49,11 @@
           @for (widget of searchWidgetResults; track widget.id) {
             <li class="search-overlay-row">
               <span class="search-overlay-icon" aria-hidden="true">
-                <i [espdIcon]="widget.icon"></i>
+                @if (widget.imageIcon) {
+                  <img [src]="widget.imageIcon" alt="">
+                } @else {
+                  <i [espdIcon]="widget.icon"></i>
+                }
               </span>
 
               <span class="search-overlay-title">

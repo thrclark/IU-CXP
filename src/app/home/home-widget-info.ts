@@ -12,6 +12,12 @@ export interface HomeWidgetInfo {
   id: WidgetId;
   title: string;
   icon: string;
+  /**
+   * Image icon shown instead of `icon` wherever this widget is
+   * represented as a card -- keeps the Home screen widget card and its
+   * main-search result row visually identical.
+   */
+  imageIcon?: string;
   category: string;
   /** Short summary shown at the top of the detail page. */
   summary: string;
@@ -28,6 +34,7 @@ export const HOME_WIDGET_INFO: HomeWidgetInfo[] = [
     id: 'my-classes',
     title: 'My Classes',
     icon: 'rvt-calendar',
+    imageIcon: 'task-icons/checklist.png',
     category: 'Academics',
     summary: "A quick look at today's class schedule, drawn from your current-term enrollment.",
     details: [
@@ -40,8 +47,9 @@ export const HOME_WIDGET_INFO: HomeWidgetInfo[] = [
   },
   {
     id: 'upcoming-dates',
-    title: 'Upcoming Dates',
+    title: 'Academic Calendar',
     icon: 'rvt-flag',
+    imageIcon: 'task-icons/travel.png',
     category: 'University Calendar',
     summary: 'A short preview of the next important dates on the university academic calendar.',
     details: [
@@ -56,6 +64,7 @@ export const HOME_WIDGET_INFO: HomeWidgetInfo[] = [
     id: 'campus-events',
     title: 'Campus Events',
     icon: 'rvt-calendar',
+    imageIcon: 'task-icons/academic-calendar.png',
     category: 'Campus Life',
     summary: 'A rotating sample of upcoming events happening across IU campuses.',
     details: [
@@ -70,6 +79,7 @@ export const HOME_WIDGET_INFO: HomeWidgetInfo[] = [
     id: 'kuali-time',
     title: 'Kuali Time',
     icon: 'rvt-clock',
+    imageIcon: 'task-icons/kuali-time-widget.png',
     category: 'Employee Center',
     summary: 'Your current clocked-in status and today\'s running timer, from Kuali Time.',
     details: [
@@ -84,6 +94,7 @@ export const HOME_WIDGET_INFO: HomeWidgetInfo[] = [
     id: 'epto',
     title: 'ePTO',
     icon: 'rvt-calendar',
+    imageIcon: 'task-icons/citi-training.png',
     category: 'Employee Center',
     summary: 'Your accrued paid time off balance and this month\'s ePTO submission status.',
     details: [
@@ -98,6 +109,7 @@ export const HOME_WIDGET_INFO: HomeWidgetInfo[] = [
     id: 'your-paycheck',
     title: 'Your Paycheck',
     icon: 'rvt-credit-card',
+    imageIcon: 'task-icons/canvas.png',
     category: 'Employee Center',
     summary: 'Your most recent net pay amount, from Your Paycheck.',
     details: [
@@ -112,6 +124,7 @@ export const HOME_WIDGET_INFO: HomeWidgetInfo[] = [
     id: 'recent-notifications',
     title: 'Recent Notifications',
     icon: 'rvt-bell',
+    imageIcon: 'task-icons/mail-refresh.png',
     category: 'Notifications',
     summary: 'Your most recent notifications from across the app, at a glance.',
     details: [
