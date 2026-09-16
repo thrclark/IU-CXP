@@ -11,6 +11,7 @@ import { BadgeComponent } from 'espd-common/badge';
 
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
+import { MainSearchComponent } from '../main-search/main-search.component';
 import { CampusBadge, CAMPUS_NAMES, ALL_CAMPUS_CODES, resolveCampusBadges } from '../campus/campus-badges';
 import { AcademicCalendarService, FilterValue } from './academic-calendar.service';
 import { AcademicCalendarDate, Semester } from './academic-calendar-date';
@@ -30,7 +31,7 @@ interface SemesterGroup {
 @Component({
   selector: 'app-academic-calendar',
   standalone: true,
-  imports: [RouterLink, FormsModule, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, BadgeComponent, IdentityMenuComponent],
+  imports: [RouterLink, FormsModule, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, BadgeComponent, IdentityMenuComponent, MainSearchComponent],
   templateUrl: './academic-calendar.component.html',
   styleUrls: ['./academic-calendar.component.css']
 })

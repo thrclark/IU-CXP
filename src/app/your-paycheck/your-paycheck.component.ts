@@ -1,5 +1,7 @@
 import { Component, HostListener, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { HeaderModule } from 'espd-common/header';
 import { ShellModule } from 'espd-common/layout/shell';
@@ -7,27 +9,30 @@ import { SidenavModule } from 'espd-common/sidenav';
 import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
-import { CardComponent } from '../card/card.component';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 import { MainSearchComponent } from '../main-search/main-search.component';
+import { YourPaycheckService } from './your-paycheck.service';
+import { Paycheck } from './your-paycheck';
 
 @Component({
-  selector: 'app-placeholder-page',
+  selector: 'app-your-paycheck',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, CardComponent, IdentityMenuComponent, MainSearchComponent],
-  templateUrl: './placeholder-page.component.html',
-  styleUrls: ['./placeholder-page.component.css']
+  imports: [RouterLink, FormsModule, CurrencyPipe, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, IdentityMenuComponent, MainSearchComponent],
+  templateUrl: './your-paycheck.component.html',
+  styleUrls: ['./your-paycheck.component.css']
 })
-export class PlaceholderPageComponent {
+export class YourPaycheckComponent {
   protected navState = inject(NavStateService);
+  protected paycheck = inject(YourPaycheckService);
 
-  title: string;
-  icon: string;
+  get selected(): Paycheck {
+    return this.paycheck.selectedPaycheck;
+  }
 
-  constructor(route: ActivatedRoute) {
-    this.title = route.snapshot.data['title'] ?? 'Page';
-    this.icon = route.snapshot.data['icon'] ?? 'rvt-file';
+  /** e.g. "Aug 1, 2026". */
+  formatDate(iso: string): string {
+    return new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
   footerHtml = `

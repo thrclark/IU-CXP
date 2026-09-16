@@ -11,6 +11,7 @@ import { BadgeComponent } from 'espd-common/badge';
 
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
+import { MainSearchComponent } from '../main-search/main-search.component';
 import { EptoService } from './epto.service';
 import { DocumentStatus, LEAVE_CODE_LABELS, LeaveCode } from './epto';
 import { isoDate } from '../shared/date-format';
@@ -30,7 +31,7 @@ const BASIC_LEAVE_CODES: LeaveCode[] = ['PTO', 'SCK', 'HOL', 'HON'];
 @Component({
   selector: 'app-epto',
   standalone: true,
-  imports: [RouterLink, FormsModule, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, BadgeComponent, IdentityMenuComponent],
+  imports: [RouterLink, FormsModule, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, BadgeComponent, IdentityMenuComponent, MainSearchComponent],
   templateUrl: './epto.component.html',
   styleUrls: ['./epto.component.css']
 })

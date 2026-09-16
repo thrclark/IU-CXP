@@ -1,4 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { HeaderModule } from 'espd-common/header';
@@ -16,16 +17,18 @@ import { AcademicCalendarDate } from '../academic-calendar/academic-calendar-dat
 import { KualiTimeService } from '../kuali-time/kuali-time.service';
 import { formatElapsed } from '../kuali-time/kuali-time';
 import { EptoService } from '../epto/epto.service';
+import { YourPaycheckService } from '../your-paycheck/your-paycheck.service';
 import { CampusEvent } from '../campus-events/campus-event';
 import { CampusService } from '../campus-services/campus-service';
 import { HomeService } from './home.service';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
+import { MainSearchComponent } from '../main-search/main-search.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, LargeTaskCardComponent, TaskCardComponent, IdentityMenuComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [RouterLink, CurrencyPipe, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, LargeTaskCardComponent, TaskCardComponent, IdentityMenuComponent, MainSearchComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -33,6 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   protected navState = inject(NavStateService);
   protected kualiTimeService = inject(KualiTimeService);
   protected eptoService = inject(EptoService);
+  protected paycheckService = inject(YourPaycheckService);
   protected homeService = inject(HomeService);
 
   /** Ticks once a second so the Kuali Time widget's running timer stays live. */
@@ -72,6 +76,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   /** A handful of upcoming academic calendar dates for the compact widget below. */
   get upcomingAcademicDates(): AcademicCalendarDate[] {
     return this.academicCalendarService.upcomingDates(3);
+  }
+
+  /** Most recently issued pay stub, for the compact widget below. */
+  get latestPaycheck() {
+    return this.paycheckService.paychecks[0];
   }
 
   /** Services the user has pinned to Home, in the order they were added. */

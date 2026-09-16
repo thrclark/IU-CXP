@@ -12,6 +12,7 @@ import { MyClassesComponent } from './my-classes/my-classes.component';
 import { CampusEventsComponent } from './campus-events/campus-events.component';
 import { KualiTimeComponent } from './kuali-time/kuali-time.component';
 import { EptoComponent } from './epto/epto.component';
+import { YourPaycheckComponent } from './your-paycheck/your-paycheck.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,7 +33,7 @@ export const routes: Routes = [
   { path: 'employee-center/human-resources', component: PlaceholderPageComponent, data: { title: 'Human Resources', icon: 'rvt-user' } },
   { path: 'employee-center/kuali-time', component: KualiTimeComponent },
   { path: 'employee-center/epto', component: EptoComponent },
-  { path: 'employee-center/your-paycheck', component: PlaceholderPageComponent, data: { title: 'Your Paycheck', icon: 'rvt-file' } },
+  { path: 'employee-center/your-paycheck', component: YourPaycheckComponent },
   { path: 'student-life/marketplace', component: PlaceholderPageComponent, data: { title: 'IU Marketplace', icon: 'tag' } },
   { path: 'directory', component: PlaceholderPageComponent, data: { title: 'Directory', icon: 'address-book' } },
   { path: 'maps', component: MapsPageComponent },

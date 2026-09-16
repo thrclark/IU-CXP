@@ -8,6 +8,13 @@ espd-shell {
   flex: 1;
 }
 
+.section-border {
+  border-top: 2px solid #e2e7e9;
+  padding-top: .8rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .epto-card {
   background-color: light-dark(#fff, #1a1a1a);
   border-radius: 0.25rem;
@@ -422,8 +429,14 @@ espd-shell {
 
 .epto-detail-table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: 0.875rem;
+}
+
+.epto-detail-table th,
+.epto-detail-table td {
+  width: 25%;
 }
 
 .epto-detail-table th {
@@ -440,6 +453,8 @@ espd-shell {
   vertical-align: top;
   color: light-dark(#243142, #fff);
   border-bottom: 1px solid #e2e7e9;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* --- Header notification bell (shared pattern) --- */

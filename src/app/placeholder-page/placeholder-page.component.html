@@ -92,7 +92,6 @@
       <espd-sidenav-list srLabel="Employee Center" [isCollapsed]="navState.expandedGroup !== 'employee-center'" [class.nav-group-selected]="navState.selectedKey === 'employee-center'" (click)="navState.select('employee-center'); navState.toggleExpanded('employee-center')">
         <span labelContent><i [espdIcon]="'rvt-user'"></i> <span class="nav-item-label">Employee Center</span></span>
         <div class="sidenav-popup-header">Employee Center</div>
-        <espd-sidenav-item route="/employee-center/human-resources"><span class="nav-item-label">Human Resources</span></espd-sidenav-item>
         <espd-sidenav-item route="/employee-center/kuali-time"><span class="nav-item-label">Kuali Time</span></espd-sidenav-item>
         <espd-sidenav-item route="/employee-center/epto"><span class="nav-item-label">ePTO</span></espd-sidenav-item>
         <espd-sidenav-item route="/employee-center/your-paycheck"><span class="nav-item-label">Your Paycheck</span></espd-sidenav-item>
@@ -104,12 +103,7 @@
   </espd-shell-sidebar>
 
   <espd-shell-stage>
-    <div class="main-search">
-      <input type="search" class="main-search-input" placeholder="What would you like to do?">
-      <button type="button" class="main-search-btn" aria-label="Search">
-        <i [espdIcon]="'rvt-magnifying-glass'"></i>
-      </button>
-    </div>
+    <app-main-search />
 
     <div class="section-border"></div>
 

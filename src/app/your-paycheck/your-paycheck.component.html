@@ -107,43 +107,175 @@
 
     <div class="section-border"></div>
 
-    <div class="card-grid">
-      <app-large-task-card
-          category="Academics"
-          title="My Classes"
-          icon="rvt-calendar"
-          imageIcon="task-icons/checklist.png">
-        <ul class="schedule-list">
-          <li class="schedule-row">
-            <span class="schedule-time">9:30 AM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">CSCI-B 351 Programming Languages</div>
-              <div class="schedule-location">Ballantine Hall 013</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">11:15 AM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">MATH-M 301 Linear Algebra</div>
-              <div class="schedule-location">Rawles Hall 100</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">1:00 PM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">ENG-W 131 Elementary Composition</div>
-              <div class="schedule-location">Ballantine Hall 205</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">3:30 PM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">PHIL-P 105 Introduction to Philosophy</div>
-              <div class="schedule-location">Sycamore Hall 003</div>
-            </div>
-          </li>
+    <div class="paycheck-card">
+      <div class="paycheck-page-header">
+        <span class="paycheck-page-eyebrow">
+          <i espdIcon="rvt-credit-card" aria-hidden="true"></i>
+          Employee Center
+        </span>
+        <h1 class="paycheck-page-title">Your Paycheck</h1>
+        <p class="paycheck-page-description">Review your pay stub -- itemized earnings, deductions, tax withholding, and direct deposit -- for any recent pay period.</p>
+      </div>
+
+      <div class="paycheck-filter-group paycheck-period-filter">
+        <label class="paycheck-filter-label" for="paycheck-select">Pay period</label>
+        <select id="paycheck-select" class="paycheck-filter-select" [(ngModel)]="paycheck.selectedPaycheckId" name="paycheckSelect">
+          @for (stub of paycheck.paychecks; track stub.id) {
+            <option [value]="stub.id">{{ stub.label }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="paycheck-period-meta">
+        <span><strong>Pay period:</strong> {{ formatDate(selected.payBeginDate) }} &ndash; {{ formatDate(selected.payEndDate) }}</span>
+        <span><strong>Pay date:</strong> {{ formatDate(selected.payDate) }}</span>
+      </div>
+
+      <div class="paycheck-summary-grid">
+        <div class="paycheck-summary-card">
+          <div class="paycheck-summary-label">Total Gross</div>
+          <div class="paycheck-summary-value">{{ paycheck.totalGross(selected) | currency }}</div>
+        </div>
+        <div class="paycheck-summary-card">
+          <div class="paycheck-summary-label">Total Deductions</div>
+          <div class="paycheck-summary-value">{{ paycheck.totalDeductions(selected) | currency }}</div>
+        </div>
+        <div class="paycheck-summary-card">
+          <div class="paycheck-summary-label">Total Taxes</div>
+          <div class="paycheck-summary-value">{{ paycheck.totalTaxes(selected) | currency }}</div>
+        </div>
+        <div class="paycheck-summary-card paycheck-summary-card--highlight">
+          <div class="paycheck-summary-label">Net Pay</div>
+          <div class="paycheck-summary-value">{{ paycheck.netPay(selected) | currency }}</div>
+        </div>
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">Earnings</h2>
+        <table class="paycheck-table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Current</th>
+              <th scope="col">Year-to-Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (line of selected.earnings; track line.code) {
+              <tr>
+                <td>{{ line.label }}</td>
+                <td>{{ line.amount | currency }}</td>
+                <td>{{ paycheck.ytd(line.amount, selected) | currency }}</td>
+              </tr>
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="paycheck-table-total-label">Total Gross</td>
+              <td class="paycheck-table-total-value">{{ paycheck.totalGross(selected) | currency }}</td>
+              <td class="paycheck-table-total-value">{{ paycheck.ytdTotalGross(selected) | currency }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">Before-Tax Deductions</h2>
+        <p class="paycheck-section-note">Fed Taxable Gross ({{ paycheck.fedTaxableGross(selected) | currency }}) is Total Gross minus these. The base IU Retirement Plan / PERF pension are fully employer-funded and don't appear here.</p>
+        <table class="paycheck-table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Current</th>
+              <th scope="col">Year-to-Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (line of selected.beforeTaxDeductions; track line.code) {
+              <tr>
+                <td>{{ line.label }}</td>
+                <td>{{ line.amount | currency }}</td>
+                <td>{{ paycheck.ytd(line.amount, selected) | currency }}</td>
+              </tr>
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="paycheck-table-total-label">Total Before-Tax Deductions</td>
+              <td class="paycheck-table-total-value">{{ paycheck.totalBeforeTaxDeductions(selected) | currency }}</td>
+              <td class="paycheck-table-total-value">{{ paycheck.ytd(paycheck.totalBeforeTaxDeductions(selected), selected) | currency }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">After-Tax Deductions</h2>
+        @if (selected.afterTaxDeductions.length) {
+          <table class="paycheck-table">
+            <thead>
+              <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Current</th>
+                <th scope="col">Year-to-Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (line of selected.afterTaxDeductions; track line.code) {
+                <tr>
+                  <td>{{ line.label }}</td>
+                  <td>{{ line.amount | currency }}</td>
+                  <td>{{ paycheck.ytd(line.amount, selected) | currency }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        } @else {
+          <p class="paycheck-empty-state">No after-tax deductions this pay period.</p>
+        }
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">Taxes</h2>
+        <table class="paycheck-table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Current</th>
+              <th scope="col">Year-to-Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (line of selected.taxes; track line.code) {
+              <tr>
+                <td>{{ line.label }}</td>
+                <td>{{ line.amount | currency }}</td>
+                <td>{{ paycheck.ytd(line.amount, selected) | currency }}</td>
+              </tr>
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="paycheck-table-total-label">Total Taxes</td>
+              <td class="paycheck-table-total-value">{{ paycheck.totalTaxes(selected) | currency }}</td>
+              <td class="paycheck-table-total-value">{{ paycheck.ytdTotalTaxes(selected) | currency }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">Net Pay Distribution</h2>
+        <ul class="paycheck-distribution-list">
+          @for (account of selected.netPayDistribution; track account.last4) {
+            <li class="paycheck-distribution-row">
+              <i espdIcon="rvt-building" aria-hidden="true"></i>
+              <span class="paycheck-distribution-label">{{ account.label }} &middot;&middot;&middot;&middot;{{ account.last4 }}</span>
+              <span class="paycheck-distribution-amount">{{ paycheck.netPay(selected) | currency }}</span>
+            </li>
+          }
         </ul>
-      </app-large-task-card>
+      </div>
     </div>
   </espd-shell-stage>
 </espd-shell>

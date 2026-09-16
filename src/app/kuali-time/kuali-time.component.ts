@@ -11,6 +11,7 @@ import { BadgeComponent } from 'espd-common/badge';
 
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
+import { MainSearchComponent } from '../main-search/main-search.component';
 import { KualiTimeService } from './kuali-time.service';
 import { CURRENT_PAY_PERIOD_ID, EARN_CODE_LABELS, EarnCode, EntryStatus, PayPeriod, TimeEntry, formatElapsed } from './kuali-time';
 
@@ -34,7 +35,7 @@ function isoDate(date: Date): string {
 @Component({
   selector: 'app-kuali-time',
   standalone: true,
-  imports: [RouterLink, FormsModule, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, BadgeComponent, IdentityMenuComponent],
+  imports: [RouterLink, FormsModule, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, BadgeComponent, IdentityMenuComponent, MainSearchComponent],
   templateUrl: './kuali-time.component.html',
   styleUrls: ['./kuali-time.component.css']
 })

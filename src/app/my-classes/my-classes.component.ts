@@ -10,11 +10,12 @@ import { IconDirective } from 'espd-common/icon';
 import { LargeTaskCardComponent } from '../large-task-card/large-task-card.component';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
+import { MainSearchComponent } from '../main-search/main-search.component';
 
 @Component({
   selector: 'app-my-classes',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent, IdentityMenuComponent],
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent, IdentityMenuComponent, MainSearchComponent],
   templateUrl: './my-classes.component.html',
   styleUrls: ['./my-classes.component.css']
 })
