@@ -24,8 +24,13 @@
   <div mobile-menu>
     <espd-header-nav label="Navigation">
       <espd-header-nav-item route="/home"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-header-nav-item>
-      <espd-header-nav-list label="Events & Calendars">
+      <espd-header-nav-list label="Academics">
+        <espd-header-nav-item route="/academics/course-catalog">Course Catalog</espd-header-nav-item>
+        <espd-header-nav-item route="/academics/register-for-classes">Register for Classes</espd-header-nav-item>
         <espd-header-nav-item route="/events-calendars/my-classes">My Classes</espd-header-nav-item>
+        <espd-header-nav-item route="/academics/degrees-majors">Degrees & Majors</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Events & Calendars">
         <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
         <espd-header-nav-item route="/events-calendars/academic-calendar">Academic Calendar</espd-header-nav-item>
       </espd-header-nav-list>
@@ -52,10 +57,17 @@
   <espd-shell-sidebar>
     <espd-sidenav label="Navigation">
       <espd-sidenav-item route="/home" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-sidenav-item>
+      <espd-sidenav-list srLabel="Academics" [isCollapsed]="navState.expandedGroup !== 'academics'" [class.nav-group-selected]="navState.selectedKey === 'academics'" (click)="navState.select('academics'); navState.toggleExpanded('academics')">
+        <span labelContent><i [espdIcon]="'graduation-cap'"></i> <span class="nav-item-label">Academics</span></span>
+        <div class="sidenav-popup-header">Academics</div>
+        <espd-sidenav-item route="/academics/course-catalog"><span class="nav-item-label">Course Catalog</span></espd-sidenav-item>
+        <espd-sidenav-item route="/academics/register-for-classes"><span class="nav-item-label">Register for Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/my-classes"><span class="nav-item-label">My Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/academics/degrees-majors"><span class="nav-item-label">Degrees & Majors</span></espd-sidenav-item>
+      </espd-sidenav-list>
       <espd-sidenav-list srLabel="Events & Calendars" [isCollapsed]="navState.expandedGroup !== 'events-calendars'" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars'); navState.toggleExpanded('events-calendars')">
         <span labelContent><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></span>
         <div class="sidenav-popup-header">Events & Calendars</div>
-        <espd-sidenav-item route="/events-calendars/my-classes"><span class="nav-item-label">My Classes</span></espd-sidenav-item>
         <espd-sidenav-item route="/events-calendars/campus-events"><span class="nav-item-label">Campus Events</span></espd-sidenav-item>
         <espd-sidenav-item route="/events-calendars/academic-calendar"><span class="nav-item-label">Academic Calendar</span></espd-sidenav-item>
       </espd-sidenav-list>
