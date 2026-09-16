@@ -16,6 +16,7 @@ import { CampusBadge, resolveCampusBadges } from '../campus/campus-badges';
 import { CampusService } from '../campus-services/campus-service';
 import { findServiceBySlug } from '../campus-services/service-directory';
 import { NavStateService } from '../nav-state/nav-state.service';
+import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 
 @Component({
   selector: 'app-service-detail',
@@ -31,6 +32,7 @@ import { NavStateService } from '../nav-state/nav-state.service';
     BadgeComponent,
     ButtonComponent,
     InlineAlertComponent,
+    IdentityMenuComponent,
   ],
   templateUrl: './service-detail.component.html',
   styleUrls: ['./service-detail.component.css']

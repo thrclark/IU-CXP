@@ -9,11 +9,12 @@ import { IconDirective } from 'espd-common/icon';
 
 import { CardComponent } from '../card/card.component';
 import { NavStateService } from '../nav-state/nav-state.service';
+import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 
 @Component({
   selector: 'app-placeholder-page',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, CardComponent],
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, CardComponent, IdentityMenuComponent],
   templateUrl: './placeholder-page.component.html',
   styleUrls: ['./placeholder-page.component.css']
 })

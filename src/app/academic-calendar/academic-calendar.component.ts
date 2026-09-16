@@ -9,11 +9,12 @@ import { IconDirective } from 'espd-common/icon';
 
 import { LargeTaskCardComponent } from '../large-task-card/large-task-card.component';
 import { NavStateService } from '../nav-state/nav-state.service';
+import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 
 @Component({
   selector: 'app-academic-calendar',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent],
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent, IdentityMenuComponent],
   templateUrl: './academic-calendar.component.html',
   styleUrls: ['./academic-calendar.component.css']
 })

@@ -9,6 +9,7 @@ import { SidenavModule } from 'espd-common/sidenav';
 import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 import { NavStateService } from '../nav-state/nav-state.service';
+import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 
 interface MapFilter {
   key: string;
@@ -35,7 +36,7 @@ const IU_BLOOMINGTON_MAP_EMBED_URL_WITH_TRANSIT = `${IU_BLOOMINGTON_MAP_EMBED_UR
 @Component({
   selector: 'app-maps-page',
   standalone: true,
-  imports: [RouterLink, FormsModule, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective],
+  imports: [RouterLink, FormsModule, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, IdentityMenuComponent],
   templateUrl: './maps-page.component.html',
   styleUrls: ['./maps-page.component.css']
 })

@@ -1,0 +1,92 @@
+<div class="identity-menu">
+  <button type="button"
+      class="identity-btn"
+      aria-haspopup="true"
+      [attr.aria-expanded]="open"
+      [attr.aria-label]="identityAriaLabel"
+      (click)="toggle($event)">
+    <span class="identity-avatar" [class.identity-avatar--anon]="!persona.current">
+      @if (persona.current) {
+        <span class="identity-initials">{{ persona.current.initials }}</span>
+      } @else {
+        <i [espdIcon]="'rvt-user'" aria-hidden="true" class="identity-anon-icon"></i>
+      }
+    </span>
+    @if (persona.current) {
+      <span class="identity-name d-none d-xl-inline">{{ persona.current.username }}</span>
+    }
+  </button>
+
+  @if (open) {
+    <div class="dropdown-menu dropdown-menu-right identity-panel py-0 show" role="menu">
+      @if (view === 'menu') {
+        @if (persona.current) {
+          <div class="dropdown-header identity-panel-header">
+            <div class="identity-panel-name">{{ persona.current.displayName }}</div>
+            <div class="identity-panel-role">Viewing as: {{ persona.current.label }}</div>
+          </div>
+        } @else {
+          <div class="identity-welcome">
+            <span class="identity-welcome-avatar">
+              <i [espdIcon]="'rvt-user'" aria-hidden="true"></i>
+            </span>
+            <div class="identity-welcome-heading">Welcome!</div>
+            <button type="button" class="identity-signin-btn">Sign in</button>
+          </div>
+        }
+
+        <ul class="identity-option-list" role="none">
+          <li role="none">
+            <button type="button" class="identity-option" role="menuitem">Preferences</button>
+          </li>
+          <li role="none">
+            <button type="button" class="identity-option" role="menuitem">Campus &amp; roles</button>
+          </li>
+          <li role="none">
+            <button type="button" class="identity-option" role="menuitem">Send feedback</button>
+          </li>
+          <li role="none">
+            <button type="button" class="identity-option" role="menuitem">Announcements</button>
+          </li>
+          <li role="none">
+            <button type="button" class="identity-option" role="menuitem" (click)="showBackdoor($event)">
+              Backdoor user
+            </button>
+          </li>
+        </ul>
+      } @else {
+        <button type="button" class="identity-back" (click)="showMenu($event)">
+          <i [espdIcon]="'rvt-arrow-left'" aria-hidden="true"></i>
+          Back
+        </button>
+
+        <div class="identity-panel-section">
+          <div class="identity-panel-section-title">View prototype as</div>
+          <ul class="identity-persona-list" role="none">
+            @for (option of persona.personas; track option.id) {
+              <li role="none">
+                <button type="button"
+                    role="menuitemradio"
+                    [attr.aria-checked]="isActive(option)"
+                    class="identity-persona-option"
+                    [class.identity-persona-option--active]="isActive(option)"
+                    (click)="choose(option.id)">
+                  <span class="identity-persona-initials" aria-hidden="true">{{ option.initials }}</span>
+                  <span class="identity-persona-copy">
+                    <span class="identity-persona-label">{{ option.label }}</span>
+                    <span class="identity-persona-desc">{{ option.description }}</span>
+                  </span>
+                  <span class="identity-persona-check" aria-hidden="true">&#10003;</span>
+                </button>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="identity-panel-footer">
+          Prototype tool -- this only changes what you see, in this browser.
+        </div>
+      }
+    </div>
+  }
+</div>

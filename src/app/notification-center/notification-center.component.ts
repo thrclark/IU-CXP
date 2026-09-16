@@ -8,6 +8,7 @@ import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 import { DropdownModule } from 'espd-common/dropdown';
 import { NavStateService } from '../nav-state/nav-state.service';
+import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 
 interface NotificationItem {
   timestamp: string;
@@ -24,7 +25,7 @@ interface NotificationItem {
 @Component({
   selector: 'app-notification-center',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, DropdownModule],
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, DropdownModule, IdentityMenuComponent],
   templateUrl: './notification-center.component.html',
   styleUrls: ['./notification-center.component.css']
 })

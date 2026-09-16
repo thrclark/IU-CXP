@@ -16,6 +16,7 @@ import { CollectionIconCell } from '../collection-card/collection-card.component
 import { TaskCardComponent } from '../task-card/task-card.component';
 import { HomeService } from '../home/home.service';
 import { NavStateService } from '../nav-state/nav-state.service';
+import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 
 @Component({
   selector: 'app-collection-detail',
@@ -29,6 +30,7 @@ import { NavStateService } from '../nav-state/nav-state.service';
     IconDirective,
     ButtonComponent,
     TaskCardComponent,
+    IdentityMenuComponent,
   ],
   templateUrl: './collection-detail.component.html',
   styleUrls: ['./collection-detail.component.css']
