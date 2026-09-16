@@ -12,13 +12,7 @@ import {
   SEED_TIME_ENTRIES,
   TimeEntry,
 } from './kuali-time';
-
-const MONTH_ABBREVIATIONS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-const WEEKDAY_ABBREVIATIONS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-function formatDayLabel(date: Date): string {
-  return `${WEEKDAY_ABBREVIATIONS[date.getDay()]}, ${MONTH_ABBREVIATIONS[date.getMonth()]} ${date.getDate()}`;
-}
+import { formatDayLabel, isoDate } from '../shared/date-format';
 
 function formatClockTime(date: Date): string {
   const minutes = date.getMinutes().toString().padStart(2, '0');
@@ -30,13 +24,6 @@ function formatClockTime(date: Date): string {
 /** Nearest quarter hour, matching how Kuali Time rounds clocked time -- never rounds down to zero. */
 function roundToQuarterHour(hours: number): number {
   return Math.max(Math.round(hours * 4) / 4, 0.25);
-}
-
-function isoDate(date: Date): string {
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const day = date.getDate().toString().padStart(2, '0');
-  return `${year}-${month}-${day}`;
 }
 
 export interface MissedPunchInput {

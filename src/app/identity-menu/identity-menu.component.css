@@ -171,6 +171,23 @@
   outline: none;
 }
 
+.identity-option--campus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.identity-option-value {
+  flex-shrink: 0;
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  color: light-dark(#6c757d, #adb5bd);
+}
+
 .identity-back {
   display: flex;
   align-items: center;
@@ -289,4 +306,63 @@
   border-top: 1px solid #e2e7e9;
   font-size: 0.6875rem;
   color: light-dark(#6c757d, #adb5bd);
+}
+
+.identity-campus-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 20rem;
+  overflow-y: auto;
+}
+
+.identity-campus-option {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-left: 3px solid transparent;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.identity-campus-option:hover,
+.identity-campus-option:focus {
+  background-color: light-dark(#f7f7f7, #343a40);
+  outline: none;
+}
+
+.identity-campus-option--active {
+  border-left-color: var(--primary-color, #4141a3);
+  background-color: light-dark(#f7f7f7, #343a40);
+}
+
+.identity-campus-option-icon {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  color: light-dark(#6c757d, #adb5bd);
+}
+
+.identity-campus-option-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: light-dark(#243142, #fff);
+}
+
+.identity-campus-option-check {
+  flex-shrink: 0;
+  color: var(--primary-color, #4141a3);
+  font-size: 0.75rem;
+  visibility: hidden;
+}
+
+.identity-campus-option--active .identity-campus-option-check {
+  visibility: visible;
 }

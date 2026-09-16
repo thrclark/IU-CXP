@@ -1,0 +1,292 @@
+<espd-header [fullWidth]="true" subtitle="Indiana University">
+  <div desktop-menu class="notification-menu mr-1">
+    <button type="button"
+        class="notification-bell-btn"
+        aria-haspopup="true"
+        [attr.aria-expanded]="notificationsOpen"
+        aria-label="Notifications, 3 unread"
+        (click)="toggleNotifications($event)">
+      <span class="notification-bell-icon">
+        <i [espdIcon]="'rvt-bell'" aria-hidden="true"></i>
+        <span class="notification-badge" aria-hidden="true"></span>
+      </span>
+    </button>
+    @if (notificationsOpen) {
+      <div class="dropdown-menu dropdown-menu-right notification-panel py-0 show" role="menu">
+        <div class="dropdown-header py-2">Notifications</div>
+        <div class="dropdown-item notification-row notification-row--urgent">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Registration opens Monday</div>
+            <div class="notification-row-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-row notification-row--standard">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Career Fair starts Thursday at 10am</div>
+            <div class="notification-row-time">Yesterday</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-row notification-row--urgent">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Your advisor added a new contact note</div>
+            <div class="notification-row-time">2 days ago</div>
+          </div>
+        </div>
+        <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
+      </div>
+    }
+  </div>
+  <div desktop-menu>
+    <app-identity-menu />
+  </div>
+  <div mobile-menu>
+    <espd-header-nav label="Navigation">
+      <espd-header-nav-item route="/home"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-header-nav-item>
+      <espd-header-nav-list label="Events & Calendars">
+        <espd-header-nav-item route="/events-calendars/my-classes">My Classes</espd-header-nav-item>
+        <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
+        <espd-header-nav-item route="/events-calendars/academic-calendar">Academic Calendar</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Campus Life">
+        <espd-header-nav-item route="/student-life/campus-dining">Campus Dining</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/athletics">Athletics</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/residential-services">Residential Services</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/marketplace">IU Marketplace</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Employee Center">
+        <espd-header-nav-item route="/employee-center/human-resources">Human Resources</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/kuali-time">Kuali Time</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/epto">ePTO</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/your-paycheck">Your Paycheck</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
+      <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
+      <espd-header-nav-item route="/tasks"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-header-nav-item>
+    </espd-header-nav>
+    <app-identity-menu />
+  </div>
+</espd-header>
+
+<espd-shell [collapsible]="false">
+  <espd-shell-sidebar>
+    <espd-sidenav label="Navigation">
+      <espd-sidenav-item route="/home" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-sidenav-item>
+      <espd-sidenav-list srLabel="Events & Calendars" [isCollapsed]="navState.expandedGroup !== 'events-calendars'" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars'); navState.toggleExpanded('events-calendars')">
+        <span labelContent><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></span>
+        <div class="sidenav-popup-header">Events & Calendars</div>
+        <espd-sidenav-item route="/events-calendars/my-classes"><span class="nav-item-label">My Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/campus-events"><span class="nav-item-label">Campus Events</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/academic-calendar"><span class="nav-item-label">Academic Calendar</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Campus Life" [isCollapsed]="navState.expandedGroup !== 'student-life'" [class.nav-group-selected]="navState.selectedKey === 'student-life'" (click)="navState.select('student-life'); navState.toggleExpanded('student-life')">
+        <span labelContent><i [espdIcon]="'rvt-heart'"></i> <span class="nav-item-label">Campus Life</span></span>
+        <div class="sidenav-popup-header">Campus Life</div>
+        <espd-sidenav-item route="/student-life/campus-dining"><span class="nav-item-label">Campus Dining</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/athletics"><span class="nav-item-label">Athletics</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Residential Services</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/marketplace"><span class="nav-item-label">IU Marketplace</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Employee Center" [isCollapsed]="navState.expandedGroup !== 'employee-center'" [class.nav-group-selected]="navState.selectedKey === 'employee-center'" (click)="navState.select('employee-center'); navState.toggleExpanded('employee-center')">
+        <span labelContent><i [espdIcon]="'rvt-user'"></i> <span class="nav-item-label">Employee Center</span></span>
+        <div class="sidenav-popup-header">Employee Center</div>
+        <espd-sidenav-item route="/employee-center/human-resources"><span class="nav-item-label">Human Resources</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/kuali-time"><span class="nav-item-label">Kuali Time</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/epto"><span class="nav-item-label">ePTO</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/your-paycheck"><span class="nav-item-label">Your Paycheck</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-item route="/maps" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
+      <espd-sidenav-item route="/notifications" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
+      <espd-sidenav-item route="/tasks" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-sidenav-item>
+    </espd-sidenav>
+  </espd-shell-sidebar>
+
+  <espd-shell-stage>
+    <div class="epto-card">
+      <div class="epto-page-header">
+        <span class="epto-page-eyebrow">
+          <i espdIcon="rvt-calendar" aria-hidden="true"></i>
+          Employee Center
+        </span>
+        <h1 class="epto-page-title">ePTO</h1>
+        <p class="epto-page-description">Log and submit your paid time off for the month, and track your PTO balance.</p>
+      </div>
+
+      <div class="epto-tabs" role="tablist">
+        <button type="button" role="tab" class="epto-tab-btn" [class.epto-tab-btn-active]="activeTab === 'monthly-calendar'" [attr.aria-selected]="activeTab === 'monthly-calendar'" (click)="setTab('monthly-calendar')">
+          <i espdIcon="rvt-calendar" aria-hidden="true"></i> Monthly Calendar
+        </button>
+        <button type="button" role="tab" class="epto-tab-btn" [class.epto-tab-btn-active]="activeTab === 'time-off-detail'" [attr.aria-selected]="activeTab === 'time-off-detail'" (click)="setTab('time-off-detail')">
+          <i espdIcon="rvt-clipboard" aria-hidden="true"></i> Time-off Detail
+        </button>
+      </div>
+
+      @if (activeTab === 'monthly-calendar') {
+        <div class="epto-tab-panel">
+          <div class="epto-month-header">
+            <h2 class="epto-month-title">{{ epto.currentMonth.label }}</h2>
+            <espd-badge [label]="epto.currentMonth.status" [color]="statusBadgeColor(epto.currentMonth.status)"></espd-badge>
+          </div>
+
+          @if (epto.currentMonth.entries.length) {
+            <ul class="epto-entries-list">
+              @for (entry of epto.currentMonth.entries; track entry.id) {
+                <li class="epto-entry-row">
+                  <div class="epto-entry-date">{{ entry.dayLabel }}</div>
+                  <espd-badge [label]="leaveCodeLabel(entry.code)" [color]="leaveCodeBadgeColor(entry.code)"></espd-badge>
+                  <div class="epto-entry-hours">{{ entry.hours }} hrs</div>
+                  <div class="epto-entry-description">{{ entry.description }}</div>
+                  @if (epto.currentMonth.status === 'Not Submitted') {
+                    <button type="button" class="epto-entry-remove-btn" [attr.aria-label]="'Remove ' + entry.dayLabel" (click)="removeEntry(entry.id)">
+                      <i espdIcon="rvt-close" aria-hidden="true"></i>
+                    </button>
+                  }
+                </li>
+              }
+            </ul>
+          } @else {
+            <p class="epto-entries-empty">No time off logged yet this month.</p>
+          }
+
+          @if (epto.currentMonth.status === 'Not Submitted') {
+            @if (!addDatesOpen) {
+              <button type="button" class="epto-link-btn" (click)="openAddDates()">
+                <i espdIcon="rvt-plus" aria-hidden="true"></i> Add dates
+              </button>
+            } @else {
+              <form class="epto-add-dates" (ngSubmit)="submitAddDates()">
+                <h3 class="epto-add-dates-title">Add dates</h3>
+
+                <div class="epto-add-dates-grid">
+                  <div class="epto-filter-group">
+                    <label class="epto-filter-label" for="ad-start">Start date</label>
+                    <input id="ad-start" type="date" class="epto-filter-select" [(ngModel)]="addDatesForm.startDate" name="adStart" required>
+                  </div>
+                  <div class="epto-filter-group">
+                    <label class="epto-filter-label" for="ad-end">End date</label>
+                    <input id="ad-end" type="date" class="epto-filter-select" [(ngModel)]="addDatesForm.endDate" name="adEnd" required>
+                  </div>
+                  <div class="epto-filter-group">
+                    <label class="epto-filter-label" for="ad-code">Time-off code</label>
+                    <select id="ad-code" class="epto-filter-select" [(ngModel)]="addDatesForm.code" name="adCode">
+                      @for (code of basicLeaveCodes; track code) {
+                        <option [value]="code">{{ leaveCodeLabel(code) }}</option>
+                      }
+                    </select>
+                  </div>
+                  <div class="epto-filter-group">
+                    <label class="epto-filter-label" for="ad-hours">Hours per day</label>
+                    <input id="ad-hours" type="number" class="epto-filter-select" min="1" max="8" step="1" [(ngModel)]="addDatesForm.hoursPerDay" name="adHours" required>
+                  </div>
+                </div>
+
+                <div class="epto-filter-group">
+                  <label class="epto-filter-label" for="ad-description">Description (optional)</label>
+                  <input id="ad-description" type="text" class="epto-filter-select" placeholder="e.g. Family vacation" [(ngModel)]="addDatesForm.description" name="adDescription">
+                </div>
+
+                <div class="epto-add-dates-actions">
+                  <button type="button" class="epto-btn epto-btn-secondary" (click)="cancelAddDates()">Cancel</button>
+                  <button type="submit" class="epto-btn epto-btn-primary">Add</button>
+                </div>
+              </form>
+            }
+
+            <div class="epto-submit-row">
+              <p class="epto-submit-note">Submit every month, whether or not you've taken any time off.</p>
+              <button type="button" class="epto-btn epto-btn-primary" (click)="submitMonth()">
+                <i espdIcon="rvt-check" aria-hidden="true"></i> Submit for approval
+              </button>
+            </div>
+          } @else {
+            <div class="epto-submitted-note">
+              <i [espdIcon]="epto.currentMonth.status === 'Approved' ? 'rvt-check-circle' : 'rvt-clock'" aria-hidden="true"></i>
+              <p>
+                @if (epto.currentMonth.status === 'Submitted') {
+                  Submitted for approval. You'll see it move to Approved once your supervisor processes it.
+                } @else {
+                  Approved.
+                }
+              </p>
+            </div>
+          }
+        </div>
+      }
+
+      @if (activeTab === 'time-off-detail') {
+        <div class="epto-tab-panel">
+          <div class="epto-balance-grid">
+            <div class="epto-balance-card">
+              <div class="epto-balance-label">Jan. 1 Carryover</div>
+              <div class="epto-balance-value">{{ epto.carryoverHours }} <span class="epto-balance-unit">hrs</span></div>
+            </div>
+            <div class="epto-balance-card">
+              <div class="epto-balance-label">YTD Earned</div>
+              <div class="epto-balance-value">{{ epto.ytdEarnedHours }} <span class="epto-balance-unit">hrs</span></div>
+            </div>
+            <div class="epto-balance-card">
+              <div class="epto-balance-label">YTD Approved Usage</div>
+              <div class="epto-balance-value">{{ epto.ytdApprovedUsageHours }} <span class="epto-balance-unit">hrs</span></div>
+            </div>
+            <div class="epto-balance-card epto-balance-card--highlight">
+              <div class="epto-balance-label">Accrued Balance</div>
+              <div class="epto-balance-value">{{ epto.accruedBalanceHours }} <span class="epto-balance-unit">hrs</span></div>
+            </div>
+          </div>
+
+          <div class="epto-secondary-stats">
+            <div class="epto-secondary-stat">
+              <span class="epto-secondary-stat-label">Sick leave balance</span>
+              <span class="epto-secondary-stat-value">{{ epto.sickBalanceHours }} hrs</span>
+            </div>
+            <div class="epto-secondary-stat">
+              <span class="epto-secondary-stat-label">Projected year-end balance</span>
+              <span class="epto-secondary-stat-value">{{ epto.projectedYearEndBalanceHours }} hrs</span>
+            </div>
+          </div>
+          <p class="epto-balance-note">Projected assumes no additional PTO is used between now and December 31. Actual balances above reflect the most recently approved month and won't include time off still pending approval.</p>
+
+          <div class="epto-detail-months">
+            @for (month of epto.monthlyCalendars; track month.id) {
+              <div class="epto-detail-month">
+                <div class="epto-detail-month-header">
+                  <h3 class="epto-detail-month-title">{{ month.label }}</h3>
+                  <espd-badge [label]="month.status" [color]="statusBadgeColor(month.status)"></espd-badge>
+                </div>
+
+                @if (month.entries.length) {
+                  <table class="epto-detail-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Hours</th>
+                        <th scope="col">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (entry of month.entries; track entry.id) {
+                        <tr>
+                          <td>{{ entry.dayLabel }}</td>
+                          <td><espd-badge [label]="leaveCodeLabel(entry.code)" [color]="leaveCodeBadgeColor(entry.code)"></espd-badge></td>
+                          <td>{{ entry.hours }}</td>
+                          <td>{{ entry.description }}</td>
+                        </tr>
+                      }
+                    </tbody>
+                  </table>
+                } @else {
+                  <p class="epto-entries-empty">No time off logged this month.</p>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </espd-shell-stage>
+</espd-shell>
+
+<espd-footer [customFooterOverride]="footerHtml" />

@@ -203,7 +203,7 @@
           category="Employee Center"
           title="Kuali Time"
           icon="rvt-clock"
-          imageIcon="task-icons/kuali-time.png"
+          imageIcon="task-icons/kuali-time-widget.png"
           [personalized]="true"
           [columnSpan]="1">
         <div class="kuali-widget-status">
@@ -221,6 +221,37 @@
         </div>
         <a routerLink="/employee-center/kuali-time" class="widget-view-all">
           Open Kuali Time
+          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+        </a>
+      </app-large-task-card>
+
+      <app-large-task-card
+          category="Employee Center"
+          title="ePTO"
+          icon="rvt-calendar"
+          [personalized]="true"
+          [columnSpan]="1">
+        <div class="epto-widget-status">
+          <span class="epto-widget-pill"
+              [class.epto-widget-pill--submitted]="eptoService.currentMonth.status === 'Submitted'"
+              [class.epto-widget-pill--approved]="eptoService.currentMonth.status === 'Approved'">
+            <i [espdIcon]="eptoService.currentMonth.status === 'Approved' ? 'rvt-check-circle' : 'rvt-clock'" aria-hidden="true"></i>
+            {{ eptoService.currentMonth.status }}
+          </span>
+
+          <div class="epto-widget-balance">
+            {{ eptoService.accruedBalanceHours }} <span class="epto-widget-balance-unit">hrs</span>
+          </div>
+          <div class="epto-widget-subtext">
+            @if (eptoService.currentMonth.entries.length) {
+              {{ eptoService.currentMonth.entries.length }} {{ eptoService.currentMonth.entries.length === 1 ? 'date' : 'dates' }} logged this month
+            } @else {
+              No time off logged this month
+            }
+          </div>
+        </div>
+        <a routerLink="/employee-center/epto" class="widget-view-all">
+          Open ePTO
           <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
         </a>
       </app-large-task-card>
@@ -250,6 +281,33 @@
         </a>
       </app-large-task-card>
     </div>
+
+    <div class="section-border"></div>
+
+    <h2 class="home-section-title">My Home</h2>
+
+    @if (homeServices.length) {
+      <div class="card-grid">
+        @for (service of homeServices; track service.slug) {
+          <app-task-card
+              [slug]="service.slug"
+              [category]="service.category"
+              [title]="service.title"
+              [imageIcon]="service.imageIcon"
+              [description]="service.description"
+              [launchUrl]="service.launchUrl"
+              [campuses]="service.campuses"
+              [showHomeAction]="true"
+              [onHome]="isOnHome(service.slug)"
+              (homeToggle)="toggleHome(service.slug)">
+          </app-task-card>
+        }
+      </div>
+    } @else {
+      <p class="home-empty-state">
+        You haven't pinned any services to Home yet. Look for the <i espdIcon="rvt-heart" aria-hidden="true"></i> icon on any service in All Services to add it here.
+      </p>
+    }
   </espd-shell-stage>
   Any other content won't be displayed
 </espd-shell>

@@ -40,7 +40,10 @@
             <button type="button" class="identity-option" role="menuitem">Preferences</button>
           </li>
           <li role="none">
-            <button type="button" class="identity-option" role="menuitem">Campus &amp; roles</button>
+            <button type="button" class="identity-option identity-option--campus" role="menuitem" (click)="showCampus($event)">
+              <span>Campus &amp; roles</span>
+              <span class="identity-option-value">{{ campusSelection.currentLabel }}</span>
+            </button>
           </li>
           <li role="none">
             <button type="button" class="identity-option" role="menuitem">Send feedback</button>
@@ -54,7 +57,7 @@
             </button>
           </li>
         </ul>
-      } @else {
+      } @else if (view === 'backdoor') {
         <button type="button" class="identity-back" (click)="showMenu($event)">
           <i [espdIcon]="'rvt-arrow-left'" aria-hidden="true"></i>
           Back
@@ -85,6 +88,31 @@
 
         <div class="identity-panel-footer">
           Prototype tool -- this only changes what you see, in this browser.
+        </div>
+      } @else if (view === 'campus') {
+        <button type="button" class="identity-back" (click)="showMenu($event)">
+          <i [espdIcon]="'rvt-arrow-left'" aria-hidden="true"></i>
+          Back
+        </button>
+
+        <div class="identity-panel-section">
+          <div class="identity-panel-section-title">Choose your campus</div>
+          <ul class="identity-campus-list" role="none">
+            @for (option of campusSelection.options; track option.code) {
+              <li role="none">
+                <button type="button"
+                    role="menuitemradio"
+                    [attr.aria-checked]="isActiveCampus(option.code)"
+                    class="identity-campus-option"
+                    [class.identity-campus-option--active]="isActiveCampus(option.code)"
+                    (click)="chooseCampus(option.code, $event)">
+                  <i [espdIcon]="'rvt-building'" aria-hidden="true" class="identity-campus-option-icon"></i>
+                  <span class="identity-campus-option-label">{{ option.label }}</span>
+                  <span class="identity-campus-option-check" aria-hidden="true">&#10003;</span>
+                </button>
+              </li>
+            }
+          </ul>
         </div>
       }
     </div>

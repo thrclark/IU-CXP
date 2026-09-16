@@ -4,8 +4,9 @@ import { IconDirective } from 'espd-common/icon';
 
 import { PersonaService } from '../persona/persona.service';
 import { Persona, PersonaId } from '../persona/persona';
+import { CampusSelectionService } from '../campus/campus-selection.service';
 
-type IdentityPanelView = 'menu' | 'backdoor';
+type IdentityPanelView = 'menu' | 'backdoor' | 'campus';
 
 /**
  * The header's identity block (avatar) and its account panel.
@@ -23,6 +24,10 @@ type IdentityPanelView = 'menu' | 'backdoor';
  * student, a graduating student, faculty, or staff -- and have the identity
  * block and panel reflect that persona from then on.
  *
+ * "Campus & roles" swaps the panel to the campus switcher (see
+ * CampusSelectionService) -- the app-wide "which campus am I on" preference,
+ * changeable from this same menu on every page.
+ *
  * Drop this into the same `desktop-menu` / `mobile-menu` slots on
  * `<espd-header>` that used to carry the `[user]` input, and remove that
  * input so the library doesn't also render its own non-interactive avatar.
@@ -36,6 +41,7 @@ type IdentityPanelView = 'menu' | 'backdoor';
 })
 export class IdentityMenuComponent {
   protected persona = inject(PersonaService);
+  protected campusSelection = inject(CampusSelectionService);
 
   open = false;
   view: IdentityPanelView = 'menu';
@@ -61,6 +67,11 @@ export class IdentityMenuComponent {
     this.view = 'backdoor';
   }
 
+  showCampus(event: Event): void {
+    event.stopPropagation();
+    this.view = 'campus';
+  }
+
   showMenu(event: Event): void {
     event.stopPropagation();
     this.view = 'menu';
@@ -69,6 +80,16 @@ export class IdentityMenuComponent {
   choose(id: PersonaId): void {
     this.persona.setPersona(id);
     this.closePanel();
+  }
+
+  chooseCampus(code: string, event: Event): void {
+    event.stopPropagation();
+    this.campusSelection.setCampus(code);
+    this.closePanel();
+  }
+
+  isActiveCampus(code: string): boolean {
+    return code === this.campusSelection.current;
   }
 
   isActive(option: Persona): boolean {

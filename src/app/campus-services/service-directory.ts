@@ -30,7 +30,7 @@ export const DIRECTORY_SERVICES: CampusService[] = [
     category: 'Campus Services',
     description: 'Access Kuali Time through One.IU.',
     extendedDescription: 'Kuali Time is available through One.IU for Indiana University students, faculty, and staff. Select "Launch service" to open it, or contact the UITS Support Center if you need help getting started.',
-    imageIcon: 'task-icons/canvas.png',
+    imageIcon: 'task-icons/kuali-time.png',
     launchUrl: '#',
     campuses: ALL_CAMPUS_CODES,
     supportLinks: [

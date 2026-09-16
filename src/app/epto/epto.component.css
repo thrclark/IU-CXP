@@ -1,0 +1,556 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+espd-shell {
+  flex: 1;
+}
+
+.epto-card {
+  background-color: light-dark(#fff, #1a1a1a);
+  border-radius: 0.25rem;
+  box-shadow: 0 .1875rem .375rem #24314212;
+  border: 1px solid #dee2e6;
+  padding: 1.75rem;
+}
+
+.epto-page-header {
+  margin-bottom: 1.5rem;
+}
+
+.epto-page-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--primary-color, #4141a3);
+}
+
+.epto-page-title {
+  margin: 0.375rem 0 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.epto-page-description {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+/* --- Tabs --- */
+
+.epto-tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid #e2e7e9;
+  margin-bottom: 1.5rem;
+}
+
+.epto-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.25rem;
+  margin-bottom: -1px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: light-dark(#4c5a69, #b7bcc2);
+  cursor: pointer;
+}
+
+.epto-tab-btn + .epto-tab-btn {
+  margin-left: 1.25rem;
+}
+
+.epto-tab-btn:hover {
+  color: light-dark(#243142, #fff);
+}
+
+.epto-tab-btn-active {
+  border-bottom-color: var(--accent-color, #990000);
+  color: light-dark(#243142, #fff);
+}
+
+.epto-tab-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Shared form controls --- */
+
+.epto-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.epto-filter-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.epto-filter-select {
+  min-width: 11rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+  color: light-dark(#243142, #fff);
+  background-color: light-dark(#fff, #1a1a1a);
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.epto-filter-select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color, #4141a3);
+}
+
+/* --- Buttons --- */
+
+.epto-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .15s ease-in-out;
+}
+
+.epto-btn-primary {
+  background-color: var(--primary-color, #4141a3);
+  color: #fff;
+}
+
+.epto-btn-primary:hover {
+  background-color: var(--primary-color-dark-15);
+}
+
+.epto-btn-secondary {
+  background-color: light-dark(#f2f3f5, #2a2a2a);
+  color: light-dark(#243142, #fff);
+}
+
+.epto-btn-secondary:hover {
+  background-color: light-dark(#e9ecef, #333);
+}
+
+.epto-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  align-self: flex-start;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-color, #4141a3);
+  cursor: pointer;
+}
+
+.epto-link-btn:hover {
+  text-decoration: underline;
+}
+
+/* --- Monthly Calendar tab --- */
+
+.epto-month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.epto-month-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.epto-entries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #e2e7e9;
+}
+
+.epto-entry-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid #e2e7e9;
+}
+
+.epto-entry-date {
+  flex-shrink: 0;
+  width: 6rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: light-dark(#243142, #fff);
+}
+
+.epto-entry-hours {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-color, #990000);
+}
+
+.epto-entry-description {
+  flex: 1;
+  min-width: 10rem;
+  font-size: 0.875rem;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.epto-entry-remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: auto;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: 999rem;
+  background: none;
+  color: light-dark(#767676, #9aa1a8);
+  cursor: pointer;
+}
+
+.epto-entry-remove-btn:hover {
+  background-color: light-dark(#f2f3f5, #2a2a2a);
+  color: light-dark(#243142, #fff);
+}
+
+.epto-entries-empty {
+  margin: 0;
+  font-size: 0.875rem;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.epto-add-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid #e2e7e9;
+}
+
+.epto-add-dates-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.epto-add-dates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 1rem;
+}
+
+.epto-add-dates-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.epto-submit-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e7e9;
+}
+
+.epto-submit-note {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.epto-submitted-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border-radius: 0.25rem;
+  background-color: light-dark(#f7f8fa, #232323);
+  border: 1px solid #e2e7e9;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.epto-submitted-note i {
+  margin-top: 0.125rem;
+  color: #2e7d32;
+}
+
+.epto-submitted-note p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* --- Time-off Detail tab --- */
+
+.epto-balance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1.25rem;
+}
+
+.epto-balance-card {
+  padding: 1.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid #e2e7e9;
+}
+
+.epto-balance-card--highlight {
+  border-color: var(--primary-color, #4141a3);
+  background-color: light-dark(#f2f2fb, #23233a);
+}
+
+.epto-balance-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.epto-balance-value {
+  margin-top: 0.375rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.epto-balance-unit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: light-dark(#767676, #9aa1a8);
+}
+
+.epto-secondary-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.25rem;
+  background-color: light-dark(#f7f8fa, #232323);
+  border: 1px solid #e2e7e9;
+}
+
+.epto-secondary-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.epto-secondary-stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.epto-secondary-stat-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.epto-balance-note {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: light-dark(#767676, #9aa1a8);
+}
+
+.epto-detail-months {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.epto-detail-month {
+  padding-top: 1.25rem;
+  border-top: 1px solid #e2e7e9;
+}
+
+.epto-detail-month:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.epto-detail-month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.epto-detail-month-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.epto-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.epto-detail-table th {
+  text-align: left;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: light-dark(#4c5a69, #b7bcc2);
+  border-bottom: 1px solid #e2e7e9;
+}
+
+.epto-detail-table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  color: light-dark(#243142, #fff);
+  border-bottom: 1px solid #e2e7e9;
+}
+
+/* --- Header notification bell (shared pattern) --- */
+
+.notification-menu {
+  position: relative;
+}
+
+.notification-bell-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 999rem;
+  background: none;
+  color: var(--header-bar-text-color);
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow .15s ease-in-out, background-color .15s ease-in-out;
+}
+
+.notification-bell-btn:hover {
+  background-color: light-dark(#e9ecef, #4C5A69);
+  text-decoration: none;
+}
+
+.notification-bell-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color);
+}
+
+.notification-bell-btn[aria-expanded="true"] {
+  background-color: var(--primary-color-dark-15);
+  color: #fff;
+}
+
+.notification-bell-icon {
+  position: relative;
+  display: inline-flex;
+  font-size: 1.125rem;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+}
+
+.notification-panel {
+  top: calc(100% + 0.5rem);
+  min-width: 320px;
+  max-width: 360px;
+  box-shadow: rgba(5, 5, 36, 0.26) 0px 24px 72px -12px;
+}
+
+.dropdown-header {
+  font-size: 1rem;
+}
+
+.notification-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  white-space: normal;
+  border-bottom: 1px solid #e2e7e9;
+}
+
+.notification-row:last-of-type {
+  border-bottom: none;
+}
+
+.notification-row:hover {
+  background-color: #f7f7f7;
+}
+
+.notification-row--urgent {
+  border-left: 6px solid var(--accent-color);
+}
+
+.notification-row--standard {
+  border-left: 6px solid var(--primary-color);
+}
+
+.notification-row-title {
+  font-weight: 600;
+  font-size: .75rem;
+}
+
+.notification-row-time {
+  font-size: 0.75rem;
+  color: light-dark(#6c757d, #adb5bd);
+  margin-top: 0.125rem;
+}
+
+.notification-view-all {
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.notification-view-all:hover {
+  background-color: #f7f7f7;
+  text-decoration: underline;
+}
