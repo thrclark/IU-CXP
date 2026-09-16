@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { HelloWorldComponent } from './hello-world/hello-world.component';
+import { HomeComponent } from './home/home.component';
+import { TasksComponent } from './tasks/tasks.component';
 import { NotificationCenterComponent } from './notification-center/notification-center.component';
 import { PlaceholderPageComponent } from './placeholder-page/placeholder-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
@@ -10,8 +11,9 @@ import { MyClassesComponent } from './my-classes/my-classes.component';
 import { CampusEventsComponent } from './campus-events/campus-events.component';
 
 export const routes: Routes = [
-  { path: '', component: HelloWorldComponent },
-  { path: 'dashboard', component: HelloWorldComponent },
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'tasks', component: TasksComponent },
   { path: 'notifications', component: NotificationCenterComponent },
   { path: 'services/:slug', component: ServiceDetailComponent },
   { path: 'notifications/settings/general', component: PlaceholderPageComponent, data: { title: 'General Settings', icon: 'rvt-gear' } },

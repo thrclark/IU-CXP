@@ -11,7 +11,7 @@ import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
 import { TaskCardComponent } from '../task-card/task-card.component';
-import { CampusService } from '../campus-services/campus-service';
+import { CampusService, CAMPUS_SERVICES } from '../campus-services/campus-service';
 import { ALL_SERVICES } from '../campus-services/service-directory';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { NavStateService } from '../nav-state/nav-state.service';
@@ -20,18 +20,14 @@ import { NavStateService } from '../nav-state/nav-state.service';
 const MAX_SEARCH_RESULTS = 30;
 
 @Component({
-  selector: 'app-hello-world',
+  selector: 'app-tasks',
   standalone: true,
   imports: [RouterLink, FormsModule, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
-  templateUrl: './hello-world.component.html',
-  styleUrls: ['./hello-world.component.css']
+  templateUrl: './tasks.component.html',
+  styleUrls: ['./tasks.component.css']
 })
-export class HelloWorldComponent {
+export class TasksComponent {
   protected navState = inject(NavStateService);
-
-
-  // --- This is the "state" (the data) ---
-  message: string = 'Hello, Angular World!';
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -39,6 +35,9 @@ export class HelloWorldComponent {
   get campusServices(): CampusService[] {
     return this.dashboardService.dashboardServices;
   }
+
+  /** Every curated task center, regardless of pin state. */
+  readonly taskCenterServices: CampusService[] = CAMPUS_SERVICES;
 
   // --- Dashboard search ---
   searchQuery = '';
@@ -86,11 +85,6 @@ export class HelloWorldComponent {
       </ul>
     </footer>
   `;
-
-  // --- This is the logic ---
-  updateMessage() {
-    this.message = 'You clicked the button!';
-  }
 
   // --- Notification bell prototype ---
   notificationsOpen = false;
