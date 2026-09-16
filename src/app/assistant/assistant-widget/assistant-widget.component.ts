@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IconDirective } from 'espd-common/icon';
 
-import { DashboardService } from '../../dashboard/dashboard.service';
+import { HomeService } from '../../home/home.service';
 import { AssistantReplyService } from '../assistant-reply.service';
 import { Conversation } from '../conversation.model';
 import { ConversationService } from '../conversation.service';
@@ -53,7 +53,7 @@ export class AssistantWidgetComponent implements AfterViewChecked {
   constructor(
     private conversationService: ConversationService,
     private replyService: AssistantReplyService,
-    private dashboardService: DashboardService,
+    private homeService: HomeService,
   ) {}
 
   get conversation(): Conversation | undefined {
@@ -137,12 +137,12 @@ export class AssistantWidgetComponent implements AfterViewChecked {
     this.conversationService.deleteConversation(id);
   }
 
-  isOnDashboard(slug: string): boolean {
-    return this.dashboardService.isOnDashboard(slug);
+  isOnHome(slug: string): boolean {
+    return this.homeService.isOnHome(slug);
   }
 
-  toggleDashboard(slug: string): void {
-    this.dashboardService.toggle(slug);
+  toggleHome(slug: string): void {
+    this.homeService.toggle(slug);
   }
 
   async send(): Promise<void> {

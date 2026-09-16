@@ -174,11 +174,11 @@
 
                     <button type="button"
                         class="search-overlay-action-btn"
-                        [class.search-overlay-action-btn-active]="isOnDashboard(service.slug)"
-                        [attr.aria-pressed]="isOnDashboard(service.slug)"
-                        [attr.aria-label]="(isOnDashboard(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnDashboard(service.slug) ? ' from your dashboard' : ' to your dashboard')"
-                        (click)="toggleDashboard(service.slug)">
-                      <i [espdIcon]="isOnDashboard(service.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+                        [class.search-overlay-action-btn-active]="isOnHome(service.slug)"
+                        [attr.aria-pressed]="isOnHome(service.slug)"
+                        [attr.aria-label]="(isOnHome(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnHome(service.slug) ? ' from your Home' : ' to your Home')"
+                        (click)="toggleHome(service.slug)">
+                      <i [espdIcon]="isOnHome(service.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
                     </button>
                   </span>
                 </li>
@@ -198,7 +198,7 @@
 
     <div class="section-border"></div>
 
-    <h2 class="dashboard-section-title">All Services</h2>
+    <h2 class="home-section-title">All Services</h2>
 
     <div class="card-grid">
       @for (collection of taskCollections; track collection.slug) {
@@ -221,9 +221,9 @@
             [description]="service.description"
             [launchUrl]="service.launchUrl"
             [campuses]="service.campuses"
-            [showDashboardAction]="true"
-            [onDashboard]="isOnDashboard(service.slug)"
-            (dashboardToggle)="toggleDashboard(service.slug)">
+            [showHomeAction]="true"
+            [onHome]="isOnHome(service.slug)"
+            (homeToggle)="toggleHome(service.slug)">
         </app-task-card>
       }
     </div>

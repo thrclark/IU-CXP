@@ -14,7 +14,7 @@ import { TaskCollection } from '../task-collections/task-collection';
 import { TaskCollectionsService } from '../task-collections/task-collections.service';
 import { CollectionIconCell } from '../collection-card/collection-card.component';
 import { TaskCardComponent } from '../task-card/task-card.component';
-import { DashboardService } from '../dashboard/dashboard.service';
+import { HomeService } from '../home/home.service';
 import { NavStateService } from '../nav-state/nav-state.service';
 
 @Component({
@@ -49,7 +49,7 @@ export class CollectionDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private collectionsService: TaskCollectionsService,
-    private dashboardService: DashboardService,
+    private homeService: HomeService,
   ) { }
 
   ngOnInit(): void {
@@ -63,27 +63,27 @@ export class CollectionDetailComponent implements OnInit, OnDestroy {
     this.paramSubscription?.unsubscribe();
   }
 
-  isOnDashboard(slug: string): boolean {
-    return this.dashboardService.isOnDashboard(slug);
+  isOnHome(slug: string): boolean {
+    return this.homeService.isOnHome(slug);
   }
 
-  toggleDashboard(slug: string): void {
-    this.dashboardService.toggle(slug);
+  toggleHome(slug: string): void {
+    this.homeService.toggle(slug);
   }
 
-  /** Whether every task in this collection is already pinned to the dashboard. */
-  get allOnDashboard(): boolean {
-    return this.services.length > 0 && this.services.every(service => this.isOnDashboard(service.slug));
+  /** Whether every task in this collection is already pinned to Home. */
+  get allOnHome(): boolean {
+    return this.services.length > 0 && this.services.every(service => this.isOnHome(service.slug));
   }
 
-  /** Adds every task in this collection to the dashboard in one action, or removes them all if they're all already there. */
-  toggleAllOnDashboard(): void {
-    const shouldAdd = !this.allOnDashboard;
+  /** Adds every task in this collection to Home in one action, or removes them all if they're all already there. */
+  toggleAllOnHome(): void {
+    const shouldAdd = !this.allOnHome;
     for (const service of this.services) {
-      if (shouldAdd && !this.isOnDashboard(service.slug)) {
-        this.dashboardService.add(service.slug);
-      } else if (!shouldAdd && this.isOnDashboard(service.slug)) {
-        this.dashboardService.remove(service.slug);
+      if (shouldAdd && !this.isOnHome(service.slug)) {
+        this.homeService.add(service.slug);
+      } else if (!shouldAdd && this.isOnHome(service.slug)) {
+        this.homeService.remove(service.slug);
       }
     }
   }

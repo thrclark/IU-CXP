@@ -109,10 +109,10 @@
 
           <espd-button
               class="collection-detail-bulk-action"
-              [color]="allOnDashboard ? 'remove' : 'primary'"
-              (click)="toggleAllOnDashboard()">
-            <i [espdIcon]="allOnDashboard ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
-            {{ allOnDashboard ? 'Remove all from dashboard' : 'Add all to dashboard' }}
+              [color]="allOnHome ? 'remove' : 'primary'"
+              (click)="toggleAllOnHome()">
+            <i [espdIcon]="allOnHome ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+            {{ allOnHome ? 'Remove all from Home' : 'Add all to Home' }}
           </espd-button>
         </div>
 
@@ -130,9 +130,9 @@
                 [description]="service.description"
                 [launchUrl]="service.launchUrl"
                 [campuses]="service.campuses"
-                [showDashboardAction]="true"
-                [onDashboard]="isOnDashboard(service.slug)"
-                (dashboardToggle)="toggleDashboard(service.slug)">
+                [showHomeAction]="true"
+                [onHome]="isOnHome(service.slug)"
+                (homeToggle)="toggleHome(service.slug)">
             </app-task-card>
           }
         </div>

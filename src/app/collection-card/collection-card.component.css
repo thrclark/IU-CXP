@@ -160,8 +160,8 @@
   gap: 0.375rem;
 }
 
-/* Styled like app-task-card's dashboard-pin heart in its "already on
-   dashboard" (solid, grey) state — a collection shown here is always
+/* Styled like app-task-card's Home-pin heart in its "already on
+   Home" (solid, grey) state — a collection shown here is always
    currently on the page, so there's no separate outline/active state to
    toggle between; clicking it removes the collection, same as unpinning
    a single task removes that task. */

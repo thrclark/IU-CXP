@@ -8,7 +8,7 @@ espd-shell {
   flex: 1;
 }
 
-.dashboard-section-title {
+.home-section-title {
   margin: 0 0 1rem;
   font-size: 1.4375rem;
   font-weight: 700;
@@ -28,7 +28,7 @@ espd-shell {
 .schedule-list,
 .dates-list,
 .events-list,
-.dashboard-notifications-list {
+.home-notifications-list {
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
@@ -108,22 +108,22 @@ espd-shell {
   margin-top: 0.125rem;
 }
 
-.dashboard-notification-row {
+.home-notification-row {
   padding-left: 0.75rem;
   border-left: 4px solid var(--primary-color, #4141a3);
 }
 
-.dashboard-notification-row--urgent {
+.home-notification-row--urgent {
   border-left-color: var(--accent-color, #990000);
 }
 
-.dashboard-notification-title {
+.home-notification-title {
   font-size: 0.9375rem;
   font-weight: 600;
   color: light-dark(#243142, #fff);
 }
 
-.dashboard-notification-time {
+.home-notification-time {
   font-size: 0.8125rem;
   color: light-dark(#6c757d, #adb5bd);
   margin-top: 0.125rem;

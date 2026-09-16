@@ -16,7 +16,7 @@ import { TaskCardComponent } from '../task-card/task-card.component';
 import { CollectionCardComponent, CollectionIconCell } from '../collection-card/collection-card.component';
 import { CampusService } from '../campus-services/campus-service';
 import { ALL_SERVICES } from '../campus-services/service-directory';
-import { DashboardService } from '../dashboard/dashboard.service';
+import { HomeService } from '../home/home.service';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { SemanticSearchService } from '../campus-services/semantic-search.service';
 import { TaskCollectionsService } from '../task-collections/task-collections.service';
@@ -38,7 +38,7 @@ export class TasksComponent {
   protected navState = inject(NavStateService);
 
   constructor(
-    private dashboardService: DashboardService,
+    private homeService: HomeService,
     private semanticSearch: SemanticSearchService,
     protected collectionsService: TaskCollectionsService,
   ) {
@@ -68,9 +68,9 @@ export class TasksComponent {
     });
   }
 
-  /** Services currently pinned to "My Dashboard". */
+  /** Services currently pinned to "My Home". */
   get campusServices(): CampusService[] {
-    return this.dashboardService.dashboardServices;
+    return this.homeService.homeServices;
   }
 
   /** Curated task collections currently surfaced on this page (not yet dismissed). */
@@ -92,7 +92,7 @@ export class TasksComponent {
     this.collectionsService.dismiss(slug);
   }
 
-  // --- Dashboard search ---
+  // --- Home search ---
   searchQuery = '';
   /** Whether the search results overlay is currently shown below the search bar. */
   searchOverlayOpen = false;
@@ -139,14 +139,13 @@ export class TasksComponent {
     }
     return merged;
   }
+
+  isOnHome(slug: string): boolean {
+    return this.homeService.isOnHome(slug);
   }
 
-  isOnDashboard(slug: string): boolean {
-    return this.dashboardService.isOnDashboard(slug);
-  }
-
-  toggleDashboard(slug: string): void {
-    this.dashboardService.toggle(slug);
+  toggleHome(slug: string): void {
+    this.homeService.toggle(slug);
   }
 
   onSearchInput(): void {

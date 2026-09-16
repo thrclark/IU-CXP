@@ -46,14 +46,14 @@
     }
 
     <div class="task-card-actions">
-      @if (showDashboardAction) {
+      @if (showHomeAction) {
         <button type="button"
-            class="task-card-dashboard-btn"
-            [class.task-card-dashboard-btn-active]="onDashboard"
-            [attr.aria-pressed]="onDashboard"
-            [attr.aria-label]="(onDashboard ? 'Remove ' : 'Add ') + title + (onDashboard ? ' from your dashboard' : ' to your dashboard')"
-            (click)="dashboardToggle.emit()">
-          <i [espdIcon]="onDashboard ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+            class="task-card-home-btn"
+            [class.task-card-home-btn-active]="onHome"
+            [attr.aria-pressed]="onHome"
+            [attr.aria-label]="(onHome ? 'Remove ' : 'Add ') + title + (onHome ? ' from your Home' : ' to your Home')"
+            (click)="homeToggle.emit()">
+          <i [espdIcon]="onHome ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
         </button>
       }
 

@@ -33,12 +33,12 @@ export class TaskCardComponent {
    * When set, the info button navigates there instead of rendering.
    */
   @Input() slug?: string;
-  /** Shows the add/remove-from-dashboard button in the footer when true. */
-  @Input() showDashboardAction = false;
-  /** Whether this service is currently on the user's dashboard (controls the button's icon/state). */
-  @Input() onDashboard = false;
-  /** Emitted when the add/remove-from-dashboard button is clicked. */
-  @Output() dashboardToggle = new EventEmitter<void>();
+  /** Shows the add/remove-from-Home button in the footer when true. */
+  @Input() showHomeAction = false;
+  /** Whether this service is currently on the user's Home (controls the button's icon/state). */
+  @Input() onHome = false;
+  /** Emitted when the add/remove-from-Home button is clicked. */
+  @Output() homeToggle = new EventEmitter<void>();
 
   get campusBadges(): CampusBadge[] {
     return resolveCampusBadges(this.campuses);

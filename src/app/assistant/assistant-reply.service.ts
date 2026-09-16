@@ -42,7 +42,7 @@ const NOTHING_FOUND =
  * assistant, not a real language model: it detects a few conversational
  * patterns (greetings, thanks, "tell me more about the first one") and
  * otherwise grounds its reply entirely in SemanticSearchService + exact
- * catalog matches, the same search used on the dashboard. That's a
+ * catalog matches, the same search used on Home. That's a
  * deliberate prototype tradeoff — see the semantic search build notes for
  * the alternatives (an in-browser LLM, or a backend-hosted one) and why
  * this one was chosen first.

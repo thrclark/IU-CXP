@@ -78,11 +78,11 @@
                         </a>
                         <button type="button"
                             class="assistant-service-card-btn"
-                            [class.assistant-service-card-btn-active]="isOnDashboard(service.slug)"
-                            [attr.aria-pressed]="isOnDashboard(service.slug)"
-                            [attr.aria-label]="(isOnDashboard(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnDashboard(service.slug) ? ' from your dashboard' : ' to your dashboard')"
-                            (click)="toggleDashboard(service.slug)">
-                          <i [espdIcon]="isOnDashboard(service.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+                            [class.assistant-service-card-btn-active]="isOnHome(service.slug)"
+                            [attr.aria-pressed]="isOnHome(service.slug)"
+                            [attr.aria-label]="(isOnHome(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnHome(service.slug) ? ' from your Home' : ' to your Home')"
+                            (click)="toggleHome(service.slug)">
+                          <i [espdIcon]="isOnHome(service.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
                         </button>
                       </span>
                     </div>
