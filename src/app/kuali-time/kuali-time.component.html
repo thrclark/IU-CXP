@@ -1,0 +1,314 @@
+<espd-header [fullWidth]="true" subtitle="Indiana University">
+  <div desktop-menu class="notification-menu mr-1">
+    <button type="button"
+        class="notification-bell-btn"
+        aria-haspopup="true"
+        [attr.aria-expanded]="notificationsOpen"
+        aria-label="Notifications, 3 unread"
+        (click)="toggleNotifications($event)">
+      <span class="notification-bell-icon">
+        <i [espdIcon]="'rvt-bell'" aria-hidden="true"></i>
+        <span class="notification-badge" aria-hidden="true"></span>
+      </span>
+    </button>
+    @if (notificationsOpen) {
+      <div class="dropdown-menu dropdown-menu-right notification-panel py-0 show" role="menu">
+        <div class="dropdown-header py-2">Notifications</div>
+        <div class="dropdown-item notification-row notification-row--urgent">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Registration opens Monday</div>
+            <div class="notification-row-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-row notification-row--standard">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Career Fair starts Thursday at 10am</div>
+            <div class="notification-row-time">Yesterday</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-row notification-row--urgent">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Your advisor added a new contact note</div>
+            <div class="notification-row-time">2 days ago</div>
+          </div>
+        </div>
+        <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
+      </div>
+    }
+  </div>
+  <div desktop-menu>
+    <app-identity-menu />
+  </div>
+  <div mobile-menu>
+    <espd-header-nav label="Navigation">
+      <espd-header-nav-item route="/home"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-header-nav-item>
+      <espd-header-nav-list label="Events & Calendars">
+        <espd-header-nav-item route="/events-calendars/my-classes">My Classes</espd-header-nav-item>
+        <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
+        <espd-header-nav-item route="/events-calendars/academic-calendar">Academic Calendar</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Campus Life">
+        <espd-header-nav-item route="/student-life/campus-dining">Campus Dining</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/athletics">Athletics</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/residential-services">Residential Services</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/marketplace">IU Marketplace</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Employee Center">
+        <espd-header-nav-item route="/employee-center/human-resources">Human Resources</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/kuali-time">Kuali Time</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/epto">ePTO</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/your-paycheck">Your Paycheck</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
+      <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
+      <espd-header-nav-item route="/tasks"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-header-nav-item>
+    </espd-header-nav>
+    <app-identity-menu />
+  </div>
+</espd-header>
+
+<espd-shell [collapsible]="false">
+  <espd-shell-sidebar>
+    <espd-sidenav label="Navigation">
+      <espd-sidenav-item route="/home" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-sidenav-item>
+      <espd-sidenav-list srLabel="Events & Calendars" [isCollapsed]="navState.expandedGroup !== 'events-calendars'" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars'); navState.toggleExpanded('events-calendars')">
+        <span labelContent><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></span>
+        <div class="sidenav-popup-header">Events & Calendars</div>
+        <espd-sidenav-item route="/events-calendars/my-classes"><span class="nav-item-label">My Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/campus-events"><span class="nav-item-label">Campus Events</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/academic-calendar"><span class="nav-item-label">Academic Calendar</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Campus Life" [isCollapsed]="navState.expandedGroup !== 'student-life'" [class.nav-group-selected]="navState.selectedKey === 'student-life'" (click)="navState.select('student-life'); navState.toggleExpanded('student-life')">
+        <span labelContent><i [espdIcon]="'rvt-heart'"></i> <span class="nav-item-label">Campus Life</span></span>
+        <div class="sidenav-popup-header">Campus Life</div>
+        <espd-sidenav-item route="/student-life/campus-dining"><span class="nav-item-label">Campus Dining</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/athletics"><span class="nav-item-label">Athletics</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Residential Services</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/marketplace"><span class="nav-item-label">IU Marketplace</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Employee Center" [isCollapsed]="navState.expandedGroup !== 'employee-center'" [class.nav-group-selected]="navState.selectedKey === 'employee-center'" (click)="navState.select('employee-center'); navState.toggleExpanded('employee-center')">
+        <span labelContent><i [espdIcon]="'rvt-user'"></i> <span class="nav-item-label">Employee Center</span></span>
+        <div class="sidenav-popup-header">Employee Center</div>
+        <espd-sidenav-item route="/employee-center/human-resources"><span class="nav-item-label">Human Resources</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/kuali-time"><span class="nav-item-label">Kuali Time</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/epto"><span class="nav-item-label">ePTO</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/your-paycheck"><span class="nav-item-label">Your Paycheck</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-item route="/maps" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
+      <espd-sidenav-item route="/notifications" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
+      <espd-sidenav-item route="/tasks" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-sidenav-item>
+    </espd-sidenav>
+  </espd-shell-sidebar>
+
+  <espd-shell-stage>
+    <div class="kuali-card">
+      <div class="kuali-page-header">
+        <span class="kuali-page-eyebrow">
+          <i espdIcon="rvt-clock" aria-hidden="true"></i>
+          Employee Center
+        </span>
+        <h1 class="kuali-page-title">Kuali Time</h1>
+        <p class="kuali-page-description">Clock in and out, review this pay period's hours, and check your leave balances.</p>
+      </div>
+
+      <div class="kuali-tabs" role="tablist">
+        <button type="button" role="tab" class="kuali-tab-btn" [class.kuali-tab-btn-active]="activeTab === 'clock'" [attr.aria-selected]="activeTab === 'clock'" (click)="setTab('clock')">
+          <i espdIcon="rvt-clock" aria-hidden="true"></i> Clock
+        </button>
+        <button type="button" role="tab" class="kuali-tab-btn" [class.kuali-tab-btn-active]="activeTab === 'time-detail'" [attr.aria-selected]="activeTab === 'time-detail'" (click)="setTab('time-detail')">
+          <i espdIcon="rvt-clipboard" aria-hidden="true"></i> Time Detail
+        </button>
+        <button type="button" role="tab" class="kuali-tab-btn" [class.kuali-tab-btn-active]="activeTab === 'leave-accrual'" [attr.aria-selected]="activeTab === 'leave-accrual'" (click)="setTab('leave-accrual')">
+          <i espdIcon="rvt-heart" aria-hidden="true"></i> Leave Accrual
+        </button>
+      </div>
+
+      @if (activeTab === 'clock') {
+        <div class="kuali-tab-panel">
+          <div class="kuali-clock-status" [class.kuali-clock-status--in]="kualiTime.isClockedIn">
+            <div class="kuali-clock-status-info">
+              <span class="kuali-clock-status-pill" [class.kuali-clock-status-pill--in]="kualiTime.isClockedIn">
+                <i [espdIcon]="kualiTime.isClockedIn ? 'rvt-check-circle' : 'rvt-clock'" aria-hidden="true"></i>
+                {{ kualiTime.isClockedIn ? 'Clocked In' : 'Clocked Out' }}
+              </span>
+
+              @if (kualiTime.isClockedIn) {
+                <div class="kuali-clock-timer">{{ elapsedLabel }}</div>
+                <div class="kuali-clock-subtext">
+                  {{ kualiTime.assignmentLabel(kualiTime.activeAssignmentId ?? '') }} — since {{ kualiTime.clockedInSince?.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) }}
+                </div>
+              } @else {
+                <div class="kuali-clock-subtext">Choose a position, then clock in to start tracking today's hours.</div>
+              }
+            </div>
+
+            <div class="kuali-clock-actions">
+              @if (!kualiTime.isClockedIn) {
+                <div class="kuali-filter-group">
+                  <label class="kuali-filter-label" for="assignment-select">Position</label>
+                  <select id="assignment-select" class="kuali-filter-select" [(ngModel)]="kualiTime.selectedAssignmentId">
+                    @for (assignment of kualiTime.assignments; track assignment.id) {
+                      <option [value]="assignment.id">{{ assignment.label }} — {{ assignment.department }}</option>
+                    }
+                  </select>
+                </div>
+                <button type="button" class="kuali-btn kuali-btn-primary" (click)="clockIn(kualiTime.selectedAssignmentId)">
+                  <i espdIcon="rvt-play" aria-hidden="true"></i> Clock In
+                </button>
+              } @else {
+                <button type="button" class="kuali-btn kuali-btn-stop" (click)="clockOut()">
+                  <i espdIcon="rvt-pause" aria-hidden="true"></i> Clock Out
+                </button>
+              }
+            </div>
+          </div>
+
+          @if (!missedPunchOpen) {
+            <button type="button" class="kuali-link-btn" (click)="openMissedPunch()">
+              <i espdIcon="rvt-pencil" aria-hidden="true"></i> Report a missed punch
+            </button>
+          } @else {
+            <form class="kuali-missed-punch" (ngSubmit)="submitMissedPunch()">
+              <h3 class="kuali-missed-punch-title">Report a missed punch</h3>
+
+              <div class="kuali-missed-punch-grid">
+                <div class="kuali-filter-group">
+                  <label class="kuali-filter-label" for="mp-assignment">Position</label>
+                  <select id="mp-assignment" class="kuali-filter-select" [(ngModel)]="missedPunchForm.assignmentId" name="mpAssignment">
+                    @for (assignment of kualiTime.assignments; track assignment.id) {
+                      <option [value]="assignment.id">{{ assignment.label }}</option>
+                    }
+                  </select>
+                </div>
+                <div class="kuali-filter-group">
+                  <label class="kuali-filter-label" for="mp-date">Date</label>
+                  <input id="mp-date" type="date" class="kuali-filter-select" [(ngModel)]="missedPunchForm.date" name="mpDate" required>
+                </div>
+                <div class="kuali-filter-group">
+                  <label class="kuali-filter-label" for="mp-time-in">Time in</label>
+                  <input id="mp-time-in" type="time" class="kuali-filter-select" [(ngModel)]="missedPunchForm.timeIn" name="mpTimeIn" required>
+                </div>
+                <div class="kuali-filter-group">
+                  <label class="kuali-filter-label" for="mp-time-out">Time out</label>
+                  <input id="mp-time-out" type="time" class="kuali-filter-select" [(ngModel)]="missedPunchForm.timeOut" name="mpTimeOut" required>
+                </div>
+              </div>
+
+              <div class="kuali-filter-group">
+                <label class="kuali-filter-label" for="mp-note">Note (optional)</label>
+                <input id="mp-note" type="text" class="kuali-filter-select" placeholder="e.g. Badge reader was down at the east entrance" [(ngModel)]="missedPunchForm.note" name="mpNote">
+              </div>
+
+              <div class="kuali-missed-punch-actions">
+                <button type="button" class="kuali-btn kuali-btn-secondary" (click)="cancelMissedPunch()">Cancel</button>
+                <button type="submit" class="kuali-btn kuali-btn-primary">Save</button>
+              </div>
+            </form>
+          }
+
+          <div class="kuali-today">
+            <h3 class="kuali-today-title">Today</h3>
+            @if (todaysEntries.length) {
+              <ul class="kuali-today-list">
+                @for (entry of todaysEntries; track entry.id) {
+                  <li class="kuali-today-row">
+                    <span class="kuali-today-time">{{ entry.clockIn }} – {{ entry.clockOut }}</span>
+                    <span class="kuali-today-hours">{{ entry.hours }} hrs</span>
+                    <span class="kuali-today-position">{{ kualiTime.assignmentLabel(entry.assignmentId) }}</span>
+                  </li>
+                }
+              </ul>
+            } @else {
+              <p class="kuali-today-empty">No time logged yet today.</p>
+            }
+          </div>
+        </div>
+      }
+
+      @if (activeTab === 'time-detail') {
+        <div class="kuali-tab-panel">
+          <div class="kuali-filter-group kuali-period-filter">
+            <label class="kuali-filter-label" for="period-select">Pay period</label>
+            <select id="period-select" class="kuali-filter-select" [(ngModel)]="kualiTime.selectedPayPeriodId">
+              @for (period of kualiTime.payPeriods; track period.id) {
+                <option [value]="period.id">{{ periodOptionLabel(period) }}</option>
+              }
+            </select>
+          </div>
+
+          @if (selectedPeriodEntries.length) {
+            <table class="kuali-time-table">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Position</th>
+                  <th scope="col">Earn code</th>
+                  <th scope="col">Hours</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (entry of selectedPeriodEntries; track entry.id) {
+                  <tr>
+                    <td>
+                      {{ entry.dayLabel }}
+                      @if (entry.clockIn && entry.clockOut) {
+                        <div class="kuali-time-table-subtext">{{ entry.clockIn }} – {{ entry.clockOut }}</div>
+                      }
+                      @if (entry.note) {
+                        <div class="kuali-time-table-subtext">{{ entry.note }}</div>
+                      }
+                    </td>
+                    <td>{{ kualiTime.assignmentLabel(entry.assignmentId) }}</td>
+                    <td><espd-badge [label]="earnCodeLabel(entry.earnCode)" [color]="earnCodeBadgeColor(entry.earnCode)"></espd-badge></td>
+                    <td>{{ entry.hours }}</td>
+                    <td><espd-badge [label]="entry.status" [color]="statusBadgeColor(entry.status)"></espd-badge></td>
+                  </tr>
+                }
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3" class="kuali-time-table-total-label">Total</td>
+                  <td class="kuali-time-table-total-value">{{ selectedPeriodTotalHours }}</td>
+                  <td></td>
+                </tr>
+              </tfoot>
+            </table>
+          } @else {
+            <div class="kuali-empty-state">
+              <i espdIcon="rvt-clipboard" aria-hidden="true"></i>
+              <p>No time recorded yet for this pay period.</p>
+            </div>
+          }
+        </div>
+      }
+
+      @if (activeTab === 'leave-accrual') {
+        <div class="kuali-tab-panel">
+          <div class="kuali-leave-grid">
+            @for (balance of kualiTime.leaveBalances; track balance.code) {
+              <div class="kuali-leave-card">
+                <div class="kuali-leave-label">{{ balance.label }}</div>
+                <div class="kuali-leave-balance">{{ balance.balanceHours }} <span class="kuali-leave-unit">hrs</span></div>
+                <div class="kuali-leave-days">≈ {{ (balance.balanceHours / 8).toFixed(1) }} days</div>
+                <div class="kuali-leave-accrual">
+                  @if (balance.accrualPerPeriodHours > 0) {
+                    Accrues {{ balance.accrualPerPeriodHours }} hrs per pay period
+                  } @else {
+                    Not accrued per pay period
+                  }
+                </div>
+              </div>
+            }
+          </div>
+          <p class="kuali-leave-note">Balances reflect the most recently processed pay period and may not include hours entered since.</p>
+        </div>
+      }
+    </div>
+  </espd-shell-stage>
+</espd-shell>
+
+<espd-footer [customFooterOverride]="footerHtml" />

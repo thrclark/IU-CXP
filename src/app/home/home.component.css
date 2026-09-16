@@ -129,6 +129,43 @@ espd-shell {
   margin-top: 0.125rem;
 }
 
+.kuali-widget-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.kuali-widget-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  align-self: flex-start;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: light-dark(#4c5a69, #b7bcc2);
+  background-color: light-dark(#e9ecef, #333);
+}
+
+.kuali-widget-pill--in {
+  color: #fff;
+  background-color: #2e7d32;
+}
+
+.kuali-widget-timer {
+  font-family: 'Benton Sans Condensed', 'BentonSans Condensed', var(--font-header), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: light-dark(#243142, #fff);
+}
+
+.kuali-widget-subtext {
+  font-size: 0.8125rem;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
 .widget-view-all {
   display: inline-flex;
   align-items: center;

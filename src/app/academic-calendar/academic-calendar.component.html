@@ -113,36 +113,73 @@
 
     <div class="section-border"></div>
 
-    <div class="card-grid">
-      <app-large-task-card
-          category="University Calendar"
-          title="Academic Calendar"
-          icon="rvt-flag"
-          imageIcon="task-icons/travel.png"
-          [campuses]="['IUB', 'IUI', 'IUE', 'IUK', 'IUN', 'IUS', 'IUSB', 'IUFW', 'IUC']">
-        <ul class="dates-list">
-          <li class="dates-row">
-            <div class="dates-when">Sept 7</div>
-            <div class="dates-what">Labor Day — no classes</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Sept 14</div>
-            <div class="dates-what">Last day to drop a full-semester class without a W</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Oct 3–5</div>
-            <div class="dates-what">Homecoming Weekend</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Oct 17–18</div>
-            <div class="dates-what">Fall Break — no classes</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Nov 26–28</div>
-            <div class="dates-what">Thanksgiving Break — no classes</div>
-          </li>
-        </ul>
-      </app-large-task-card>
+    <div class="calendar-card">
+      <div class="calendar-page-header">
+        <div class="calendar-page-heading">
+          <span class="calendar-page-eyebrow">
+            <i espdIcon="rvt-flag" aria-hidden="true"></i>
+            University Calendar
+          </span>
+          <h1 class="calendar-page-title">Academic Calendar</h1>
+          <p class="calendar-page-description">Key dates for the academic year — filter by semester or campus to narrow the list.</p>
+        </div>
+
+        <div class="calendar-filter-bar">
+          <div class="calendar-filter-group">
+            <label class="calendar-filter-label" for="semester-filter">Semester</label>
+            <select id="semester-filter" class="calendar-filter-select" [(ngModel)]="selectedSemester">
+              <option value="all">All Semesters</option>
+              @for (semester of semesterOptions; track semester) {
+                <option [value]="semester">{{ semester }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="calendar-filter-group">
+            <label class="calendar-filter-label" for="campus-filter">Campus</label>
+            <select id="campus-filter" class="calendar-filter-select" [(ngModel)]="selectedCampus">
+              <option value="all">All Campuses</option>
+              @for (campus of campusOptions; track campus.code) {
+                <option [value]="campus.code">{{ campus.label }}</option>
+              }
+            </select>
+          </div>
+        </div>
+      </div>
+
+      @if (hasResults) {
+        @for (group of groupedDates; track group.semester) {
+          <div class="calendar-semester-group">
+            @if (selectedSemester === 'all') {
+              <h2 class="calendar-semester-heading">{{ group.semester }}</h2>
+            }
+
+            <ul class="calendar-dates-list">
+              @for (date of group.dates; track date.id) {
+                <li class="calendar-date-row">
+                  <div class="calendar-date-when">{{ date.dateDisplay }}</div>
+                  <div class="calendar-date-what">{{ date.title }}</div>
+                  @if (campusBadges(date).length) {
+                    <ul class="calendar-date-campuses" aria-label="Campuses this date applies to">
+                      @for (badge of campusBadges(date); track badge.key) {
+                        <li [title]="badge.title">
+                          <espd-badge [label]="badge.label" color="light"></espd-badge>
+                          <span class="sr-only">{{ badge.title }}</span>
+                        </li>
+                      }
+                    </ul>
+                  }
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      } @else {
+        <div class="calendar-empty-state">
+          <i espdIcon="rvt-calendar" aria-hidden="true"></i>
+          <p>No dates match that semester and campus combination.</p>
+        </div>
+      }
     </div>
   </espd-shell-stage>
 </espd-shell>

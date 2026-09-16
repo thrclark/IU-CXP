@@ -10,6 +10,7 @@ import { CollectionDetailComponent } from './collection-detail/collection-detail
 import { AcademicCalendarComponent } from './academic-calendar/academic-calendar.component';
 import { MyClassesComponent } from './my-classes/my-classes.component';
 import { CampusEventsComponent } from './campus-events/campus-events.component';
+import { KualiTimeComponent } from './kuali-time/kuali-time.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,7 +29,7 @@ export const routes: Routes = [
   { path: 'student-life/athletics', component: PlaceholderPageComponent, data: { title: 'Athletics', icon: 'rvt-flag' } },
   { path: 'student-life/residential-services', component: PlaceholderPageComponent, data: { title: 'Residential Services', icon: 'rvt-building' } },
   { path: 'employee-center/human-resources', component: PlaceholderPageComponent, data: { title: 'Human Resources', icon: 'rvt-user' } },
-  { path: 'employee-center/kuali-time', component: PlaceholderPageComponent, data: { title: 'Kuali Time', icon: 'rvt-gear' } },
+  { path: 'employee-center/kuali-time', component: KualiTimeComponent },
   { path: 'employee-center/epto', component: PlaceholderPageComponent, data: { title: 'ePTO', icon: 'rvt-calendar' } },
   { path: 'employee-center/your-paycheck', component: PlaceholderPageComponent, data: { title: 'Your Paycheck', icon: 'rvt-file' } },
   { path: 'student-life/marketplace', component: PlaceholderPageComponent, data: { title: 'IU Marketplace', icon: 'tag' } },

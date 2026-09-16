@@ -7,6 +7,12 @@
   grid-row: span 2;
 }
 
+/* Pass [columnSpan]="1" to shrink a widget to a single column while
+   keeping its normal 2-row height -- e.g. a widget with less to show. */
+:host(.large-task-card-span-1) {
+  grid-column: span 1;
+}
+
 /* Below the grid's own single-column breakpoint there's nothing to span
    two columns of, so fall back to a normal single-cell footprint. */
 @media (max-width: 650px) {

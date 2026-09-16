@@ -1,4 +1,4 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { HeaderModule } from 'espd-common/header';
@@ -10,6 +10,10 @@ import { IconDirective } from 'espd-common/icon';
 
 import { LargeTaskCardComponent } from '../large-task-card/large-task-card.component';
 import { CampusEventsService } from '../campus-events/campus-events.service';
+import { AcademicCalendarService } from '../academic-calendar/academic-calendar.service';
+import { AcademicCalendarDate } from '../academic-calendar/academic-calendar-date';
+import { KualiTimeService } from '../kuali-time/kuali-time.service';
+import { formatElapsed } from '../kuali-time/kuali-time';
 import { CampusEvent } from '../campus-events/campus-event';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
@@ -21,10 +25,33 @@ import { IdentityMenuComponent } from '../identity-menu/identity-menu.component'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
   protected navState = inject(NavStateService);
+  protected kualiTimeService = inject(KualiTimeService);
 
-  constructor(private campusEventsService: CampusEventsService) { }
+  /** Ticks once a second so the Kuali Time widget's running timer stays live. */
+  private now = new Date();
+  private tickHandle?: ReturnType<typeof setInterval>;
+
+  constructor(
+    private campusEventsService: CampusEventsService,
+    private academicCalendarService: AcademicCalendarService,
+  ) { }
+
+  ngOnInit(): void {
+    this.tickHandle = setInterval(() => {
+      this.now = new Date();
+    }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.tickHandle);
+  }
+
+  /** "H:MM:SS" elapsed since clocking in via Kuali Time, or null if clocked out. */
+  get kualiElapsedLabel(): string | null {
+    return formatElapsed(this.kualiTimeService.clockedInSince, this.now);
+  }
 
   /**
    * A handful of upcoming campus events, skipping ones that have already
@@ -34,6 +61,11 @@ export class HomeComponent {
    */
   get upcomingEvents(): CampusEvent[] {
     return this.campusEventsService.upcomingEvents.slice(1, 4);
+  }
+
+  /** A handful of upcoming academic calendar dates for the compact widget below. */
+  get upcomingAcademicDates(): AcademicCalendarDate[] {
+    return this.academicCalendarService.upcomingDates(3);
   }
 
   footerHtml = `

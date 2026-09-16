@@ -115,7 +115,8 @@
           title="My Classes"
           icon="rvt-calendar"
           imageIcon="task-icons/checklist.png"
-          [personalized]="true">
+          [personalized]="true"
+          [columnSpan]="2">
         <ul class="schedule-list">
           <li class="schedule-row">
             <span class="schedule-time">9:30 AM</span>
@@ -156,20 +157,15 @@
           category="University Calendar"
           title="Upcoming Dates"
           icon="rvt-flag"
-          imageIcon="task-icons/travel.png">
+          imageIcon="task-icons/travel.png"
+          [columnSpan]="1">
         <ul class="dates-list">
-          <li class="dates-row">
-            <div class="dates-when">Oct 3–5</div>
-            <div class="dates-what">Homecoming Weekend</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Oct 17–18</div>
-            <div class="dates-what">Fall Break — no classes</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Nov 26–28</div>
-            <div class="dates-what">Thanksgiving Break — no classes</div>
-          </li>
+          @for (date of upcomingAcademicDates; track date.id) {
+            <li class="dates-row">
+              <div class="dates-when">{{ date.dateDisplay }}</div>
+              <div class="dates-what">{{ date.title }}</div>
+            </li>
+          }
         </ul>
         <a routerLink="/events-calendars/academic-calendar" class="widget-view-all">
           View full calendar
@@ -181,7 +177,8 @@
           category="Campus Life"
           title="Campus Events"
           icon="rvt-calendar"
-          imageIcon="task-icons/academic-calendar.png">
+          imageIcon="task-icons/academic-calendar.png"
+          [columnSpan]="2">
         <ul class="events-list">
           @for (event of upcomingEvents; track event.id) {
             <li class="events-row">
@@ -198,6 +195,32 @@
         </ul>
         <a routerLink="/events-calendars/campus-events" class="widget-view-all">
           View all events
+          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+        </a>
+      </app-large-task-card>
+
+      <app-large-task-card
+          category="Employee Center"
+          title="Kuali Time"
+          icon="rvt-clock"
+          imageIcon="task-icons/kuali-time.png"
+          [personalized]="true"
+          [columnSpan]="1">
+        <div class="kuali-widget-status">
+          <span class="kuali-widget-pill" [class.kuali-widget-pill--in]="kualiTimeService.isClockedIn">
+            <i [espdIcon]="kualiTimeService.isClockedIn ? 'rvt-check-circle' : 'rvt-clock'" aria-hidden="true"></i>
+            {{ kualiTimeService.isClockedIn ? 'Clocked In' : 'Clocked Out' }}
+          </span>
+
+          @if (kualiTimeService.isClockedIn) {
+            <div class="kuali-widget-timer">{{ kualiElapsedLabel }}</div>
+            <div class="kuali-widget-subtext">{{ kualiTimeService.assignmentLabel(kualiTimeService.activeAssignmentId ?? '') }}</div>
+          } @else {
+            <div class="kuali-widget-subtext">Not currently clocked in.</div>
+          }
+        </div>
+        <a routerLink="/employee-center/kuali-time" class="widget-view-all">
+          Open Kuali Time
           <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
         </a>
       </app-large-task-card>

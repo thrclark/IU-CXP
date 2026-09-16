@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { IconDirective } from 'espd-common/icon';
@@ -44,6 +44,17 @@ export class LargeTaskCardComponent {
    * university-wide list of important dates).
    */
   @Input() personalized = false;
+  /**
+   * How many columns of the surrounding .card-grid this widget occupies:
+   * 2 (default) for the card's traditional 2x2 footprint, or 1 to shrink it
+   * to a single column while keeping the same 2-row height.
+   */
+  @Input() columnSpan: 1 | 2 = 2;
+
+  @HostBinding('class.large-task-card-span-1')
+  get isSingleColumn(): boolean {
+    return this.columnSpan === 1;
+  }
 
   get campusBadges(): CampusBadge[] {
     return resolveCampusBadges(this.campuses);
