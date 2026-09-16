@@ -5470,3 +5470,4 @@ node_modules/zod/v4/mini/schemas.d.ts
 node_modules/zod/v4/mini/schemas.js
 .DS_Store
 .DS_Store
+.idea/vcs.xml
