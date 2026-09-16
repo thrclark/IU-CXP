@@ -124,7 +124,10 @@
 
 .task-card-footer {
   display: flex;
-  align-items: center;
+  /* flex-end (not center) keeps the heart/info actions pinned to the
+     bottom row even when the campus badge list wraps onto two lines and
+     makes the footer taller than the actions themselves. */
+  align-items: flex-end;
   justify-content: space-between;
   gap: 0.75rem;
   margin-top: 1rem;
@@ -185,7 +188,7 @@
 }
 
 .task-card-dashboard-btn-active {
-  color: var(--accent-color, #990000);
+  color: light-dark(#767676, #b7bcc2);
 }
 
 .task-card-expand-btn {

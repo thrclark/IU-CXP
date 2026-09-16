@@ -6,6 +6,7 @@ import { NotificationCenterComponent } from './notification-center/notification-
 import { PlaceholderPageComponent } from './placeholder-page/placeholder-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
 import { ServiceDetailComponent } from './service-detail/service-detail.component';
+import { CollectionDetailComponent } from './collection-detail/collection-detail.component';
 import { AcademicCalendarComponent } from './academic-calendar/academic-calendar.component';
 import { MyClassesComponent } from './my-classes/my-classes.component';
 import { CampusEventsComponent } from './campus-events/campus-events.component';
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
   { path: 'notifications', component: NotificationCenterComponent },
   { path: 'services/:slug', component: ServiceDetailComponent },
+  { path: 'collections/:slug', component: CollectionDetailComponent },
   { path: 'notifications/settings/general', component: PlaceholderPageComponent, data: { title: 'General Settings', icon: 'rvt-gear' } },
   { path: 'notifications/settings/notifications', component: PlaceholderPageComponent, data: { title: 'Notification Settings', icon: 'rvt-gear' } },
   { path: 'announcements', component: PlaceholderPageComponent, data: { title: 'Announcements', icon: 'rvt-megaphone' } },

@@ -1,0 +1,201 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.collection-card {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: light-dark(#fff, #1a1a1a);
+  border-radius: 0.25rem;
+  box-shadow: 0 .1875rem .375rem #24314212;
+  border: 1px solid #dee2e6;
+  padding: 1rem;
+  transition: box-shadow .15s ease-in-out;
+}
+
+.collection-card:hover {
+  box-shadow: 0 .1875rem .5rem #24314224;
+}
+
+.collection-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/* Same footprint as .task-card-icon — a 2x2 mosaic of member-task icons
+   instead of one icon, so a collection takes no more page space than a
+   single task-card while still showing what's inside it. */
+.collection-card-icon-grid {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+  padding: 2px;
+  box-sizing: border-box;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.collection-card-icon-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Scaled-down echo of .task-card-icon's 0.375rem radius, proportionate
+     to each cell's much smaller size, so the mosaic tiles read as the
+     same rounded-icon shape as a single task-card's identity swatch. */
+  border-radius: 0.1875rem;
+}
+
+.collection-card-icon-cell-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-card-icon-cell i {
+  font-size: 0.625rem;
+  color: var(--accent-color, #990000);
+}
+
+.collection-card-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  min-width: 0;
+}
+
+.collection-card-title {
+  margin: 0;
+  font-family: 'Benton Sans Condensed', 'BentonSans Condensed', var(--font-header), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: light-dark(#243142, #fff);
+}
+
+.collection-card-link {
+  position: relative;
+  z-index: 2;
+  color: inherit;
+  text-decoration: none;
+}
+
+.collection-card-link:hover {
+  text-decoration: underline;
+}
+
+/* Stretches the title link to cover the whole card, matching app-task-card,
+   while the footer's heart button (also z-index: 2) stays interactive
+   above it. */
+.collection-card-link::after {
+  content: "";
+  position: absolute;
+  inset: -1rem;
+  z-index: 1;
+}
+
+.collection-card-link:focus-visible {
+  outline: none;
+}
+
+.collection-card-link:focus-visible::after {
+  outline: .125rem solid var(--primary-color, #4141a3);
+  outline-offset: -.125rem;
+  border-radius: 0.25rem;
+}
+
+.collection-card-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: var(--primary-color, #4141a3);
+}
+
+.collection-card-eyebrow i {
+  font-size: 0.6875rem;
+}
+
+.collection-card-description {
+  margin: 0.75rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: light-dark(#4c5a69, #b7bcc2);
+  flex: 1;
+  /* Clamp to keep the card the same height as a task-card regardless of
+     how long an individual collection's description is. */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.collection-card-footer {
+  display: flex;
+  /* flex-end (not center) keeps the heart action pinned to the bottom
+     row, matching app-task-card's footer alignment. */
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.collection-card-count {
+  position: relative;
+  z-index: 2;
+  font-size: 0.75rem;
+  color: light-dark(#767676, #9aa1a8);
+}
+
+.collection-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+/* Styled like app-task-card's dashboard-pin heart in its "already on
+   dashboard" (solid, grey) state — a collection shown here is always
+   currently on the page, so there's no separate outline/active state to
+   toggle between; clicking it removes the collection, same as unpinning
+   a single task removes that task. */
+.collection-card-heart-btn {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: 999rem;
+  background: none;
+  color: light-dark(#767676, #b7bcc2);
+  cursor: pointer;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out;
+}
+
+.collection-card-heart-btn i {
+  font-size: 1.125rem;
+}
+
+.collection-card-heart-btn:hover {
+  background-color: light-dark(#f2f3f5, #2a2a2a);
+  color: light-dark(#243142, #fff);
+}
+
+.collection-card-heart-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color, #4141a3);
+}
