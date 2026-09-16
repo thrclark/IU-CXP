@@ -58,10 +58,22 @@
   overflow: hidden;
 }
 
+.identity-avatar--anon .identity-anon-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999rem;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.0625rem;
+}
+
 .identity-name {
   margin-left: 0.5rem;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   white-space: nowrap;
 }
 
@@ -87,6 +99,98 @@
   font-size: 0.75rem;
   color: light-dark(#6c757d, #adb5bd);
   margin-top: 0.125rem;
+}
+
+.identity-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #e2e7e9;
+}
+
+.identity-welcome-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999rem;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.75rem;
+}
+
+.identity-welcome-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: light-dark(#243142, #fff);
+}
+
+.identity-signin-btn {
+  padding: 0.5rem 1.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--primary-color, #006298);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.identity-signin-btn:hover,
+.identity-signin-btn:focus {
+  background-color: var(--primary-color-dark-15, var(--primary-color, #006298));
+  outline: none;
+}
+
+.identity-option-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+.identity-option {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 0.875rem;
+  color: light-dark(#243142, #fff);
+  cursor: pointer;
+}
+
+.identity-option:hover,
+.identity-option:focus {
+  background-color: light-dark(#f7f7f7, #343a40);
+  outline: none;
+}
+
+.identity-back {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-bottom: 1px solid #e2e7e9;
+  background: none;
+  text-align: left;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: light-dark(#243142, #fff);
+  cursor: pointer;
+}
+
+.identity-back:hover,
+.identity-back:focus {
+  background-color: light-dark(#f7f7f7, #343a40);
+  outline: none;
 }
 
 .identity-panel-section {
