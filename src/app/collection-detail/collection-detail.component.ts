@@ -17,6 +17,7 @@ import { TaskCardComponent } from '../task-card/task-card.component';
 import { HomeService } from '../home/home.service';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
+import { MainSearchComponent } from '../main-search/main-search.component';
 
 @Component({
   selector: 'app-collection-detail',
@@ -31,6 +32,7 @@ import { IdentityMenuComponent } from '../identity-menu/identity-menu.component'
     ButtonComponent,
     TaskCardComponent,
     IdentityMenuComponent,
+    MainSearchComponent,
   ],
   templateUrl: './collection-detail.component.html',
   styleUrls: ['./collection-detail.component.css']

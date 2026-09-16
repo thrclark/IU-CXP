@@ -3,10 +3,10 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 /** The sidebar's top-level nav entries that can show the "selected" highlight. */
-export type SidebarNavKey = 'home' | 'tasks' | 'events-calendars' | 'student-life' | 'employee-center' | 'maps' | 'notifications';
+export type SidebarNavKey = 'home' | 'tasks' | 'academics' | 'events-calendars' | 'student-life' | 'employee-center' | 'maps' | 'notifications';
 
 /** Top-level entries that are disclosure toggles (no route of their own), as opposed to routed pages. */
-const MANUAL_OVERRIDE_KEYS: ReadonlySet<SidebarNavKey> = new Set(['events-calendars', 'student-life', 'employee-center']);
+const MANUAL_OVERRIDE_KEYS: ReadonlySet<SidebarNavKey> = new Set(['academics', 'events-calendars', 'student-life', 'employee-center']);
 
 /**
  * Tracks which top-level sidebar item should show the accent-color
@@ -50,7 +50,7 @@ export class NavStateService {
 
   /**
    * True when the current selection is one of the disclosure-toggle
-   * groups ("Events & Calendars", "Student Life", "Employee Center") rather than a routed
+   * groups ("Academics", "Events & Calendars", "Student Life", "Employee Center") rather than a routed
    * page. Routed top-level items use this to give up their own
    * route-driven highlight when that happens -- otherwise, since
    * selecting a toggle group doesn't navigate, whatever routed item you
@@ -62,7 +62,7 @@ export class NavStateService {
 
   /**
    * Manually mark a top-level item as selected without navigating -- used
-   * by "Events & Calendars", "Student Life", and "Employee Center", since clicking one only
+   * by "Academics", "Events & Calendars", "Student Life", and "Employee Center", since clicking one only
    * opens/closes its sub-navigation panel rather than changing the route.
    */
   select(key: SidebarNavKey): void {
@@ -95,6 +95,17 @@ export class NavStateService {
     }
     if (path.startsWith('/tasks')) {
       return 'tasks';
+    }
+    if (path.startsWith('/academics')) {
+      return 'academics';
+    }
+    // My Classes still lives at /events-calendars/my-classes (its original
+    // route), but its nav entry now lives only under Academics -- so this
+    // has to resolve to 'academics' too, ahead of the general
+    // /events-calendars check below, or visiting it would highlight and
+    // expand the Events & Calendars group instead.
+    if (path.startsWith('/events-calendars/my-classes')) {
+      return 'academics';
     }
     if (path.startsWith('/events-calendars')) {
       return 'events-calendars';

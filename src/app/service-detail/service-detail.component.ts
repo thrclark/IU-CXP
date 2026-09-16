@@ -17,6 +17,7 @@ import { CampusService } from '../campus-services/campus-service';
 import { findServiceBySlug } from '../campus-services/service-directory';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
+import { MainSearchComponent } from '../main-search/main-search.component';
 
 @Component({
   selector: 'app-service-detail',
@@ -33,6 +34,7 @@ import { IdentityMenuComponent } from '../identity-menu/identity-menu.component'
     ButtonComponent,
     InlineAlertComponent,
     IdentityMenuComponent,
+    MainSearchComponent,
   ],
   templateUrl: './service-detail.component.html',
   styleUrls: ['./service-detail.component.css']

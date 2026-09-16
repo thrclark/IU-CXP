@@ -12,11 +12,12 @@ import { CampusEventsService } from './campus-events.service';
 import { CampusEvent } from './campus-event';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
+import { MainSearchComponent } from '../main-search/main-search.component';
 
 @Component({
   selector: 'app-campus-events',
   standalone: true,
-  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent, IdentityMenuComponent],
+  imports: [RouterLink, HeaderModule, ShellModule, SidenavModule, FooterComponent, IconDirective, LargeTaskCardComponent, IdentityMenuComponent, MainSearchComponent],
   templateUrl: './campus-events.component.html',
   styleUrls: ['./campus-events.component.css']
 })

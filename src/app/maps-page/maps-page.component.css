@@ -8,6 +8,13 @@ espd-shell {
   flex: 1;
 }
 
+.section-border {
+  border-top: 2px solid #e2e7e9;
+  padding-top: .8rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .maps-page-title {
   margin: 0 0 1rem;
 }

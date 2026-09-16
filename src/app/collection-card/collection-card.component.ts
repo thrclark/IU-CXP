@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { CdkDragHandle } from '@angular/cdk/drag-drop';
+
 import { IconDirective } from 'espd-common/icon';
 
 import { CampusService } from '../campus-services/campus-service';
@@ -24,7 +26,7 @@ export interface CollectionIconCell {
 @Component({
   selector: 'app-collection-card',
   standalone: true,
-  imports: [IconDirective, RouterLink],
+  imports: [IconDirective, RouterLink, CdkDragHandle],
   templateUrl: './collection-card.component.html',
   styleUrls: ['./collection-card.component.css']
 })
@@ -41,6 +43,12 @@ export class CollectionCardComponent {
   @Input() services: CampusService[] = [];
   /** Emitted when the heart button is activated (removes this collection from view). */
   @Output() dismissed = new EventEmitter<void>();
+  /**
+   * Shows a drag handle in the card's corner for reordering. Off by
+   * default so pages that reuse this card outside the Home screen's
+   * drag-and-drop grid (Tasks) are unaffected.
+   */
+  @Input() dragHandle = false;
 
   /** Always exactly 4 cells, so the mosaic grid stays a fixed 2x2 whether the collection has 2 tasks or 20. */
   get iconGridCells(): CollectionIconCell[] {

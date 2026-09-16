@@ -45,19 +45,23 @@
   <div mobile-menu>
     <espd-header-nav label="Navigation">
       <espd-header-nav-item route="/home"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-header-nav-item>
-      <espd-header-nav-list label="Events & Calendars">
+      <espd-header-nav-list label="Academics">
+        <espd-header-nav-item route="/academics/course-catalog">Course Catalog</espd-header-nav-item>
+        <espd-header-nav-item route="/academics/register-for-classes">Register for Classes</espd-header-nav-item>
         <espd-header-nav-item route="/events-calendars/my-classes">My Classes</espd-header-nav-item>
+        <espd-header-nav-item route="/academics/degrees-majors">Degrees & Majors</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Events & Calendars">
         <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
         <espd-header-nav-item route="/events-calendars/academic-calendar">Academic Calendar</espd-header-nav-item>
       </espd-header-nav-list>
       <espd-header-nav-list label="Campus Life">
         <espd-header-nav-item route="/student-life/campus-dining">Campus Dining</espd-header-nav-item>
         <espd-header-nav-item route="/student-life/athletics">Athletics</espd-header-nav-item>
-        <espd-header-nav-item route="/student-life/residential-services">Residential Services</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/residential-services">Housing</espd-header-nav-item>
         <espd-header-nav-item route="/student-life/marketplace">IU Marketplace</espd-header-nav-item>
       </espd-header-nav-list>
       <espd-header-nav-list label="Employee Center">
-        <espd-header-nav-item route="/employee-center/human-resources">Human Resources</espd-header-nav-item>
         <espd-header-nav-item route="/employee-center/kuali-time">Kuali Time</espd-header-nav-item>
         <espd-header-nav-item route="/employee-center/epto">ePTO</espd-header-nav-item>
         <espd-header-nav-item route="/employee-center/your-paycheck">Your Paycheck</espd-header-nav-item>
@@ -74,10 +78,17 @@
   <espd-shell-sidebar>
     <espd-sidenav label="Navigation">
       <espd-sidenav-item route="/home" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-sidenav-item>
+      <espd-sidenav-list srLabel="Academics" [isCollapsed]="navState.expandedGroup !== 'academics'" [class.nav-group-selected]="navState.selectedKey === 'academics'" (click)="navState.select('academics'); navState.toggleExpanded('academics')">
+        <span labelContent><i [espdIcon]="'graduation-cap'"></i> <span class="nav-item-label">Academics</span></span>
+        <div class="sidenav-popup-header">Academics</div>
+        <espd-sidenav-item route="/academics/course-catalog"><span class="nav-item-label">Course Catalog</span></espd-sidenav-item>
+        <espd-sidenav-item route="/academics/register-for-classes"><span class="nav-item-label">Register for Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/my-classes"><span class="nav-item-label">My Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/academics/degrees-majors"><span class="nav-item-label">Degrees & Majors</span></espd-sidenav-item>
+      </espd-sidenav-list>
       <espd-sidenav-list srLabel="Events & Calendars" [isCollapsed]="navState.expandedGroup !== 'events-calendars'" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars'); navState.toggleExpanded('events-calendars')">
         <span labelContent><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></span>
         <div class="sidenav-popup-header">Events & Calendars</div>
-        <espd-sidenav-item route="/events-calendars/my-classes"><span class="nav-item-label">My Classes</span></espd-sidenav-item>
         <espd-sidenav-item route="/events-calendars/campus-events"><span class="nav-item-label">Campus Events</span></espd-sidenav-item>
         <espd-sidenav-item route="/events-calendars/academic-calendar"><span class="nav-item-label">Academic Calendar</span></espd-sidenav-item>
       </espd-sidenav-list>
@@ -86,13 +97,12 @@
         <div class="sidenav-popup-header">Campus Life</div>
         <espd-sidenav-item route="/student-life/campus-dining"><span class="nav-item-label">Campus Dining</span></espd-sidenav-item>
         <espd-sidenav-item route="/student-life/athletics"><span class="nav-item-label">Athletics</span></espd-sidenav-item>
-        <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Residential Services</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Housing</span></espd-sidenav-item>
         <espd-sidenav-item route="/student-life/marketplace"><span class="nav-item-label">IU Marketplace</span></espd-sidenav-item>
       </espd-sidenav-list>
       <espd-sidenav-list srLabel="Employee Center" [isCollapsed]="navState.expandedGroup !== 'employee-center'" [class.nav-group-selected]="navState.selectedKey === 'employee-center'" (click)="navState.select('employee-center'); navState.toggleExpanded('employee-center')">
         <span labelContent><i [espdIcon]="'rvt-user'"></i> <span class="nav-item-label">Employee Center</span></span>
         <div class="sidenav-popup-header">Employee Center</div>
-        <espd-sidenav-item route="/employee-center/human-resources"><span class="nav-item-label">Human Resources</span></espd-sidenav-item>
         <espd-sidenav-item route="/employee-center/kuali-time"><span class="nav-item-label">Kuali Time</span></espd-sidenav-item>
         <espd-sidenav-item route="/employee-center/epto"><span class="nav-item-label">ePTO</span></espd-sidenav-item>
         <espd-sidenav-item route="/employee-center/your-paycheck"><span class="nav-item-label">Your Paycheck</span></espd-sidenav-item>
@@ -104,45 +114,77 @@
   </espd-shell-sidebar>
 
   <espd-shell-stage>
-    <div class="main-search">
-      <input type="search" class="main-search-input" placeholder="What would you like to do?">
-      <button type="button" class="main-search-btn" aria-label="Search">
-        <i [espdIcon]="'rvt-magnifying-glass'"></i>
-      </button>
-    </div>
+    <app-main-search />
 
     <div class="section-border"></div>
 
-    <div class="card-grid">
-      <app-large-task-card
-          category="University Calendar"
-          title="Academic Calendar"
-          icon="rvt-flag"
-          imageIcon="task-icons/travel.png"
-          [campuses]="['IUB', 'IUI', 'IUE', 'IUK', 'IUN', 'IUS', 'IUSB', 'IUFW', 'IUC']">
-        <ul class="dates-list">
-          <li class="dates-row">
-            <div class="dates-when">Sept 7</div>
-            <div class="dates-what">Labor Day — no classes</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Sept 14</div>
-            <div class="dates-what">Last day to drop a full-semester class without a W</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Oct 3–5</div>
-            <div class="dates-what">Homecoming Weekend</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Oct 17–18</div>
-            <div class="dates-what">Fall Break — no classes</div>
-          </li>
-          <li class="dates-row">
-            <div class="dates-when">Nov 26–28</div>
-            <div class="dates-what">Thanksgiving Break — no classes</div>
-          </li>
-        </ul>
-      </app-large-task-card>
+    <div class="calendar-card">
+      <div class="calendar-page-header">
+        <div class="calendar-page-heading">
+          <span class="calendar-page-eyebrow">
+            <i espdIcon="rvt-flag" aria-hidden="true"></i>
+            University Calendar
+          </span>
+          <h1 class="calendar-page-title">Academic Calendar</h1>
+          <p class="calendar-page-description">Key dates for the academic year — filter by semester or campus to narrow the list.</p>
+        </div>
+
+        <div class="calendar-filter-bar">
+          <div class="calendar-filter-group">
+            <label class="calendar-filter-label" for="semester-filter">Semester</label>
+            <select id="semester-filter" class="calendar-filter-select" [(ngModel)]="selectedSemester">
+              <option value="all">All Semesters</option>
+              @for (semester of semesterOptions; track semester) {
+                <option [value]="semester">{{ semester }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="calendar-filter-group">
+            <label class="calendar-filter-label" for="campus-filter">Campus</label>
+            <select id="campus-filter" class="calendar-filter-select" [(ngModel)]="selectedCampus">
+              <option value="all">All Campuses</option>
+              @for (campus of campusOptions; track campus.code) {
+                <option [value]="campus.code">{{ campus.label }}</option>
+              }
+            </select>
+          </div>
+        </div>
+      </div>
+
+      @if (hasResults) {
+        @for (group of groupedDates; track group.semester) {
+          <div class="calendar-semester-group">
+            @if (selectedSemester === 'all') {
+              <h2 class="calendar-semester-heading">{{ group.semester }}</h2>
+            }
+
+            <ul class="calendar-dates-list">
+              @for (date of group.dates; track date.id) {
+                <li class="calendar-date-row">
+                  <div class="calendar-date-when">{{ date.dateDisplay }}</div>
+                  <div class="calendar-date-what">{{ date.title }}</div>
+                  @if (campusBadges(date).length) {
+                    <ul class="calendar-date-campuses" aria-label="Campuses this date applies to">
+                      @for (badge of campusBadges(date); track badge.key) {
+                        <li [title]="badge.title">
+                          <espd-badge [label]="badge.label" color="light"></espd-badge>
+                          <span class="sr-only">{{ badge.title }}</span>
+                        </li>
+                      }
+                    </ul>
+                  }
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      } @else {
+        <div class="calendar-empty-state">
+          <i espdIcon="rvt-calendar" aria-hidden="true"></i>
+          <p>No dates match that semester and campus combination.</p>
+        </div>
+      }
     </div>
   </espd-shell-stage>
 </espd-shell>

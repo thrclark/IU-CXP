@@ -8,11 +8,33 @@ espd-shell {
   flex: 1;
 }
 
+.home-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .home-section-title {
-  margin: 0 0 1rem;
+  margin: 0;
   font-size: 1.4375rem;
   font-weight: 700;
   color: light-dark(#243142, #fff);
+}
+
+.home-reorder-toggle {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-border {
+  border-top: 2px solid #e2e7e9;
+  padding-top: .8rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .card-grid {
@@ -23,6 +45,28 @@ espd-shell {
      next in source order, instead of leaving that space empty. */
   grid-auto-flow: row dense;
   gap: 1.5rem;
+}
+
+/* --- Empty state (no cards pinned to Home) --- */
+
+.home-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.home-empty-state i {
+  font-size: 2rem;
+  color: light-dark(#767676, #9aa1a8);
+}
+
+.home-empty-state p {
+  margin: 0;
+  max-width: 26rem;
 }
 
 .schedule-list,
@@ -127,6 +171,117 @@ espd-shell {
   font-size: 0.8125rem;
   color: light-dark(#6c757d, #adb5bd);
   margin-top: 0.125rem;
+}
+
+.kuali-widget-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.kuali-widget-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  align-self: flex-start;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: light-dark(#4c5a69, #b7bcc2);
+  background-color: light-dark(#e9ecef, #333);
+}
+
+.kuali-widget-pill--in {
+  color: #fff;
+  background-color: #2e7d32;
+}
+
+.kuali-widget-timer {
+  font-family: 'Benton Sans Condensed', 'BentonSans Condensed', var(--font-header), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: light-dark(#243142, #fff);
+}
+
+.kuali-widget-subtext {
+  font-size: 0.8125rem;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.epto-widget-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.epto-widget-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  align-self: flex-start;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: light-dark(#4c5a69, #b7bcc2);
+  background-color: light-dark(#e9ecef, #333);
+}
+
+.epto-widget-pill--submitted {
+  color: #fff;
+  background-color: var(--primary-color, #4141a3);
+}
+
+.epto-widget-pill--approved {
+  color: #fff;
+  background-color: #2e7d32;
+}
+
+.epto-widget-balance {
+  font-family: 'Benton Sans Condensed', 'BentonSans Condensed', var(--font-header), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: light-dark(#243142, #fff);
+}
+
+.epto-widget-balance-unit {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: light-dark(#767676, #9aa1a8);
+}
+
+.epto-widget-subtext {
+  font-size: 0.8125rem;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.paycheck-widget-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.paycheck-widget-amount {
+  font-family: 'Benton Sans Condensed', 'BentonSans Condensed', var(--font-header), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: light-dark(#243142, #fff);
+}
+
+.paycheck-widget-amount-label {
+  font-family: var(--font-body, inherit);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: light-dark(#767676, #9aa1a8);
+}
+
+.paycheck-widget-subtext {
+  font-size: 0.8125rem;
+  color: light-dark(#4c5a69, #b7bcc2);
 }
 
 .widget-view-all {
@@ -264,4 +419,31 @@ espd-shell {
 .notification-view-all:hover {
   background-color: #f7f7f7;
   text-decoration: underline;
+}
+
+/* --- Drag-and-drop reordering (CDK) ---
+   Note: CDK's sibling-sliding animation is built for flex/block lists; in
+   this CSS Grid (`grid-auto-flow: row dense`) neighboring cards can jump
+   directly to their new slot mid-drag rather than sliding smoothly, since
+   grid track placement doesn't animate. The drop itself still lands
+   correctly -- this is a cosmetic prototype trade-off. */
+
+.card-grid.cdk-drop-list-dragging .large-task-card,
+.card-grid.cdk-drop-list-dragging .task-card {
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+  box-shadow: 0 .5rem 1.5rem #24314240, 0 0 0 1px #24314214;
+  opacity: 0.95;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating {
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
 }

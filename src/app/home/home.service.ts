@@ -11,6 +11,7 @@ const DEFAULT_HOME_SLUGS = [
   'health-center-portal',
   'handshake',
   'bursar-billing',
+  'kuali-time',
 ];
 
 /**

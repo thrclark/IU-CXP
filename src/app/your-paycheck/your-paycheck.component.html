@@ -1,0 +1,294 @@
+<espd-header [fullWidth]="true" subtitle="Indiana University">
+  <div desktop-menu class="notification-menu mr-1">
+    <button type="button"
+        class="notification-bell-btn"
+        aria-haspopup="true"
+        [attr.aria-expanded]="notificationsOpen"
+        aria-label="Notifications, 3 unread"
+        (click)="toggleNotifications($event)">
+      <span class="notification-bell-icon">
+        <i [espdIcon]="'rvt-bell'" aria-hidden="true"></i>
+        <span class="notification-badge" aria-hidden="true"></span>
+      </span>
+    </button>
+    @if (notificationsOpen) {
+      <div class="dropdown-menu dropdown-menu-right notification-panel py-0 show" role="menu">
+        <div class="dropdown-header py-2">Notifications</div>
+        <div class="dropdown-item notification-row notification-row--urgent">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Registration opens Monday</div>
+            <div class="notification-row-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-row notification-row--standard">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Career Fair starts Thursday at 10am</div>
+            <div class="notification-row-time">Yesterday</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-row notification-row--urgent">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Your advisor added a new contact note</div>
+            <div class="notification-row-time">2 days ago</div>
+          </div>
+        </div>
+        <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
+      </div>
+    }
+  </div>
+  <div desktop-menu>
+    <app-identity-menu />
+  </div>
+  <div mobile-menu>
+    <espd-header-nav label="Navigation">
+      <espd-header-nav-item route="/home"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-header-nav-item>
+      <espd-header-nav-list label="Academics">
+        <espd-header-nav-item route="/academics/course-catalog">Course Catalog</espd-header-nav-item>
+        <espd-header-nav-item route="/academics/register-for-classes">Register for Classes</espd-header-nav-item>
+        <espd-header-nav-item route="/events-calendars/my-classes">My Classes</espd-header-nav-item>
+        <espd-header-nav-item route="/academics/degrees-majors">Degrees & Majors</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Events & Calendars">
+        <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
+        <espd-header-nav-item route="/events-calendars/academic-calendar">Academic Calendar</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Campus Life">
+        <espd-header-nav-item route="/student-life/campus-dining">Campus Dining</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/athletics">Athletics</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/residential-services">Housing</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/marketplace">IU Marketplace</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Employee Center">
+        <espd-header-nav-item route="/employee-center/kuali-time">Kuali Time</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/epto">ePTO</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/your-paycheck">Your Paycheck</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
+      <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
+      <espd-header-nav-item route="/tasks"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-header-nav-item>
+    </espd-header-nav>
+    <app-identity-menu />
+  </div>
+</espd-header>
+
+<espd-shell [collapsible]="false">
+  <espd-shell-sidebar>
+    <espd-sidenav label="Navigation">
+      <espd-sidenav-item route="/home" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-sidenav-item>
+      <espd-sidenav-list srLabel="Academics" [isCollapsed]="navState.expandedGroup !== 'academics'" [class.nav-group-selected]="navState.selectedKey === 'academics'" (click)="navState.select('academics'); navState.toggleExpanded('academics')">
+        <span labelContent><i [espdIcon]="'graduation-cap'"></i> <span class="nav-item-label">Academics</span></span>
+        <div class="sidenav-popup-header">Academics</div>
+        <espd-sidenav-item route="/academics/course-catalog"><span class="nav-item-label">Course Catalog</span></espd-sidenav-item>
+        <espd-sidenav-item route="/academics/register-for-classes"><span class="nav-item-label">Register for Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/my-classes"><span class="nav-item-label">My Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/academics/degrees-majors"><span class="nav-item-label">Degrees & Majors</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Events & Calendars" [isCollapsed]="navState.expandedGroup !== 'events-calendars'" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars'); navState.toggleExpanded('events-calendars')">
+        <span labelContent><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></span>
+        <div class="sidenav-popup-header">Events & Calendars</div>
+        <espd-sidenav-item route="/events-calendars/campus-events"><span class="nav-item-label">Campus Events</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/academic-calendar"><span class="nav-item-label">Academic Calendar</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Campus Life" [isCollapsed]="navState.expandedGroup !== 'student-life'" [class.nav-group-selected]="navState.selectedKey === 'student-life'" (click)="navState.select('student-life'); navState.toggleExpanded('student-life')">
+        <span labelContent><i [espdIcon]="'rvt-heart'"></i> <span class="nav-item-label">Campus Life</span></span>
+        <div class="sidenav-popup-header">Campus Life</div>
+        <espd-sidenav-item route="/student-life/campus-dining"><span class="nav-item-label">Campus Dining</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/athletics"><span class="nav-item-label">Athletics</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Housing</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/marketplace"><span class="nav-item-label">IU Marketplace</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Employee Center" [isCollapsed]="navState.expandedGroup !== 'employee-center'" [class.nav-group-selected]="navState.selectedKey === 'employee-center'" (click)="navState.select('employee-center'); navState.toggleExpanded('employee-center')">
+        <span labelContent><i [espdIcon]="'rvt-user'"></i> <span class="nav-item-label">Employee Center</span></span>
+        <div class="sidenav-popup-header">Employee Center</div>
+        <espd-sidenav-item route="/employee-center/kuali-time"><span class="nav-item-label">Kuali Time</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/epto"><span class="nav-item-label">ePTO</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/your-paycheck"><span class="nav-item-label">Your Paycheck</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-item route="/maps" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
+      <espd-sidenav-item route="/notifications" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
+      <espd-sidenav-item route="/tasks" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-sidenav-item>
+    </espd-sidenav>
+  </espd-shell-sidebar>
+
+  <espd-shell-stage>
+    <app-main-search />
+
+    <div class="section-border"></div>
+
+    <div class="paycheck-card">
+      <div class="paycheck-page-header">
+        <span class="paycheck-page-eyebrow">
+          <i espdIcon="rvt-credit-card" aria-hidden="true"></i>
+          Employee Center
+        </span>
+        <h1 class="paycheck-page-title">Your Paycheck</h1>
+        <p class="paycheck-page-description">Review your pay stub -- itemized earnings, deductions, tax withholding, and direct deposit -- for any recent pay period.</p>
+      </div>
+
+      <div class="paycheck-filter-group paycheck-period-filter">
+        <label class="paycheck-filter-label" for="paycheck-select">Pay period</label>
+        <select id="paycheck-select" class="paycheck-filter-select" [(ngModel)]="paycheck.selectedPaycheckId" name="paycheckSelect">
+          @for (stub of paycheck.paychecks; track stub.id) {
+            <option [value]="stub.id">{{ stub.label }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="paycheck-period-meta">
+        <span><strong>Pay period:</strong> {{ formatDate(selected.payBeginDate) }} &ndash; {{ formatDate(selected.payEndDate) }}</span>
+        <span><strong>Pay date:</strong> {{ formatDate(selected.payDate) }}</span>
+      </div>
+
+      <div class="paycheck-summary-grid">
+        <div class="paycheck-summary-card">
+          <div class="paycheck-summary-label">Total Gross</div>
+          <div class="paycheck-summary-value">{{ paycheck.totalGross(selected) | currency }}</div>
+        </div>
+        <div class="paycheck-summary-card">
+          <div class="paycheck-summary-label">Total Deductions</div>
+          <div class="paycheck-summary-value">{{ paycheck.totalDeductions(selected) | currency }}</div>
+        </div>
+        <div class="paycheck-summary-card">
+          <div class="paycheck-summary-label">Total Taxes</div>
+          <div class="paycheck-summary-value">{{ paycheck.totalTaxes(selected) | currency }}</div>
+        </div>
+        <div class="paycheck-summary-card paycheck-summary-card--highlight">
+          <div class="paycheck-summary-label">Net Pay</div>
+          <div class="paycheck-summary-value">{{ paycheck.netPay(selected) | currency }}</div>
+        </div>
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">Earnings</h2>
+        <table class="paycheck-table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Current</th>
+              <th scope="col">Year-to-Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (line of selected.earnings; track line.code) {
+              <tr>
+                <td>{{ line.label }}</td>
+                <td>{{ line.amount | currency }}</td>
+                <td>{{ paycheck.ytd(line.amount, selected) | currency }}</td>
+              </tr>
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="paycheck-table-total-label">Total Gross</td>
+              <td class="paycheck-table-total-value">{{ paycheck.totalGross(selected) | currency }}</td>
+              <td class="paycheck-table-total-value">{{ paycheck.ytdTotalGross(selected) | currency }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">Before-Tax Deductions</h2>
+        <p class="paycheck-section-note">Fed Taxable Gross ({{ paycheck.fedTaxableGross(selected) | currency }}) is Total Gross minus these. The base IU Retirement Plan / PERF pension are fully employer-funded and don't appear here.</p>
+        <table class="paycheck-table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Current</th>
+              <th scope="col">Year-to-Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (line of selected.beforeTaxDeductions; track line.code) {
+              <tr>
+                <td>{{ line.label }}</td>
+                <td>{{ line.amount | currency }}</td>
+                <td>{{ paycheck.ytd(line.amount, selected) | currency }}</td>
+              </tr>
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="paycheck-table-total-label">Total Before-Tax Deductions</td>
+              <td class="paycheck-table-total-value">{{ paycheck.totalBeforeTaxDeductions(selected) | currency }}</td>
+              <td class="paycheck-table-total-value">{{ paycheck.ytd(paycheck.totalBeforeTaxDeductions(selected), selected) | currency }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">After-Tax Deductions</h2>
+        @if (selected.afterTaxDeductions.length) {
+          <table class="paycheck-table">
+            <thead>
+              <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Current</th>
+                <th scope="col">Year-to-Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (line of selected.afterTaxDeductions; track line.code) {
+                <tr>
+                  <td>{{ line.label }}</td>
+                  <td>{{ line.amount | currency }}</td>
+                  <td>{{ paycheck.ytd(line.amount, selected) | currency }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        } @else {
+          <p class="paycheck-empty-state">No after-tax deductions this pay period.</p>
+        }
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">Taxes</h2>
+        <table class="paycheck-table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Current</th>
+              <th scope="col">Year-to-Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (line of selected.taxes; track line.code) {
+              <tr>
+                <td>{{ line.label }}</td>
+                <td>{{ line.amount | currency }}</td>
+                <td>{{ paycheck.ytd(line.amount, selected) | currency }}</td>
+              </tr>
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="paycheck-table-total-label">Total Taxes</td>
+              <td class="paycheck-table-total-value">{{ paycheck.totalTaxes(selected) | currency }}</td>
+              <td class="paycheck-table-total-value">{{ paycheck.ytdTotalTaxes(selected) | currency }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="paycheck-section">
+        <h2 class="paycheck-section-title">Net Pay Distribution</h2>
+        <ul class="paycheck-distribution-list">
+          @for (account of selected.netPayDistribution; track account.last4) {
+            <li class="paycheck-distribution-row">
+              <i espdIcon="rvt-building" aria-hidden="true"></i>
+              <span class="paycheck-distribution-label">{{ account.label }} &middot;&middot;&middot;&middot;{{ account.last4 }}</span>
+              <span class="paycheck-distribution-amount">{{ paycheck.netPay(selected) | currency }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </espd-shell-stage>
+</espd-shell>
+
+<espd-footer [customFooterOverride]="footerHtml" />
