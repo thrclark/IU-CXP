@@ -1,3 +1,5 @@
+
+
 <espd-header [fullWidth]="true" subtitle="Indiana University" [user]="{username:'thrclark', initials:'TC'}">
   <div desktop-menu class="notification-menu mr-1">
     <button type="button"
@@ -12,8 +14,29 @@
       </span>
     </button>
     @if (notificationsOpen) {
-      <div class="dropdown-menu dropdown-menu-right notification-panel show" role="menu">
-        <div class="dropdown-header">Notifications</div>
+      <div class="dropdown-menu dropdown-menu-right notification-panel py-0 show" role="menu">
+        <div class="dropdown-header py-2">Notifications</div>
+        <div class="dropdown-item notification-row notification-row--urgent">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Registration opens Monday</div>
+            <div class="notification-row-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-row notification-row--standard">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Career Fair starts Thursday at 10am</div>
+            <div class="notification-row-time">Yesterday</div>
+          </div>
+        </div>
+        <div class="dropdown-item notification-row notification-row--urgent">
+
+          <div class="notification-row-body">
+            <div class="notification-row-title">Your advisor added a new contact note</div>
+            <div class="notification-row-time">2 days ago</div>
+          </div>
+        </div>
         <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
       </div>
     }
@@ -44,6 +67,7 @@
     </espd-header-nav>
   </div>
 </espd-header>
+
 
 <espd-shell [collapsible]="false">
   <espd-shell-sidebar>
@@ -79,65 +103,133 @@
   </espd-shell-sidebar>
 
   <espd-shell-stage>
-    <h1 class="maps-page-title">Campus Maps</h1>
-
-    <div class="maps-stage">
-      <div class="maps-panel maps-panel-map">
-        <iframe
-            class="maps-embed"
-            [src]="mapUrl"
-            title="Map centered on the IU Bloomington campus"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-        </iframe>
+    <div class="main-search-wrap">
+      <div class="main-search">
+        <input type="search"
+            class="main-search-input"
+            placeholder="What would you like to do?"
+            [(ngModel)]="searchQuery"
+            (input)="onSearchInput()"
+            (focus)="onSearchFocus()"
+            aria-label="Search IU services">
+        <button type="button" class="main-search-btn" aria-label="Search">
+          <i [espdIcon]="'rvt-magnifying-glass'"></i>
+        </button>
       </div>
 
-      <div class="maps-panel maps-panel-filters">
-        <h2 class="maps-filters-title">Show on map</h2>
-        <p class="maps-filters-intro">Choose what to display when you're looking for a place on campus.</p>
+      @if (searchOverlayOpen && searchQuery.trim()) {
+        <div class="search-overlay">
+          @if (searchCollectionResults.length || searchResults.length) {
+            <ul class="search-overlay-list">
+              @for (collection of searchCollectionResults; track collection.slug) {
+                <li class="search-overlay-row">
+                  <span class="search-overlay-icon-grid" aria-hidden="true">
+                    @for (cell of collectionIconCells(collection); track $index) {
+                      <span class="search-overlay-icon-cell">
+                        @if (cell.service) {
+                          @if (cell.service.imageIcon) {
+                            <img class="search-overlay-icon-cell-image" [src]="cell.service.imageIcon" alt="">
+                          } @else {
+                            <i espdIcon="rvt-grid"></i>
+                          }
+                        }
+                      </span>
+                    }
+                  </span>
 
-        <ul class="maps-filter-list">
-          @for (filter of filters; track filter.key) {
-            <li class="maps-filter-row">
-              <div class="maps-filter-info">
-                <i [espdIcon]="filter.icon" class="maps-filter-icon" aria-hidden="true"></i>
-                <div>
-                  <div class="maps-filter-label">{{ filter.label }}</div>
-                  <div class="maps-filter-description">{{ filter.description }}</div>
-                </div>
-              </div>
+                  <span class="search-overlay-title">
+                    {{ collection.title }}
+                    <span class="search-overlay-tag">Collection</span>
+                  </span>
 
-              <label class="maps-filter-switch">
-                <input type="checkbox" [(ngModel)]="filter.enabled" [attr.aria-label]="'Show ' + filter.label + ' on the map'">
-                <span class="maps-filter-switch-track" aria-hidden="true"></span>
-              </label>
-            </li>
+                  <span class="search-overlay-actions">
+                    <a class="search-overlay-action-btn"
+                        [routerLink]="['/collections', collection.slug]"
+                        [attr.aria-label]="'View ' + collection.title + ' collection'">
+                      <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+                    </a>
+                  </span>
+                </li>
+              }
+              @for (service of searchResults; track service.slug) {
+                <li class="search-overlay-row">
+                  <span class="search-overlay-icon" aria-hidden="true">
+                    @if (service.imageIcon) {
+                      <img [src]="service.imageIcon" alt="">
+                    } @else {
+                      <i [espdIcon]="'rvt-grid'"></i>
+                    }
+                  </span>
+
+                  <span class="search-overlay-title">{{ service.title }}</span>
+
+                  <span class="search-overlay-actions">
+                    <a class="search-overlay-action-btn"
+                        [href]="service.launchUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        [attr.aria-label]="'Launch ' + service.title">
+                      <i espdIcon="rvt-link-external" aria-hidden="true"></i>
+                    </a>
+
+                    <button type="button"
+                        class="search-overlay-action-btn"
+                        [class.search-overlay-action-btn-active]="isOnDashboard(service.slug)"
+                        [attr.aria-pressed]="isOnDashboard(service.slug)"
+                        [attr.aria-label]="(isOnDashboard(service.slug) ? 'Unpin ' : 'Pin ') + service.title + (isOnDashboard(service.slug) ? ' from your dashboard' : ' to your dashboard')"
+                        (click)="toggleDashboard(service.slug)">
+                      <i [espdIcon]="isOnDashboard(service.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </li>
+              }
+            </ul>
+          } @else if (searchLoading) {
+            <p class="search-overlay-status">Finding related services&hellip;</p>
+          } @else {
+            <p class="search-overlay-empty">No services matched "{{ searchQuery }}".</p>
           }
-
-          <li class="maps-filter-row">
-            <div class="maps-filter-info">
-              <i espdIcon="bus" class="maps-filter-icon" aria-hidden="true"></i>
-              <div>
-                <div class="maps-filter-label">Bus Routes</div>
-                <div class="maps-filter-description">Bloomington Transit and campus bus routes.</div>
-              </div>
-            </div>
-
-            <label class="maps-filter-switch">
-              <input type="checkbox" [checked]="showBusRoutes" (change)="toggleBusRoutes()" aria-label="Show Bus Routes on the map">
-              <span class="maps-filter-switch-track" aria-hidden="true"></span>
-            </label>
-          </li>
-        </ul>
-
-        <p class="maps-filters-note sr-only">
-          <i espdIcon="rvt-info-circle" aria-hidden="true"></i>
-          Campus Buildings, Dining Locations, and Other Amenities are ready to drive live map pins once this page is connected to the Google Maps JavaScript API and a campus locations data source. Bus Routes is already live, using Google's public transit layer.
-        </p>
-      </div>
+          @if (searchResults.length && searchLoading) {
+            <p class="search-overlay-status search-overlay-status-inline">Finding more related services&hellip;</p>
+          }
+        </div>
+      }
     </div>
+
+    <div class="section-border"></div>
+
+    <h2 class="dashboard-section-title">All Services</h2>
+
+    <div class="card-grid">
+      @for (collection of taskCollections; track collection.slug) {
+        <app-collection-card
+            [slug]="collection.slug"
+            [title]="collection.title"
+            [kind]="collection.kind"
+            [eyebrow]="collection.eyebrow"
+            [description]="collection.description"
+            [services]="collectionServices(collection)"
+            (dismissed)="dismissCollection(collection.slug)">
+        </app-collection-card>
+      }
+      @for (service of campusServices; track service.slug) {
+        <app-task-card
+            [slug]="service.slug"
+            [category]="service.category"
+            [title]="service.title"
+            [imageIcon]="service.imageIcon"
+            [description]="service.description"
+            [launchUrl]="service.launchUrl"
+            [campuses]="service.campuses"
+            [showDashboardAction]="true"
+            [onDashboard]="isOnDashboard(service.slug)"
+            (dashboardToggle)="toggleDashboard(service.slug)">
+        </app-task-card>
+      }
+    </div>
+
   </espd-shell-stage>
+  Any other content won't be displayed
 </espd-shell>
 
 <espd-footer [customFooterOverride]="footerHtml" />

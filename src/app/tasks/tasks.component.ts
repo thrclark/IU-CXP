@@ -13,7 +13,7 @@ import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
 
 import { TaskCardComponent } from '../task-card/task-card.component';
-import { CollectionCardComponent } from '../collection-card/collection-card.component';
+import { CollectionCardComponent, CollectionIconCell } from '../collection-card/collection-card.component';
 import { CampusService } from '../campus-services/campus-service';
 import { ALL_SERVICES } from '../campus-services/service-directory';
 import { DashboardService } from '../dashboard/dashboard.service';
@@ -28,18 +28,14 @@ const MAX_SEARCH_RESULTS = 30;
 const SEARCH_DEBOUNCE_MS = 200;
 
 @Component({
-  selector: 'app-hello-world',
+  selector: 'app-tasks',
   standalone: true,
   imports: [RouterLink, FormsModule, ButtonComponent, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, TaskCardComponent, CollectionCardComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
-  templateUrl: './hello-world.component.html',
-  styleUrls: ['./hello-world.component.css']
+  templateUrl: './tasks.component.html',
+  styleUrls: ['./tasks.component.css']
 })
-export class HelloWorldComponent {
+export class TasksComponent {
   protected navState = inject(NavStateService);
-
-
-  // --- This is the "state" (the data) ---
-  message: string = 'Hello, Angular World!';
 
   constructor(
     private dashboardService: DashboardService,
@@ -77,13 +73,19 @@ export class HelloWorldComponent {
     return this.dashboardService.dashboardServices;
   }
 
-  /** Curated task collections currently surfaced on the dashboard (not yet dismissed). */
+  /** Curated task collections currently surfaced on this page (not yet dismissed). */
   get taskCollections(): TaskCollection[] {
     return this.collectionsService.activeCollections;
   }
 
   collectionServices(collection: TaskCollection): CampusService[] {
     return this.collectionsService.servicesFor(collection);
+  }
+
+  /** Same fixed 2x2 mosaic used on the collection card, reused for a collection's search-result row. */
+  collectionIconCells(collection: TaskCollection): CollectionIconCell[] {
+    const services = this.collectionServices(collection);
+    return Array.from({ length: 4 }, (_, i) => ({ service: services[i] ?? null }));
   }
 
   dismissCollection(slug: string): void {
@@ -114,6 +116,17 @@ export class HelloWorldComponent {
       .slice(0, MAX_SEARCH_RESULTS);
   }
 
+  /** Task collections matching the current search query, shown ahead of individual services. */
+  get searchCollectionResults(): TaskCollection[] {
+    const query = this.searchQuery.trim().toLowerCase();
+    if (!query) {
+      return [];
+    }
+    return this.taskCollections.filter(collection =>
+      collection.title.toLowerCase().includes(query) ||
+      collection.eyebrow.toLowerCase().includes(query));
+  }
+
   /** Appends services from `extra` that aren't already in `primary`, up to `limit` total. */
   private mergeUniqueBySlug(primary: CampusService[], extra: CampusService[], limit: number): CampusService[] {
     const merged = [...primary];
@@ -125,6 +138,7 @@ export class HelloWorldComponent {
       merged.push(service);
     }
     return merged;
+  }
   }
 
   isOnDashboard(slug: string): boolean {
@@ -156,11 +170,6 @@ export class HelloWorldComponent {
       </ul>
     </footer>
   `;
-
-  // --- This is the logic ---
-  updateMessage() {
-    this.message = 'You clicked the button!';
-  }
 
   // --- Notification bell prototype ---
   notificationsOpen = false;

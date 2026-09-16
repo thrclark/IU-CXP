@@ -23,7 +23,7 @@ export interface TaskCollection {
   eyebrow: string;
   /** One or two sentences shown on the collection's own detail page. */
   description: string;
-  /** espd icon name shown in the collection's identity swatch. */
+  /** espd icon name used where a single-icon identity would be needed (kept for reference; cards use a mosaic of member-task icons instead). */
   icon: string;
   /** Slugs of the CampusService records that make up this collection, in display order. */
   serviceSlugs: string[];
