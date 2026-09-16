@@ -13,6 +13,7 @@ import { CampusEventsComponent } from './campus-events/campus-events.component';
 import { KualiTimeComponent } from './kuali-time/kuali-time.component';
 import { EptoComponent } from './epto/epto.component';
 import { YourPaycheckComponent } from './your-paycheck/your-paycheck.component';
+import { WidgetDetailComponent } from './home/widget-detail/widget-detail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
   { path: 'notifications', component: NotificationCenterComponent },
   { path: 'services/:slug', component: ServiceDetailComponent },
+  { path: 'home/widgets/:id', component: WidgetDetailComponent },
   { path: 'collections/:slug', component: CollectionDetailComponent },
   { path: 'notifications/settings/general', component: PlaceholderPageComponent, data: { title: 'General Settings', icon: 'rvt-gear' } },
   { path: 'notifications/settings/notifications', component: PlaceholderPageComponent, data: { title: 'Notification Settings', icon: 'rvt-gear' } },

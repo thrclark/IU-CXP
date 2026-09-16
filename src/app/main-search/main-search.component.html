@@ -14,7 +14,7 @@
 
   @if (searchOverlayOpen && searchQuery.trim()) {
     <div class="search-overlay">
-      @if (searchCollectionResults.length || searchResults.length) {
+      @if (searchCollectionResults.length || searchWidgetResults.length || searchResults.length) {
         <ul class="search-overlay-list">
           @for (collection of searchCollectionResults; track collection.slug) {
             <li class="search-overlay-row">
@@ -43,6 +43,35 @@
                     [attr.aria-label]="'View ' + collection.title + ' collection'">
                   <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
                 </a>
+              </span>
+            </li>
+          }
+          @for (widget of searchWidgetResults; track widget.id) {
+            <li class="search-overlay-row">
+              <span class="search-overlay-icon" aria-hidden="true">
+                <i [espdIcon]="widget.icon"></i>
+              </span>
+
+              <span class="search-overlay-title">
+                {{ widget.title }}
+                <span class="search-overlay-tag">Home widget</span>
+              </span>
+
+              <span class="search-overlay-actions">
+                <a class="search-overlay-action-btn"
+                    [routerLink]="widget.openRoute"
+                    [attr.aria-label]="'Open ' + widget.title">
+                  <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+                </a>
+
+                <button type="button"
+                    class="search-overlay-action-btn"
+                    [class.search-overlay-action-btn-active]="isWidgetFavorited(widget.id)"
+                    [attr.aria-pressed]="isWidgetFavorited(widget.id)"
+                    [attr.aria-label]="(isWidgetFavorited(widget.id) ? 'Unpin ' : 'Pin ') + widget.title + (isWidgetFavorited(widget.id) ? ' from your Home' : ' to your Home')"
+                    (click)="toggleWidgetFavorite(widget.id)">
+                  <i [espdIcon]="isWidgetFavorited(widget.id) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+                </button>
               </span>
             </li>
           }

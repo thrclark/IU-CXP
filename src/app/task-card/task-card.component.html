@@ -1,4 +1,9 @@
 <article class="task-card">
+  @if (dragHandle) {
+    <button type="button" class="card-drag-handle" cdkDragHandle aria-label="Reorder {{ title }}">
+      <i espdIcon="rvt-grip-vertical" aria-hidden="true"></i>
+    </button>
+  }
   <div class="task-card-header">
     <div class="task-card-icon" aria-hidden="true">
       @if (imageIcon) {

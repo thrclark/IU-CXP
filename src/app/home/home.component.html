@@ -59,7 +59,6 @@
         <espd-header-nav-item route="/student-life/marketplace">IU Marketplace</espd-header-nav-item>
       </espd-header-nav-list>
       <espd-header-nav-list label="Employee Center">
-        <espd-header-nav-item route="/employee-center/human-resources">Human Resources</espd-header-nav-item>
         <espd-header-nav-item route="/employee-center/kuali-time">Kuali Time</espd-header-nav-item>
         <espd-header-nav-item route="/employee-center/epto">ePTO</espd-header-nav-item>
         <espd-header-nav-item route="/employee-center/your-paycheck">Your Paycheck</espd-header-nav-item>
@@ -110,225 +109,275 @@
 
     <div class="section-border"></div>
 
-    <h2 class="home-section-title">My Day</h2>
-
-    <div class="card-grid">
-      <app-large-task-card
-          category="Academics"
-          title="My Classes"
-          icon="rvt-calendar"
-          imageIcon="task-icons/checklist.png"
-          [personalized]="true"
-          [columnSpan]="2">
-        <ul class="schedule-list">
-          <li class="schedule-row">
-            <span class="schedule-time">9:30 AM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">CSCI-B 351 Programming Languages</div>
-              <div class="schedule-location">Ballantine Hall 013</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">11:15 AM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">MATH-M 301 Linear Algebra</div>
-              <div class="schedule-location">Rawles Hall 100</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">1:00 PM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">ENG-W 131 Elementary Composition</div>
-              <div class="schedule-location">Ballantine Hall 205</div>
-            </div>
-          </li>
-          <li class="schedule-row">
-            <span class="schedule-time">3:30 PM</span>
-            <div class="schedule-details">
-              <div class="schedule-course">PHIL-P 105 Introduction to Philosophy</div>
-              <div class="schedule-location">Sycamore Hall 003</div>
-            </div>
-          </li>
-        </ul>
-        <a routerLink="/events-calendars/my-classes" class="widget-view-all">
-          View full schedule
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="University Calendar"
-          title="Upcoming Dates"
-          icon="rvt-flag"
-          imageIcon="task-icons/travel.png"
-          [columnSpan]="1">
-        <ul class="dates-list">
-          @for (date of upcomingAcademicDates; track date.id) {
-            <li class="dates-row">
-              <div class="dates-when">{{ date.dateDisplay }}</div>
-              <div class="dates-what">{{ date.title }}</div>
-            </li>
-          }
-        </ul>
-        <a routerLink="/events-calendars/academic-calendar" class="widget-view-all">
-          View full calendar
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="Campus Life"
-          title="Campus Events"
-          icon="rvt-calendar"
-          imageIcon="task-icons/academic-calendar.png"
-          [columnSpan]="2">
-        <ul class="events-list">
-          @for (event of upcomingEvents; track event.id) {
-            <li class="events-row">
-              <div class="events-when">
-                <span class="events-date">{{ event.date }}</span>
-                <span class="events-time">{{ event.time }}</span>
-              </div>
-              <div class="events-details">
-                <div class="events-title">{{ event.title }}</div>
-                <div class="events-location">{{ event.location }}</div>
-              </div>
-            </li>
-          }
-        </ul>
-        <a routerLink="/events-calendars/campus-events" class="widget-view-all">
-          View all events
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="Employee Center"
-          title="Kuali Time"
-          icon="rvt-clock"
-          imageIcon="task-icons/kuali-time-widget.png"
-          [personalized]="true"
-          [columnSpan]="1">
-        <div class="kuali-widget-status">
-          <span class="kuali-widget-pill" [class.kuali-widget-pill--in]="kualiTimeService.isClockedIn">
-            <i [espdIcon]="kualiTimeService.isClockedIn ? 'rvt-check-circle' : 'rvt-clock'" aria-hidden="true"></i>
-            {{ kualiTimeService.isClockedIn ? 'Clocked In' : 'Clocked Out' }}
-          </span>
-
-          @if (kualiTimeService.isClockedIn) {
-            <div class="kuali-widget-timer">{{ kualiElapsedLabel }}</div>
-            <div class="kuali-widget-subtext">{{ kualiTimeService.assignmentLabel(kualiTimeService.activeAssignmentId ?? '') }}</div>
-          } @else {
-            <div class="kuali-widget-subtext">Not currently clocked in.</div>
-          }
-        </div>
-        <a routerLink="/employee-center/kuali-time" class="widget-view-all">
-          Open Kuali Time
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="Employee Center"
-          title="ePTO"
-          icon="rvt-calendar"
-          [personalized]="true"
-          [columnSpan]="1">
-        <div class="epto-widget-status">
-          <span class="epto-widget-pill"
-              [class.epto-widget-pill--submitted]="eptoService.currentMonth.status === 'Submitted'"
-              [class.epto-widget-pill--approved]="eptoService.currentMonth.status === 'Approved'">
-            <i [espdIcon]="eptoService.currentMonth.status === 'Approved' ? 'rvt-check-circle' : 'rvt-clock'" aria-hidden="true"></i>
-            {{ eptoService.currentMonth.status }}
-          </span>
-
-          <div class="epto-widget-balance">
-            {{ eptoService.accruedBalanceHours }} <span class="epto-widget-balance-unit">hrs</span>
-          </div>
-          <div class="epto-widget-subtext">
-            @if (eptoService.currentMonth.entries.length) {
-              {{ eptoService.currentMonth.entries.length }} {{ eptoService.currentMonth.entries.length === 1 ? 'date' : 'dates' }} logged this month
-            } @else {
-              No time off logged this month
-            }
-          </div>
-        </div>
-        <a routerLink="/employee-center/epto" class="widget-view-all">
-          Open ePTO
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="Employee Center"
-          title="Your Paycheck"
-          icon="rvt-credit-card"
-          [personalized]="true"
-          [columnSpan]="1">
-        <div class="paycheck-widget-status">
-          <div class="paycheck-widget-amount">
-            {{ paycheckService.netPay(latestPaycheck) | currency }} <span class="paycheck-widget-amount-label">net pay</span>
-          </div>
-          <div class="paycheck-widget-subtext">{{ latestPaycheck.label }} paycheck</div>
-        </div>
-        <a routerLink="/employee-center/your-paycheck" class="widget-view-all">
-          View pay stub
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-
-      <app-large-task-card
-          category="Notifications"
-          title="Recent Notifications"
-          icon="rvt-bell"
-          [personalized]="true">
-        <ul class="home-notifications-list">
-          <li class="home-notification-row home-notification-row--urgent">
-            <div class="home-notification-title">Registration opens Monday</div>
-            <div class="home-notification-time">2 hours ago</div>
-          </li>
-          <li class="home-notification-row home-notification-row--standard">
-            <div class="home-notification-title">Career Fair starts Thursday at 10am</div>
-            <div class="home-notification-time">Yesterday</div>
-          </li>
-          <li class="home-notification-row home-notification-row--urgent">
-            <div class="home-notification-title">Your advisor added a new contact note</div>
-            <div class="home-notification-time">2 days ago</div>
-          </li>
-        </ul>
-        <a routerLink="/notifications" class="widget-view-all">
-          View all notifications
-          <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
-        </a>
-      </app-large-task-card>
-    </div>
-
-    <div class="section-border"></div>
-
     <h2 class="home-section-title">My Home</h2>
 
-    @if (homeServices.length) {
-      <div class="card-grid">
-        @for (service of homeServices; track service.slug) {
-          <app-task-card
-              [slug]="service.slug"
-              [category]="service.category"
-              [title]="service.title"
-              [imageIcon]="service.imageIcon"
-              [description]="service.description"
-              [launchUrl]="service.launchUrl"
-              [campuses]="service.campuses"
-              [showHomeAction]="true"
-              [onHome]="isOnHome(service.slug)"
-              (homeToggle)="toggleHome(service.slug)">
-          </app-task-card>
+    <div class="card-grid"
+        cdkDropList
+        [cdkDropListData]="cardOrder.cards"
+        (cdkDropListDropped)="drop($event)">
+      @for (card of cardOrder.cards; track cardOrder.cardKey(card)) {
+        @if (card.kind === 'widget') {
+          @switch (card.id) {
+            @case ('my-classes') {
+              <app-large-task-card
+                  cdkDrag
+                  [dragHandle]="true"
+                  [showFavoriteAction]="true"
+                  [favorite]="cardOrder.isWidgetFavorited('my-classes')"
+                  (favoriteToggle)="cardOrder.toggleWidgetFavorite('my-classes')"
+                  infoRoute="/home/widgets/my-classes"
+                  category="Academics"
+                  title="My Classes"
+                  icon="rvt-calendar"
+                  imageIcon="task-icons/checklist.png"
+                  [personalized]="true"
+                  [columnSpan]="2">
+                <ul class="schedule-list">
+                  <li class="schedule-row">
+                    <span class="schedule-time">9:30 AM</span>
+                    <div class="schedule-details">
+                      <div class="schedule-course">CSCI-B 351 Programming Languages</div>
+                      <div class="schedule-location">Ballantine Hall 013</div>
+                    </div>
+                  </li>
+                  <li class="schedule-row">
+                    <span class="schedule-time">11:15 AM</span>
+                    <div class="schedule-details">
+                      <div class="schedule-course">MATH-M 301 Linear Algebra</div>
+                      <div class="schedule-location">Rawles Hall 100</div>
+                    </div>
+                  </li>
+                  <li class="schedule-row">
+                    <span class="schedule-time">1:00 PM</span>
+                    <div class="schedule-details">
+                      <div class="schedule-course">ENG-W 131 Elementary Composition</div>
+                      <div class="schedule-location">Ballantine Hall 205</div>
+                    </div>
+                  </li>
+                  <li class="schedule-row">
+                    <span class="schedule-time">3:30 PM</span>
+                    <div class="schedule-details">
+                      <div class="schedule-course">PHIL-P 105 Introduction to Philosophy</div>
+                      <div class="schedule-location">Sycamore Hall 003</div>
+                    </div>
+                  </li>
+                </ul>
+                <a routerLink="/events-calendars/my-classes" class="widget-view-all">
+                  View full schedule
+                  <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+                </a>
+              </app-large-task-card>
+            }
+            @case ('upcoming-dates') {
+              <app-large-task-card
+                  cdkDrag
+                  [dragHandle]="true"
+                  [showFavoriteAction]="true"
+                  [favorite]="cardOrder.isWidgetFavorited('upcoming-dates')"
+                  (favoriteToggle)="cardOrder.toggleWidgetFavorite('upcoming-dates')"
+                  infoRoute="/home/widgets/upcoming-dates"
+                  category="University Calendar"
+                  title="Upcoming Dates"
+                  icon="rvt-flag"
+                  imageIcon="task-icons/travel.png"
+                  [columnSpan]="1">
+                <ul class="dates-list">
+                  @for (date of upcomingAcademicDates; track date.id) {
+                    <li class="dates-row">
+                      <div class="dates-when">{{ date.dateDisplay }}</div>
+                      <div class="dates-what">{{ date.title }}</div>
+                    </li>
+                  }
+                </ul>
+                <a routerLink="/events-calendars/academic-calendar" class="widget-view-all">
+                  View full calendar
+                  <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+                </a>
+              </app-large-task-card>
+            }
+            @case ('campus-events') {
+              <app-large-task-card
+                  cdkDrag
+                  [dragHandle]="true"
+                  [showFavoriteAction]="true"
+                  [favorite]="cardOrder.isWidgetFavorited('campus-events')"
+                  (favoriteToggle)="cardOrder.toggleWidgetFavorite('campus-events')"
+                  infoRoute="/home/widgets/campus-events"
+                  category="Campus Life"
+                  title="Campus Events"
+                  icon="rvt-calendar"
+                  imageIcon="task-icons/academic-calendar.png"
+                  [columnSpan]="2">
+                <ul class="events-list">
+                  @for (event of upcomingEvents; track event.id) {
+                    <li class="events-row">
+                      <div class="events-when">
+                        <span class="events-date">{{ event.date }}</span>
+                        <span class="events-time">{{ event.time }}</span>
+                      </div>
+                      <div class="events-details">
+                        <div class="events-title">{{ event.title }}</div>
+                        <div class="events-location">{{ event.location }}</div>
+                      </div>
+                    </li>
+                  }
+                </ul>
+                <a routerLink="/events-calendars/campus-events" class="widget-view-all">
+                  View all events
+                  <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+                </a>
+              </app-large-task-card>
+            }
+            @case ('kuali-time') {
+              <app-large-task-card
+                  cdkDrag
+                  [dragHandle]="true"
+                  [showFavoriteAction]="true"
+                  [favorite]="cardOrder.isWidgetFavorited('kuali-time')"
+                  (favoriteToggle)="cardOrder.toggleWidgetFavorite('kuali-time')"
+                  infoRoute="/home/widgets/kuali-time"
+                  category="Employee Center"
+                  title="Kuali Time"
+                  icon="rvt-clock"
+                  imageIcon="task-icons/kuali-time-widget.png"
+                  [personalized]="true"
+                  [columnSpan]="1">
+                <div class="kuali-widget-status">
+                  <span class="kuali-widget-pill" [class.kuali-widget-pill--in]="kualiTimeService.isClockedIn">
+                    <i [espdIcon]="kualiTimeService.isClockedIn ? 'rvt-check-circle' : 'rvt-clock'" aria-hidden="true"></i>
+                    {{ kualiTimeService.isClockedIn ? 'Clocked In' : 'Clocked Out' }}
+                  </span>
+
+                  @if (kualiTimeService.isClockedIn) {
+                    <div class="kuali-widget-timer">{{ kualiElapsedLabel }}</div>
+                    <div class="kuali-widget-subtext">{{ kualiTimeService.assignmentLabel(kualiTimeService.activeAssignmentId ?? '') }}</div>
+                  } @else {
+                    <div class="kuali-widget-subtext">Not currently clocked in.</div>
+                  }
+                </div>
+                <a routerLink="/employee-center/kuali-time" class="widget-view-all">
+                  Open Kuali Time
+                  <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+                </a>
+              </app-large-task-card>
+            }
+            @case ('epto') {
+              <app-large-task-card
+                  cdkDrag
+                  [dragHandle]="true"
+                  [showFavoriteAction]="true"
+                  [favorite]="cardOrder.isWidgetFavorited('epto')"
+                  (favoriteToggle)="cardOrder.toggleWidgetFavorite('epto')"
+                  infoRoute="/home/widgets/epto"
+                  category="Employee Center"
+                  title="ePTO"
+                  icon="rvt-calendar"
+                  [personalized]="true"
+                  [columnSpan]="1">
+                <div class="epto-widget-status">
+                  <span class="epto-widget-pill"
+                      [class.epto-widget-pill--submitted]="eptoService.currentMonth.status === 'Submitted'"
+                      [class.epto-widget-pill--approved]="eptoService.currentMonth.status === 'Approved'">
+                    <i [espdIcon]="eptoService.currentMonth.status === 'Approved' ? 'rvt-check-circle' : 'rvt-clock'" aria-hidden="true"></i>
+                    {{ eptoService.currentMonth.status }}
+                  </span>
+
+                  <div class="epto-widget-balance">
+                    {{ eptoService.accruedBalanceHours }} <span class="epto-widget-balance-unit">hrs</span>
+                  </div>
+                  <div class="epto-widget-subtext">
+                    @if (eptoService.currentMonth.entries.length) {
+                      {{ eptoService.currentMonth.entries.length }} {{ eptoService.currentMonth.entries.length === 1 ? 'date' : 'dates' }} logged this month
+                    } @else {
+                      No time off logged this month
+                    }
+                  </div>
+                </div>
+                <a routerLink="/employee-center/epto" class="widget-view-all">
+                  Open ePTO
+                  <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+                </a>
+              </app-large-task-card>
+            }
+            @case ('your-paycheck') {
+              <app-large-task-card
+                  cdkDrag
+                  [dragHandle]="true"
+                  [showFavoriteAction]="true"
+                  [favorite]="cardOrder.isWidgetFavorited('your-paycheck')"
+                  (favoriteToggle)="cardOrder.toggleWidgetFavorite('your-paycheck')"
+                  infoRoute="/home/widgets/your-paycheck"
+                  category="Employee Center"
+                  title="Your Paycheck"
+                  icon="rvt-credit-card"
+                  [personalized]="true"
+                  [columnSpan]="1">
+                <div class="paycheck-widget-status">
+                  <div class="paycheck-widget-amount">
+                    {{ paycheckService.netPay(latestPaycheck) | currency }} <span class="paycheck-widget-amount-label">net pay</span>
+                  </div>
+                  <div class="paycheck-widget-subtext">{{ latestPaycheck.label }} paycheck</div>
+                </div>
+                <a routerLink="/employee-center/your-paycheck" class="widget-view-all">
+                  View pay stub
+                  <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+                </a>
+              </app-large-task-card>
+            }
+            @case ('recent-notifications') {
+              <app-large-task-card
+                  cdkDrag
+                  [dragHandle]="true"
+                  [showFavoriteAction]="true"
+                  [favorite]="cardOrder.isWidgetFavorited('recent-notifications')"
+                  (favoriteToggle)="cardOrder.toggleWidgetFavorite('recent-notifications')"
+                  infoRoute="/home/widgets/recent-notifications"
+                  category="Notifications"
+                  title="Recent Notifications"
+                  icon="rvt-bell"
+                  [personalized]="true">
+                <ul class="home-notifications-list">
+                  <li class="home-notification-row home-notification-row--urgent">
+                    <div class="home-notification-title">Registration opens Monday</div>
+                    <div class="home-notification-time">2 hours ago</div>
+                  </li>
+                  <li class="home-notification-row home-notification-row--standard">
+                    <div class="home-notification-title">Career Fair starts Thursday at 10am</div>
+                    <div class="home-notification-time">Yesterday</div>
+                  </li>
+                  <li class="home-notification-row home-notification-row--urgent">
+                    <div class="home-notification-title">Your advisor added a new contact note</div>
+                    <div class="home-notification-time">2 days ago</div>
+                  </li>
+                </ul>
+                <a routerLink="/notifications" class="widget-view-all">
+                  View all notifications
+                  <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
+                </a>
+              </app-large-task-card>
+            }
+          }
+        } @else {
+          @let service = serviceFor(card.slug);
+          @if (service) {
+            <app-task-card
+                cdkDrag
+                [dragHandle]="true"
+                [slug]="service.slug"
+                [category]="service.category"
+                [title]="service.title"
+                [imageIcon]="service.imageIcon"
+                [description]="service.description"
+                [launchUrl]="service.launchUrl"
+                [campuses]="service.campuses"
+                [showHomeAction]="true"
+                [onHome]="true"
+                (homeToggle)="toggleHome(service.slug)">
+            </app-task-card>
+          }
         }
-      </div>
-    } @else {
-      <p class="home-empty-state">
-        You haven't pinned any services to Home yet. Look for the <i espdIcon="rvt-heart" aria-hidden="true"></i> icon on any service in All Services to add it here.
-      </p>
-    }
+      }
+    </div>
   </espd-shell-stage>
   Any other content won't be displayed
 </espd-shell>

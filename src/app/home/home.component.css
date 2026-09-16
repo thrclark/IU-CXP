@@ -22,15 +22,6 @@ espd-shell {
   margin-bottom: 1.5rem;
 }
 
-.home-empty-state {
-  font-size: 0.9375rem;
-  color: light-dark(#4c5a69, #b7bcc2);
-}
-
-.home-empty-state i {
-  color: var(--accent-color, #990000);
-}
-
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -391,4 +382,31 @@ espd-shell {
 .notification-view-all:hover {
   background-color: #f7f7f7;
   text-decoration: underline;
+}
+
+/* --- Drag-and-drop reordering (CDK) ---
+   Note: CDK's sibling-sliding animation is built for flex/block lists; in
+   this CSS Grid (`grid-auto-flow: row dense`) neighboring cards can jump
+   directly to their new slot mid-drag rather than sliding smoothly, since
+   grid track placement doesn't animate. The drop itself still lands
+   correctly -- this is a cosmetic prototype trade-off. */
+
+.card-grid.cdk-drop-list-dragging .large-task-card,
+.card-grid.cdk-drop-list-dragging .task-card {
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+  box-shadow: 0 .5rem 1.5rem #24314240, 0 0 0 1px #24314214;
+  opacity: 0.95;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating {
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
 }

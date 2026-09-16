@@ -1,4 +1,9 @@
 <article class="large-task-card">
+  @if (dragHandle) {
+    <button type="button" class="card-drag-handle" cdkDragHandle aria-label="Reorder {{ title }}">
+      <i espdIcon="rvt-grip-vertical" aria-hidden="true"></i>
+    </button>
+  }
   <div class="large-task-card-header">
     <div class="large-task-card-icon" aria-hidden="true">
       @if (imageIcon) {
@@ -56,12 +61,25 @@
       </ul>
     }
 
-    @if (slug) {
-      <a class="large-task-card-expand-btn"
-          [routerLink]="['/services', slug]"
-          [attr.aria-label]="'View more about ' + title">
-        <i espdIcon="rvt-info-circle"></i>
-      </a>
-    }
+    <div class="large-task-card-actions">
+      @if (showFavoriteAction) {
+        <button type="button"
+            class="large-task-card-favorite-btn"
+            [class.large-task-card-favorite-btn-active]="favorite"
+            [attr.aria-pressed]="favorite"
+            [attr.aria-label]="(favorite ? 'Remove ' : 'Add ') + title + (favorite ? ' from your Home' : ' to your Home')"
+            (click)="favoriteToggle.emit()">
+          <i [espdIcon]="favorite ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+        </button>
+      }
+
+      @if (resolvedInfoRoute) {
+        <a class="large-task-card-expand-btn"
+            [routerLink]="resolvedInfoRoute"
+            [attr.aria-label]="'View more about ' + title">
+          <i espdIcon="rvt-info-circle"></i>
+        </a>
+      }
+    </div>
   </div>
 </article>

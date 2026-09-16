@@ -1,6 +1,7 @@
 import { Component, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { CdkDropList, CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 import { HeaderModule } from 'espd-common/header';
 import { ShellModule } from 'espd-common/layout/shell';
@@ -20,7 +21,10 @@ import { EptoService } from '../epto/epto.service';
 import { YourPaycheckService } from '../your-paycheck/your-paycheck.service';
 import { CampusEvent } from '../campus-events/campus-event';
 import { CampusService } from '../campus-services/campus-service';
+import { findServiceBySlug } from '../campus-services/service-directory';
 import { HomeService } from './home.service';
+import { HomeCardOrderService } from './home-card-order.service';
+import { CardRef } from './home-card-order';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 import { MainSearchComponent } from '../main-search/main-search.component';
@@ -28,7 +32,7 @@ import { MainSearchComponent } from '../main-search/main-search.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, LargeTaskCardComponent, TaskCardComponent, IdentityMenuComponent, MainSearchComponent], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [RouterLink, CurrencyPipe, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, LargeTaskCardComponent, TaskCardComponent, IdentityMenuComponent, MainSearchComponent, CdkDropList, CdkDrag], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -38,6 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   protected eptoService = inject(EptoService);
   protected paycheckService = inject(YourPaycheckService);
   protected homeService = inject(HomeService);
+  protected cardOrder = inject(HomeCardOrderService);
 
   /** Ticks once a second so the Kuali Time widget's running timer stays live. */
   private now = new Date();
@@ -94,6 +99,19 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   toggleHome(slug: string): void {
     this.homeService.toggle(slug);
+  }
+
+  /** Full service record for a pinned service card's slug, for the template. */
+  serviceFor(slug: string): CampusService | undefined {
+    return findServiceBySlug(slug);
+  }
+
+  /** Applies a completed drag-and-drop reorder in the My Home grid. */
+  drop(event: CdkDragDrop<CardRef[]>): void {
+    if (event.previousIndex === event.currentIndex) {
+      return;
+    }
+    this.cardOrder.moveCard(event.previousIndex, event.currentIndex);
   }
 
   footerHtml = `

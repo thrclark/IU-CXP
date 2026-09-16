@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { CdkDragHandle } from '@angular/cdk/drag-drop';
+
 import { IconDirective } from 'espd-common/icon';
 import { BadgeComponent } from 'espd-common/badge';
 
@@ -9,7 +11,7 @@ import { CampusBadge, resolveCampusBadges } from '../campus/campus-badges';
 @Component({
   selector: 'app-task-card',
   standalone: true,
-  imports: [IconDirective, BadgeComponent, RouterLink],
+  imports: [IconDirective, BadgeComponent, RouterLink, CdkDragHandle],
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.css']
 })
@@ -39,6 +41,13 @@ export class TaskCardComponent {
   @Input() onHome = false;
   /** Emitted when the add/remove-from-Home button is clicked. */
   @Output() homeToggle = new EventEmitter<void>();
+  /**
+   * Shows a drag handle in the card's corner for reordering. Off by
+   * default so pages that reuse this card outside the Home screen's
+   * drag-and-drop grid (Tasks, Collection Detail, Service Detail) are
+   * unaffected.
+   */
+  @Input() dragHandle = false;
 
   get campusBadges(): CampusBadge[] {
     return resolveCampusBadges(this.campuses);

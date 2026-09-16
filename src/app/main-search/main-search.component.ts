@@ -9,6 +9,8 @@ import { IconDirective } from 'espd-common/icon';
 import { CampusService } from '../campus-services/campus-service';
 import { ALL_SERVICES } from '../campus-services/service-directory';
 import { HomeService } from '../home/home.service';
+import { HomeCardOrderService } from '../home/home-card-order.service';
+import { HomeWidgetInfo, HOME_WIDGET_INFO } from '../home/home-widget-info';
 import { SemanticSearchService } from '../campus-services/semantic-search.service';
 import { TaskCollectionsService } from '../task-collections/task-collections.service';
 import { TaskCollection } from '../task-collections/task-collection';
@@ -18,6 +20,13 @@ import { CollectionIconCell } from '../collection-card/collection-card.component
 const MAX_SEARCH_RESULTS = 30;
 /** How long to wait after the user stops typing before running semantic search. */
 const SEARCH_DEBOUNCE_MS = 200;
+/**
+ * Home screen widgets that should be discoverable from the main search,
+ * so a user can find and pin them without already being on the Home
+ * screen. Recent Notifications is deliberately left out -- it isn't a
+ * distinct feature someone would search for by name.
+ */
+const SEARCHABLE_WIDGETS: HomeWidgetInfo[] = HOME_WIDGET_INFO.filter(widget => widget.id !== 'recent-notifications');
 
 /**
  * The app's main search bar: an omnibox-style input with a live results
@@ -39,6 +48,7 @@ const SEARCH_DEBOUNCE_MS = 200;
 })
 export class MainSearchComponent {
   private homeService = inject(HomeService);
+  private cardOrder = inject(HomeCardOrderService);
   private semanticSearch = inject(SemanticSearchService);
   protected collectionsService = inject(TaskCollectionsService);
 
@@ -90,6 +100,17 @@ export class MainSearchComponent {
       collection.eyebrow.toLowerCase().includes(query));
   }
 
+  /** Home screen widgets (My Classes, Kuali Time, ...) matching the current search query. */
+  get searchWidgetResults(): HomeWidgetInfo[] {
+    const query = this.searchQuery.trim().toLowerCase();
+    if (!query) {
+      return [];
+    }
+    return SEARCHABLE_WIDGETS.filter(widget =>
+      widget.title.toLowerCase().includes(query) ||
+      widget.category.toLowerCase().includes(query));
+  }
+
   /** Same fixed 2x2 mosaic used on the collection card, reused for a collection's search-result row. */
   collectionIconCells(collection: TaskCollection): CollectionIconCell[] {
     const services = this.collectionsService.servicesFor(collection);
@@ -128,6 +149,16 @@ export class MainSearchComponent {
 
   toggleHome(slug: string): void {
     this.homeService.toggle(slug);
+  }
+
+  /** Whether a widget is currently favorited/pinned to Home (see HomeCardOrderService). */
+  isWidgetFavorited(id: HomeWidgetInfo['id']): boolean {
+    return this.cardOrder.isWidgetFavorited(id);
+  }
+
+  /** Pins/un-pins a widget to Home from the search results. */
+  toggleWidgetFavorite(id: HomeWidgetInfo['id']): void {
+    this.cardOrder.toggleWidgetFavorite(id);
   }
 
   onSearchInput(): void {

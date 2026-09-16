@@ -87,86 +87,45 @@
 
     <a routerLink="/home" class="back-link"><i [espdIcon]="'rvt-arrow-left'"></i> Home</a>
 
-    @if (service) {
-      <div class="service-detail">
-        <div class="service-detail-header">
-          <div class="service-detail-icon">
-            <img [src]="service.imageIcon" alt="">
+    @if (widget) {
+      <div class="widget-detail">
+        <div class="widget-detail-header">
+          <div class="widget-detail-icon" aria-hidden="true">
+            <i [espdIcon]="widget.icon"></i>
           </div>
 
-          <div class="service-detail-heading">
-            <h1 class="service-detail-title">{{ service.title }}</h1>
-            <span class="service-detail-category">{{ service.category }}</span>
-
-            @if (campusBadges.length) {
-              <ul class="service-detail-campuses" aria-label="Available at these IU campuses">
-                @for (campus of campusBadges; track campus.key) {
-                  <li [title]="campus.title">
-                    <espd-badge [label]="campus.label" color="light"></espd-badge>
-                    <span class="sr-only">{{ campus.title }}</span>
-                  </li>
-                }
-              </ul>
-            }
+          <div class="widget-detail-heading">
+            <h1 class="widget-detail-title">{{ widget.title }}</h1>
+            <span class="widget-detail-category">{{ widget.category }}</span>
           </div>
 
           <espd-button
-              class="service-detail-launch"
+              class="widget-detail-open"
               color="primary"
-              [path]="service.launchUrl"
-              target="_blank">
-            Launch service <i espdIcon="rvt-link-external" aria-hidden="true"></i>
+              [routerPath]="widget.openRoute">
+            {{ widget.openLabel }} <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
           </espd-button>
         </div>
 
         <div class="section-border"></div>
 
-        <section class="service-detail-section">
-          <h2 class="service-detail-section-title">About this service</h2>
-          <p class="service-detail-description">{{ service.extendedDescription }}</p>
+        <section class="widget-detail-section">
+          <h2 class="widget-detail-section-title">About this widget</h2>
+          <p class="widget-detail-summary">{{ widget.summary }}</p>
         </section>
 
-        @if (service.supportLinks.length) {
-          <section class="service-detail-section">
-            <h2 class="service-detail-section-title">Support</h2>
-            <ul class="service-detail-support-list">
-              @for (link of service.supportLinks; track link.url) {
-                <li>
-                  <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="service-detail-support-link">
-                    <i espdIcon="rvt-link-external" aria-hidden="true"></i>
-                    {{ link.label }}
-                  </a>
-                </li>
-              }
-            </ul>
-          </section>
-        }
-
-        <section class="service-detail-section">
-          <h2 class="service-detail-section-title">Send feedback</h2>
-          <p class="service-detail-feedback-intro">Let us know what's working, what's not, or what you'd like to see from this service.</p>
-
-          @if (feedbackSubmitted) {
-            <espd-inline-alert type="success" message="Thanks — your feedback has been submitted."></espd-inline-alert>
-          }
-
-          <form class="service-detail-feedback-form" (submit)="$event.preventDefault(); submitFeedback()">
-            <label for="feedback-text" class="sr-only">Your feedback about {{ service.title }}</label>
-            <textarea
-                id="feedback-text"
-                class="service-detail-feedback-textarea"
-                rows="4"
-                placeholder="Share your feedback about this service..."
-                [(ngModel)]="feedbackText"
-                name="feedbackText"></textarea>
-
-            <espd-button type="submit" color="primary" [disabled]="!feedbackText.trim()">Submit feedback</espd-button>
-          </form>
+        <section class="widget-detail-section">
+          <h2 class="widget-detail-section-title">How it works</h2>
+          <ul class="widget-detail-details-list">
+            @for (detail of widget.details; track detail) {
+              <li>{{ detail }}</li>
+            }
+          </ul>
         </section>
       </div>
     } @else {
-      <div class="service-detail service-detail--not-found">
-        <p>We couldn't find that service.</p>
+      <div class="widget-detail widget-detail--not-found">
+        <p>We couldn't find that widget.</p>
         <a routerLink="/home" class="btn btn-outline-primary">Back to Home</a>
       </div>
     }
