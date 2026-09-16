@@ -10,6 +10,7 @@ import { CampusService } from '../campus-services/campus-service';
 import { ALL_SERVICES } from '../campus-services/service-directory';
 import { HomeService } from '../home/home.service';
 import { HomeCardOrderService } from '../home/home-card-order.service';
+import { HomeCollectionsService } from '../home/home-collections.service';
 import { HomeWidgetInfo, HOME_WIDGET_INFO } from '../home/home-widget-info';
 import { SemanticSearchService } from '../campus-services/semantic-search.service';
 import { TaskCollectionsService } from '../task-collections/task-collections.service';
@@ -49,6 +50,7 @@ const SEARCHABLE_WIDGETS: HomeWidgetInfo[] = HOME_WIDGET_INFO.filter(widget => w
 export class MainSearchComponent {
   private homeService = inject(HomeService);
   private cardOrder = inject(HomeCardOrderService);
+  private homeCollectionsService = inject(HomeCollectionsService);
   private semanticSearch = inject(SemanticSearchService);
   protected collectionsService = inject(TaskCollectionsService);
 
@@ -149,6 +151,16 @@ export class MainSearchComponent {
 
   toggleHome(slug: string): void {
     this.homeService.toggle(slug);
+  }
+
+  /** Whether a task collection is currently pinned to Home. */
+  isCollectionFavorited(slug: string): boolean {
+    return this.homeCollectionsService.isOnHome(slug);
+  }
+
+  /** Pins/un-pins a task collection to Home from the search results. */
+  toggleCollectionFavorite(slug: string): void {
+    this.homeCollectionsService.toggle(slug);
   }
 
   /** Whether a widget is currently favorited/pinned to Home (see HomeCardOrderService). */

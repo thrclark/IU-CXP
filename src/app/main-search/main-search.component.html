@@ -43,6 +43,15 @@
                     [attr.aria-label]="'View ' + collection.title + ' collection'">
                   <i espdIcon="rvt-arrow-right" aria-hidden="true"></i>
                 </a>
+
+                <button type="button"
+                    class="search-overlay-action-btn"
+                    [class.search-overlay-action-btn-active]="isCollectionFavorited(collection.slug)"
+                    [attr.aria-pressed]="isCollectionFavorited(collection.slug)"
+                    [attr.aria-label]="(isCollectionFavorited(collection.slug) ? 'Unpin ' : 'Pin ') + collection.title + (isCollectionFavorited(collection.slug) ? ' from your Home' : ' to your Home')"
+                    (click)="toggleCollectionFavorite(collection.slug)">
+                  <i [espdIcon]="isCollectionFavorited(collection.slug) ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+                </button>
               </span>
             </li>
           }

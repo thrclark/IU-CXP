@@ -1,4 +1,9 @@
 <article class="collection-card">
+  @if (dragHandle) {
+    <button type="button" class="card-drag-handle" cdkDragHandle aria-label="Reorder {{ title }}">
+      <i espdIcon="rvt-grip-vertical" aria-hidden="true"></i>
+    </button>
+  }
   <div class="collection-card-header">
     <div class="collection-card-icon-grid" aria-hidden="true">
       @for (cell of iconGridCells; track $index) {

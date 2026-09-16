@@ -60,7 +60,7 @@
       <espd-header-nav-list label="Campus Life">
         <espd-header-nav-item route="/student-life/campus-dining">Campus Dining</espd-header-nav-item>
         <espd-header-nav-item route="/student-life/athletics">Athletics</espd-header-nav-item>
-        <espd-header-nav-item route="/student-life/residential-services">Residential Services</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/residential-services">Housing</espd-header-nav-item>
         <espd-header-nav-item route="/student-life/marketplace">IU Marketplace</espd-header-nav-item>
       </espd-header-nav-list>
       <espd-header-nav-list label="Employee Center">
@@ -100,7 +100,7 @@
         <div class="sidenav-popup-header">Campus Life</div>
         <espd-sidenav-item route="/student-life/campus-dining"><span class="nav-item-label">Campus Dining</span></espd-sidenav-item>
         <espd-sidenav-item route="/student-life/athletics"><span class="nav-item-label">Athletics</span></espd-sidenav-item>
-        <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Residential Services</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Housing</span></espd-sidenav-item>
         <espd-sidenav-item route="/student-life/marketplace"><span class="nav-item-label">IU Marketplace</span></espd-sidenav-item>
       </espd-sidenav-list>
       <espd-sidenav-list srLabel="Employee Center" [isCollapsed]="navState.expandedGroup !== 'employee-center'" [class.nav-group-selected]="navState.selectedKey === 'employee-center'" (click)="navState.select('employee-center'); navState.toggleExpanded('employee-center')">
@@ -121,19 +121,34 @@
 
     <div class="section-border"></div>
 
-    <h2 class="home-section-title">My Home</h2>
+    <div class="home-section-header">
+      <h2 class="home-section-title">My Home</h2>
+      @if (cardOrder.cards.length >= 2) {
+        <espd-button
+            class="home-reorder-toggle"
+            [secondary]="!reorderEnabled"
+            [small]="true"
+            [attr.aria-pressed]="reorderEnabled"
+            (click)="toggleReorder()">
+          {{ reorderEnabled ? 'Done reordering' : 'Reorder cards' }}
+        </espd-button>
+      }
+    </div>
 
-    <div class="card-grid"
-        cdkDropList
-        [cdkDropListData]="cardOrder.cards"
-        (cdkDropListDropped)="drop($event)">
+    @if (cardOrder.cards.length) {
+      <div class="card-grid"
+          cdkDropList
+          [cdkDropListDisabled]="!reorderEnabled"
+          [cdkDropListData]="cardOrder.cards"
+          (cdkDropListDropped)="drop($event)">
       @for (card of cardOrder.cards; track cardOrder.cardKey(card)) {
         @if (card.kind === 'widget') {
           @switch (card.id) {
             @case ('my-classes') {
               <app-large-task-card
                   cdkDrag
-                  [dragHandle]="true"
+                  [cdkDragDisabled]="!reorderEnabled"
+                  [dragHandle]="reorderEnabled"
                   [showFavoriteAction]="true"
                   [favorite]="cardOrder.isWidgetFavorited('my-classes')"
                   (favoriteToggle)="cardOrder.toggleWidgetFavorite('my-classes')"
@@ -183,7 +198,8 @@
             @case ('upcoming-dates') {
               <app-large-task-card
                   cdkDrag
-                  [dragHandle]="true"
+                  [cdkDragDisabled]="!reorderEnabled"
+                  [dragHandle]="reorderEnabled"
                   [showFavoriteAction]="true"
                   [favorite]="cardOrder.isWidgetFavorited('upcoming-dates')"
                   (favoriteToggle)="cardOrder.toggleWidgetFavorite('upcoming-dates')"
@@ -210,7 +226,8 @@
             @case ('campus-events') {
               <app-large-task-card
                   cdkDrag
-                  [dragHandle]="true"
+                  [cdkDragDisabled]="!reorderEnabled"
+                  [dragHandle]="reorderEnabled"
                   [showFavoriteAction]="true"
                   [favorite]="cardOrder.isWidgetFavorited('campus-events')"
                   (favoriteToggle)="cardOrder.toggleWidgetFavorite('campus-events')"
@@ -243,7 +260,8 @@
             @case ('kuali-time') {
               <app-large-task-card
                   cdkDrag
-                  [dragHandle]="true"
+                  [cdkDragDisabled]="!reorderEnabled"
+                  [dragHandle]="reorderEnabled"
                   [showFavoriteAction]="true"
                   [favorite]="cardOrder.isWidgetFavorited('kuali-time')"
                   (favoriteToggle)="cardOrder.toggleWidgetFavorite('kuali-time')"
@@ -276,7 +294,8 @@
             @case ('epto') {
               <app-large-task-card
                   cdkDrag
-                  [dragHandle]="true"
+                  [cdkDragDisabled]="!reorderEnabled"
+                  [dragHandle]="reorderEnabled"
                   [showFavoriteAction]="true"
                   [favorite]="cardOrder.isWidgetFavorited('epto')"
                   (favoriteToggle)="cardOrder.toggleWidgetFavorite('epto')"
@@ -315,7 +334,8 @@
             @case ('your-paycheck') {
               <app-large-task-card
                   cdkDrag
-                  [dragHandle]="true"
+                  [cdkDragDisabled]="!reorderEnabled"
+                  [dragHandle]="reorderEnabled"
                   [showFavoriteAction]="true"
                   [favorite]="cardOrder.isWidgetFavorited('your-paycheck')"
                   (favoriteToggle)="cardOrder.toggleWidgetFavorite('your-paycheck')"
@@ -341,7 +361,8 @@
             @case ('recent-notifications') {
               <app-large-task-card
                   cdkDrag
-                  [dragHandle]="true"
+                  [cdkDragDisabled]="!reorderEnabled"
+                  [dragHandle]="reorderEnabled"
                   [showFavoriteAction]="true"
                   [favorite]="cardOrder.isWidgetFavorited('recent-notifications')"
                   (favoriteToggle)="cardOrder.toggleWidgetFavorite('recent-notifications')"
@@ -372,12 +393,13 @@
               </app-large-task-card>
             }
           }
-        } @else {
+        } @else if (card.kind === 'service') {
           @let service = serviceFor(card.slug);
           @if (service) {
             <app-task-card
                 cdkDrag
-                [dragHandle]="true"
+                [cdkDragDisabled]="!reorderEnabled"
+                [dragHandle]="reorderEnabled"
                 [slug]="service.slug"
                 [category]="service.category"
                 [title]="service.title"
@@ -390,9 +412,32 @@
                 (homeToggle)="toggleHome(service.slug)">
             </app-task-card>
           }
+        } @else {
+          @let collection = collectionFor(card.slug);
+          @if (collection) {
+            <app-collection-card
+                cdkDrag
+                [cdkDragDisabled]="!reorderEnabled"
+                [dragHandle]="reorderEnabled"
+                [slug]="collection.slug"
+                [title]="collection.title"
+                [kind]="collection.kind"
+                [eyebrow]="collection.eyebrow"
+                [description]="collection.description"
+                [services]="collectionMembers(collection)"
+                (dismissed)="removeCollection(collection.slug)">
+            </app-collection-card>
+          }
         }
       }
-    </div>
+      </div>
+    } @else {
+      <div class="home-empty-state">
+        <i espdIcon="rvt-magnifying-glass" aria-hidden="true"></i>
+        <p>There aren't any task cards on your home screen.
+        Use the search bar above to find services and widgets.</p>
+      </div>
+    }
   </espd-shell-stage>
   Any other content won't be displayed
 </espd-shell>

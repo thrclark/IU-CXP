@@ -196,3 +196,42 @@
   outline: none;
   box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color, #4141a3);
 }
+
+/* --- Drag handle (Home screen reordering only, see [dragHandle]) --- */
+
+.card-drag-handle {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: 0.25rem;
+  background: none;
+  color: light-dark(#a3a9b1, #7a7f87);
+  cursor: grab;
+  touch-action: none;
+}
+
+.card-drag-handle:hover {
+  background-color: light-dark(#f2f3f5, #2a2a2a);
+  color: light-dark(#243142, #fff);
+}
+
+.card-drag-handle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 .125rem light-dark(#fff, #000), 0 0 0 .25rem var(--primary-color, #4141a3);
+}
+
+.card-drag-handle:active {
+  cursor: grabbing;
+}
+
+.card-drag-handle i {
+  font-size: 1rem;
+}

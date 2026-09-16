@@ -34,7 +34,7 @@ export const routes: Routes = [
   { path: 'events-calendars/academic-calendar', component: AcademicCalendarComponent },
   { path: 'student-life/campus-dining', component: PlaceholderPageComponent, data: { title: 'Campus Dining', icon: 'rvt-star' } },
   { path: 'student-life/athletics', component: PlaceholderPageComponent, data: { title: 'Athletics', icon: 'rvt-flag' } },
-  { path: 'student-life/residential-services', component: PlaceholderPageComponent, data: { title: 'Residential Services', icon: 'rvt-building' } },
+  { path: 'student-life/residential-services', component: PlaceholderPageComponent, data: { title: 'Housing', icon: 'rvt-building' } },
   { path: 'employee-center/human-resources', component: PlaceholderPageComponent, data: { title: 'Human Resources', icon: 'rvt-user' } },
   { path: 'employee-center/kuali-time', component: KualiTimeComponent },
   { path: 'employee-center/epto', component: EptoComponent },

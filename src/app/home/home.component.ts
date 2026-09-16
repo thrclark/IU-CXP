@@ -9,9 +9,11 @@ import { SidenavModule } from 'espd-common/sidenav';
 import { AdminHeaderModule } from 'espd-common/admin-header';
 import { FooterComponent } from 'espd-common/footer';
 import { IconDirective } from 'espd-common/icon';
+import { ButtonComponent } from 'espd-common/button';
 
 import { LargeTaskCardComponent } from '../large-task-card/large-task-card.component';
 import { TaskCardComponent } from '../task-card/task-card.component';
+import { CollectionCardComponent } from '../collection-card/collection-card.component';
 import { CampusEventsService } from '../campus-events/campus-events.service';
 import { AcademicCalendarService } from '../academic-calendar/academic-calendar.service';
 import { AcademicCalendarDate } from '../academic-calendar/academic-calendar-date';
@@ -24,7 +26,10 @@ import { CampusService } from '../campus-services/campus-service';
 import { findServiceBySlug } from '../campus-services/service-directory';
 import { HomeService } from './home.service';
 import { HomeCardOrderService } from './home-card-order.service';
+import { HomeCollectionsService } from './home-collections.service';
 import { CardRef } from './home-card-order';
+import { TaskCollection } from '../task-collections/task-collection';
+import { TaskCollectionsService } from '../task-collections/task-collections.service';
 import { NavStateService } from '../nav-state/nav-state.service';
 import { IdentityMenuComponent } from '../identity-menu/identity-menu.component';
 import { MainSearchComponent } from '../main-search/main-search.component';
@@ -32,7 +37,7 @@ import { MainSearchComponent } from '../main-search/main-search.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, LargeTaskCardComponent, TaskCardComponent, IdentityMenuComponent, MainSearchComponent, CdkDropList, CdkDrag], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
+  imports: [RouterLink, CurrencyPipe, HeaderModule, ShellModule, SidenavModule, AdminHeaderModule, FooterComponent, IconDirective, ButtonComponent, LargeTaskCardComponent, TaskCardComponent, CollectionCardComponent, IdentityMenuComponent, MainSearchComponent, CdkDropList, CdkDrag], // <-- Added AdminHeaderModule to fix NG8001 for <espd-admin-header>
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -42,7 +47,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   protected eptoService = inject(EptoService);
   protected paycheckService = inject(YourPaycheckService);
   protected homeService = inject(HomeService);
+  protected homeCollectionsService = inject(HomeCollectionsService);
+  protected collectionsService = inject(TaskCollectionsService);
   protected cardOrder = inject(HomeCardOrderService);
+
+  /**
+   * Whether drag-and-drop reordering of My Home cards is currently
+   * enabled. Off by default -- the grip handles stay hidden and cards
+   * aren't draggable until the user turns reordering on from the header
+   * button, keeping the grid uncluttered the rest of the time.
+   */
+  reorderEnabled = false;
 
   /** Ticks once a second so the Kuali Time widget's running timer stays live. */
   private now = new Date();
@@ -106,12 +121,32 @@ export class HomeComponent implements OnInit, OnDestroy {
     return findServiceBySlug(slug);
   }
 
+  /** Full collection record for a pinned collection card's slug, for the template. */
+  collectionFor(slug: string): TaskCollection | undefined {
+    return this.collectionsService.findBySlug(slug);
+  }
+
+  /** Full service records for a collection's members, for its icon mosaic. */
+  collectionMembers(collection: TaskCollection): CampusService[] {
+    return this.collectionsService.servicesFor(collection);
+  }
+
+  /** Un-pins a task collection card from Home. */
+  removeCollection(slug: string): void {
+    this.homeCollectionsService.remove(slug);
+  }
+
   /** Applies a completed drag-and-drop reorder in the My Home grid. */
   drop(event: CdkDragDrop<CardRef[]>): void {
     if (event.previousIndex === event.currentIndex) {
       return;
     }
     this.cardOrder.moveCard(event.previousIndex, event.currentIndex);
+  }
+
+  /** Toggles whether My Home cards can be dragged to reorder them. */
+  toggleReorder(): void {
+    this.reorderEnabled = !this.reorderEnabled;
   }
 
   footerHtml = `

@@ -342,12 +342,6 @@
   background-color: light-dark(#f7f7f7, #343a40);
 }
 
-.identity-campus-option-icon {
-  flex-shrink: 0;
-  font-size: 0.875rem;
-  color: light-dark(#6c757d, #adb5bd);
-}
-
 .identity-campus-option-label {
   flex: 1;
   min-width: 0;

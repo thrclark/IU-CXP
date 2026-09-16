@@ -8,11 +8,26 @@ espd-shell {
   flex: 1;
 }
 
+.home-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .home-section-title {
-  margin: 0 0 1rem;
+  margin: 0;
   font-size: 1.4375rem;
   font-weight: 700;
   color: light-dark(#243142, #fff);
+}
+
+.home-reorder-toggle {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .section-border {
@@ -30,6 +45,28 @@ espd-shell {
      next in source order, instead of leaving that space empty. */
   grid-auto-flow: row dense;
   gap: 1.5rem;
+}
+
+/* --- Empty state (no cards pinned to Home) --- */
+
+.home-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: light-dark(#4c5a69, #b7bcc2);
+}
+
+.home-empty-state i {
+  font-size: 2rem;
+  color: light-dark(#767676, #9aa1a8);
+}
+
+.home-empty-state p {
+  margin: 0;
+  max-width: 26rem;
 }
 
 .schedule-list,

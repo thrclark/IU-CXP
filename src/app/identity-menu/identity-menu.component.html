@@ -106,7 +106,6 @@
                     class="identity-campus-option"
                     [class.identity-campus-option--active]="isActiveCampus(option.code)"
                     (click)="chooseCampus(option.code, $event)">
-                  <i [espdIcon]="'rvt-building'" aria-hidden="true" class="identity-campus-option-icon"></i>
                   <span class="identity-campus-option-label">{{ option.label }}</span>
                   <span class="identity-campus-option-check" aria-hidden="true">&#10003;</span>
                 </button>
