@@ -14,6 +14,9 @@ import { KualiTimeComponent } from './kuali-time/kuali-time.component';
 import { EptoComponent } from './epto/epto.component';
 import { YourPaycheckComponent } from './your-paycheck/your-paycheck.component';
 import { WidgetDetailComponent } from './home/widget-detail/widget-detail.component';
+import { MarketplaceComponent } from './marketplace/marketplace.component';
+import { MarketplaceListingDetailComponent } from './marketplace/marketplace-listing-detail/marketplace-listing-detail.component';
+import { MarketplacePostComponent } from './marketplace/marketplace-post/marketplace-post.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +42,9 @@ export const routes: Routes = [
   { path: 'employee-center/kuali-time', component: KualiTimeComponent },
   { path: 'employee-center/epto', component: EptoComponent },
   { path: 'employee-center/your-paycheck', component: YourPaycheckComponent },
-  { path: 'student-life/marketplace', component: PlaceholderPageComponent, data: { title: 'IU Marketplace', icon: 'tag' } },
+  { path: 'student-life/marketplace', component: MarketplaceComponent },
+  { path: 'student-life/marketplace/new', component: MarketplacePostComponent },
+  { path: 'student-life/marketplace/:id', component: MarketplaceListingDetailComponent },
   { path: 'directory', component: PlaceholderPageComponent, data: { title: 'Directory', icon: 'address-book' } },
   { path: 'maps', component: MapsPageComponent },
 ];

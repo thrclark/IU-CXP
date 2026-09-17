@@ -1,0 +1,184 @@
+<espd-header [fullWidth]="true" subtitle="Indiana University">
+  <div desktop-menu class="notification-menu mr-1">
+    <button type="button"
+        class="notification-bell-btn"
+        aria-haspopup="true"
+        [attr.aria-expanded]="notificationsOpen"
+        aria-label="Notifications, 3 unread"
+        (click)="toggleNotifications($event)">
+      <span class="notification-bell-icon">
+        <i [espdIcon]="'rvt-bell'" aria-hidden="true"></i>
+        <span class="notification-badge" aria-hidden="true"></span>
+      </span>
+    </button>
+    @if (notificationsOpen) {
+      <div class="dropdown-menu dropdown-menu-right notification-panel show" role="menu">
+        <div class="dropdown-header">Notifications</div>
+        <a routerLink="/notifications" class="dropdown-item notification-view-all" role="menuitem" (click)="notificationsOpen = false">Show all notifications</a>
+      </div>
+    }
+  </div>
+  <div desktop-menu>
+    <app-identity-menu />
+  </div>
+  <div mobile-menu>
+    <espd-header-nav label="Navigation">
+      <espd-header-nav-item route="/home"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-header-nav-item>
+      <espd-header-nav-list label="Academics">
+        <espd-header-nav-item route="/academics/course-catalog">Course Catalog</espd-header-nav-item>
+        <espd-header-nav-item route="/academics/register-for-classes">Register for Classes</espd-header-nav-item>
+        <espd-header-nav-item route="/events-calendars/my-classes">My Classes</espd-header-nav-item>
+        <espd-header-nav-item route="/academics/degrees-majors">Degrees & Majors</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Events & Calendars">
+        <espd-header-nav-item route="/events-calendars/campus-events">Campus Events</espd-header-nav-item>
+        <espd-header-nav-item route="/events-calendars/academic-calendar">Academic Calendar</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Campus Life">
+        <espd-header-nav-item route="/student-life/campus-dining">Campus Dining</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/athletics">Athletics</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/residential-services">Housing</espd-header-nav-item>
+        <espd-header-nav-item route="/student-life/marketplace">IU Marketplace</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-list label="Employee Center">
+        <espd-header-nav-item route="/employee-center/kuali-time">Kuali Time</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/epto">ePTO</espd-header-nav-item>
+        <espd-header-nav-item route="/employee-center/your-paycheck">Your Paycheck</espd-header-nav-item>
+      </espd-header-nav-list>
+      <espd-header-nav-item route="/maps"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-header-nav-item>
+      <espd-header-nav-item route="/notifications"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-header-nav-item>
+      <espd-header-nav-item route="/tasks"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-header-nav-item>
+    </espd-header-nav>
+    <app-identity-menu />
+  </div>
+</espd-header>
+
+<espd-shell [collapsible]="false">
+  <espd-shell-sidebar>
+    <espd-sidenav label="Navigation">
+      <espd-sidenav-item route="/home" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-home'"></i> <span class="nav-item-label">Home</span></espd-sidenav-item>
+      <espd-sidenav-list srLabel="Academics" [isCollapsed]="navState.expandedGroup !== 'academics'" [class.nav-group-selected]="navState.selectedKey === 'academics'" (click)="navState.select('academics'); navState.toggleExpanded('academics')">
+        <span labelContent><i [espdIcon]="'graduation-cap'"></i> <span class="nav-item-label">Academics</span></span>
+        <div class="sidenav-popup-header">Academics</div>
+        <espd-sidenav-item route="/academics/course-catalog"><span class="nav-item-label">Course Catalog</span></espd-sidenav-item>
+        <espd-sidenav-item route="/academics/register-for-classes"><span class="nav-item-label">Register for Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/my-classes"><span class="nav-item-label">My Classes</span></espd-sidenav-item>
+        <espd-sidenav-item route="/academics/degrees-majors"><span class="nav-item-label">Degrees & Majors</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Events & Calendars" [isCollapsed]="navState.expandedGroup !== 'events-calendars'" [class.nav-group-selected]="navState.selectedKey === 'events-calendars'" (click)="navState.select('events-calendars'); navState.toggleExpanded('events-calendars')">
+        <span labelContent><i [espdIcon]="'rvt-calendar'"></i> <span class="nav-item-label">Events & Calendars</span></span>
+        <div class="sidenav-popup-header">Events & Calendars</div>
+        <espd-sidenav-item route="/events-calendars/campus-events"><span class="nav-item-label">Campus Events</span></espd-sidenav-item>
+        <espd-sidenav-item route="/events-calendars/academic-calendar"><span class="nav-item-label">Academic Calendar</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Campus Life" [isCollapsed]="navState.expandedGroup !== 'student-life'" [class.nav-group-selected]="navState.selectedKey === 'student-life'" (click)="navState.select('student-life'); navState.toggleExpanded('student-life')">
+        <span labelContent><i [espdIcon]="'rvt-heart'"></i> <span class="nav-item-label">Campus Life</span></span>
+        <div class="sidenav-popup-header">Campus Life</div>
+        <espd-sidenav-item route="/student-life/campus-dining"><span class="nav-item-label">Campus Dining</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/athletics"><span class="nav-item-label">Athletics</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/residential-services"><span class="nav-item-label">Housing</span></espd-sidenav-item>
+        <espd-sidenav-item route="/student-life/marketplace"><span class="nav-item-label">IU Marketplace</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-list srLabel="Employee Center" [isCollapsed]="navState.expandedGroup !== 'employee-center'" [class.nav-group-selected]="navState.selectedKey === 'employee-center'" (click)="navState.select('employee-center'); navState.toggleExpanded('employee-center')">
+        <span labelContent><i [espdIcon]="'rvt-user'"></i> <span class="nav-item-label">Employee Center</span></span>
+        <div class="sidenav-popup-header">Employee Center</div>
+        <espd-sidenav-item route="/employee-center/kuali-time"><span class="nav-item-label">Kuali Time</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/epto"><span class="nav-item-label">ePTO</span></espd-sidenav-item>
+        <espd-sidenav-item route="/employee-center/your-paycheck"><span class="nav-item-label">Your Paycheck</span></espd-sidenav-item>
+      </espd-sidenav-list>
+      <espd-sidenav-item route="/maps" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-map-pin'"></i> <span class="nav-item-label">Maps</span></espd-sidenav-item>
+      <espd-sidenav-item route="/notifications" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-bell'"></i> <span class="nav-item-label">Notification Center</span></espd-sidenav-item>
+      <espd-sidenav-item route="/tasks" [class.nav-suppressed]="navState.isManualOverrideActive"><i [espdIcon]="'rvt-clipboard'"></i> <span class="nav-item-label">All Services</span></espd-sidenav-item>
+    </espd-sidenav>
+  </espd-shell-sidebar>
+
+  <espd-shell-stage>
+    <app-main-search />
+
+    <div class="section-border"></div>
+
+    <a routerLink="/student-life/marketplace" class="back-link"><i [espdIcon]="'rvt-arrow-left'"></i> Marketplace</a>
+
+    @if (listing) {
+      <div class="mp-detail">
+        <div class="mp-detail-header">
+          <div class="mp-detail-photo">
+            @if (!photoFailed) {
+              <img [src]="listing.photoUrl" [alt]="listing.title" loading="lazy" (error)="onPhotoError()">
+            } @else {
+              <div class="mp-detail-photo-fallback" role="img" [attr.aria-label]="listing.title">
+                <i [espdIcon]="photoIcon" aria-hidden="true"></i>
+              </div>
+            }
+          </div>
+
+          <div class="mp-detail-heading">
+            <span class="mp-detail-category">{{ listing.category }}</span>
+            <h1 class="mp-detail-title">{{ listing.title }}</h1>
+
+            <div class="mp-detail-price-row">
+              <span class="mp-detail-price">{{ priceLabel }}</span>
+              @if (listing.condition) {
+                <span class="mp-detail-condition">{{ listing.condition }}</span>
+              }
+            </div>
+
+            <ul class="mp-detail-meta">
+              <li><i espdIcon="rvt-map-pin" aria-hidden="true"></i> {{ listing.location }}</li>
+              <li><i espdIcon="rvt-clock" aria-hidden="true"></i> {{ postedLabel }}</li>
+            </ul>
+          </div>
+
+          <espd-button
+              class="mp-detail-save"
+              [color]="saved ? 'remove' : 'primary'"
+              (click)="toggleSaved()">
+            <i [espdIcon]="saved ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+            {{ saved ? 'Saved' : 'Save listing' }}
+          </espd-button>
+        </div>
+
+        <div class="section-border"></div>
+
+        <section class="mp-detail-section">
+          <h2 class="mp-detail-section-title">Description</h2>
+          <p class="mp-detail-description">{{ listing.description }}</p>
+        </section>
+
+        <section class="mp-detail-section">
+          <h2 class="mp-detail-section-title">Seller</h2>
+          <p class="mp-detail-description">{{ listing.sellerName }}</p>
+        </section>
+
+        <section class="mp-detail-section">
+          <h2 class="mp-detail-section-title">Contact seller</h2>
+          <p class="mp-detail-contact-intro">Send {{ listing.sellerName }} a message about "{{ listing.title }}". This is a prototype — messages aren't actually delivered anywhere.</p>
+
+          @if (contactSent) {
+            <espd-inline-alert type="success" [message]="'Thanks — your message has been sent to ' + listing.sellerName + '.'"></espd-inline-alert>
+          }
+
+          <form class="mp-detail-contact-form" (submit)="$event.preventDefault(); sendMessage()">
+            <label for="contact-message" class="sr-only">Your message to {{ listing.sellerName }}</label>
+            <textarea
+                id="contact-message"
+                class="mp-detail-contact-textarea"
+                rows="4"
+                placeholder="Hi, is this still available?"
+                [(ngModel)]="contactMessage"
+                name="contactMessage"></textarea>
+
+            <espd-button type="submit" color="primary" [disabled]="!contactMessage.trim()">Send message</espd-button>
+          </form>
+        </section>
+      </div>
+    } @else {
+      <div class="mp-detail mp-detail--not-found">
+        <p>We couldn't find that listing.</p>
+        <a routerLink="/student-life/marketplace" class="btn btn-outline-primary">Back to Marketplace</a>
+      </div>
+    }
+  </espd-shell-stage>
+</espd-shell>
+
+<espd-footer [customFooterOverride]="footerHtml" />
