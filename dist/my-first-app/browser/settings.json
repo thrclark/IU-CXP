@@ -1,9 +1,0 @@
-{
-  "APPLICATION_NAME": "IU CXP",
-  "common.CUSTOM_FOOTER": "<div class=\"card p-2\">Copyright &copy; 2025</div>",
-  "common.CUSTOM_HEADER": "",
-  "common.SESSION_DURATION_SECONDS": 65,
-  "common.LOGO_URL": "https://sd-prd-images.s3.amazonaws.com/prd/test-uisapp2/20150702T0521167633961_trident-large.png",
-  "common.LOGO_URL_MOBILE": null,
-  "common.LOGO_DISPLAY": true
-}
