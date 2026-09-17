@@ -1,0 +1,46 @@
+<article class="mp-card">
+  <div class="mp-card-photo">
+    @if (!photoFailed) {
+      <img class="mp-card-photo-image" [src]="listing.photoUrl" [alt]="listing.title" loading="lazy" (error)="onPhotoError()">
+    } @else {
+      <div class="mp-card-photo-fallback" role="img" [attr.aria-label]="listing.title">
+        <i [espdIcon]="photoIcon" aria-hidden="true"></i>
+      </div>
+    }
+
+    <button type="button"
+        class="mp-card-save-btn"
+        [class.mp-card-save-btn-active]="saved"
+        [attr.aria-pressed]="saved"
+        [attr.aria-label]="(saved ? 'Unsave ' : 'Save ') + listing.title"
+        (click)="saveToggle.emit()">
+      <i [espdIcon]="saved ? 'rvt-heart-solid' : 'rvt-heart'" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="mp-card-body">
+    <span class="mp-card-category">{{ listing.category }}</span>
+
+    <h3 class="mp-card-title">
+      <a class="mp-card-link"
+          [routerLink]="['/student-life/marketplace', listing.id]"
+          [attr.aria-label]="listing.title + ' — view details'">
+        {{ listing.title }}
+      </a>
+    </h3>
+
+    <div class="mp-card-price-row">
+      <span class="mp-card-price">{{ priceLabel }}</span>
+      @if (listing.condition) {
+        <span class="mp-card-condition">{{ listing.condition }}</span>
+      }
+    </div>
+
+    <p class="mp-card-description">{{ listing.description }}</p>
+
+    <div class="mp-card-meta">
+      <i espdIcon="rvt-map-pin" aria-hidden="true"></i>
+      <span>{{ listing.location }} · {{ postedLabel }}</span>
+    </div>
+  </div>
+</article>
